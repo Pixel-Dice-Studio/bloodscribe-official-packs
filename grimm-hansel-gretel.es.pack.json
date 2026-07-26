@@ -1,0 +1,1769 @@
+{
+  "schemaVersion": "bloodscribe-v1",
+  "id": "grimm-hansel-gretel",
+  "version": "2.1",
+  "locale": "es",
+  "name": "Hansel y Gretel",
+  "legal": {
+    "license": "Basado en Hänsel und Gretel de los hermanos Grimm (dominio público).",
+    "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
+  },
+  "links": [],
+  "typeLabels": {
+    "pueblo": "Pueblo",
+    "corte": "Corte",
+    "bosque": "Bosque",
+    "maldito": "Maldito"
+  },
+  "characters": [
+    {
+      "id": "hansel-rastreador",
+      "team": "pueblo",
+      "defaultAlignment": "good",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "Hansel",
+        "ability": "Cada noche eliges a otro jugador. Si una habilidad de abandono, veneno o muerte lo alcanza, conoces la facción de una de sus fuentes.",
+        "summary": "Cada noche eliges a otro jugador. Si una habilidad de abandono, veneno o muerte lo alcanza, conoces la facción de una de sus fuentes."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "El Narrador elige una sola fuente si varias habilidades observables alcanzan al objetivo."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 12,
+          "otherOrder": 12
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "guijarro",
+            "kind": "reminder",
+            "value": "Guijarro blanco",
+            "label": "Guijarro blanco",
+            "duration": "tonight"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "hansel-rastreador:tracked-target-information:1",
+            "tags": [
+              "tracked-target-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1,
+              "trigger": {
+                "type": "storytellerSignal",
+                "signal": "targetedByTaggedMechanic"
+              }
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "filters": [
+                "notSelf"
+              ]
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "reminder": "Guijarro blanco",
+                "duration": "tonight",
+                "observedTags": [
+                  "abandonment",
+                  "poison",
+                  "death"
+                ],
+                "output": "sourceTeam",
+                "maxSources": 1,
+                "sourceSelection": "storyteller",
+                "delivery": "dawn"
+              }
+            ],
+            "usage": {
+              "scope": "trigger",
+              "max": 1,
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "label": "Coloca un guijarro",
+                "excludeActor": true
+              }
+            }
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "gretel-empujadora",
+      "team": "pueblo",
+      "defaultAlignment": "good",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "Gretel",
+        "ability": "Una vez por partida, acusa públicamente a un jugador de ser la Bruja del Horno: si aciertas muere; si fallas, mueres tú.",
+        "summary": "Una vez por partida, acusa públicamente a un jugador de ser la Bruja del Horno: si aciertas muere; si fallas, mueres tú."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "La UI no decide por nombre: el Narrador comprueba el rasgo semántico ovenWitch."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "horno_usado",
+            "kind": "reminder",
+            "value": "Horno usado",
+            "label": "Horno usado",
+            "duration": "game"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "gretel-empujadora:public-day-action:1",
+            "tags": [
+              "public-day-action"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "grimm-oven-guess"
+              },
+              {
+                "type": "markReminder",
+                "targets": "actor",
+                "reminder": "Horno usado",
+                "consumeUsage": true
+              },
+              {
+                "type": "death",
+                "targets": "selected",
+                "cause": "ability",
+                "resultOutcome": "targetIdentified",
+                "when": [
+                  {
+                    "type": "targetMechanicTags",
+                    "values": [
+                      "ovenWitch"
+                    ],
+                    "match": "all"
+                  }
+                ]
+              },
+              {
+                "type": "death",
+                "targets": "actor",
+                "conditionTarget": "selected",
+                "cause": "ability",
+                "resultOutcome": "wrongTarget",
+                "when": [
+                  {
+                    "type": "not",
+                    "condition": {
+                      "type": "targetMechanicTags",
+                      "values": [
+                        "ovenWitch"
+                      ],
+                      "match": "all"
+                    }
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "max": 1,
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "label": "Gretel acusa",
+              "title": "Gretel",
+              "description": "Elige públicamente a quien crees que posee el rasgo Bruja del Horno y registra el resultado.",
+              "outcomeLabel": "La acusación",
+              "outcomes": [
+                {
+                  "value": "targetIdentified",
+                  "label": "Identifica a la Bruja"
+                },
+                {
+                  "value": "wrongTarget",
+                  "label": "Falla"
+                }
+              ],
+              "action": {
+                "actionId": "grimm-oven-guess"
+              }
+            }
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "lenador-padre",
+      "team": "pueblo",
+      "defaultAlignment": "good",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "El Leñador",
+        "ability": "Cada noche proteges a un jugador del abandono y del cebado. El primer día no puedes hablar ni votar.",
+        "summary": "Cada noche proteges a un jugador del abandono y del cebado. El primer día no puedes hablar ni votar."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "La restricción del primer día se deriva de phaseRestriction, no del ID del personaje."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 30,
+          "otherOrder": 30
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "protegido",
+            "kind": "reminder",
+            "value": "Protegido",
+            "label": "Protegido",
+            "duration": "tonight"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "lenador-padre:protection-choice:1",
+            "tags": [
+              "protection-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "protect",
+                "reminder": "Protegido",
+                "protectsFrom": [
+                  "abandonment",
+                  "feeding"
+                ],
+                "duration": "tonight"
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "label": "Protege del abandono y el cebado"
+              }
+            }
+          },
+          {
+            "mechanicId": "lenador-padre:phase-restriction:1",
+            "tags": [
+              "phase-restriction"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "restrict",
+                "target": "self",
+                "restrictions": [
+                  "speak",
+                  "vote"
+                ],
+                "requiresSourceAlive": true
+              }
+            ]
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "madre-hambrienta",
+      "team": "corte",
+      "defaultAlignment": "evil",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "La Madre Hambrienta",
+        "ability": "Cada noche abandonas a un jugador distinto al de la noche anterior: pierde habilidad, voz y voto hasta el final del día siguiente.",
+        "summary": "Cada noche abandonas a un jugador distinto al de la noche anterior: pierde habilidad, voz y voto hasta el final del día siguiente."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "No puede elegir el mismo objetivo dos noches consecutivas."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 15,
+          "otherOrder": 15
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "abandonado",
+            "kind": "state",
+            "value": "abandoned",
+            "label": "Abandonado",
+            "duration": "tonightAndTomorrowDay"
+          },
+          {
+            "id": "abandono",
+            "kind": "reminder",
+            "value": "Abandonado",
+            "label": "Abandonado",
+            "duration": "tonightAndTomorrowDay"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "madre-hambrienta:status-choice:1",
+            "tags": [
+              "status-choice",
+              "abandonment"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "filters": [
+                "alive",
+                "notPreviousNight"
+              ]
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "setState",
+                "creates": "abandoned",
+                "reminder": "Abandonado",
+                "duration": "tonightAndTomorrowDay",
+                "restrictions": [
+                  "ability",
+                  "speak",
+                  "vote"
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "label": "Abandona a un jugador"
+              }
+            }
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "bruja-horno",
+      "team": "bosque",
+      "defaultAlignment": "evil",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "La Bruja del Horno",
+        "ability": "Cada noche cebas a dos jugadores. Al recibir la tercera marca, mueren; una protección puede impedir una marca nueva.",
+        "summary": "Cada noche cebas a dos jugadores. Al recibir la tercera marca, mueren; una protección puede impedir una marca nueva."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "La protección bloquea la marca nueva; nunca borra marcas acumuladas."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 50,
+          "otherOrder": 50
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "cebo_1",
+            "kind": "reminder",
+            "value": "Cebo 1",
+            "label": "Cebo 1",
+            "duration": "game",
+            "count": 13
+          },
+          {
+            "id": "cebo_2",
+            "kind": "reminder",
+            "value": "Cebo 2",
+            "label": "Cebo 2",
+            "duration": "game",
+            "count": 13
+          },
+          {
+            "id": "cebo_3",
+            "kind": "reminder",
+            "value": "Cebo 3",
+            "label": "Cebo 3",
+            "duration": "game",
+            "count": 13
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "bruja-horno:cumulative-marker:1",
+            "tags": [
+              "cumulative-marker",
+              "feeding",
+              "death",
+              "ovenWitch"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "markReminder",
+                "reminderStages": [
+                  "Cebo 1",
+                  "Cebo 2",
+                  "Cebo 3"
+                ],
+                "threshold": 3,
+                "increment": 1,
+                "deathTiming": "endOfNight",
+                "duration": "game",
+                "targetAlive": true,
+                "protectionSources": [
+                  "feeding"
+                ],
+                "bypassesDeathProtection": true
+              },
+              {
+                "type": "death",
+                "targets": "selected",
+                "cause": "ability",
+                "when": [
+                  {
+                    "type": "markerThresholdReached"
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers",
+                "label": "Elige dos jugadores para cebar"
+              }
+            }
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "pajaro-blanco",
+      "team": "bosque",
+      "defaultAlignment": "neutral",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "El Pájaro Blanco",
+        "ability": "Cada noche conoces la facción de un jugador. Ganas personalmente si sobrevives tras guiar al menos a un Pueblo y un Bosque.",
+        "summary": "Cada noche conoces la facción de un jugador. Ganas personalmente si sobrevives tras guiar al menos a un Pueblo y un Bosque."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "La victoria personal se presenta al Narrador; no sustituye la victoria general del equipo."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 20,
+          "otherOrder": 20
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "guiado",
+            "kind": "reminder",
+            "value": "Guiado",
+            "label": "Guiado",
+            "duration": "game",
+            "count": 13
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "pajaro-blanco:information-choice:1",
+            "tags": [
+              "information-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned",
+                  "registration"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "output": "targetTeam",
+                "trackingReminder": "Guiado",
+                "trackingDuration": "game"
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "label": "Guía a un jugador"
+              }
+            }
+          },
+          {
+            "mechanicId": "pajaro-blanco:win-condition:1",
+            "tags": [
+              "win-condition"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "once"
+            },
+            "conditions": [
+              {
+                "type": "storytellerDecision",
+                "decision": "survivesAndObservedTeams"
+              }
+            ],
+            "effects": [
+              {
+                "type": "finishGame",
+                "observationMechanic": "informationChoice",
+                "requiredTeams": [
+                  "bosque",
+                  "pueblo"
+                ],
+                "winner": "self",
+                "result": "win"
+              }
+            ],
+            "requiresManualModeling": true
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "pato-rio",
+      "team": "bosque",
+      "defaultAlignment": "good",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "El Pato del Río",
+        "ability": "Una vez por partida, evitas una ejecución por voto. El salvado queda exiliado, sin voz ni voto, hasta el siguiente amanecer.",
+        "summary": "Una vez por partida, evitas una ejecución por voto. El salvado queda exiliado, sin voz ni voto, hasta el siguiente amanecer."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "La acción resuelve la ejecución como supervivencia y aplica el estado exiled."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "salvamento_usado",
+            "kind": "reminder",
+            "value": "Salvamento usado",
+            "label": "Salvamento usado",
+            "duration": "game"
+          },
+          {
+            "id": "exiliado",
+            "kind": "state",
+            "value": "exiled",
+            "label": "Exiliado",
+            "duration": "untilNextDawn"
+          },
+          {
+            "id": "exilio",
+            "kind": "reminder",
+            "value": "Exiliado",
+            "label": "Exiliado",
+            "duration": "untilNextDawn"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "pato-rio:public-day-action:1",
+            "tags": [
+              "public-day-action"
+            ],
+            "when": {
+              "window": "execution",
+              "stage": "afterFirstVoteTallied",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "grimm-river-rescue"
+              },
+              {
+                "type": "markReminder",
+                "targets": "actor",
+                "reminder": "Salvamento usado",
+                "consumeUsage": true
+              },
+              {
+                "type": "execute",
+                "targets": "currentExecutionCandidate",
+                "dies": false
+              },
+              {
+                "type": "setState",
+                "targets": "currentExecutionCandidate",
+                "state": "exiled",
+                "active": true,
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              },
+              {
+                "type": "restrict",
+                "targets": "currentExecutionCandidate",
+                "actions": [
+                  "speak",
+                  "vote"
+                ],
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "max": 1,
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "label": "El Pato salva",
+              "title": "El Pato del Río",
+              "description": "Cuando vaya a resolverse una ejecución por voto, elige al candidato y evita su muerte.",
+              "action": {
+                "actionId": "grimm-river-rescue"
+              }
+            }
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "gato-tejado",
+      "team": "bosque",
+      "defaultAlignment": "neutral",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "El Gato del Tejado",
+        "ability": "Una vez por partida, eliges dos jugadores; las habilidades dirigidas a cualquiera esa noche alcanzan al otro. Ganas si sobrevives.",
+        "summary": "Una vez por partida, eliges dos jugadores; las habilidades dirigidas a cualquiera esa noche alcanzan al otro. Ganas si sobrevives."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "Si la habilidad ya está gastada, el Narrador omite el paso nocturno."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 10,
+          "otherOrder": 10
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "redirigido",
+            "kind": "reminder",
+            "value": "Intercambiado",
+            "label": "Intercambiado",
+            "duration": "tonight",
+            "count": 2
+          },
+          {
+            "id": "distraccion_usada",
+            "kind": "reminder",
+            "value": "Distracción usada",
+            "label": "Distracción usada",
+            "duration": "game"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "gato-tejado:target-swap:1",
+            "tags": [
+              "target-swap"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "reminder": "Intercambiado",
+                "duration": "tonight",
+                "spentReminder": "Distracción usada",
+                "type": "swapTargets",
+                "targets": "selected"
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "max": 1,
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers",
+                "label": "Intercambia dos objetivos"
+              }
+            }
+          },
+          {
+            "mechanicId": "gato-tejado:win-condition:1",
+            "tags": [
+              "win-condition"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "once"
+            },
+            "conditions": [
+              {
+                "type": "storytellerDecision",
+                "decision": "sourceSurvives"
+              }
+            ],
+            "effects": [
+              {
+                "type": "finishGame",
+                "winner": "self",
+                "result": "win"
+              }
+            ],
+            "requiresManualModeling": true
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "cazador-bosque",
+      "team": "bosque",
+      "defaultAlignment": "neutral",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "El Cazador del Bosque",
+        "ability": "Cada noche marcas a un jugador. Si es nominado al día siguiente, puedes matarlo de inmediato. Ganas al matar a un Bosque y una Corte.",
+        "summary": "Cada noche marcas a un jugador. Si es nominado al día siguiente, puedes matarlo de inmediato. Ganas al matar a un Bosque y una Corte."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "La muerte se despacha por nominationTriggerDeath y por la ficha Cazado, nunca por el ID del personaje."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 45,
+          "otherOrder": 45
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "cazado",
+            "kind": "reminder",
+            "value": "Cazado",
+            "label": "Cazado",
+            "duration": "tomorrowDay"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "cazador-bosque:reminder-choice:1",
+            "tags": [
+              "reminder-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "markReminder",
+                "reminder": "Cazado",
+                "duration": "tomorrowDay"
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "label": "Marca al próximo objetivo"
+              }
+            }
+          },
+          {
+            "mechanicId": "cazador-bosque:nomination-trigger-death:1",
+            "tags": [
+              "nomination-trigger-death"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "each",
+              "trigger": {
+                "type": "storytellerSignal",
+                "signal": "markedPlayerIsNominated"
+              }
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "cause": "ability",
+                "protection": "normal",
+                "targets": "reminderHolder",
+                "targetReminder": "Cazado",
+                "requiresSourceAlive": true,
+                "consumeTargetReminder": true,
+                "continuesNomination": false,
+                "type": "death",
+                "eventSubject": "nominee"
+              }
+            ],
+            "usage": {
+              "scope": "trigger",
+              "max": 1,
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "description": "{characterName}: {playerName} fue nominado y puede morir de inmediato.",
+              "deathLabel": "El Cazador mata",
+              "survivalLabel": "El Cazador no dispara"
+            }
+          },
+          {
+            "mechanicId": "cazador-bosque:win-condition:1",
+            "tags": [
+              "win-condition"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "once"
+            },
+            "conditions": [
+              {
+                "type": "storytellerDecision",
+                "decision": "sourceKilledRequiredTeams"
+              }
+            ],
+            "effects": [
+              {
+                "type": "finishGame",
+                "requiredTeams": [
+                  "bosque",
+                  "corte"
+                ],
+                "killSource": "nominationTriggerDeath",
+                "winner": "self",
+                "result": "win"
+              }
+            ],
+            "requiresManualModeling": true
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "anciana-caminos",
+      "team": "pueblo",
+      "defaultAlignment": "good",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "La Anciana de los Caminos",
+        "ability": "Cada noche proteges a un jugador del abandono; no puedes repetir objetivo dos noches seguidas.",
+        "summary": "Cada noche proteges a un jugador del abandono; no puedes repetir objetivo dos noches seguidas."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "Comprueba el objetivo de la noche anterior antes de confirmar."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 25,
+          "otherOrder": 25
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "provision",
+            "kind": "reminder",
+            "value": "Provisión",
+            "label": "Provisión",
+            "duration": "tonight"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "anciana-caminos:protection-choice:1",
+            "tags": [
+              "protection-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "filters": [
+                "alive",
+                "notPreviousNight"
+              ]
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "protect",
+                "reminder": "Provisión",
+                "protectsFrom": [
+                  "abandonment"
+                ],
+                "duration": "tonight"
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "label": "Entrega una provisión"
+              }
+            }
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "espiritu-fuego",
+      "team": "maldito",
+      "defaultAlignment": "evil",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "El Espíritu del Fuego",
+        "ability": "Cada noche marcas a un jugador con fuego; la segunda marca lo mata. Si muere un personaje con el rasgo Bruja del Horno, mueres.",
+        "summary": "Cada noche marcas a un jugador con fuego; la segunda marca lo mata. Si muere un personaje con el rasgo Bruja del Horno, mueres."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "La muerte vinculada busca el rasgo ovenWitch, no un ID oficial."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 55,
+          "otherOrder": 55
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "fuego_1",
+            "kind": "reminder",
+            "value": "Fuego 1",
+            "label": "Fuego 1",
+            "duration": "game"
+          },
+          {
+            "id": "fuego_2",
+            "kind": "reminder",
+            "value": "Fuego 2",
+            "label": "Fuego 2",
+            "duration": "game"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "espiritu-fuego:cumulative-marker:1",
+            "tags": [
+              "cumulative-marker",
+              "fire",
+              "death"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "markReminder",
+                "reminderStages": [
+                  "Fuego 1",
+                  "Fuego 2"
+                ],
+                "threshold": 2,
+                "increment": 1,
+                "deathTiming": "endOfNight",
+                "duration": "game",
+                "targetAlive": true,
+                "protectionSources": [],
+                "bypassesDeathProtection": true
+              },
+              {
+                "type": "death",
+                "targets": "selected",
+                "cause": "ability",
+                "when": [
+                  {
+                    "type": "markerThresholdReached"
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "label": "Marca con fuego"
+              }
+            }
+          },
+          {
+            "mechanicId": "espiritu-fuego:linked-death:1",
+            "tags": [
+              "linked-death"
+            ],
+            "when": {
+              "trigger": {
+                "type": "storytellerSignal",
+                "signal": "linkedCharacterDies"
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "cause": "ability",
+                "protection": "normal",
+                "targets": "actor",
+                "linkedTags": [
+                  "ovenWitch"
+                ],
+                "requiresSourceAlive": true,
+                "type": "death",
+                "targetMode": "self"
+              }
+            ],
+            "usage": {
+              "scope": "trigger",
+              "max": 1,
+              "consumeOn": "resolution"
+            }
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "pastor-aves",
+      "team": "pueblo",
+      "defaultAlignment": "good",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "El Pastor de Aves",
+        "ability": "Cada noche eliges a dos jugadores y sabes si pertenecen a la misma facción.",
+        "summary": "Cada noche eliges a dos jugadores y sabes si pertenecen a la misma facción."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "Responde Sí si las identidades registradas comparten facción."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 40,
+          "otherOrder": 40
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "mechanics": [
+          {
+            "mechanicId": "pastor-aves:information-choice:1",
+            "tags": [
+              "information-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned",
+                  "registration"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "output": "sameTeam"
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers",
+                "label": "Compara dos jugadores"
+              }
+            }
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    },
+    {
+      "id": "comadrona-corte",
+      "team": "corte",
+      "defaultAlignment": "good",
+      "edition": "grimm-hansel-gretel",
+      "text": {
+        "name": "La Comadrona",
+        "ability": "Una vez por partida declaras inocente a un jugador. Si es Pueblo queda protegido de ejecución y abandono; si no, mueres.",
+        "summary": "Una vez por partida declaras inocente a un jugador. Si es Pueblo queda protegido de ejecución y abandono; si no, mueres."
+      },
+      "wiki": {
+        "firstNight": null,
+        "otherNight": null,
+        "notes": [
+          "El registro de facción puede requerir una decisión de registration; la resolución nunca compara IDs."
+        ]
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "declaracion_usada",
+            "kind": "reminder",
+            "value": "Declaración usada",
+            "label": "Declaración usada",
+            "duration": "game"
+          },
+          {
+            "id": "inocente",
+            "kind": "reminder",
+            "value": "Inocente",
+            "label": "Inocente",
+            "duration": "tonightAndTomorrowDay"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "comadrona-corte:public-day-action:1",
+            "tags": [
+              "public-day-action"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned",
+                  "registration"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "grimm-midwife-declaration"
+              },
+              {
+                "type": "markReminder",
+                "targets": "actor",
+                "reminder": "Declaración usada",
+                "consumeUsage": true
+              },
+              {
+                "type": "markReminder",
+                "targets": "selected",
+                "reminder": "Inocente",
+                "duration": "tonightAndTomorrowDay",
+                "resultOutcome": "targetProtected",
+                "useRegisteredIdentity": true,
+                "when": [
+                  {
+                    "type": "targetRegistrationTeam",
+                    "values": [
+                      "pueblo"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "death",
+                "targets": "actor",
+                "conditionTarget": "selected",
+                "cause": "ability",
+                "resultOutcome": "wrongTeam",
+                "useRegisteredIdentity": true,
+                "when": [
+                  {
+                    "type": "not",
+                    "condition": {
+                      "type": "targetRegistrationTeam",
+                      "values": [
+                        "pueblo"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "max": 1,
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "label": "La Comadrona declara",
+              "title": "La Comadrona",
+              "description": "Elige públicamente a un jugador y registra si pertenece a Pueblo.",
+              "outcomeLabel": "La declaración",
+              "outcomes": [
+                {
+                  "value": "targetProtected",
+                  "label": "Es Pueblo"
+                },
+                {
+                  "value": "wrongTeam",
+                  "label": "No es Pueblo"
+                }
+              ],
+              "action": {
+                "actionId": "grimm-midwife-declaration"
+              }
+            }
+          },
+          {
+            "mechanicId": "comadrona-corte:passive-protection:1",
+            "tags": [
+              "passive-protection"
+            ],
+            "when": {
+              "stage": "whileReminderActive"
+            },
+            "conditions": [
+              {
+                "type": "sourceAffected",
+                "states": [
+                  "poisoned",
+                  "drunk",
+                  "abandoned"
+                ],
+                "value": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "protect",
+                "target": "reminderHolder",
+                "reminder": "Inocente",
+                "protectsFrom": [
+                  "execution",
+                  "abandonment"
+                ],
+                "duration": "tonightAndTomorrowDay"
+              }
+            ]
+          }
+        ],
+        "interactions": []
+      },
+      "links": []
+    }
+  ],
+  "tales": [
+    {
+      "id": "grimm-hansel-gretel",
+      "edition": "grimm-hansel-gretel",
+      "category": "tale",
+      "origin": "official",
+      "author": "Hermanos Grimm · adaptación BloodScribe",
+      "talepack": {
+        "id": "brothers-grimm",
+        "name": "Hermanos Grimm",
+        "description": "Cuentos jugables inspirados en los relatos recopilados por Jacob y Wilhelm Grimm."
+      },
+      "text": {
+        "name": "Hansel y Gretel",
+        "tagline": "Guijarros, hambre y un horno encendido: encuentra el camino antes de que el bosque te devore.",
+        "description": "Adaptación jugable del cuento de Hansel y Gretel con facciones de Pueblo, Corte, Bosque y Maldito."
+      },
+      "difficulty": {
+        "label": "advanced",
+        "storyteller": 4,
+        "player": 3
+      },
+      "keyCharacterIds": [
+        "hansel-rastreador",
+        "gretel-empujadora",
+        "bruja-horno",
+        "madre-hambrienta"
+      ],
+      "types": [
+        {
+          "id": "pueblo",
+          "label": "Pueblo",
+          "alignment": "good",
+          "behaviorProfile": "citizen",
+          "assignment": "player",
+          "setupBucket": "townsfolk",
+          "colors": {
+            "iconFill": "#6B8E23",
+            "iconStroke": "#efe7d6",
+            "text": "#6B8E23",
+            "surface": "rgba(107, 142, 35, 0.2)",
+            "border": "#6B8E23"
+          }
+        },
+        {
+          "id": "corte",
+          "label": "Corte",
+          "alignment": "neutral",
+          "behaviorProfile": "adhoc",
+          "assignment": "player",
+          "setupBucket": "outsider",
+          "colors": {
+            "iconFill": "#DAA520",
+            "iconStroke": "#efe7d6",
+            "text": "#DAA520",
+            "surface": "rgba(218, 165, 32, 0.2)",
+            "border": "#DAA520"
+          }
+        },
+        {
+          "id": "bosque",
+          "label": "Bosque",
+          "alignment": "neutral",
+          "behaviorProfile": "adhoc",
+          "assignment": "player",
+          "setupBucket": "minion",
+          "colors": {
+            "iconFill": "#228B22",
+            "iconStroke": "#efe7d6",
+            "text": "#228B22",
+            "surface": "rgba(34, 139, 34, 0.2)",
+            "border": "#228B22"
+          }
+        },
+        {
+          "id": "maldito",
+          "label": "Maldito",
+          "alignment": "evil",
+          "behaviorProfile": "demon",
+          "assignment": "player",
+          "setupBucket": "demon",
+          "colors": {
+            "iconFill": "#8B0000",
+            "iconStroke": "#efe7d6",
+            "text": "#8B0000",
+            "surface": "rgba(139, 0, 0, 0.2)",
+            "border": "#8B0000"
+          }
+        }
+      ],
+      "recommendedCounts": {
+        "7": {
+          "townsfolk": 4,
+          "outsider": 1,
+          "minion": 1,
+          "demon": 1
+        },
+        "9": {
+          "townsfolk": 5,
+          "outsider": 1,
+          "minion": 2,
+          "demon": 1
+        },
+        "11": {
+          "townsfolk": 6,
+          "outsider": 1,
+          "minion": 3,
+          "demon": 1
+        },
+        "13": {
+          "townsfolk": 6,
+          "outsider": 2,
+          "minion": 4,
+          "demon": 1
+        }
+      },
+      "characterIds": [
+        "hansel-rastreador",
+        "gretel-empujadora",
+        "lenador-padre",
+        "madre-hambrienta",
+        "bruja-horno",
+        "pajaro-blanco",
+        "pato-rio",
+        "gato-tejado",
+        "cazador-bosque",
+        "anciana-caminos",
+        "espiritu-fuego",
+        "pastor-aves",
+        "comadrona-corte"
+      ],
+      "nightOrder": {
+        "first": [
+          "gato-tejado",
+          "hansel-rastreador",
+          "madre-hambrienta",
+          "pajaro-blanco",
+          "anciana-caminos",
+          "lenador-padre",
+          "pastor-aves",
+          "cazador-bosque",
+          "bruja-horno",
+          "espiritu-fuego"
+        ],
+        "other": [
+          "gato-tejado",
+          "hansel-rastreador",
+          "madre-hambrienta",
+          "pajaro-blanco",
+          "anciana-caminos",
+          "lenador-padre",
+          "pastor-aves",
+          "cazador-bosque",
+          "bruja-horno",
+          "espiritu-fuego"
+        ]
+      },
+      "nightInstructions": {
+        "opening": "Comprueba que todos los jugadores tienen los ojos cerrados. Resuelve los intercambios de objetivo antes que las demás habilidades dirigidas.",
+        "dawn": "Despierta al pueblo, anuncia las muertes y entrega la información de objetivos vigilados.",
+        "steps": {}
+      },
+      "gameEndRules": [
+        {
+          "type": "alignmentElimination",
+          "winner": "good",
+          "eliminatedAlignment": "evil",
+          "requireAliveAlignment": "good",
+          "reason": "Todos los personajes oscuros han sido eliminados y queda al menos un personaje bueno vivo."
+        },
+        {
+          "type": "alignmentElimination",
+          "winner": "evil",
+          "eliminatedAlignment": "good",
+          "reason": "No queda ningún personaje bueno vivo."
+        }
+      ],
+      "demonBluffCount": 0,
+      "elements": [],
+      "links": []
+    }
+  ],
+  "popularity": {
+    "capturedAt": "2026-06-11",
+    "note": "Snapshot of the public role vote ordering, from most liked to least liked. The endpoint exposes ordering, not aggregate vote counts.",
+    "roles": {}
+  },
+  "referenceInteractions": {
+    "capturedAt": "2026-06-10",
+    "note": "Snapshot of community role interactions. These notes are reference material for Storytellers, not modeled game rules.",
+    "interactions": []
+  }
+}
