@@ -1,7 +1,7 @@
 {
   "schemaVersion": "bloodscribe-v1",
   "id": "grimm-hansel-gretel",
-  "version": "2.2",
+  "version": "3.0",
   "locale": "en",
   "name": "Hansel and Gretel",
   "legal": {
@@ -9,17 +9,15 @@
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
   },
   "links": [],
-  "typeLabels": {
-    "pueblo": "Village",
-    "corte": "Court",
-    "bosque": "Forest",
-    "maldito": "Cursed"
-  },
   "characters": [
     {
       "id": "hansel-rastreador",
-      "team": "pueblo",
-      "defaultAlignment": "good",
+      "teamId": "grimm-hansel-gretel:pueblo",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "Hansel",
@@ -62,48 +60,122 @@
               "cadence": "each",
               "startsAt": 1,
               "trigger": {
-                "type": "storytellerSignal",
-                "signal": "targetedByTaggedMechanic"
+                "type": "event",
+                "event": "storytellerSignal",
+                "where": {
+                  "type": "eventField",
+                  "field": "signal",
+                  "value": "targetedByTaggedMechanic"
+                }
               }
             },
             "input": {
               "kind": "players",
               "min": 1,
               "max": 1,
-              "filters": [
-                "notSelf"
-              ]
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "not",
+                  "condition": {
+                    "type": "isBinding",
+                    "binding": "actor"
+                  }
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
                 "type": "emitInformation",
-                "reminder": "Guijarro blanco",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "source"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "registered",
+                    "property": "teamId"
+                  }
+                },
+                "presentation": {
+                  "kind": "identity",
+                  "title": "Source faction"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "dawn"
+                },
                 "duration": "tonight",
-                "observedTags": [
-                  "abandonment",
-                  "poison",
-                  "death"
-                ],
-                "output": "sourceTeam",
-                "maxSources": 1,
-                "sourceSelection": "storyteller",
-                "delivery": "dawn"
+                "reminder": "Guijarro blanco",
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "abandoned"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
               }
             ],
             "usage": {
               "scope": "trigger",
-              "max": 1,
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
               "consumeOn": "resolution"
             },
             "presentation": {
@@ -119,8 +191,12 @@
     },
     {
       "id": "gretel-empujadora",
-      "team": "pueblo",
-      "defaultAlignment": "good",
+      "teamId": "grimm-hansel-gretel:pueblo",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "Gretel",
@@ -163,66 +239,173 @@
               "min": 1,
               "max": 1
             },
-            "conditions": [
-              {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
-              }
-            ],
+            "conditions": [],
             "effects": [
               {
                 "type": "recordAction",
                 "actionId": "grimm-oven-guess"
               },
               {
-                "type": "markReminder",
-                "targets": "actor",
-                "reminder": "Horno usado",
-                "consumeUsage": true
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Horno usado",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "active": true
               },
               {
                 "type": "death",
-                "targets": "selected",
                 "cause": "ability",
                 "resultOutcome": "targetIdentified",
                 "when": [
                   {
-                    "type": "targetMechanicTags",
-                    "values": [
-                      "ovenWitch"
-                    ],
-                    "match": "all"
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "poisoned",
+                              "drunk",
+                              "abandoned"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "registered",
+                          "facet": "mechanicTags",
+                          "values": [
+                            "ovenWitch"
+                          ],
+                          "match": "all"
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
                   }
-                ]
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                }
               },
               {
                 "type": "death",
-                "targets": "actor",
                 "conditionTarget": "selected",
                 "cause": "ability",
                 "resultOutcome": "wrongTarget",
                 "when": [
                   {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "poisoned",
+                              "drunk",
+                              "abandoned"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  },
+                  {
                     "type": "not",
                     "condition": {
-                      "type": "targetMechanicTags",
-                      "values": [
-                        "ovenWitch"
-                      ],
-                      "match": "all"
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "selected"
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "mechanicTags",
+                            "values": [
+                              "ovenWitch"
+                            ],
+                            "match": "all"
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
                     }
                   }
-                ]
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                }
               }
             ],
             "usage": {
               "scope": "game",
-              "max": 1,
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
               "consumeOn": "resolution"
             },
             "presentation": {
@@ -251,8 +434,12 @@
     },
     {
       "id": "lenador-padre",
-      "team": "pueblo",
-      "defaultAlignment": "good",
+      "teamId": "grimm-hansel-gretel:pueblo",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The Woodcutter",
@@ -300,24 +487,57 @@
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
-                "type": "protect",
-                "reminder": "Protegido",
-                "protectsFrom": [
-                  "abandonment",
-                  "feeding"
-                ],
-                "duration": "tonight"
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Protegido",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "active": true,
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              },
+              {
+                "type": "manualInstruction",
+                "instruction": "Resuelve manualmente esta protección cuando se intente abandonar o cebar al objetivo.",
+                "reason": "Abandono y cebado no son todavía eventos tipados."
               }
             ],
             "presentation": {
@@ -340,12 +560,15 @@
             "effects": [
               {
                 "type": "restrict",
-                "target": "self",
                 "restrictions": [
                   "speak",
                   "vote"
                 ],
-                "requiresSourceAlive": true
+                "requiresSourceAlive": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                }
               }
             ]
           }
@@ -355,8 +578,13 @@
     },
     {
       "id": "madre-hambrienta",
-      "team": "corte",
-      "defaultAlignment": "evil",
+      "teamId": "grimm-hansel-gretel:corte",
+      "gameplay": {
+        "role": "support",
+        "allegiance": {
+          "default": "evil"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The Starving Mother",
@@ -409,33 +637,144 @@
               "kind": "players",
               "min": 1,
               "max": 1,
-              "filters": [
-                "alive",
-                "notPreviousNight"
-              ]
+              "candidates": {
+                "type": "set",
+                "operation": "difference",
+                "values": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "alive",
+                      "value": true
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    }
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "events"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "eventType",
+                          "values": [
+                            "choose-target"
+                          ]
+                        },
+                        {
+                          "type": "eventPeriod",
+                          "value": "previousNight"
+                        },
+                        {
+                          "type": "eventField",
+                          "field": "characterId",
+                          "value": "madre-hambrienta"
+                        },
+                        {
+                          "type": "eventParticipant",
+                          "binding": "actor",
+                          "participant": "actor"
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    },
+                    "project": {
+                      "type": "eventParticipant",
+                      "binding": "selected"
+                    }
+                  }
+                ]
+              }
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
-                "type": "setState",
-                "creates": "abandoned",
-                "reminder": "Abandonado",
-                "duration": "tonightAndTomorrowDay",
+                "type": "setPlayerState",
+                "state": "abandoned",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "active": true,
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                }
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Abandonado",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "active": true,
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                }
+              },
+              {
+                "type": "restrict",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
                 "restrictions": [
                   "ability",
                   "speak",
                   "vote"
-                ]
+                ],
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                }
               }
             ],
             "presentation": {
@@ -450,8 +789,13 @@
     },
     {
       "id": "bruja-horno",
-      "team": "bosque",
-      "defaultAlignment": "evil",
+      "teamId": "grimm-hansel-gretel:bosque",
+      "gameplay": {
+        "role": "support",
+        "allegiance": {
+          "default": "evil"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The Oven Witch",
@@ -519,40 +863,85 @@
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
-                "type": "markReminder",
-                "reminderStages": [
-                  "Cebo 1",
-                  "Cebo 2",
-                  "Cebo 3"
-                ],
-                "threshold": 3,
-                "increment": 1,
-                "deathTiming": "endOfNight",
-                "duration": "game",
-                "targetAlive": true,
-                "protectionSources": [
-                  "feeding"
-                ],
-                "bypassesDeathProtection": true
-              },
-              {
-                "type": "death",
-                "targets": "selected",
-                "cause": "ability",
-                "when": [
+                "type": "adjustCounter",
+                "counter": "marker-progress",
+                "delta": 1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Cebo 1"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Cebo 2"
+                    },
+                    {
+                      "value": 3,
+                      "id": "Cebo 3"
+                    }
+                  ]
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 3,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
                   {
-                    "type": "markerThresholdReached"
+                    "type": "death",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "effectTarget"
+                    },
+                    "cause": "ability",
+                    "protection": "bypass"
                   }
                 ]
               }
@@ -569,8 +958,12 @@
     },
     {
       "id": "pajaro-blanco",
-      "team": "bosque",
-      "defaultAlignment": "neutral",
+      "teamId": "grimm-hansel-gretel:bosque",
+      "gameplay": {
+        "allegiance": {
+          "default": "neutral"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The White Bird",
@@ -619,22 +1012,94 @@
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned",
-                  "registration"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned",
+                          "registration"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
                 "type": "emitInformation",
-                "output": "targetTeam",
-                "trackingReminder": "Guiado",
-                "trackingDuration": "game"
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "registered",
+                    "property": "teamId"
+                  }
+                },
+                "presentation": {
+                  "kind": "identity",
+                  "title": "Player faction"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "abandoned",
+                    "registration"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Guiado",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "active": true,
+                "duration": {
+                  "type": "permanent"
+                }
               }
             ],
             "presentation": {
@@ -660,14 +1125,9 @@
             ],
             "effects": [
               {
-                "type": "finishGame",
-                "observationMechanic": "informationChoice",
-                "requiredTeams": [
-                  "bosque",
-                  "pueblo"
-                ],
-                "winner": "self",
-                "result": "win"
+                "type": "manualInstruction",
+                "instruction": "Comprueba manualmente que el Pájaro Blanco siga vivo y haya observado personajes de ambos equipos requeridos.",
+                "reason": "La atribución histórica de observaciones aún requiere decisión del Narrador."
               }
             ],
             "requiresManualModeling": true
@@ -678,8 +1138,12 @@
     },
     {
       "id": "pato-rio",
-      "team": "bosque",
-      "defaultAlignment": "good",
+      "teamId": "grimm-hansel-gretel:bosque",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The River Duck",
@@ -735,49 +1199,120 @@
             "input": {
               "kind": "players",
               "min": 1,
-              "max": 1
-            },
-            "conditions": [
-              {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+              "max": 1,
+              "candidates": {
+                "type": "binding",
+                "binding": "nominee"
               }
-            ],
+            },
+            "conditions": [],
             "effects": [
               {
                 "type": "recordAction",
                 "actionId": "grimm-river-rescue"
               },
               {
-                "type": "markReminder",
-                "targets": "actor",
-                "reminder": "Salvamento usado",
-                "consumeUsage": true
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Salvamento usado",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "active": true
               },
               {
                 "type": "execute",
-                "targets": "currentExecutionCandidate",
-                "dies": false
+                "dies": false,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "poisoned",
+                              "drunk",
+                              "abandoned"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
               },
               {
-                "type": "setState",
-                "targets": "currentExecutionCandidate",
+                "type": "setPlayerState",
                 "state": "exiled",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
                 "active": true,
                 "duration": {
                   "type": "untilWindow",
                   "window": "dawn",
                   "count": 1
-                }
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "poisoned",
+                              "drunk",
+                              "abandoned"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
               },
               {
                 "type": "restrict",
-                "targets": "currentExecutionCandidate",
                 "actions": [
                   "speak",
                   "vote"
@@ -786,12 +1321,53 @@
                   "type": "untilWindow",
                   "window": "dawn",
                   "count": 1
-                }
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "poisoned",
+                              "drunk",
+                              "abandoned"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
               }
             ],
             "usage": {
               "scope": "game",
-              "max": 1,
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
               "consumeOn": "resolution"
             },
             "presentation": {
@@ -809,8 +1385,12 @@
     },
     {
       "id": "gato-tejado",
-      "team": "bosque",
-      "defaultAlignment": "neutral",
+      "teamId": "grimm-hansel-gretel:bosque",
+      "gameplay": {
+        "allegiance": {
+          "default": "neutral"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The Rooftop Cat",
@@ -866,13 +1446,36 @@
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
@@ -881,12 +1484,18 @@
                 "duration": "tonight",
                 "spentReminder": "Distracción usada",
                 "type": "swapTargets",
-                "targets": "selected"
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                }
               }
             ],
             "usage": {
               "scope": "game",
-              "max": 1,
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
               "consumeOn": "resolution"
             },
             "presentation": {
@@ -906,18 +1515,42 @@
             },
             "conditions": [
               {
-                "type": "storytellerDecision",
-                "decision": "sourceSurvives"
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "actor"
+                    },
+                    {
+                      "type": "alive",
+                      "value": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
               }
             ],
             "effects": [
               {
-                "type": "finishGame",
-                "winner": "self",
-                "result": "win"
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "personal",
+                  "players": {
+                    "type": "binding",
+                    "binding": "actor"
+                  }
+                },
+                "reason": "El Gato del Tejado sobrevive al final de la partida."
               }
-            ],
-            "requiresManualModeling": true
+            ]
           }
         ]
       },
@@ -925,8 +1558,12 @@
     },
     {
       "id": "cazador-bosque",
-      "team": "bosque",
-      "defaultAlignment": "neutral",
+      "teamId": "grimm-hansel-gretel:bosque",
+      "gameplay": {
+        "allegiance": {
+          "default": "neutral"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The Forest Hunter",
@@ -974,20 +1611,53 @@
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
-                "type": "markReminder",
-                "reminder": "Cazado",
-                "duration": "tomorrowDay"
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Cazado",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "active": true,
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                }
               }
             ],
             "presentation": {
@@ -1005,37 +1675,78 @@
               "window": "day",
               "cadence": "each",
               "trigger": {
-                "type": "storytellerSignal",
-                "signal": "markedPlayerIsNominated"
+                "type": "event",
+                "event": "nomination",
+                "bindings": {
+                  "nominee": "selected"
+                }
               }
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
                 "cause": "ability",
                 "protection": "normal",
-                "targets": "reminderHolder",
                 "targetReminder": "Cazado",
                 "requiresSourceAlive": true,
                 "consumeTargetReminder": true,
                 "continuesNomination": false,
                 "type": "death",
-                "eventSubject": "nominee"
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Cazado",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                }
               }
             ],
             "usage": {
               "scope": "trigger",
-              "max": 1,
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
               "consumeOn": "resolution"
             },
             "presentation": {
@@ -1055,23 +1766,88 @@
             },
             "conditions": [
               {
-                "type": "storytellerDecision",
-                "decision": "sourceKilledRequiredTeams"
+                "type": "query",
+                "from": {
+                  "entity": "events"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "eventCategory",
+                      "values": [
+                        "death"
+                      ]
+                    },
+                    {
+                      "type": "eventParticipant",
+                      "binding": "source",
+                      "participant": "actor"
+                    },
+                    {
+                      "type": "eventParticipantIdentity",
+                      "participant": "eventSubject",
+                      "identityMode": "real",
+                      "facet": "teamId",
+                      "values": [
+                        "grimm-hansel-gretel:bosque"
+                      ]
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              },
+              {
+                "type": "query",
+                "from": {
+                  "entity": "events"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "eventCategory",
+                      "values": [
+                        "death"
+                      ]
+                    },
+                    {
+                      "type": "eventParticipant",
+                      "binding": "source",
+                      "participant": "actor"
+                    },
+                    {
+                      "type": "eventParticipantIdentity",
+                      "participant": "eventSubject",
+                      "identityMode": "real",
+                      "facet": "teamId",
+                      "values": [
+                        "grimm-hansel-gretel:corte"
+                      ]
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
               }
             ],
             "effects": [
               {
-                "type": "finishGame",
-                "requiredTeams": [
-                  "bosque",
-                  "corte"
-                ],
-                "killSource": "nominationTriggerDeath",
-                "winner": "self",
-                "result": "win"
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "personal",
+                  "players": {
+                    "type": "binding",
+                    "binding": "actor"
+                  }
+                },
+                "reason": "El Cazador del Bosque mató al menos un personaje de cada equipo requerido."
               }
-            ],
-            "requiresManualModeling": true
+            ]
           }
         ]
       },
@@ -1079,8 +1855,12 @@
     },
     {
       "id": "anciana-caminos",
-      "team": "pueblo",
-      "defaultAlignment": "good",
+      "teamId": "grimm-hansel-gretel:pueblo",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The Crossroads Crone",
@@ -1125,30 +1905,117 @@
               "kind": "players",
               "min": 1,
               "max": 1,
-              "filters": [
-                "alive",
-                "notPreviousNight"
-              ]
+              "candidates": {
+                "type": "set",
+                "operation": "difference",
+                "values": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "alive",
+                      "value": true
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    }
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "events"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "eventType",
+                          "values": [
+                            "choose-target"
+                          ]
+                        },
+                        {
+                          "type": "eventPeriod",
+                          "value": "previousNight"
+                        },
+                        {
+                          "type": "eventField",
+                          "field": "characterId",
+                          "value": "anciana-caminos"
+                        },
+                        {
+                          "type": "eventParticipant",
+                          "binding": "actor",
+                          "participant": "actor"
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    },
+                    "project": {
+                      "type": "eventParticipant",
+                      "binding": "selected"
+                    }
+                  }
+                ]
+              }
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
-                "type": "protect",
-                "reminder": "Provisión",
-                "protectsFrom": [
-                  "abandonment"
-                ],
-                "duration": "tonight"
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Provisión",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "active": true,
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              },
+              {
+                "type": "manualInstruction",
+                "instruction": "Resuelve manualmente esta protección cuando se intente abandonar o cebar al objetivo.",
+                "reason": "Abandono y cebado no son todavía eventos tipados."
               }
             ],
             "presentation": {
@@ -1163,8 +2030,12 @@
     },
     {
       "id": "espiritu-fuego",
-      "team": "maldito",
-      "defaultAlignment": "evil",
+      "teamId": "grimm-hansel-gretel:maldito",
+      "gameplay": {
+        "allegiance": {
+          "default": "evil"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The Fire Spirit",
@@ -1221,37 +2092,81 @@
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
-                "type": "markReminder",
-                "reminderStages": [
-                  "Fuego 1",
-                  "Fuego 2"
-                ],
-                "threshold": 2,
-                "increment": 1,
-                "deathTiming": "endOfNight",
-                "duration": "game",
-                "targetAlive": true,
-                "protectionSources": [],
-                "bypassesDeathProtection": true
-              },
-              {
-                "type": "death",
-                "targets": "selected",
-                "cause": "ability",
-                "when": [
+                "type": "adjustCounter",
+                "counter": "marker-progress",
+                "delta": 1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 2
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Fuego 1"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Fuego 2"
+                    }
+                  ]
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 2,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
                   {
-                    "type": "markerThresholdReached"
+                    "type": "death",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "effectTarget"
+                    },
+                    "cause": "ability",
+                    "protection": "bypass"
                   }
                 ]
               }
@@ -1269,8 +2184,13 @@
             ],
             "when": {
               "trigger": {
-                "type": "storytellerSignal",
-                "signal": "linkedCharacterDies"
+                "type": "event",
+                "event": "storytellerSignal",
+                "where": {
+                  "type": "eventField",
+                  "field": "signal",
+                  "value": "linkedCharacterDies"
+                }
               }
             },
             "conditions": [],
@@ -1278,18 +2198,23 @@
               {
                 "cause": "ability",
                 "protection": "normal",
-                "targets": "actor",
                 "linkedTags": [
                   "ovenWitch"
                 ],
                 "requiresSourceAlive": true,
                 "type": "death",
-                "targetMode": "self"
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                }
               }
             ],
             "usage": {
               "scope": "trigger",
-              "max": 1,
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
               "consumeOn": "resolution"
             }
           }
@@ -1299,8 +2224,12 @@
     },
     {
       "id": "pastor-aves",
-      "team": "pueblo",
-      "defaultAlignment": "good",
+      "teamId": "grimm-hansel-gretel:pueblo",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The Bird Shepherd",
@@ -1340,20 +2269,69 @@
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned",
-                  "registration"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned",
+                          "registration"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
                 "type": "emitInformation",
-                "output": "sameTeam"
+                "value": {
+                  "type": "inputValue",
+                  "valueType": "boolean"
+                },
+                "presentation": {
+                  "kind": "boolean",
+                  "title": "Do they belong to the same faction?",
+                  "trueLabel": "Same",
+                  "falseLabel": "Different"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "abandoned",
+                    "registration"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
               }
             ],
             "presentation": {
@@ -1368,8 +2346,13 @@
     },
     {
       "id": "comadrona-corte",
-      "team": "corte",
-      "defaultAlignment": "good",
+      "teamId": "grimm-hansel-gretel:corte",
+      "gameplay": {
+        "role": "support",
+        "allegiance": {
+          "default": "good"
+        }
+      },
       "edition": "grimm-hansel-gretel",
       "text": {
         "name": "The Midwife",
@@ -1419,68 +2402,217 @@
               "min": 1,
               "max": 1
             },
-            "conditions": [
-              {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned",
-                  "registration"
-                ],
-                "value": false
-              }
-            ],
+            "conditions": [],
             "effects": [
               {
                 "type": "recordAction",
-                "actionId": "grimm-midwife-declaration"
+                "actionId": "grimm-midwife-declaration",
+                "outcome": {
+                  "type": "if",
+                  "condition": {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "registered",
+                          "facet": "teamId",
+                          "values": [
+                            "grimm-hansel-gretel:pueblo"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  },
+                  "then": {
+                    "type": "literal",
+                    "value": "targetProtected"
+                  },
+                  "else": {
+                    "type": "literal",
+                    "value": "wrongTeam"
+                  }
+                }
               },
               {
-                "type": "markReminder",
-                "targets": "actor",
-                "reminder": "Declaración usada",
-                "consumeUsage": true
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Declaración usada",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "active": true
               },
               {
-                "type": "markReminder",
-                "targets": "selected",
-                "reminder": "Inocente",
-                "duration": "tonightAndTomorrowDay",
-                "resultOutcome": "targetProtected",
-                "useRegisteredIdentity": true,
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Inocente",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "active": true,
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                },
                 "when": [
                   {
-                    "type": "targetRegistrationTeam",
-                    "values": [
-                      "pueblo"
-                    ]
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "poisoned",
+                              "drunk",
+                              "abandoned",
+                              "registration"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "registered",
+                          "facet": "teamId",
+                          "values": [
+                            "grimm-hansel-gretel:pueblo"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
                   }
                 ]
               },
               {
                 "type": "death",
-                "targets": "actor",
                 "conditionTarget": "selected",
                 "cause": "ability",
                 "resultOutcome": "wrongTeam",
                 "useRegisteredIdentity": true,
                 "when": [
                   {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "poisoned",
+                              "drunk",
+                              "abandoned",
+                              "registration"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  },
+                  {
                     "type": "not",
                     "condition": {
-                      "type": "targetRegistrationTeam",
-                      "values": [
-                        "pueblo"
-                      ]
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "selected"
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "teamId",
+                            "values": [
+                              "grimm-hansel-gretel:pueblo"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
                     }
                   }
-                ]
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                }
               }
             ],
             "usage": {
               "scope": "game",
-              "max": 1,
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
               "consumeOn": "resolution"
             },
             "presentation": {
@@ -1513,25 +2645,66 @@
             },
             "conditions": [
               {
-                "type": "sourceAffected",
-                "states": [
-                  "poisoned",
-                  "drunk",
-                  "abandoned"
-                ],
-                "value": false
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
               }
             ],
             "effects": [
               {
-                "type": "protect",
-                "target": "reminderHolder",
+                "type": "interceptEvent",
+                "event": "execution",
+                "reaction": {
+                  "type": "cancel"
+                },
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Inocente",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
                 "reminder": "Inocente",
-                "protectsFrom": [
-                  "execution",
-                  "abandonment"
-                ],
                 "duration": "tonightAndTomorrowDay"
+              },
+              {
+                "type": "manualInstruction",
+                "instruction": "Aplica manualmente la protección frente al abandono.",
+                "reason": "El abandono no es aún un evento tipado."
               }
             ]
           }
@@ -1571,13 +2744,22 @@
         "bruja-horno",
         "madre-hambrienta"
       ],
-      "types": [
+      "teams": [
         {
-          "id": "pueblo",
-          "label": "Village",
-          "alignment": "good",
-          "behaviorProfile": "citizen",
-          "assignment": "player",
+          "teamId": "grimm-hansel-gretel:pueblo",
+          "labels": {
+            "en": "Village"
+          },
+          "defaults": {
+            "role": "core",
+            "allegiance": {
+              "default": "good"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
           "setupBucket": "townsfolk",
           "colors": {
             "iconFill": "#6B8E23",
@@ -1588,11 +2770,20 @@
           }
         },
         {
-          "id": "corte",
-          "label": "Court",
-          "alignment": "neutral",
-          "behaviorProfile": "adhoc",
-          "assignment": "player",
+          "teamId": "grimm-hansel-gretel:corte",
+          "labels": {
+            "en": "Court"
+          },
+          "defaults": {
+            "role": "independent",
+            "allegiance": {
+              "default": "neutral"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
           "setupBucket": "outsider",
           "colors": {
             "iconFill": "#DAA520",
@@ -1603,11 +2794,20 @@
           }
         },
         {
-          "id": "bosque",
-          "label": "Forest",
-          "alignment": "neutral",
-          "behaviorProfile": "adhoc",
-          "assignment": "player",
+          "teamId": "grimm-hansel-gretel:bosque",
+          "labels": {
+            "en": "Forest"
+          },
+          "defaults": {
+            "role": "independent",
+            "allegiance": {
+              "default": "neutral"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
           "setupBucket": "minion",
           "colors": {
             "iconFill": "#228B22",
@@ -1618,11 +2818,20 @@
           }
         },
         {
-          "id": "maldito",
-          "label": "Cursed",
-          "alignment": "evil",
-          "behaviorProfile": "demon",
-          "assignment": "player",
+          "teamId": "grimm-hansel-gretel:maldito",
+          "labels": {
+            "en": "Cursed"
+          },
+          "defaults": {
+            "role": "core",
+            "allegiance": {
+              "default": "evil"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
           "setupBucket": "demon",
           "colors": {
             "iconFill": "#8B0000",
