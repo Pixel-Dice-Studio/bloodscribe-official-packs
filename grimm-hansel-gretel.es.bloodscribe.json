@@ -1,7 +1,7 @@
 {
   "schemaVersion": "bloodscribe-v1",
   "id": "grimm-hansel-gretel",
-  "version": "2.1",
+  "version": "2.2",
   "locale": "es",
   "name": "Hansel y Gretel",
   "legal": {
@@ -1585,6 +1585,9 @@
         "id": "brothers-grimm",
         "name": "Hermanos Grimm",
         "description": "Cuentos jugables inspirados en los relatos recopilados por Jacob y Wilhelm Grimm."
+      },
+      "presentation": {
+        "theme": "verdigris"
       },
       "text": {
         "name": "Hansel y Gretel",
