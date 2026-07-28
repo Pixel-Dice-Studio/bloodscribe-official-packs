@@ -1,7 +1,8 @@
 {
   "schemaVersion": "bloodscribe-v1",
   "id": "grimm-hansel-gretel",
-  "version": "3.0",
+  "edition": "grimm",
+  "version": "5.0",
   "locale": "es",
   "name": "Hansel y Gretel",
   "legal": {
@@ -9,27 +10,141 @@
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
   },
   "links": [],
+  "teams": [
+    {
+      "teamId": "team:grimm:pueblo",
+      "terms": {
+        "singular": "habitante del Pueblo",
+        "plural": "habitantes del Pueblo"
+      },
+      "defaults": {
+        "role": "core",
+        "allegiance": {
+          "default": "good"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#6b8e23",
+          "onDark": "#6b8e23"
+        },
+        "surface": "#6b8e23",
+        "border": "#6b8e23",
+        "reminderSurface": "#111d57",
+        "gradient": {
+          "from": "#779e27",
+          "to": "#5f7e1f"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:corte",
+      "terms": {
+        "singular": "persona de la Corte",
+        "plural": "personas de la Corte"
+      },
+      "defaults": {
+        "role": "support",
+        "allegiance": {
+          "default": "good"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#daa520",
+          "onDark": "#daa520"
+        },
+        "surface": "#daa520",
+        "border": "#daa520",
+        "reminderSurface": "#111d57",
+        "gradient": {
+          "from": "#e0ae2e",
+          "to": "#c8981d"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:bosque",
+      "terms": {
+        "singular": "miembro del Bosque",
+        "plural": "miembros del Bosque"
+      },
+      "defaults": {
+        "role": "support",
+        "allegiance": {
+          "default": "evil"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#228b22",
+          "onDark": "#228b22"
+        },
+        "surface": "#228b22",
+        "border": "#228b22",
+        "reminderSurface": "#111d57",
+        "gradient": {
+          "from": "#269b26",
+          "to": "#1e7b1e"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:maldito",
+      "terms": {
+        "singular": "Maldito",
+        "plural": "Malditos"
+      },
+      "defaults": {
+        "role": "core",
+        "allegiance": {
+          "default": "evil"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#8b0000",
+          "onDark": "#8b0000"
+        },
+        "surface": "#990000",
+        "border": "#8b0000",
+        "reminderSurface": "#111d57",
+        "gradient": {
+          "from": "#ad0000",
+          "to": "#990000"
+        }
+      }
+    }
+  ],
   "characters": [
     {
-      "id": "hansel-rastreador",
-      "teamId": "grimm-hansel-gretel:pueblo",
+      "id": "character:grimm:hansel-rastreador",
+      "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
           "default": "good"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "Hansel",
-        "ability": "Cada noche eliges a otro jugador. Si una habilidad de abandono, veneno o muerte lo alcanza, conoces la facción de una de sus fuentes.",
-        "summary": "Cada noche eliges a otro jugador. Si una habilidad de abandono, veneno o muerte lo alcanza, conoces la facción de una de sus fuentes."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "El Narrador elige una sola fuente si varias habilidades observables alcanzan al objetivo."
-        ]
+        "ability": "Cada noche eliges a otro jugador. Si una habilidad de abandono, veneno o muerte lo alcanza, conoces la facción de una de sus fuentes."
       },
       "rules": {
         "wake": {
@@ -50,7 +165,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "hansel-rastreador:tracked-target-information:1",
+            "mechanicId": "mechanic:grimm:hansel-rastreador:tracked-target-information:1",
             "tags": [
               "tracked-target-information"
             ],
@@ -108,7 +223,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -160,7 +275,7 @@
                   "type": "whenSourceAffected",
                   "affectedBy": [
                     "poisoned",
-                    "drunk",
+                    "character:boct:drunk",
                     "abandoned"
                   ],
                   "reaction": {
@@ -185,31 +300,22 @@
               }
             }
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "gretel-empujadora",
-      "teamId": "grimm-hansel-gretel:pueblo",
+      "id": "character:grimm:gretel-empujadora",
+      "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
           "default": "good"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "Gretel",
-        "ability": "Una vez por partida, acusa públicamente a un jugador de ser la Bruja del Horno: si aciertas muere; si fallas, mueres tú.",
-        "summary": "Una vez por partida, acusa públicamente a un jugador de ser la Bruja del Horno: si aciertas muere; si fallas, mueres tú."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "La UI no decide por nombre: el Narrador comprueba el rasgo semántico ovenWitch."
-        ]
+        "ability": "Una vez por partida, acusa públicamente a un jugador de ser la Bruja del Horno: si aciertas muere; si fallas, mueres tú."
       },
       "rules": {
         "wake": {
@@ -228,7 +334,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "gretel-empujadora:public-day-action:1",
+            "mechanicId": "mechanic:grimm:gretel-empujadora:public-day-action:1",
             "tags": [
               "public-day-action"
             ],
@@ -280,7 +386,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
+                              "character:boct:drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -351,7 +457,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
+                              "character:boct:drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -430,31 +536,22 @@
               }
             }
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "lenador-padre",
-      "teamId": "grimm-hansel-gretel:pueblo",
+      "id": "character:grimm:lenador-padre",
+      "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
           "default": "good"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "El Leñador",
-        "ability": "Cada noche proteges a un jugador del abandono y del cebado. El primer día no puedes hablar ni votar.",
-        "summary": "Cada noche proteges a un jugador del abandono y del cebado. El primer día no puedes hablar ni votar."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "La restricción del primer día se deriva de phaseRestriction, no del ID del personaje."
-        ]
+        "ability": "Cada noche proteges a un jugador del abandono y del cebado. El primer día no puedes hablar ni votar."
       },
       "rules": {
         "wake": {
@@ -475,7 +572,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "lenador-padre:protection-choice:1",
+            "mechanicId": "mechanic:grimm:lenador-padre:protection-choice:1",
             "tags": [
               "protection-choice"
             ],
@@ -508,7 +605,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -552,7 +649,7 @@
             }
           },
           {
-            "mechanicId": "lenador-padre:phase-restriction:1",
+            "mechanicId": "mechanic:grimm:lenador-padre:phase-restriction:1",
             "tags": [
               "phase-restriction"
             ],
@@ -577,32 +674,23 @@
               }
             ]
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "madre-hambrienta",
-      "teamId": "grimm-hansel-gretel:corte",
+      "id": "character:grimm:madre-hambrienta",
+      "teamId": "team:grimm:corte",
       "gameplay": {
         "role": "support",
         "allegiance": {
           "default": "evil"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "La Madre Hambrienta",
-        "ability": "Cada noche abandonas a un jugador distinto al de la noche anterior: pierde habilidad, voz y voto hasta el final del día siguiente.",
-        "summary": "Cada noche abandonas a un jugador distinto al de la noche anterior: pierde habilidad, voz y voto hasta el final del día siguiente."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "No puede elegir el mismo objetivo dos noches consecutivas."
-        ]
+        "ability": "Cada noche abandonas a un jugador distinto al de la noche anterior: pierde habilidad, voz y voto hasta el final del día siguiente."
       },
       "rules": {
         "wake": {
@@ -630,7 +718,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "madre-hambrienta:status-choice:1",
+            "mechanicId": "mechanic:grimm:madre-hambrienta:status-choice:1",
             "tags": [
               "status-choice",
               "abandonment"
@@ -682,7 +770,7 @@
                         {
                           "type": "eventField",
                           "field": "characterId",
-                          "value": "madre-hambrienta"
+                          "value": "character:grimm:madre-hambrienta"
                         },
                         {
                           "type": "eventParticipant",
@@ -721,7 +809,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -791,32 +879,23 @@
               }
             }
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "bruja-horno",
-      "teamId": "grimm-hansel-gretel:bosque",
+      "id": "character:grimm:bruja-horno",
+      "teamId": "team:grimm:bosque",
       "gameplay": {
         "role": "support",
         "allegiance": {
           "default": "evil"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "La Bruja del Horno",
-        "ability": "Cada noche cebas a dos jugadores. Al recibir la tercera marca, mueren; una protección puede impedir una marca nueva.",
-        "summary": "Cada noche cebas a dos jugadores. Al recibir la tercera marca, mueren; una protección puede impedir una marca nueva."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "La protección bloquea la marca nueva; nunca borra marcas acumuladas."
-        ]
+        "ability": "Cada noche cebas a dos jugadores. Al recibir la tercera marca, mueren; una protección puede impedir una marca nueva."
       },
       "rules": {
         "wake": {
@@ -854,7 +933,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "bruja-horno:cumulative-marker:1",
+            "mechanicId": "mechanic:grimm:bruja-horno:cumulative-marker:1",
             "tags": [
               "cumulative-marker",
               "feeding",
@@ -890,7 +969,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -963,31 +1042,22 @@
               }
             }
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "pajaro-blanco",
-      "teamId": "grimm-hansel-gretel:bosque",
+      "id": "character:grimm:pajaro-blanco",
+      "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
           "default": "neutral"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "El Pájaro Blanco",
-        "ability": "Cada noche conoces la facción de un jugador. Ganas personalmente si sobrevives tras guiar al menos a un Pueblo y un Bosque.",
-        "summary": "Cada noche conoces la facción de un jugador. Ganas personalmente si sobrevives tras guiar al menos a un Pueblo y un Bosque."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "La victoria personal se presenta al Narrador; no sustituye la victoria general del equipo."
-        ]
+        "ability": "Cada noche conoces la facción de un jugador. Ganas personalmente si sobrevives tras guiar al menos a un {{team:grimm:pueblo}} y un {{team:grimm:bosque}}."
       },
       "rules": {
         "wake": {
@@ -1009,7 +1079,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "pajaro-blanco:information-choice:1",
+            "mechanicId": "mechanic:grimm:pajaro-blanco:information-choice:1",
             "tags": [
               "information-choice"
             ],
@@ -1042,7 +1112,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned",
                           "registration"
                         ],
@@ -1092,7 +1162,7 @@
                   "type": "whenSourceAffected",
                   "affectedBy": [
                     "poisoned",
-                    "drunk",
+                    "character:boct:drunk",
                     "abandoned",
                     "registration"
                   ],
@@ -1123,7 +1193,7 @@
             }
           },
           {
-            "mechanicId": "pajaro-blanco:win-condition:1",
+            "mechanicId": "mechanic:grimm:pajaro-blanco:win-condition:1",
             "tags": [
               "win-condition"
             ],
@@ -1146,31 +1216,22 @@
             ],
             "requiresManualModeling": true
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "pato-rio",
-      "teamId": "grimm-hansel-gretel:bosque",
+      "id": "character:grimm:pato-rio",
+      "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
           "default": "good"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "El Pato del Río",
-        "ability": "Una vez por partida, evitas una ejecución por voto. El salvado queda exiliado, sin voz ni voto, hasta el siguiente amanecer.",
-        "summary": "Una vez por partida, evitas una ejecución por voto. El salvado queda exiliado, sin voz ni voto, hasta el siguiente amanecer."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "La acción resuelve la ejecución como supervivencia y aplica el estado exiled."
-        ]
+        "ability": "Una vez por partida, evitas una ejecución por voto. El salvado queda exiliado, sin voz ni voto, hasta el siguiente amanecer."
       },
       "rules": {
         "wake": {
@@ -1203,7 +1264,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "pato-rio:public-day-action:1",
+            "mechanicId": "mechanic:grimm:pato-rio:public-day-action:1",
             "tags": [
               "public-day-action"
             ],
@@ -1263,7 +1324,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
+                              "character:boct:drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -1311,7 +1372,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
+                              "character:boct:drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -1361,7 +1422,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
+                              "character:boct:drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -1395,31 +1456,22 @@
               }
             }
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "gato-tejado",
-      "teamId": "grimm-hansel-gretel:bosque",
+      "id": "character:grimm:gato-tejado",
+      "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
           "default": "neutral"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "El Gato del Tejado",
-        "ability": "Una vez por partida, eliges dos jugadores; las habilidades dirigidas a cualquiera esa noche alcanzan al otro. Ganas si sobrevives.",
-        "summary": "Una vez por partida, eliges dos jugadores; las habilidades dirigidas a cualquiera esa noche alcanzan al otro. Ganas si sobrevives."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "Si la habilidad ya está gastada, el Narrador omite el paso nocturno."
-        ]
+        "ability": "Una vez por partida, eliges dos jugadores; las habilidades dirigidas a cualquiera esa noche alcanzan al otro. Ganas si sobrevives."
       },
       "rules": {
         "wake": {
@@ -1448,7 +1500,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "gato-tejado:target-swap:1",
+            "mechanicId": "mechanic:grimm:gato-tejado:target-swap:1",
             "tags": [
               "target-swap"
             ],
@@ -1481,7 +1533,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -1524,7 +1576,7 @@
             }
           },
           {
-            "mechanicId": "gato-tejado:win-condition:1",
+            "mechanicId": "mechanic:grimm:gato-tejado:win-condition:1",
             "tags": [
               "win-condition"
             ],
@@ -1571,31 +1623,22 @@
               }
             ]
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "cazador-bosque",
-      "teamId": "grimm-hansel-gretel:bosque",
+      "id": "character:grimm:cazador-bosque",
+      "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
           "default": "neutral"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "El Cazador del Bosque",
-        "ability": "Cada noche marcas a un jugador. Si es nominado al día siguiente, puedes matarlo de inmediato. Ganas al matar a un Bosque y una Corte.",
-        "summary": "Cada noche marcas a un jugador. Si es nominado al día siguiente, puedes matarlo de inmediato. Ganas al matar a un Bosque y una Corte."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "La muerte se despacha por nominationTriggerDeath y por la ficha Cazado, nunca por el ID del personaje."
-        ]
+        "ability": "Cada noche marcas a un jugador. Si es nominado al día siguiente, puedes matarlo de inmediato. Ganas al matar a un {{team:grimm:bosque}} y una {{team:grimm:corte}}."
       },
       "rules": {
         "wake": {
@@ -1616,7 +1659,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "cazador-bosque:reminder-choice:1",
+            "mechanicId": "mechanic:grimm:cazador-bosque:reminder-choice:1",
             "tags": [
               "reminder-choice"
             ],
@@ -1649,7 +1692,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -1689,7 +1732,7 @@
             }
           },
           {
-            "mechanicId": "cazador-bosque:nomination-trigger-death:1",
+            "mechanicId": "mechanic:grimm:cazador-bosque:nomination-trigger-death:1",
             "tags": [
               "nomination-trigger-death"
             ],
@@ -1723,7 +1766,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -1778,7 +1821,7 @@
             }
           },
           {
-            "mechanicId": "cazador-bosque:win-condition:1",
+            "mechanicId": "mechanic:grimm:cazador-bosque:win-condition:1",
             "tags": [
               "win-condition"
             ],
@@ -1807,12 +1850,26 @@
                       "participant": "actor"
                     },
                     {
-                      "type": "eventParticipantIdentity",
-                      "participant": "eventSubject",
-                      "identityMode": "real",
-                      "facet": "teamId",
-                      "values": [
-                        "grimm-hansel-gretel:bosque"
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "eventParticipantIdentity",
+                          "participant": "eventSubject",
+                          "identityMode": "real",
+                          "facet": "allegiance",
+                          "values": [
+                            "evil"
+                          ]
+                        },
+                        {
+                          "type": "eventParticipantIdentity",
+                          "participant": "eventSubject",
+                          "identityMode": "real",
+                          "facet": "role",
+                          "values": [
+                            "support"
+                          ]
+                        }
                       ]
                     }
                   ]
@@ -1841,12 +1898,26 @@
                       "participant": "actor"
                     },
                     {
-                      "type": "eventParticipantIdentity",
-                      "participant": "eventSubject",
-                      "identityMode": "real",
-                      "facet": "teamId",
-                      "values": [
-                        "grimm-hansel-gretel:corte"
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "eventParticipantIdentity",
+                          "participant": "eventSubject",
+                          "identityMode": "real",
+                          "facet": "allegiance",
+                          "values": [
+                            "good"
+                          ]
+                        },
+                        {
+                          "type": "eventParticipantIdentity",
+                          "participant": "eventSubject",
+                          "identityMode": "real",
+                          "facet": "role",
+                          "values": [
+                            "support"
+                          ]
+                        }
                       ]
                     }
                   ]
@@ -1871,31 +1942,22 @@
               }
             ]
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "anciana-caminos",
-      "teamId": "grimm-hansel-gretel:pueblo",
+      "id": "character:grimm:anciana-caminos",
+      "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
           "default": "good"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "La Anciana de los Caminos",
-        "ability": "Cada noche proteges a un jugador del abandono; no puedes repetir objetivo dos noches seguidas.",
-        "summary": "Cada noche proteges a un jugador del abandono; no puedes repetir objetivo dos noches seguidas."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "Comprueba el objetivo de la noche anterior antes de confirmar."
-        ]
+        "ability": "Cada noche proteges a un jugador del abandono; no puedes repetir objetivo dos noches seguidas."
       },
       "rules": {
         "wake": {
@@ -1916,7 +1978,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "anciana-caminos:protection-choice:1",
+            "mechanicId": "mechanic:grimm:anciana-caminos:protection-choice:1",
             "tags": [
               "protection-choice"
             ],
@@ -1967,7 +2029,7 @@
                         {
                           "type": "eventField",
                           "field": "characterId",
-                          "value": "anciana-caminos"
+                          "value": "character:grimm:anciana-caminos"
                         },
                         {
                           "type": "eventParticipant",
@@ -2006,7 +2068,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -2049,31 +2111,22 @@
               }
             }
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "espiritu-fuego",
-      "teamId": "grimm-hansel-gretel:maldito",
+      "id": "character:grimm:espiritu-fuego",
+      "teamId": "team:grimm:maldito",
       "gameplay": {
         "allegiance": {
           "default": "evil"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "El Espíritu del Fuego",
-        "ability": "Cada noche marcas a un jugador con fuego; la segunda marca lo mata. Si muere un personaje con el rasgo Bruja del Horno, mueres.",
-        "summary": "Cada noche marcas a un jugador con fuego; la segunda marca lo mata. Si muere un personaje con el rasgo Bruja del Horno, mueres."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "La muerte vinculada busca el rasgo ovenWitch, no un ID oficial."
-        ]
+        "ability": "Cada noche marcas a un jugador con fuego; la segunda marca lo mata. Si muere un personaje con el rasgo Bruja del Horno, mueres."
       },
       "rules": {
         "wake": {
@@ -2101,7 +2154,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "espiritu-fuego:cumulative-marker:1",
+            "mechanicId": "mechanic:grimm:espiritu-fuego:cumulative-marker:1",
             "tags": [
               "cumulative-marker",
               "fire",
@@ -2136,7 +2189,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -2206,7 +2259,7 @@
             }
           },
           {
-            "mechanicId": "espiritu-fuego:linked-death:1",
+            "mechanicId": "mechanic:grimm:espiritu-fuego:linked-death:1",
             "tags": [
               "linked-death"
             ],
@@ -2246,31 +2299,22 @@
               "consumeOn": "resolution"
             }
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "pastor-aves",
-      "teamId": "grimm-hansel-gretel:pueblo",
+      "id": "character:grimm:pastor-aves",
+      "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
           "default": "good"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "El Pastor de Aves",
-        "ability": "Cada noche eliges a dos jugadores y sabes si pertenecen a la misma facción.",
-        "summary": "Cada noche eliges a dos jugadores y sabes si pertenecen a la misma facción."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "Responde Sí si las identidades registradas comparten facción."
-        ]
+        "ability": "Cada noche eliges a dos jugadores y sabes si pertenecen a la misma facción."
       },
       "rules": {
         "wake": {
@@ -2283,7 +2327,7 @@
         "reminderTokens": [],
         "mechanics": [
           {
-            "mechanicId": "pastor-aves:information-choice:1",
+            "mechanicId": "mechanic:grimm:pastor-aves:information-choice:1",
             "tags": [
               "information-choice"
             ],
@@ -2316,7 +2360,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned",
                           "registration"
                         ],
@@ -2354,7 +2398,7 @@
                   "type": "whenSourceAffected",
                   "affectedBy": [
                     "poisoned",
-                    "drunk",
+                    "character:boct:drunk",
                     "abandoned",
                     "registration"
                   ],
@@ -2371,32 +2415,23 @@
               }
             }
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     },
     {
-      "id": "comadrona-corte",
-      "teamId": "grimm-hansel-gretel:corte",
+      "id": "character:grimm:comadrona-corte",
+      "teamId": "team:grimm:corte",
       "gameplay": {
         "role": "support",
         "allegiance": {
           "default": "good"
         }
       },
-      "edition": "grimm-hansel-gretel",
-      "text": {
+      "edition": "grimm",
+      "info": {
         "name": "La Comadrona",
-        "ability": "Una vez por partida declaras inocente a un jugador. Si es Pueblo queda protegido de ejecución y abandono; si no, mueres.",
-        "summary": "Una vez por partida declaras inocente a un jugador. Si es Pueblo queda protegido de ejecución y abandono; si no, mueres."
-      },
-      "wiki": {
-        "firstNight": null,
-        "otherNight": null,
-        "notes": [
-          "El registro de facción puede requerir una decisión de registration; la resolución nunca compara IDs."
-        ]
+        "ability": "Una vez por partida declaras inocente a un jugador. Si es {{team:grimm:pueblo}} queda protegido de ejecución y abandono; si no, mueres."
       },
       "rules": {
         "wake": {
@@ -2422,7 +2457,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "comadrona-corte:public-day-action:1",
+            "mechanicId": "mechanic:grimm:comadrona-corte:public-day-action:1",
             "tags": [
               "public-day-action"
             ],
@@ -2455,11 +2490,24 @@
                           "binding": "selected"
                         },
                         {
-                          "type": "identity",
-                          "identityMode": "registered",
-                          "facet": "teamId",
-                          "values": [
-                            "grimm-hansel-gretel:pueblo"
+                          "type": "all",
+                          "conditions": [
+                            {
+                              "type": "identity",
+                              "identityMode": "registered",
+                              "facet": "allegiance",
+                              "values": [
+                                "good"
+                              ]
+                            },
+                            {
+                              "type": "identity",
+                              "identityMode": "registered",
+                              "facet": "role",
+                              "values": [
+                                "core"
+                              ]
+                            }
                           ]
                         }
                       ]
@@ -2521,7 +2569,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
+                              "character:boct:drunk",
                               "abandoned",
                               "registration"
                             ],
@@ -2549,11 +2597,24 @@
                           "binding": "selected"
                         },
                         {
-                          "type": "identity",
-                          "identityMode": "registered",
-                          "facet": "teamId",
-                          "values": [
-                            "grimm-hansel-gretel:pueblo"
+                          "type": "all",
+                          "conditions": [
+                            {
+                              "type": "identity",
+                              "identityMode": "registered",
+                              "facet": "allegiance",
+                              "values": [
+                                "good"
+                              ]
+                            },
+                            {
+                              "type": "identity",
+                              "identityMode": "registered",
+                              "facet": "role",
+                              "values": [
+                                "core"
+                              ]
+                            }
                           ]
                         }
                       ]
@@ -2589,7 +2650,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
+                              "character:boct:drunk",
                               "abandoned",
                               "registration"
                             ],
@@ -2619,11 +2680,24 @@
                             "binding": "selected"
                           },
                           {
-                            "type": "identity",
-                            "identityMode": "registered",
-                            "facet": "teamId",
-                            "values": [
-                              "grimm-hansel-gretel:pueblo"
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "identity",
+                                "identityMode": "registered",
+                                "facet": "allegiance",
+                                "values": [
+                                  "good"
+                                ]
+                              },
+                              {
+                                "type": "identity",
+                                "identityMode": "registered",
+                                "facet": "role",
+                                "values": [
+                                  "core"
+                                ]
+                              }
                             ]
                           }
                         ]
@@ -2669,7 +2743,7 @@
             }
           },
           {
-            "mechanicId": "comadrona-corte:passive-protection:1",
+            "mechanicId": "mechanic:grimm:comadrona-corte:passive-protection:1",
             "tags": [
               "passive-protection"
             ],
@@ -2695,7 +2769,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
+                          "character:boct:drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -2741,16 +2815,15 @@
               }
             ]
           }
-        ],
-        "interactions": []
+        ]
       },
       "links": []
     }
   ],
   "tales": [
     {
-      "id": "grimm-hansel-gretel",
-      "edition": "grimm-hansel-gretel",
+      "id": "tale:grimm:grimm-hansel-gretel",
+      "edition": "grimm",
       "category": "tale",
       "origin": "official",
       "author": "Hermanos Grimm · adaptación BloodScribe",
@@ -2773,16 +2846,17 @@
         "player": 3
       },
       "keyCharacterIds": [
-        "hansel-rastreador",
-        "gretel-empujadora",
-        "bruja-horno",
-        "madre-hambrienta"
+        "character:grimm:hansel-rastreador",
+        "character:grimm:gretel-empujadora",
+        "character:grimm:bruja-horno",
+        "character:grimm:madre-hambrienta"
       ],
       "teams": [
         {
-          "teamId": "grimm-hansel-gretel:pueblo",
-          "labels": {
-            "es": "Pueblo"
+          "teamId": "team:grimm:pueblo",
+          "terms": {
+            "singular": "habitante del Pueblo",
+            "plural": "habitantes del Pueblo"
           },
           "defaults": {
             "role": "core",
@@ -2794,67 +2868,85 @@
             },
             "assignment": "player"
           },
-          "setupBucket": "townsfolk",
           "colors": {
-            "iconFill": "#6B8E23",
-            "iconStroke": "#efe7d6",
-            "text": "#6B8E23",
-            "surface": "rgba(107, 142, 35, 0.2)",
-            "border": "#6B8E23"
+            "text": {
+              "onLight": "#6b8e23",
+              "onDark": "#6b8e23"
+            },
+            "surface": "#6b8e23",
+            "border": "#6b8e23",
+            "reminderSurface": "#111d57",
+            "gradient": {
+              "from": "#779e27",
+              "to": "#5f7e1f"
+            }
           }
         },
         {
-          "teamId": "grimm-hansel-gretel:corte",
-          "labels": {
-            "es": "Corte"
+          "teamId": "team:grimm:corte",
+          "terms": {
+            "singular": "persona de la Corte",
+            "plural": "personas de la Corte"
           },
           "defaults": {
-            "role": "independent",
+            "role": "support",
             "allegiance": {
-              "default": "neutral"
+              "default": "good"
             },
             "victory": {
               "type": "withCurrentAllegiance"
             },
             "assignment": "player"
           },
-          "setupBucket": "outsider",
           "colors": {
-            "iconFill": "#DAA520",
-            "iconStroke": "#efe7d6",
-            "text": "#DAA520",
-            "surface": "rgba(218, 165, 32, 0.2)",
-            "border": "#DAA520"
+            "text": {
+              "onLight": "#daa520",
+              "onDark": "#daa520"
+            },
+            "surface": "#daa520",
+            "border": "#daa520",
+            "reminderSurface": "#111d57",
+            "gradient": {
+              "from": "#e0ae2e",
+              "to": "#c8981d"
+            }
           }
         },
         {
-          "teamId": "grimm-hansel-gretel:bosque",
-          "labels": {
-            "es": "Bosque"
+          "teamId": "team:grimm:bosque",
+          "terms": {
+            "singular": "miembro del Bosque",
+            "plural": "miembros del Bosque"
           },
           "defaults": {
-            "role": "independent",
+            "role": "support",
             "allegiance": {
-              "default": "neutral"
+              "default": "evil"
             },
             "victory": {
               "type": "withCurrentAllegiance"
             },
             "assignment": "player"
           },
-          "setupBucket": "minion",
           "colors": {
-            "iconFill": "#228B22",
-            "iconStroke": "#efe7d6",
-            "text": "#228B22",
-            "surface": "rgba(34, 139, 34, 0.2)",
-            "border": "#228B22"
+            "text": {
+              "onLight": "#228b22",
+              "onDark": "#228b22"
+            },
+            "surface": "#228b22",
+            "border": "#228b22",
+            "reminderSurface": "#111d57",
+            "gradient": {
+              "from": "#269b26",
+              "to": "#1e7b1e"
+            }
           }
         },
         {
-          "teamId": "grimm-hansel-gretel:maldito",
-          "labels": {
-            "es": "Maldito"
+          "teamId": "team:grimm:maldito",
+          "terms": {
+            "singular": "Maldito",
+            "plural": "Malditos"
           },
           "defaults": {
             "role": "core",
@@ -2866,13 +2958,18 @@
             },
             "assignment": "player"
           },
-          "setupBucket": "demon",
           "colors": {
-            "iconFill": "#8B0000",
-            "iconStroke": "#efe7d6",
-            "text": "#8B0000",
-            "surface": "rgba(139, 0, 0, 0.2)",
-            "border": "#8B0000"
+            "text": {
+              "onLight": "#8b0000",
+              "onDark": "#8b0000"
+            },
+            "surface": "#990000",
+            "border": "#8b0000",
+            "reminderSurface": "#111d57",
+            "gradient": {
+              "from": "#ad0000",
+              "to": "#990000"
+            }
           }
         }
       ],
@@ -2903,44 +3000,44 @@
         }
       },
       "characterIds": [
-        "hansel-rastreador",
-        "gretel-empujadora",
-        "lenador-padre",
-        "madre-hambrienta",
-        "bruja-horno",
-        "pajaro-blanco",
-        "pato-rio",
-        "gato-tejado",
-        "cazador-bosque",
-        "anciana-caminos",
-        "espiritu-fuego",
-        "pastor-aves",
-        "comadrona-corte"
+        "character:grimm:hansel-rastreador",
+        "character:grimm:gretel-empujadora",
+        "character:grimm:lenador-padre",
+        "character:grimm:madre-hambrienta",
+        "character:grimm:bruja-horno",
+        "character:grimm:pajaro-blanco",
+        "character:grimm:pato-rio",
+        "character:grimm:gato-tejado",
+        "character:grimm:cazador-bosque",
+        "character:grimm:anciana-caminos",
+        "character:grimm:espiritu-fuego",
+        "character:grimm:pastor-aves",
+        "character:grimm:comadrona-corte"
       ],
       "nightOrder": {
         "first": [
-          "gato-tejado",
-          "hansel-rastreador",
-          "madre-hambrienta",
-          "pajaro-blanco",
-          "anciana-caminos",
-          "lenador-padre",
-          "pastor-aves",
-          "cazador-bosque",
-          "bruja-horno",
-          "espiritu-fuego"
+          "character:grimm:gato-tejado",
+          "character:grimm:hansel-rastreador",
+          "character:grimm:madre-hambrienta",
+          "character:grimm:pajaro-blanco",
+          "character:grimm:anciana-caminos",
+          "character:grimm:lenador-padre",
+          "character:grimm:pastor-aves",
+          "character:grimm:cazador-bosque",
+          "character:grimm:bruja-horno",
+          "character:grimm:espiritu-fuego"
         ],
         "other": [
-          "gato-tejado",
-          "hansel-rastreador",
-          "madre-hambrienta",
-          "pajaro-blanco",
-          "anciana-caminos",
-          "lenador-padre",
-          "pastor-aves",
-          "cazador-bosque",
-          "bruja-horno",
-          "espiritu-fuego"
+          "character:grimm:gato-tejado",
+          "character:grimm:hansel-rastreador",
+          "character:grimm:madre-hambrienta",
+          "character:grimm:pajaro-blanco",
+          "character:grimm:anciana-caminos",
+          "character:grimm:lenador-padre",
+          "character:grimm:pastor-aves",
+          "character:grimm:cazador-bosque",
+          "character:grimm:bruja-horno",
+          "character:grimm:espiritu-fuego"
         ]
       },
       "nightInstructions": {
@@ -2972,10 +3069,5 @@
     "capturedAt": "2026-06-11",
     "note": "Snapshot of the public role vote ordering, from most liked to least liked. The endpoint exposes ordering, not aggregate vote counts.",
     "roles": {}
-  },
-  "referenceInteractions": {
-    "capturedAt": "2026-06-10",
-    "note": "Snapshot of community role interactions. These notes are reference material for Storytellers, not modeled game rules.",
-    "interactions": []
   }
 }
