@@ -2,12 +2,16 @@
   "schemaVersion": "bloodscribe-v1",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "edition": "grimm",
-  "editionInfo": {
+  "collection": "grimm",
+  "collectionInfo": {
     "name": "Hermanos Grimm",
-    "description": "Edición de cuentos y personajes inspirados en los Hermanos Grimm."
+    "description": "Colección de cuentos y personajes inspirados en los Hermanos Grimm."
   },
-  "version": "5.0",
+  "edition": "hansel-y-gretel",
+  "editionInfo": {
+    "name": "Hansel y Gretel"
+  },
+  "version": "5.2",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con facciones de Pueblo, Corte, Bosque y Maldito.",
@@ -141,6 +145,7 @@
   "characters": [
     {
       "id": "character:grimm:hansel-rastreador",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -311,6 +316,7 @@
     },
     {
       "id": "character:grimm:gretel-empujadora",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -546,6 +552,7 @@
     },
     {
       "id": "character:grimm:lenador-padre",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -683,6 +690,7 @@
     },
     {
       "id": "character:grimm:madre-hambrienta",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:corte",
       "gameplay": {
         "role": "support",
@@ -887,6 +895,7 @@
     },
     {
       "id": "character:grimm:bruja-horno",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "role": "support",
@@ -1049,6 +1058,7 @@
     },
     {
       "id": "character:grimm:pajaro-blanco",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
@@ -1222,6 +1232,7 @@
     },
     {
       "id": "character:grimm:pato-rio",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
@@ -1461,6 +1472,7 @@
     },
     {
       "id": "character:grimm:gato-tejado",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
@@ -1627,6 +1639,7 @@
     },
     {
       "id": "character:grimm:cazador-bosque",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
@@ -1945,6 +1958,7 @@
     },
     {
       "id": "character:grimm:anciana-caminos",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -2113,6 +2127,7 @@
     },
     {
       "id": "character:grimm:espiritu-fuego",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:maldito",
       "gameplay": {
         "allegiance": {
@@ -2300,6 +2315,7 @@
     },
     {
       "id": "character:grimm:pastor-aves",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -2415,6 +2431,7 @@
     },
     {
       "id": "character:grimm:comadrona-corte",
+      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:corte",
       "gameplay": {
         "role": "support",
@@ -2816,13 +2833,14 @@
   "tales": [
     {
       "id": "tale:grimm:grimm-hansel-gretel",
+      "edition": "hansel-y-gretel",
       "category": "tale",
       "origin": "official",
       "author": "Hermanos Grimm · adaptación BloodScribe",
       "talepack": {
-        "id": "brothers-grimm",
+        "id": "grimm",
         "name": "Hermanos Grimm",
-        "description": "Cuentos jugables inspirados en los relatos recopilados por Jacob y Wilhelm Grimm."
+        "description": "Colección de cuentos y personajes inspirados en los Hermanos Grimm."
       },
       "presentation": {
         "theme": "verdigris"
