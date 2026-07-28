@@ -1,10 +1,16 @@
 {
   "schemaVersion": "bloodscribe-v1",
-  "id": "grimm-hansel-gretel",
+  "id": "grimm:grimm-hansel-gretel",
+  "key": "grimm-hansel-gretel",
   "edition": "grimm",
+  "editionInfo": {
+    "name": "Brothers Grimm",
+    "description": "Edition of tales and characters inspired by the Brothers Grimm."
+  },
   "version": "5.0",
   "locale": "en",
   "name": "Hansel and Gretel",
+  "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions.",
   "legal": {
     "license": "Based on Hansel and Gretel by the Brothers Grimm (public domain).",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -141,7 +147,6 @@
           "default": "good"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "Hansel",
         "ability": "Each night, choose another player. If an abandonment, poison, or death ability targets them, learn the faction of one source."
@@ -335,7 +340,6 @@
           "default": "good"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "Gretel",
         "ability": "Once per game, publicly accuse a player of being the Oven Witch. If correct, they die; if wrong, you die."
@@ -571,7 +575,6 @@
           "default": "good"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The Woodcutter",
         "ability": "Each night, protect a player from abandonment and feeding. On the first day, you cannot speak or vote."
@@ -733,7 +736,6 @@
           "default": "evil"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The Starving Mother",
         "ability": "Each night, abandon a player other than last night's target. They lose their ability, speech, and vote through the following day."
@@ -961,7 +963,6 @@
           "default": "evil"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The Oven Witch",
         "ability": "Each night, feed two players. A protected target gains no new mark. A player dies when receiving their third Feeding mark."
@@ -1146,7 +1147,6 @@
           "default": "neutral"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The White Bird",
         "ability": "Each night, learn a player's faction. You win personally if you survive after guiding at least one {{team:grimm:pueblo}} and one {{team:grimm:bosque}}."
@@ -1343,7 +1343,6 @@
           "default": "good"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The River Duck",
         "ability": "Once per game, prevent a voted execution. The saved player is exiled and cannot speak or vote until the next dawn."
@@ -1583,7 +1582,6 @@
           "default": "neutral"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The Rooftop Cat",
         "ability": "Once per game at night, choose two players. Targeted abilities aimed at either affect the other. You win personally if you survive."
@@ -1773,7 +1771,6 @@
           "default": "neutral"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The Forest Hunter",
         "ability": "Each night, mark a player. If they are nominated the next day, you may kill them immediately. Win personally after killing a {{team:grimm:bosque}} and a {{team:grimm:corte}}."
@@ -2115,7 +2112,6 @@
           "default": "good"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The Crossroads Crone",
         "ability": "Each night, protect a player from abandonment. You cannot choose the same player two nights in a row."
@@ -2307,7 +2303,6 @@
           "default": "evil"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The Fire Spirit",
         "ability": "Each night, mark a player with fire; their second mark kills them. If a character with the Oven Witch trait dies, you die."
@@ -2518,7 +2513,6 @@
           "default": "good"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The Bird Shepherd",
         "ability": "Each night, choose two players and learn whether they belong to the same faction."
@@ -2658,7 +2652,6 @@
           "default": "good"
         }
       },
-      "edition": "grimm",
       "info": {
         "name": "The Midwife",
         "ability": "Once per game, declare a player innocent. If they are {{team:grimm:pueblo}}, protect them from execution and abandonment; otherwise, you die."
@@ -3053,7 +3046,6 @@
   "tales": [
     {
       "id": "tale:grimm:grimm-hansel-gretel",
-      "edition": "grimm",
       "category": "tale",
       "origin": "official",
       "author": "Hermanos Grimm · adaptación BloodScribe",
