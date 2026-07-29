@@ -11,7 +11,7 @@
   "editionInfo": {
     "name": "Hansel y Gretel"
   },
-  "version": "5.2",
+  "version": "5.3",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con facciones de Pueblo, Corte, Bosque y Maldito.",
@@ -39,15 +39,15 @@
       },
       "colors": {
         "text": {
-          "onLight": "#6b8e23",
-          "onDark": "#6b8e23"
+          "onLight": "#7f9d45",
+          "onDark": "#7f9d45"
         },
-        "surface": "#6b8e23",
-        "border": "#6b8e23",
+        "surface": "#7f9d45",
+        "border": "#7f9d45",
         "reminderSurface": "#111d57",
         "gradient": {
-          "from": "#779e27",
-          "to": "#5f7e1f"
+          "from": "#8aab4b",
+          "to": "#748f3f"
         }
       }
     },
@@ -69,15 +69,15 @@
       },
       "colors": {
         "text": {
-          "onLight": "#daa520",
-          "onDark": "#daa520"
+          "onLight": "#d19d1f",
+          "onDark": "#d19d1f"
         },
-        "surface": "#daa520",
-        "border": "#daa520",
+        "surface": "#d19d1f",
+        "border": "#d19d1f",
         "reminderSurface": "#111d57",
         "gradient": {
-          "from": "#e0ae2e",
-          "to": "#c8981d"
+          "from": "#dfa926",
+          "to": "#bf901c"
         }
       }
     },
@@ -99,15 +99,15 @@
       },
       "colors": {
         "text": {
-          "onLight": "#228b22",
-          "onDark": "#228b22"
+          "onLight": "#a27a51",
+          "onDark": "#a27a51"
         },
-        "surface": "#228b22",
-        "border": "#228b22",
+        "surface": "#a27a51",
+        "border": "#a27a51",
         "reminderSurface": "#111d57",
         "gradient": {
-          "from": "#269b26",
-          "to": "#1e7b1e"
+          "from": "#ad845b",
+          "to": "#94704a"
         }
       }
     },
@@ -129,15 +129,15 @@
       },
       "colors": {
         "text": {
-          "onLight": "#8b0000",
-          "onDark": "#8b0000"
+          "onLight": "#a8443c",
+          "onDark": "#a8443c"
         },
-        "surface": "#990000",
-        "border": "#8b0000",
+        "surface": "#a8443c",
+        "border": "#a8443c",
         "reminderSurface": "#111d57",
         "gradient": {
-          "from": "#ad0000",
-          "to": "#990000"
+          "from": "#b74a41",
+          "to": "#993e37"
         }
       }
     }
@@ -2880,15 +2880,15 @@
           },
           "colors": {
             "text": {
-              "onLight": "#6b8e23",
-              "onDark": "#6b8e23"
+              "onLight": "#7f9d45",
+              "onDark": "#7f9d45"
             },
-            "surface": "#6b8e23",
-            "border": "#6b8e23",
+            "surface": "#7f9d45",
+            "border": "#7f9d45",
             "reminderSurface": "#111d57",
             "gradient": {
-              "from": "#779e27",
-              "to": "#5f7e1f"
+              "from": "#8aab4b",
+              "to": "#748f3f"
             }
           }
         },
@@ -2910,15 +2910,15 @@
           },
           "colors": {
             "text": {
-              "onLight": "#daa520",
-              "onDark": "#daa520"
+              "onLight": "#d19d1f",
+              "onDark": "#d19d1f"
             },
-            "surface": "#daa520",
-            "border": "#daa520",
+            "surface": "#d19d1f",
+            "border": "#d19d1f",
             "reminderSurface": "#111d57",
             "gradient": {
-              "from": "#e0ae2e",
-              "to": "#c8981d"
+              "from": "#dfa926",
+              "to": "#bf901c"
             }
           }
         },
@@ -2940,15 +2940,15 @@
           },
           "colors": {
             "text": {
-              "onLight": "#228b22",
-              "onDark": "#228b22"
+              "onLight": "#a27a51",
+              "onDark": "#a27a51"
             },
-            "surface": "#228b22",
-            "border": "#228b22",
+            "surface": "#a27a51",
+            "border": "#a27a51",
             "reminderSurface": "#111d57",
             "gradient": {
-              "from": "#269b26",
-              "to": "#1e7b1e"
+              "from": "#ad845b",
+              "to": "#94704a"
             }
           }
         },
@@ -2970,15 +2970,15 @@
           },
           "colors": {
             "text": {
-              "onLight": "#8b0000",
-              "onDark": "#8b0000"
+              "onLight": "#a8443c",
+              "onDark": "#a8443c"
             },
-            "surface": "#990000",
-            "border": "#8b0000",
+            "surface": "#a8443c",
+            "border": "#a8443c",
             "reminderSurface": "#111d57",
             "gradient": {
-              "from": "#ad0000",
-              "to": "#990000"
+              "from": "#b74a41",
+              "to": "#993e37"
             }
           }
         }
