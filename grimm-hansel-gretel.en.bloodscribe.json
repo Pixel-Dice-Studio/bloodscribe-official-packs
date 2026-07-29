@@ -1,17 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-v1",
+  "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "collection": "grimm",
-  "collectionInfo": {
-    "name": "Brothers Grimm",
-    "description": "Collection of tales and characters inspired by the Brothers Grimm."
-  },
-  "edition": "hansel-y-gretel",
-  "editionInfo": {
-    "name": "Hansel and Gretel"
-  },
-  "version": "5.3",
+  "version": "5.5",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions.",
@@ -20,6 +11,49 @@
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
   },
   "links": [],
+  "popularity": {
+    "capturedAt": "2026-06-11",
+    "note": "Snapshot of the public role vote ordering, from most liked to least liked. The endpoint exposes ordering, not aggregate vote counts.",
+    "roles": {}
+  },
+  "books": [
+    {
+      "id": "book:grimm:hansel-y-gretel",
+      "name": "Hansel and Gretel",
+      "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions.",
+      "collection": {
+        "id": "collection:grimm",
+        "name": "Brothers Grimm",
+        "description": "Collection of tales and characters inspired by the Brothers Grimm."
+      },
+      "origin": "official",
+      "taleIds": [
+        "tale:grimm:grimm-hansel-gretel"
+      ],
+      "characterIds": [
+        "character:grimm:hansel-rastreador",
+        "character:grimm:gretel-empujadora",
+        "character:grimm:lenador-padre",
+        "character:grimm:madre-hambrienta",
+        "character:grimm:bruja-horno",
+        "character:grimm:pajaro-blanco",
+        "character:grimm:pato-rio",
+        "character:grimm:gato-tejado",
+        "character:grimm:cazador-bosque",
+        "character:grimm:anciana-caminos",
+        "character:grimm:espiritu-fuego",
+        "character:grimm:pastor-aves",
+        "character:grimm:comadrona-corte"
+      ],
+      "gameRuleIds": [],
+      "teamIds": [
+        "team:grimm:pueblo",
+        "team:grimm:corte",
+        "team:grimm:bosque",
+        "team:grimm:maldito"
+      ]
+    }
+  ],
   "teams": [
     {
       "teamId": "team:grimm:pueblo",
@@ -145,7 +179,6 @@
   "characters": [
     {
       "id": "character:grimm:hansel-rastreador",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -295,7 +328,25 @@
                 },
                 "presentation": {
                   "kind": "identity",
-                  "title": "Source faction"
+                  "title": "Source faction",
+                  "options": [
+                    {
+                      "value": "team:grimm:pueblo",
+                      "label": "Village"
+                    },
+                    {
+                      "value": "team:grimm:corte",
+                      "label": "Court"
+                    },
+                    {
+                      "value": "team:grimm:bosque",
+                      "label": "Forest"
+                    },
+                    {
+                      "value": "team:grimm:maldito",
+                      "label": "Cursed"
+                    }
+                  ]
                 },
                 "delivery": {
                   "audience": {
@@ -339,7 +390,6 @@
     },
     {
       "id": "character:grimm:gretel-empujadora",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -575,7 +625,6 @@
     },
     {
       "id": "character:grimm:lenador-padre",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -736,7 +785,6 @@
     },
     {
       "id": "character:grimm:madre-hambrienta",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:corte",
       "gameplay": {
         "role": "support",
@@ -964,7 +1012,6 @@
     },
     {
       "id": "character:grimm:bruja-horno",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "role": "support",
@@ -1150,7 +1197,6 @@
     },
     {
       "id": "character:grimm:pajaro-blanco",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
@@ -1277,7 +1323,25 @@
                 },
                 "presentation": {
                   "kind": "identity",
-                  "title": "Player faction"
+                  "title": "Player faction",
+                  "options": [
+                    {
+                      "value": "team:grimm:pueblo",
+                      "label": "Village"
+                    },
+                    {
+                      "value": "team:grimm:corte",
+                      "label": "Court"
+                    },
+                    {
+                      "value": "team:grimm:bosque",
+                      "label": "Forest"
+                    },
+                    {
+                      "value": "team:grimm:maldito",
+                      "label": "Cursed"
+                    }
+                  ]
                 },
                 "delivery": {
                   "audience": {
@@ -1347,7 +1411,6 @@
     },
     {
       "id": "character:grimm:pato-rio",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
@@ -1587,7 +1650,6 @@
     },
     {
       "id": "character:grimm:gato-tejado",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
@@ -1777,7 +1839,6 @@
     },
     {
       "id": "character:grimm:cazador-bosque",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:bosque",
       "gameplay": {
         "allegiance": {
@@ -2119,7 +2180,6 @@
     },
     {
       "id": "character:grimm:anciana-caminos",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -2311,7 +2371,6 @@
     },
     {
       "id": "character:grimm:espiritu-fuego",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:maldito",
       "gameplay": {
         "allegiance": {
@@ -2522,7 +2581,6 @@
     },
     {
       "id": "character:grimm:pastor-aves",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:pueblo",
       "gameplay": {
         "allegiance": {
@@ -2661,7 +2719,6 @@
     },
     {
       "id": "character:grimm:comadrona-corte",
-      "edition": "hansel-y-gretel",
       "teamId": "team:grimm:corte",
       "gameplay": {
         "role": "support",
@@ -3060,18 +3117,13 @@
       "links": []
     }
   ],
+  "gameRules": [],
   "tales": [
     {
       "id": "tale:grimm:grimm-hansel-gretel",
-      "edition": "hansel-y-gretel",
       "category": "tale",
       "origin": "official",
       "author": "Hermanos Grimm · adaptación BloodScribe",
-      "talepack": {
-        "id": "grimm",
-        "name": "Brothers Grimm",
-        "description": "Collection of tales and characters inspired by the Brothers Grimm."
-      },
       "presentation": {
         "theme": "verdigris"
       },
@@ -3091,6 +3143,82 @@
         "character:grimm:bruja-horno",
         "character:grimm:madre-hambrienta"
       ],
+      "recommendedCounts": {
+        "7": {
+          "townsfolk": 4,
+          "outsider": 1,
+          "minion": 1,
+          "demon": 1
+        },
+        "9": {
+          "townsfolk": 5,
+          "outsider": 1,
+          "minion": 2,
+          "demon": 1
+        },
+        "11": {
+          "townsfolk": 6,
+          "outsider": 1,
+          "minion": 3,
+          "demon": 1
+        },
+        "13": {
+          "townsfolk": 6,
+          "outsider": 2,
+          "minion": 4,
+          "demon": 1
+        }
+      },
+      "nightOrder": {
+        "first": [
+          "character:grimm:gato-tejado",
+          "character:grimm:hansel-rastreador",
+          "character:grimm:madre-hambrienta",
+          "character:grimm:pajaro-blanco",
+          "character:grimm:anciana-caminos",
+          "character:grimm:lenador-padre",
+          "character:grimm:pastor-aves",
+          "character:grimm:cazador-bosque",
+          "character:grimm:bruja-horno",
+          "character:grimm:espiritu-fuego"
+        ],
+        "other": [
+          "character:grimm:gato-tejado",
+          "character:grimm:hansel-rastreador",
+          "character:grimm:madre-hambrienta",
+          "character:grimm:pajaro-blanco",
+          "character:grimm:anciana-caminos",
+          "character:grimm:lenador-padre",
+          "character:grimm:pastor-aves",
+          "character:grimm:cazador-bosque",
+          "character:grimm:bruja-horno",
+          "character:grimm:espiritu-fuego"
+        ]
+      },
+      "nightInstructions": {
+        "opening": "Make sure every player has closed their eyes. Resolve target swaps before other targeted abilities.",
+        "dawn": "Wake the village, announce deaths, and deliver any tracked-target information.",
+        "steps": {}
+      },
+      "gameEndRules": [
+        {
+          "type": "alignmentElimination",
+          "winner": "good",
+          "eliminatedAlignment": "evil",
+          "requireAliveAlignment": "good",
+          "reason": "Todos los personajes oscuros han sido eliminados y queda al menos un personaje bueno vivo."
+        },
+        {
+          "type": "alignmentElimination",
+          "winner": "evil",
+          "eliminatedAlignment": "good",
+          "reason": "No queda ningún personaje bueno vivo."
+        }
+      ],
+      "demonBluffCount": 0,
+      "elements": [],
+      "links": [],
+      "bookId": "book:grimm:hansel-y-gretel",
       "teams": [
         {
           "teamId": "team:grimm:pueblo",
@@ -3213,32 +3341,6 @@
           }
         }
       ],
-      "recommendedCounts": {
-        "7": {
-          "townsfolk": 4,
-          "outsider": 1,
-          "minion": 1,
-          "demon": 1
-        },
-        "9": {
-          "townsfolk": 5,
-          "outsider": 1,
-          "minion": 2,
-          "demon": 1
-        },
-        "11": {
-          "townsfolk": 6,
-          "outsider": 1,
-          "minion": 3,
-          "demon": 1
-        },
-        "13": {
-          "townsfolk": 6,
-          "outsider": 2,
-          "minion": 4,
-          "demon": 1
-        }
-      },
       "characterIds": [
         "character:grimm:hansel-rastreador",
         "character:grimm:gretel-empujadora",
@@ -3254,60 +3356,7 @@
         "character:grimm:pastor-aves",
         "character:grimm:comadrona-corte"
       ],
-      "nightOrder": {
-        "first": [
-          "character:grimm:gato-tejado",
-          "character:grimm:hansel-rastreador",
-          "character:grimm:madre-hambrienta",
-          "character:grimm:pajaro-blanco",
-          "character:grimm:anciana-caminos",
-          "character:grimm:lenador-padre",
-          "character:grimm:pastor-aves",
-          "character:grimm:cazador-bosque",
-          "character:grimm:bruja-horno",
-          "character:grimm:espiritu-fuego"
-        ],
-        "other": [
-          "character:grimm:gato-tejado",
-          "character:grimm:hansel-rastreador",
-          "character:grimm:madre-hambrienta",
-          "character:grimm:pajaro-blanco",
-          "character:grimm:anciana-caminos",
-          "character:grimm:lenador-padre",
-          "character:grimm:pastor-aves",
-          "character:grimm:cazador-bosque",
-          "character:grimm:bruja-horno",
-          "character:grimm:espiritu-fuego"
-        ]
-      },
-      "nightInstructions": {
-        "opening": "Make sure every player has closed their eyes. Resolve target swaps before other targeted abilities.",
-        "dawn": "Wake the village, announce deaths, and deliver any tracked-target information.",
-        "steps": {}
-      },
-      "gameEndRules": [
-        {
-          "type": "alignmentElimination",
-          "winner": "good",
-          "eliminatedAlignment": "evil",
-          "requireAliveAlignment": "good",
-          "reason": "Todos los personajes oscuros han sido eliminados y queda al menos un personaje bueno vivo."
-        },
-        {
-          "type": "alignmentElimination",
-          "winner": "evil",
-          "eliminatedAlignment": "good",
-          "reason": "No queda ningún personaje bueno vivo."
-        }
-      ],
-      "demonBluffCount": 0,
-      "elements": [],
-      "links": []
+      "gameRuleIds": []
     }
-  ],
-  "popularity": {
-    "capturedAt": "2026-06-11",
-    "note": "Snapshot of the public role vote ordering, from most liked to least liked. The endpoint exposes ordering, not aggregate vote counts.",
-    "roles": {}
-  }
+  ]
 }
