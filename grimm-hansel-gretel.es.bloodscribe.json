@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "5.5",
+  "version": "5.6",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con facciones de Pueblo, Corte, Bosque y Maldito.",
@@ -27,6 +27,17 @@
         "description": "Colección de cuentos y personajes inspirados en los Hermanos Grimm."
       },
       "origin": "official",
+      "presentation": {
+        "palette": {
+          "cover": "#29483a",
+          "spine": "#182f27",
+          "paper": "#eadfbd",
+          "ink": "#2b2119",
+          "accent": "#d5aa65"
+        },
+        "material": "cloth",
+        "format": "large"
+      },
       "taleIds": [
         "tale:grimm:grimm-hansel-gretel"
       ],
@@ -59,7 +70,7 @@
       "teamId": "team:grimm:pueblo",
       "terms": {
         "singular": "habitante del Pueblo",
-        "plural": "habitantes del Pueblo"
+        "plural": "Habitantes del pueblo"
       },
       "defaults": {
         "role": "core",
@@ -78,7 +89,7 @@
         },
         "surface": "#7f9d45",
         "border": "#7f9d45",
-        "reminderSurface": "#111d57",
+        "reminderSurface": "#748f3f",
         "gradient": {
           "from": "#8aab4b",
           "to": "#748f3f"
@@ -89,7 +100,7 @@
       "teamId": "team:grimm:corte",
       "terms": {
         "singular": "persona de la Corte",
-        "plural": "personas de la Corte"
+        "plural": "Personas de la corte"
       },
       "defaults": {
         "role": "support",
@@ -108,7 +119,7 @@
         },
         "surface": "#d19d1f",
         "border": "#d19d1f",
-        "reminderSurface": "#111d57",
+        "reminderSurface": "#bf901c",
         "gradient": {
           "from": "#dfa926",
           "to": "#bf901c"
@@ -119,7 +130,7 @@
       "teamId": "team:grimm:bosque",
       "terms": {
         "singular": "miembro del Bosque",
-        "plural": "miembros del Bosque"
+        "plural": "Miembros del Bosque"
       },
       "defaults": {
         "role": "support",
@@ -138,7 +149,7 @@
         },
         "surface": "#a27a51",
         "border": "#a27a51",
-        "reminderSurface": "#111d57",
+        "reminderSurface": "#94704a",
         "gradient": {
           "from": "#ad845b",
           "to": "#94704a"
@@ -168,7 +179,7 @@
         },
         "surface": "#a8443c",
         "border": "#a8443c",
-        "reminderSurface": "#111d57",
+        "reminderSurface": "#993e37",
         "gradient": {
           "from": "#b74a41",
           "to": "#993e37"
@@ -2994,7 +3005,7 @@
           "teamId": "team:grimm:pueblo",
           "terms": {
             "singular": "habitante del Pueblo",
-            "plural": "habitantes del Pueblo"
+            "plural": "Habitantes del pueblo"
           },
           "defaults": {
             "role": "core",
@@ -3013,7 +3024,7 @@
             },
             "surface": "#7f9d45",
             "border": "#7f9d45",
-            "reminderSurface": "#111d57",
+            "reminderSurface": "#748f3f",
             "gradient": {
               "from": "#8aab4b",
               "to": "#748f3f"
@@ -3024,7 +3035,7 @@
           "teamId": "team:grimm:corte",
           "terms": {
             "singular": "persona de la Corte",
-            "plural": "personas de la Corte"
+            "plural": "Personas de la corte"
           },
           "defaults": {
             "role": "support",
@@ -3043,7 +3054,7 @@
             },
             "surface": "#d19d1f",
             "border": "#d19d1f",
-            "reminderSurface": "#111d57",
+            "reminderSurface": "#bf901c",
             "gradient": {
               "from": "#dfa926",
               "to": "#bf901c"
@@ -3054,7 +3065,7 @@
           "teamId": "team:grimm:bosque",
           "terms": {
             "singular": "miembro del Bosque",
-            "plural": "miembros del Bosque"
+            "plural": "Miembros del Bosque"
           },
           "defaults": {
             "role": "support",
@@ -3073,7 +3084,7 @@
             },
             "surface": "#a27a51",
             "border": "#a27a51",
-            "reminderSurface": "#111d57",
+            "reminderSurface": "#94704a",
             "gradient": {
               "from": "#ad845b",
               "to": "#94704a"
@@ -3103,7 +3114,7 @@
             },
             "surface": "#a8443c",
             "border": "#a8443c",
-            "reminderSurface": "#111d57",
+            "reminderSurface": "#993e37",
             "gradient": {
               "from": "#b74a41",
               "to": "#993e37"

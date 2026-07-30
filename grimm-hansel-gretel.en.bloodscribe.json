@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "5.5",
+  "version": "5.6",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions.",
@@ -27,6 +27,17 @@
         "description": "Collection of tales and characters inspired by the Brothers Grimm."
       },
       "origin": "official",
+      "presentation": {
+        "palette": {
+          "cover": "#29483a",
+          "spine": "#182f27",
+          "paper": "#eadfbd",
+          "ink": "#2b2119",
+          "accent": "#d5aa65"
+        },
+        "material": "cloth",
+        "format": "large"
+      },
       "taleIds": [
         "tale:grimm:grimm-hansel-gretel"
       ],
@@ -78,7 +89,7 @@
         },
         "surface": "#7f9d45",
         "border": "#7f9d45",
-        "reminderSurface": "#111d57",
+        "reminderSurface": "#748f3f",
         "gradient": {
           "from": "#8aab4b",
           "to": "#748f3f"
@@ -108,7 +119,7 @@
         },
         "surface": "#d19d1f",
         "border": "#d19d1f",
-        "reminderSurface": "#111d57",
+        "reminderSurface": "#bf901c",
         "gradient": {
           "from": "#dfa926",
           "to": "#bf901c"
@@ -138,7 +149,7 @@
         },
         "surface": "#a27a51",
         "border": "#a27a51",
-        "reminderSurface": "#111d57",
+        "reminderSurface": "#94704a",
         "gradient": {
           "from": "#ad845b",
           "to": "#94704a"
@@ -168,7 +179,7 @@
         },
         "surface": "#a8443c",
         "border": "#a8443c",
-        "reminderSurface": "#111d57",
+        "reminderSurface": "#993e37",
         "gradient": {
           "from": "#b74a41",
           "to": "#993e37"
@@ -3243,7 +3254,7 @@
             },
             "surface": "#7f9d45",
             "border": "#7f9d45",
-            "reminderSurface": "#111d57",
+            "reminderSurface": "#748f3f",
             "gradient": {
               "from": "#8aab4b",
               "to": "#748f3f"
@@ -3273,7 +3284,7 @@
             },
             "surface": "#d19d1f",
             "border": "#d19d1f",
-            "reminderSurface": "#111d57",
+            "reminderSurface": "#bf901c",
             "gradient": {
               "from": "#dfa926",
               "to": "#bf901c"
@@ -3303,7 +3314,7 @@
             },
             "surface": "#a27a51",
             "border": "#a27a51",
-            "reminderSurface": "#111d57",
+            "reminderSurface": "#94704a",
             "gradient": {
               "from": "#ad845b",
               "to": "#94704a"
@@ -3333,7 +3344,7 @@
             },
             "surface": "#a8443c",
             "border": "#a8443c",
-            "reminderSurface": "#111d57",
+            "reminderSurface": "#993e37",
             "gradient": {
               "from": "#b74a41",
               "to": "#993e37"
