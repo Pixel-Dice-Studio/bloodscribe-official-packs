@@ -907,11 +907,6 @@
                           "value": "previousNight"
                         },
                         {
-                          "type": "eventField",
-                          "field": "characterId",
-                          "value": "character:grimm:madre-hambrienta"
-                        },
-                        {
                           "type": "eventParticipant",
                           "binding": "actor",
                           "participant": "actor"
@@ -2089,30 +2084,16 @@
                     },
                     {
                       "type": "eventParticipant",
-                      "binding": "source",
-                      "participant": "actor"
+                      "binding": "actor",
+                      "participant": "source"
                     },
                     {
-                      "type": "all",
-                      "conditions": [
-                        {
-                          "type": "eventParticipantIdentity",
-                          "participant": "eventSubject",
-                          "identityMode": "real",
-                          "facet": "allegiance",
-                          "values": [
-                            "evil"
-                          ]
-                        },
-                        {
-                          "type": "eventParticipantIdentity",
-                          "participant": "eventSubject",
-                          "identityMode": "real",
-                          "facet": "role",
-                          "values": [
-                            "support"
-                          ]
-                        }
+                      "type": "eventParticipantIdentity",
+                      "participant": "eventSubject",
+                      "identityMode": "real",
+                      "facet": "teamId",
+                      "values": [
+                        "team:grimm:bosque"
                       ]
                     }
                   ]
@@ -2137,30 +2118,16 @@
                     },
                     {
                       "type": "eventParticipant",
-                      "binding": "source",
-                      "participant": "actor"
+                      "binding": "actor",
+                      "participant": "source"
                     },
                     {
-                      "type": "all",
-                      "conditions": [
-                        {
-                          "type": "eventParticipantIdentity",
-                          "participant": "eventSubject",
-                          "identityMode": "real",
-                          "facet": "allegiance",
-                          "values": [
-                            "good"
-                          ]
-                        },
-                        {
-                          "type": "eventParticipantIdentity",
-                          "participant": "eventSubject",
-                          "identityMode": "real",
-                          "facet": "role",
-                          "values": [
-                            "support"
-                          ]
-                        }
+                      "type": "eventParticipantIdentity",
+                      "participant": "eventSubject",
+                      "identityMode": "real",
+                      "facet": "teamId",
+                      "values": [
+                        "team:grimm:corte"
                       ]
                     }
                   ]
@@ -2291,11 +2258,6 @@
                         {
                           "type": "eventPeriod",
                           "value": "previousNight"
-                        },
-                        {
-                          "type": "eventField",
-                          "field": "characterId",
-                          "value": "character:grimm:anciana-caminos"
                         },
                         {
                           "type": "eventParticipant",
@@ -2798,24 +2760,11 @@
                           "binding": "selected"
                         },
                         {
-                          "type": "all",
-                          "conditions": [
-                            {
-                              "type": "identity",
-                              "identityMode": "registered",
-                              "facet": "allegiance",
-                              "values": [
-                                "good"
-                              ]
-                            },
-                            {
-                              "type": "identity",
-                              "identityMode": "registered",
-                              "facet": "role",
-                              "values": [
-                                "core"
-                              ]
-                            }
+                          "type": "identity",
+                          "identityMode": "registered",
+                          "facet": "teamId",
+                          "values": [
+                            "team:grimm:pueblo"
                           ]
                         }
                       ]
@@ -2905,24 +2854,11 @@
                           "binding": "selected"
                         },
                         {
-                          "type": "all",
-                          "conditions": [
-                            {
-                              "type": "identity",
-                              "identityMode": "registered",
-                              "facet": "allegiance",
-                              "values": [
-                                "good"
-                              ]
-                            },
-                            {
-                              "type": "identity",
-                              "identityMode": "registered",
-                              "facet": "role",
-                              "values": [
-                                "core"
-                              ]
-                            }
+                          "type": "identity",
+                          "identityMode": "registered",
+                          "facet": "teamId",
+                          "values": [
+                            "team:grimm:pueblo"
                           ]
                         }
                       ]
@@ -2988,24 +2924,11 @@
                             "binding": "selected"
                           },
                           {
-                            "type": "all",
-                            "conditions": [
-                              {
-                                "type": "identity",
-                                "identityMode": "registered",
-                                "facet": "allegiance",
-                                "values": [
-                                  "good"
-                                ]
-                              },
-                              {
-                                "type": "identity",
-                                "identityMode": "registered",
-                                "facet": "role",
-                                "values": [
-                                  "core"
-                                ]
-                              }
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "teamId",
+                            "values": [
+                              "team:grimm:pueblo"
                             ]
                           }
                         ]
@@ -3168,15 +3091,15 @@
           "demon": 1
         },
         "11": {
-          "townsfolk": 6,
-          "outsider": 1,
+          "townsfolk": 5,
+          "outsider": 2,
           "minion": 3,
           "demon": 1
         },
         "13": {
-          "townsfolk": 6,
+          "townsfolk": 5,
           "outsider": 2,
-          "minion": 4,
+          "minion": 5,
           "demon": 1
         }
       },
