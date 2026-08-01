@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "5.12",
+  "version": "6.0",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions.",
@@ -3077,6 +3077,7 @@
         "character:grimm:bruja-horno",
         "character:grimm:madre-hambrienta"
       ],
+      "gameRuleBindings": [],
       "recommendedCounts": {
         "7": {
           "townsfolk": 4,
@@ -3131,8 +3132,7 @@
       },
       "nightInstructions": {
         "opening": "Make sure every player has closed their eyes. Resolve target swaps before other targeted abilities.",
-        "dawn": "Wake the village, announce deaths, and deliver any tracked-target information.",
-        "steps": {}
+        "dawn": "Wake the village, announce deaths, and deliver any tracked-target information."
       },
       "gameEndRules": [
         {
@@ -3149,7 +3149,6 @@
           "reason": "No queda ningún personaje bueno vivo."
         }
       ],
-      "demonBluffCount": 0,
       "elements": [],
       "links": [],
       "bookId": "book:grimm:hansel-y-gretel",
@@ -3289,8 +3288,7 @@
         "character:grimm:espiritu-fuego",
         "character:grimm:pastor-aves",
         "character:grimm:comadrona-corte"
-      ],
-      "gameRuleIds": []
+      ]
     }
   ]
 }

@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "5.12",
+  "version": "6.0",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con facciones de Pueblo, Corte, Bosque y Maldito.",
@@ -2847,6 +2847,7 @@
         "character:grimm:bruja-horno",
         "character:grimm:madre-hambrienta"
       ],
+      "gameRuleBindings": [],
       "recommendedCounts": {
         "7": {
           "townsfolk": 4,
@@ -2901,8 +2902,7 @@
       },
       "nightInstructions": {
         "opening": "Comprueba que todos los jugadores tienen los ojos cerrados. Resuelve los intercambios de objetivo antes que las demás habilidades dirigidas.",
-        "dawn": "Despierta al pueblo, anuncia las muertes y entrega la información de objetivos vigilados.",
-        "steps": {}
+        "dawn": "Despierta al pueblo, anuncia las muertes y entrega la información de objetivos vigilados."
       },
       "gameEndRules": [
         {
@@ -2919,7 +2919,6 @@
           "reason": "No queda ningún personaje bueno vivo."
         }
       ],
-      "demonBluffCount": 0,
       "elements": [],
       "links": [],
       "bookId": "book:grimm:hansel-y-gretel",
@@ -3059,8 +3058,7 @@
         "character:grimm:espiritu-fuego",
         "character:grimm:pastor-aves",
         "character:grimm:comadrona-corte"
-      ],
-      "gameRuleIds": []
+      ]
     }
   ]
 }
