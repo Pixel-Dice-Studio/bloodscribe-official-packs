@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.0",
+  "version": "6.1",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions.",
@@ -3060,6 +3060,13 @@
       "author": "Hermanos Grimm · adaptación BloodScribe",
       "presentation": {
         "theme": "verdigris"
+      },
+      "narrativeSetting": {
+        "era": "Early 19th century",
+        "location": "Central European village beside a deep forest",
+        "atmosphere": "Hunger, cold, and the smell of burnt sugar",
+        "nuances": "Children's tale nightmare, rural folklore, and an oven that is always lit",
+        "goreLevel": "extreme"
       },
       "text": {
         "name": "Hansel and Gretel",
