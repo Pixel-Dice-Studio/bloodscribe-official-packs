@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.5",
+  "version": "6.7",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con facciones de Pueblo, Corte, Bosque y Maldito.",
@@ -2184,14 +2184,16 @@
             "kind": "reminder",
             "value": "Fuego 1",
             "label": "Fuego 1",
-            "duration": "game"
+            "duration": "game",
+            "visibility": "holder"
           },
           {
             "id": "fuego_2",
             "kind": "reminder",
             "value": "Fuego 2",
             "label": "Fuego 2",
-            "duration": "game"
+            "duration": "game",
+            "visibility": "holder"
           }
         ],
         "mechanics": [
