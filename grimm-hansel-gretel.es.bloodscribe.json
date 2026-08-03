@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.8",
+  "version": "6.13",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con facciones de Pueblo, Corte, Bosque y Maldito.",
@@ -881,10 +881,6 @@
                     "type": "query",
                     "from": {
                       "entity": "players"
-                    },
-                    "where": {
-                      "type": "alive",
-                      "value": true
                     },
                     "aggregate": {
                       "type": "collect"
@@ -2239,10 +2235,6 @@
                     "type": "query",
                     "from": {
                       "entity": "players"
-                    },
-                    "where": {
-                      "type": "alive",
-                      "value": true
                     },
                     "aggregate": {
                       "type": "collect"
