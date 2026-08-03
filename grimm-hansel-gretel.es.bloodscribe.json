@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.7",
+  "version": "6.8",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con facciones de Pueblo, Corte, Bosque y Maldito.",
@@ -215,6 +215,30 @@
             "value": "Guijarro blanco",
             "label": "Guijarro blanco",
             "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Hansel elige a otro jugador. :reminder: Al amanecer, si corresponde, muéstrale la facción de una fuente."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Hansel elige a otro jugador. :reminder: Al amanecer, si corresponde, muéstrale la facción de una fuente."
           }
         ],
         "mechanics": [
@@ -640,6 +664,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Leñador elige a 1 jugador. Queda protegido del abandono y el cebado esta noche. :reminder:"
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Leñador elige a 1 jugador. Queda protegido del abandono y el cebado esta noche. :reminder:"
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:lenador-padre:protection-choice:1",
@@ -783,6 +831,30 @@
             "value": "Abandonado",
             "label": "Abandonado",
             "duration": "tonightAndTomorrowDay"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "La Madre Hambrienta elige a 1 jugador vivo. :reminder:"
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "La Madre Hambrienta elige a 1 jugador vivo distinto al de la noche anterior. :reminder:"
           }
         ],
         "mechanics": [
@@ -994,6 +1066,30 @@
             "count": 13
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "La Bruja del Horno elige a 2 jugadores. Avanza el **Cebo** de cada objetivo no protegido; la tercera marca lo mata."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "La Bruja del Horno elige a 2 jugadores. Avanza el **Cebo** de cada objetivo no protegido; la tercera marca lo mata."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:bruja-horno:cumulative-marker:1",
@@ -1137,6 +1233,30 @@
             "label": "Guiado",
             "duration": "game",
             "count": 13
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Pájaro Blanco elige a 1 jugador. Muéstrale su facción. :reminder:"
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Pájaro Blanco elige a 1 jugador. Muéstrale su facción. :reminder:"
           }
         ],
         "mechanics": [
@@ -1576,6 +1696,30 @@
             "duration": "game"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Gato del Tejado puede elegir a 2 jugadores. Si lo hace, intercambia sus objetivos esta noche. :reminder:"
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Si aún no usó su habilidad, el Gato del Tejado puede elegir a 2 jugadores. Intercambia sus objetivos esta noche. :reminder:"
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:gato-tejado:target-swap:1",
@@ -1732,6 +1876,30 @@
             "value": "Cazado",
             "label": "Cazado",
             "duration": "tomorrowDay"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Cazador del {{team:grimm:bosque}} elige a 1 jugador. :reminder:"
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Cazador del {{team:grimm:bosque}} elige a 1 jugador. :reminder:"
           }
         ],
         "mechanics": [
@@ -2024,6 +2192,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "La Anciana de los Caminos elige a 1 jugador vivo. :reminder:"
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "La Anciana de los Caminos elige a 1 jugador vivo distinto al de la noche anterior. :reminder:"
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:anciana-caminos:protection-choice:1",
@@ -2194,6 +2386,30 @@
             "label": "Fuego 2",
             "duration": "game",
             "visibility": "holder"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Espíritu del Fuego elige a 1 jugador. Avanza su marca de **Fuego**; la segunda lo mata."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Espíritu del Fuego elige a 1 jugador. Avanza su marca de **Fuego**; la segunda lo mata."
           }
         ],
         "mechanics": [
@@ -2368,6 +2584,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Pastor de Aves elige a 2 jugadores. Afirma con la cabeza si pertenecen a la misma facción."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "El Pastor de Aves elige a 2 jugadores. Afirma con la cabeza si pertenecen a la misma facción."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:pastor-aves:information-choice:1",
