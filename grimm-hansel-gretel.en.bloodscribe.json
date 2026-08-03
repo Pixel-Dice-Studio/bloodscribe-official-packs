@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.14",
+  "version": "6.16",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions.",
@@ -301,7 +301,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -371,7 +371,7 @@
                   "type": "whenSourceAffected",
                   "affectedBy": [
                     "poisoned",
-                    "character:boct:drunk",
+                    "drunk",
                     "abandoned"
                   ],
                   "reaction": {
@@ -480,7 +480,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "character:boct:drunk",
+                              "drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -551,7 +551,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "character:boct:drunk",
+                              "drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -722,7 +722,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -939,7 +939,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -1121,7 +1121,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -1286,7 +1286,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned",
                           "registration"
                         ],
@@ -1354,7 +1354,7 @@
                   "type": "whenSourceAffected",
                   "affectedBy": [
                     "poisoned",
-                    "character:boct:drunk",
+                    "drunk",
                     "abandoned",
                     "registration"
                   ],
@@ -1514,7 +1514,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "character:boct:drunk",
+                              "drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -1562,7 +1562,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "character:boct:drunk",
+                              "drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -1612,7 +1612,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "character:boct:drunk",
+                              "drunk",
                               "abandoned"
                             ],
                             "active": true
@@ -1746,7 +1746,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -1927,7 +1927,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -2000,7 +2000,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -2288,7 +2288,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -2433,7 +2433,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
@@ -2626,7 +2626,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned",
                           "registration"
                         ],
@@ -2664,7 +2664,7 @@
                   "type": "whenSourceAffected",
                   "affectedBy": [
                     "poisoned",
-                    "character:boct:drunk",
+                    "drunk",
                     "abandoned",
                     "registration"
                   ],
@@ -2820,7 +2820,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "character:boct:drunk",
+                              "drunk",
                               "abandoned",
                               "registration"
                             ],
@@ -2888,7 +2888,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "character:boct:drunk",
+                              "drunk",
                               "abandoned",
                               "registration"
                             ],
@@ -2994,7 +2994,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "character:boct:drunk",
+                          "drunk",
                           "abandoned"
                         ],
                         "active": true
