@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.24",
+  "version": "6.25",
   "locale": "en",
   "name": "Hansel and Gretel",
-  "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Servant, Dark, and Wanderer teams.",
+  "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
   "legal": {
     "license": "Based on Hansel and Gretel by the Brothers Grimm (public domain).",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:hansel-y-gretel",
       "name": "Hansel and Gretel",
-      "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Servant, Dark, and Wanderer teams.",
+      "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
       "collection": {
         "id": "collection:grimm",
         "name": "Brothers Grimm",
@@ -61,9 +61,9 @@
       "teamIds": [
         "team:grimm:pueblo",
         "team:grimm:ayudante",
-        "team:grimm:oscuro",
+        "team:grimm:errante",
         "team:grimm:siervo",
-        "team:grimm:errante"
+        "team:grimm:oscuro"
       ]
     }
   ],
@@ -86,15 +86,15 @@
       },
       "colors": {
         "text": {
-          "onLight": "#7f9d45",
-          "onDark": "#7f9d45"
+          "onLight": "#438b54",
+          "onDark": "#438b54"
         },
-        "surface": "#7f9d45",
-        "border": "#7f9d45",
-        "reminderSurface": "#748f3f",
+        "surface": "#438b54",
+        "border": "#438b54",
+        "reminderSurface": "#3b7b4a",
         "gradient": {
-          "from": "#8aab4b",
-          "to": "#748f3f"
+          "from": "#4c9a5e",
+          "to": "#3b7b4a"
         }
       }
     },
@@ -116,45 +116,49 @@
       },
       "colors": {
         "text": {
-          "onLight": "#d19d1f",
-          "onDark": "#d19d1f"
+          "onLight": "#81942d",
+          "onDark": "#81942d"
         },
-        "surface": "#d19d1f",
-        "border": "#d19d1f",
-        "reminderSurface": "#bf901c",
+        "surface": "#81942d",
+        "border": "#81942d",
+        "reminderSurface": "#738429",
         "gradient": {
-          "from": "#dfa926",
-          "to": "#bf901c"
+          "from": "#91a536",
+          "to": "#738429"
         }
       }
     },
     {
-      "teamId": "team:grimm:oscuro",
+      "teamId": "team:grimm:errante",
       "terms": {
-        "singular": "Dark player",
-        "plural": "Dark players"
+        "singular": "Wanderer",
+        "plural": "Wanderers"
       },
       "defaults": {
-        "role": "core",
+        "role": "independent",
         "allegiance": {
-          "default": "evil"
+          "default": "neutral"
         },
         "victory": {
-          "type": "withCurrentAllegiance"
+          "type": "personal",
+          "condition": {
+            "type": "storytellerDecision",
+            "decision": "resolveCharacterPersonalVictory"
+          }
         },
         "assignment": "player"
       },
       "colors": {
         "text": {
-          "onLight": "#a27a51",
-          "onDark": "#a27a51"
+          "onLight": "#947947",
+          "onDark": "#947947"
         },
-        "surface": "#a27a51",
-        "border": "#a27a51",
-        "reminderSurface": "#94704a",
+        "surface": "#947947",
+        "border": "#947947",
+        "reminderSurface": "#836b3f",
         "gradient": {
-          "from": "#ad845b",
-          "to": "#94704a"
+          "from": "#a28852",
+          "to": "#836b3f"
         }
       }
     },
@@ -189,36 +193,32 @@
       }
     },
     {
-      "teamId": "team:grimm:errante",
+      "teamId": "team:grimm:oscuro",
       "terms": {
-        "singular": "Wanderer",
-        "plural": "Wanderers"
+        "singular": "Dark player",
+        "plural": "Dark players"
       },
       "defaults": {
-        "role": "independent",
+        "role": "core",
         "allegiance": {
-          "default": "neutral"
+          "default": "evil"
         },
         "victory": {
-          "type": "personal",
-          "condition": {
-            "type": "storytellerDecision",
-            "decision": "resolveCharacterPersonalVictory"
-          }
+          "type": "withCurrentAllegiance"
         },
         "assignment": "player"
       },
       "colors": {
         "text": {
-          "onLight": "#577886",
-          "onDark": "#7fa2af"
+          "onLight": "#5d2618",
+          "onDark": "#5d2618"
         },
-        "surface": "#577886",
-        "border": "#577886",
-        "reminderSurface": "#4d6b77",
+        "surface": "#5d2618",
+        "border": "#5d2618",
+        "reminderSurface": "#522116",
         "gradient": {
-          "from": "#688b98",
-          "to": "#4d6b77"
+          "from": "#6b2d1e",
+          "to": "#522116"
         }
       }
     }
@@ -386,16 +386,16 @@
                       "label": "Helper"
                     },
                     {
+                      "value": "team:grimm:errante",
+                      "label": "Wanderer"
+                    },
+                    {
                       "value": "team:grimm:siervo",
                       "label": "Servant"
                     },
                     {
                       "value": "team:grimm:oscuro",
                       "label": "Dark"
-                    },
-                    {
-                      "value": "team:grimm:errante",
-                      "label": "Wanderer"
                     }
                   ]
                 },
@@ -1376,16 +1376,16 @@
                       "label": "Helper"
                     },
                     {
+                      "value": "team:grimm:errante",
+                      "label": "Wanderer"
+                    },
+                    {
                       "value": "team:grimm:siervo",
                       "label": "Servant"
                     },
                     {
                       "value": "team:grimm:oscuro",
                       "label": "Dark"
-                    },
-                    {
-                      "value": "team:grimm:errante",
-                      "label": "Wanderer"
                     }
                   ]
                 },
@@ -1525,7 +1525,7 @@
                     "binding": "actor"
                   }
                 },
-                "reason": "El Pájaro Blanco sobrevivió tras guiar al menos a un Ayudante y un Pueblo."
+                "reason": "El Pájaro Blanco sobrevivió tras guiar al menos a un Ayudante y un Pueblerino."
               }
             ]
           }
@@ -3462,7 +3462,7 @@
       "text": {
         "name": "Hansel and Gretel",
         "tagline": "Pebbles, hunger, and a burning oven: find the way home before the forest devours you.",
-        "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Servant, Dark, and Wanderer teams."
+        "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams."
       },
       "difficulty": {
         "label": "advanced",
@@ -3572,13 +3572,13 @@
           "winner": "good",
           "eliminatedAlignment": "evil",
           "requireAliveAlignment": "good",
-          "reason": "Todos los Oscuros han sido eliminados y queda al menos un Pueblo o Ayudante vivo."
+          "reason": "Todos los Oscuros han sido eliminados y queda al menos un Pueblerino o Ayudante vivo."
         },
         {
           "type": "alignmentElimination",
           "winner": "evil",
           "eliminatedAlignment": "good",
-          "reason": "No queda ningún Pueblo ni Ayudante vivo."
+          "reason": "No queda ningún Pueblerino ni Ayudante vivo."
         }
       ],
       "elements": [],
@@ -3603,15 +3603,15 @@
           },
           "colors": {
             "text": {
-              "onLight": "#7f9d45",
-              "onDark": "#7f9d45"
+              "onLight": "#438b54",
+              "onDark": "#438b54"
             },
-            "surface": "#7f9d45",
-            "border": "#7f9d45",
-            "reminderSurface": "#748f3f",
+            "surface": "#438b54",
+            "border": "#438b54",
+            "reminderSurface": "#3b7b4a",
             "gradient": {
-              "from": "#8aab4b",
-              "to": "#748f3f"
+              "from": "#4c9a5e",
+              "to": "#3b7b4a"
             }
           }
         },
@@ -3633,45 +3633,49 @@
           },
           "colors": {
             "text": {
-              "onLight": "#d19d1f",
-              "onDark": "#d19d1f"
+              "onLight": "#81942d",
+              "onDark": "#81942d"
             },
-            "surface": "#d19d1f",
-            "border": "#d19d1f",
-            "reminderSurface": "#bf901c",
+            "surface": "#81942d",
+            "border": "#81942d",
+            "reminderSurface": "#738429",
             "gradient": {
-              "from": "#dfa926",
-              "to": "#bf901c"
+              "from": "#91a536",
+              "to": "#738429"
             }
           }
         },
         {
-          "teamId": "team:grimm:oscuro",
+          "teamId": "team:grimm:errante",
           "terms": {
-            "singular": "Dark player",
-            "plural": "Dark players"
+            "singular": "Wanderer",
+            "plural": "Wanderers"
           },
           "defaults": {
-            "role": "core",
+            "role": "independent",
             "allegiance": {
-              "default": "evil"
+              "default": "neutral"
             },
             "victory": {
-              "type": "withCurrentAllegiance"
+              "type": "personal",
+              "condition": {
+                "type": "storytellerDecision",
+                "decision": "resolveCharacterPersonalVictory"
+              }
             },
             "assignment": "player"
           },
           "colors": {
             "text": {
-              "onLight": "#a27a51",
-              "onDark": "#a27a51"
+              "onLight": "#947947",
+              "onDark": "#947947"
             },
-            "surface": "#a27a51",
-            "border": "#a27a51",
-            "reminderSurface": "#94704a",
+            "surface": "#947947",
+            "border": "#947947",
+            "reminderSurface": "#836b3f",
             "gradient": {
-              "from": "#ad845b",
-              "to": "#94704a"
+              "from": "#a28852",
+              "to": "#836b3f"
             }
           }
         },
@@ -3706,36 +3710,32 @@
           }
         },
         {
-          "teamId": "team:grimm:errante",
+          "teamId": "team:grimm:oscuro",
           "terms": {
-            "singular": "Wanderer",
-            "plural": "Wanderers"
+            "singular": "Dark player",
+            "plural": "Dark players"
           },
           "defaults": {
-            "role": "independent",
+            "role": "core",
             "allegiance": {
-              "default": "neutral"
+              "default": "evil"
             },
             "victory": {
-              "type": "personal",
-              "condition": {
-                "type": "storytellerDecision",
-                "decision": "resolveCharacterPersonalVictory"
-              }
+              "type": "withCurrentAllegiance"
             },
             "assignment": "player"
           },
           "colors": {
             "text": {
-              "onLight": "#577886",
-              "onDark": "#7fa2af"
+              "onLight": "#5d2618",
+              "onDark": "#5d2618"
             },
-            "surface": "#577886",
-            "border": "#577886",
-            "reminderSurface": "#4d6b77",
+            "surface": "#5d2618",
+            "border": "#5d2618",
+            "reminderSurface": "#522116",
             "gradient": {
-              "from": "#688b98",
-              "to": "#4d6b77"
+              "from": "#6b2d1e",
+              "to": "#522116"
             }
           }
         }
