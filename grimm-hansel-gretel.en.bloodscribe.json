@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.29",
+  "version": "6.43",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
@@ -234,14 +234,14 @@
       },
       "info": {
         "name": "Hansel",
-        "ability": "Each night, choose another player. If an abandonment, poison, or death ability targets them, learn the team of one source."
+        "ability": "Each night, choose another player. If an evil player's ability targets them, learn the team of one source."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 12,
-          "otherOrder": 12
+          "firstOrder": 255,
+          "otherOrder": 135
         },
         "setup": false,
         "reminderTokens": [
@@ -279,23 +279,14 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:hansel-rastreador:tracked-target-information:1",
+            "mechanicId": "mechanic:grimm:hansel-rastreador:tracked-target-choice:1",
             "tags": [
-              "tracked-target-information"
+              "target-tracking-choice"
             ],
             "when": {
               "window": "night",
               "cadence": "each",
-              "startsAt": 1,
-              "trigger": {
-                "type": "event",
-                "event": "storytellerSignal",
-                "where": {
-                  "type": "eventField",
-                  "field": "signal",
-                  "value": "targetedByTaggedMechanic"
-                }
-              }
+              "startsAt": 1
             },
             "input": {
               "kind": "players",
@@ -337,8 +328,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -354,6 +344,116 @@
             ],
             "effects": [
               {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Guijarro blanco",
+                "active": true,
+                "exclusive": {
+                  "scope": "source",
+                  "maxActiveTargets": 1
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "excludeActor": true
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:hansel-rastreador:tracked-target-information:1",
+            "tags": [
+              "tracked-target-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1,
+              "trigger": {
+                "type": "event",
+                "event": "mechanicTargeted",
+                "bindings": {
+                  "actor": "selected",
+                  "selected": "eventSubject"
+                },
+                "where": {
+                  "type": "eventParticipantIdentity",
+                  "participant": "actor",
+                  "identityMode": "registered",
+                  "facet": "allegiance",
+                  "values": [
+                    "evil"
+                  ]
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              },
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "eventSubject"
+                    },
+                    {
+                      "type": "marker",
+                      "markerId": "Guijarro blanco",
+                      "active": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
                 "type": "emitInformation",
                 "value": {
                   "type": "query",
@@ -362,7 +462,7 @@
                   },
                   "where": {
                     "type": "isBinding",
-                    "binding": "source"
+                    "binding": "selected"
                   },
                   "aggregate": {
                     "type": "first"
@@ -405,18 +505,25 @@
                   },
                   "timing": "dawn"
                 },
-                "duration": "tonight",
-                "reminder": "Guijarro blanco",
                 "transform": {
                   "type": "whenSourceAffected",
                   "affectedBy": [
                     "poisoned",
-                    "drunk",
-                    "abandoned"
+                    "drunk"
                   ],
                   "reaction": {
                     "type": "allowArbitraryValue"
                   }
+                }
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Guijarro blanco",
+                "active": false,
+                "targets": {
+                  "type": "binding",
+                  "binding": "eventSubject"
                 }
               }
             ],
@@ -427,12 +534,6 @@
                 "value": 1
               },
               "consumeOn": "resolution"
-            },
-            "presentation": {
-              "nightControl": {
-                "type": "singlePlayer",
-                "excludeActor": true
-              }
             }
           }
         ]
@@ -520,8 +621,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
-                              "abandoned"
+                              "drunk"
                             ],
                             "active": true
                           }
@@ -549,11 +649,10 @@
                         {
                           "type": "identity",
                           "identityMode": "registered",
-                          "facet": "mechanicTags",
+                          "facet": "character",
                           "values": [
-                            "ovenWitch"
-                          ],
-                          "match": "all"
+                            "character:grimm:bruja-horno"
+                          ]
                         }
                       ]
                     },
@@ -591,8 +690,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
-                              "abandoned"
+                              "drunk"
                             ],
                             "active": true
                           }
@@ -622,11 +720,10 @@
                           {
                             "type": "identity",
                             "identityMode": "registered",
-                            "facet": "mechanicTags",
+                            "facet": "character",
                             "values": [
-                              "ovenWitch"
-                            ],
-                            "match": "all"
+                              "character:grimm:bruja-horno"
+                            ]
                           }
                         ]
                       },
@@ -653,7 +750,7 @@
             "presentation": {
               "label": "Gretel accuses",
               "title": "Gretel",
-              "description": "Publicly choose the player you believe has the Oven Witch trait and record the outcome.",
+              "description": "Publicly choose the player you believe is the Oven Witch and record the outcome.",
               "outcomeLabel": "The accusation",
               "outcomes": [
                 {
@@ -669,6 +766,29 @@
                 "actionId": "grimm-oven-guess"
               }
             }
+          },
+          {
+            "mechanicId": "mechanic:grimm:gretel-empujadora:required-character:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:bruja-horno",
+                    "onMissing": "error"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -683,15 +803,15 @@
         }
       },
       "info": {
-        "name": "The Woodcutter",
-        "ability": "Each night, protect a player from abandonment and feeding. On the first day, you cannot speak or vote."
+        "name": "Woodcutter",
+        "ability": "Each night, protect a player. On the first day, you cannot speak or vote; if you speak, you die."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 30,
-          "otherOrder": 30
+          "firstOrder": 385,
+          "otherOrder": 265
         },
         "setup": false,
         "reminderTokens": [
@@ -762,8 +882,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -779,23 +898,43 @@
             ],
             "effects": [
               {
-                "type": "applyMarker",
-                "kind": "reminder",
-                "id": "Protegido",
+                "type": "interceptEvent",
+                "event": "death",
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"
                 },
-                "active": true,
-                "duration": {
-                  "type": "untilWindow",
-                  "window": "dawn"
-                }
-              },
-              {
-                "type": "manualInstruction",
-                "instruction": "Resuelve manualmente esta protección cuando se intente abandonar al objetivo.",
-                "reason": "El abandono no es todavía un evento tipado."
+                "reminder": "Protegido",
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "marker",
+                          "markerId": "Protegido",
+                          "active": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ],
+                "duration": "tonight"
               }
             ],
             "presentation": {
@@ -829,6 +968,118 @@
                 }
               }
             ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:lenador-padre:spoken-death:1",
+            "tags": [
+              "public-day-action"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "grimm-woodcutter-spoke"
+              },
+              {
+                "type": "storytellerDecision",
+                "decision": "woodcutterDiesAfterSpeaking",
+                "options": [
+                  "dies",
+                  "survives"
+                ]
+              },
+              {
+                "type": "death",
+                "cause": "ability",
+                "protection": "normal",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "woodcutterDiesAfterSpeaking"
+                    },
+                    "operator": "eq",
+                    "right": "dies"
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "label": "The Woodcutter has spoken",
+              "title": "The Woodcutter",
+              "description": "The Woodcutter has spoken. What do you want to do?",
+              "decisionPrompts": {
+                "woodcutterDiesAfterSpeaking": {
+                  "question": "Does the Woodcutter die?",
+                  "options": [
+                    {
+                      "value": "dies",
+                      "label": "Yes, they die"
+                    },
+                    {
+                      "value": "survives",
+                      "label": "No, they do not die"
+                    }
+                  ]
+                }
+              },
+              "action": {
+                "actionId": "grimm-woodcutter-spoke"
+              }
+            }
           }
         ]
       },
@@ -844,25 +1095,18 @@
         }
       },
       "info": {
-        "name": "The Starving Mother",
+        "name": "Starving Mother",
         "ability": "Each night, abandon a player other than last night's target. They lose their ability and vote through the following day."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 15,
-          "otherOrder": 15
+          "firstOrder": 325,
+          "otherOrder": 175
         },
         "setup": false,
         "reminderTokens": [
-          {
-            "id": "abandonado",
-            "kind": "state",
-            "value": "abandoned",
-            "label": "Abandoned",
-            "duration": "tonightAndTomorrowDay"
-          },
           {
             "id": "abandono",
             "kind": "reminder",
@@ -900,8 +1144,7 @@
             "mechanicId": "mechanic:grimm:madre-hambrienta:status-choice:1",
             "tags": [
               "status-choice",
-              "abandonment",
-              "starvingMother"
+              "abandonment"
             ],
             "when": {
               "window": "night",
@@ -980,8 +1223,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -996,20 +1238,6 @@
               }
             ],
             "effects": [
-              {
-                "type": "setPlayerState",
-                "state": "abandoned",
-                "targets": {
-                  "type": "binding",
-                  "binding": "selected"
-                },
-                "active": true,
-                "duration": {
-                  "type": "untilWindow",
-                  "window": "dusk",
-                  "count": 1
-                }
-              },
               {
                 "type": "applyMarker",
                 "kind": "reminder",
@@ -1062,15 +1290,15 @@
         }
       },
       "info": {
-        "name": "The Oven Witch",
+        "name": "Oven Witch",
         "ability": "Each night, feed two players. A protected target gains no new mark. A player dies when receiving their third Feeding mark."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 50,
-          "otherOrder": 50
+          "firstOrder": 475,
+          "otherOrder": 565
         },
         "setup": false,
         "reminderTokens": [
@@ -1129,8 +1357,7 @@
             "tags": [
               "cumulative-marker",
               "feeding",
-              "death",
-              "ovenWitch"
+              "death"
             ],
             "when": {
               "window": "night",
@@ -1161,8 +1388,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -1246,15 +1472,15 @@
         }
       },
       "info": {
-        "name": "The White Bird",
+        "name": "White Bird",
         "ability": "Each night, learn a player's team. You win personally if you survive after guiding at least one {{team:grimm:ayudante}} and one {{team:grimm:pueblo}}."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 20,
-          "otherOrder": 20
+          "firstOrder": 565,
+          "otherOrder": 775
         },
         "setup": false,
         "reminderTokens": [
@@ -1327,7 +1553,6 @@
                         "values": [
                           "poisoned",
                           "drunk",
-                          "abandoned",
                           "registration"
                         ],
                         "active": true
@@ -1399,7 +1624,6 @@
                   "affectedBy": [
                     "poisoned",
                     "drunk",
-                    "abandoned",
                     "registration"
                   ],
                   "reaction": {
@@ -1542,7 +1766,7 @@
         }
       },
       "info": {
-        "name": "The River Duck",
+        "name": "River Duck",
         "ability": "Once per game, prevent a voted execution. The saved player is exiled and cannot speak or vote until the next dawn."
       },
       "rules": {
@@ -1636,8 +1860,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
-                              "abandoned"
+                              "drunk"
                             ],
                             "active": true
                           }
@@ -1684,8 +1907,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
-                              "abandoned"
+                              "drunk"
                             ],
                             "active": true
                           }
@@ -1734,8 +1956,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
-                              "abandoned"
+                              "drunk"
                             ],
                             "active": true
                           }
@@ -1781,15 +2002,15 @@
         }
       },
       "info": {
-        "name": "The Rooftop Cat",
+        "name": "Rooftop Cat",
         "ability": "Once per game at night, choose two players. Targeted abilities aimed at either affect the other. You win personally if you survive."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 10,
-          "otherOrder": 10
+          "firstOrder": 5,
+          "otherOrder": 5
         },
         "setup": false,
         "reminderTokens": [
@@ -1868,8 +2089,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -1970,15 +2190,15 @@
         }
       },
       "info": {
-        "name": "The Forest Hunter",
+        "name": "Forest Hunter",
         "ability": "Each night, mark a player. If another player nominates them the next day, you may kill them immediately. Win personally after killing a {{team:grimm:oscuro}} and a {{team:grimm:siervo}} player."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 45,
-          "otherOrder": 45
+          "firstOrder": 425,
+          "otherOrder": 285
         },
         "setup": false,
         "reminderTokens": [
@@ -2049,8 +2269,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -2122,8 +2341,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -2296,15 +2514,15 @@
         }
       },
       "info": {
-        "name": "The Crossroads Crone",
+        "name": "Crossroads Crone",
         "ability": "Each night, protect a player from abandonment. You cannot choose the same player two nights in a row."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 25,
-          "otherOrder": 25
+          "firstOrder": 315,
+          "otherOrder": 165
         },
         "setup": false,
         "reminderTokens": [
@@ -2423,8 +2641,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -2440,23 +2657,51 @@
             ],
             "effects": [
               {
-                "type": "applyMarker",
-                "kind": "reminder",
-                "id": "Provisión",
+                "type": "interceptEvent",
+                "event": "restrictionChange",
+                "match": {
+                  "type": "eventRestriction",
+                  "values": [
+                    "ability",
+                    "vote"
+                  ],
+                  "match": "all"
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"
                 },
-                "active": true,
-                "duration": {
-                  "type": "untilWindow",
-                  "window": "dawn"
-                }
-              },
-              {
-                "type": "manualInstruction",
-                "instruction": "Resuelve manualmente esta protección cuando se intente abandonar o cebar al objetivo.",
-                "reason": "Abandono y cebado no son todavía eventos tipados."
+                "reminder": "Provisión",
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "marker",
+                          "markerId": "Provisión",
+                          "active": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ],
+                "duration": "tonight"
               }
             ],
             "presentation": {
@@ -2478,15 +2723,15 @@
         }
       },
       "info": {
-        "name": "The Fire Spirit",
-        "ability": "Each night, mark a player with fire; their second mark kills them. If a character with the Oven Witch trait dies, you die."
+        "name": "Fire Spirit",
+        "ability": "Each night, mark a player with fire; their second mark kills them. If the Oven Witch dies, you die."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 55,
-          "otherOrder": 55
+          "firstOrder": 485,
+          "otherOrder": 575
         },
         "setup": false,
         "reminderTokens": [
@@ -2568,8 +2813,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -2637,6 +2881,29 @@
             }
           },
           {
+            "mechanicId": "mechanic:grimm:espiritu-fuego:required-character:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:bruja-horno",
+                    "onMissing": "error"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "mechanicId": "mechanic:grimm:espiritu-fuego:linked-death:1",
             "tags": [
               "linked-death"
@@ -2644,11 +2911,18 @@
             "when": {
               "trigger": {
                 "type": "event",
-                "event": "storytellerSignal",
+                "event": "death",
+                "bindings": {
+                  "eventSubject": "selected"
+                },
                 "where": {
-                  "type": "eventField",
-                  "field": "signal",
-                  "value": "linkedCharacterDies"
+                  "type": "eventParticipantIdentity",
+                  "participant": "eventSubject",
+                  "identityMode": "real",
+                  "facet": "character",
+                  "values": [
+                    "character:grimm:bruja-horno"
+                  ]
                 }
               }
             },
@@ -2657,9 +2931,6 @@
               {
                 "cause": "ability",
                 "protection": "normal",
-                "linkedTags": [
-                  "ovenWitch"
-                ],
                 "requiresSourceAlive": true,
                 "type": "death",
                 "targets": {
@@ -2690,15 +2961,15 @@
         }
       },
       "info": {
-        "name": "The Bird Shepherd",
+        "name": "Bird Shepherd",
         "ability": "Each night, choose two players and learn whether they belong to the same team."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 40,
-          "otherOrder": 40
+          "firstOrder": 605,
+          "otherOrder": 845
         },
         "setup": false,
         "reminderTokens": [],
@@ -2762,7 +3033,6 @@
                         "values": [
                           "poisoned",
                           "drunk",
-                          "abandoned",
                           "registration"
                         ],
                         "active": true
@@ -2787,8 +3057,8 @@
                 "presentation": {
                   "kind": "boolean",
                   "title": "Do they belong to the same team?",
-                  "trueLabel": "Same",
-                  "falseLabel": "Different"
+                  "trueLabel": "Yes",
+                  "falseLabel": "No"
                 },
                 "delivery": {
                   "audience": {
@@ -2800,7 +3070,6 @@
                   "affectedBy": [
                     "poisoned",
                     "drunk",
-                    "abandoned",
                     "registration"
                   ],
                   "reaction": {
@@ -2829,7 +3098,7 @@
         }
       },
       "info": {
-        "name": "The Midwife",
+        "name": "Midwife",
         "ability": "Once per game, declare a player innocent. If they are {{team:grimm:pueblo}}, protect them from execution and abandonment; otherwise, you die."
       },
       "rules": {
@@ -2956,7 +3225,6 @@
                             "values": [
                               "poisoned",
                               "drunk",
-                              "abandoned",
                               "registration"
                             ],
                             "active": true
@@ -3024,7 +3292,6 @@
                             "values": [
                               "poisoned",
                               "drunk",
-                              "abandoned",
                               "registration"
                             ],
                             "active": true
@@ -3129,8 +3396,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -3169,9 +3435,36 @@
                 "duration": "tonightAndTomorrowDay"
               },
               {
-                "type": "manualInstruction",
-                "instruction": "Aplica manualmente la protección frente al abandono.",
-                "reason": "El abandono no es aún un evento tipado."
+                "type": "interceptEvent",
+                "event": "restrictionChange",
+                "match": {
+                  "type": "eventRestriction",
+                  "values": [
+                    "ability",
+                    "vote"
+                  ],
+                  "match": "all"
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Inocente",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "reminder": "Inocente",
+                "duration": "tonightAndTomorrowDay"
               }
             ]
           }
@@ -3188,15 +3481,15 @@
         }
       },
       "info": {
-        "name": "The Crow of the Last Loaves",
+        "name": "Crow of the Last Loaves",
         "ability": "Each night, mark a player with Hunger. When they receive their second mark, they cannot use their ability the following day. If the Starving Mother is dead, you lose this ability; existing marks remain."
       },
       "rules": {
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 24,
-          "otherOrder": 24
+          "firstOrder": 345,
+          "otherOrder": 185
         },
         "setup": false,
         "reminderTokens": [
@@ -3255,8 +3548,7 @@
             "tags": [
               "cumulative-marker",
               "hunger",
-              "ability-restriction",
-              "starvingMotherServant"
+              "ability-restriction"
             ],
             "when": {
               "window": "night",
@@ -3278,11 +3570,10 @@
                       {
                         "type": "identity",
                         "identityMode": "real",
-                        "facet": "mechanicTags",
+                        "facet": "character",
                         "values": [
-                          "starvingMother"
-                        ],
-                        "match": "all"
+                          "character:grimm:madre-hambrienta"
+                        ]
                       }
                     ]
                   },
@@ -3316,8 +3607,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "abandoned"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -3345,11 +3635,10 @@
                     {
                       "type": "identity",
                       "identityMode": "real",
-                      "facet": "mechanicTags",
+                      "facet": "character",
                       "values": [
-                        "starvingMother"
-                      ],
-                      "match": "all"
+                        "character:grimm:madre-hambrienta"
+                      ]
                     }
                   ]
                 },
@@ -3377,11 +3666,10 @@
                         {
                           "type": "identity",
                           "identityMode": "real",
-                          "facet": "mechanicTags",
+                          "facet": "character",
                           "values": [
-                            "starvingMother"
-                          ],
-                          "match": "all"
+                            "character:grimm:madre-hambrienta"
+                          ]
                         }
                       ]
                     },
@@ -3445,6 +3733,29 @@
                 "type": "singlePlayer"
               }
             }
+          },
+          {
+            "mechanicId": "mechanic:grimm:cuervo-pocos-panes:required-character:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:madre-hambrienta",
+                    "onMissing": "error"
+                  }
+                ]
+              }
+            ]
           },
           {
             "mechanicId": "mechanic:grimm:cuervo-pocos-panes:ability-restriction:1",
@@ -3580,28 +3891,28 @@
         "first": [
           "character:grimm:gato-tejado",
           "character:grimm:hansel-rastreador",
+          "character:grimm:anciana-caminos",
           "character:grimm:madre-hambrienta",
           "character:grimm:cuervo-pocos-panes",
-          "character:grimm:pajaro-blanco",
-          "character:grimm:anciana-caminos",
           "character:grimm:lenador-padre",
-          "character:grimm:pastor-aves",
           "character:grimm:cazador-bosque",
           "character:grimm:bruja-horno",
-          "character:grimm:espiritu-fuego"
+          "character:grimm:espiritu-fuego",
+          "character:grimm:pajaro-blanco",
+          "character:grimm:pastor-aves"
         ],
         "other": [
           "character:grimm:gato-tejado",
           "character:grimm:hansel-rastreador",
+          "character:grimm:anciana-caminos",
           "character:grimm:madre-hambrienta",
           "character:grimm:cuervo-pocos-panes",
-          "character:grimm:pajaro-blanco",
-          "character:grimm:anciana-caminos",
           "character:grimm:lenador-padre",
-          "character:grimm:pastor-aves",
           "character:grimm:cazador-bosque",
           "character:grimm:bruja-horno",
-          "character:grimm:espiritu-fuego"
+          "character:grimm:espiritu-fuego",
+          "character:grimm:pajaro-blanco",
+          "character:grimm:pastor-aves"
         ]
       },
       "nightInstructions": {
