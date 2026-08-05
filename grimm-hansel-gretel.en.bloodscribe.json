@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.23",
+  "version": "6.24",
   "locale": "en",
   "name": "Hansel and Gretel",
-  "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions.",
+  "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Servant, Dark, and Wanderer teams.",
   "legal": {
     "license": "Based on Hansel and Gretel by the Brothers Grimm (public domain).",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:hansel-y-gretel",
       "name": "Hansel and Gretel",
-      "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions.",
+      "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Servant, Dark, and Wanderer teams.",
       "collection": {
         "id": "collection:grimm",
         "name": "Brothers Grimm",
@@ -54,14 +54,16 @@
         "character:grimm:anciana-caminos",
         "character:grimm:espiritu-fuego",
         "character:grimm:pastor-aves",
-        "character:grimm:comadrona-corte"
+        "character:grimm:comadrona-corte",
+        "character:grimm:cuervo-pocos-panes"
       ],
       "gameRuleIds": [],
       "teamIds": [
         "team:grimm:pueblo",
-        "team:grimm:corte",
-        "team:grimm:bosque",
-        "team:grimm:maldito"
+        "team:grimm:ayudante",
+        "team:grimm:oscuro",
+        "team:grimm:siervo",
+        "team:grimm:errante"
       ]
     }
   ],
@@ -97,10 +99,10 @@
       }
     },
     {
-      "teamId": "team:grimm:corte",
+      "teamId": "team:grimm:ayudante",
       "terms": {
-        "singular": "Court player",
-        "plural": "Court players"
+        "singular": "Helper",
+        "plural": "Helpers"
       },
       "defaults": {
         "role": "support",
@@ -127,13 +129,13 @@
       }
     },
     {
-      "teamId": "team:grimm:bosque",
+      "teamId": "team:grimm:oscuro",
       "terms": {
-        "singular": "Forest player",
-        "plural": "Forest players"
+        "singular": "Dark player",
+        "plural": "Dark players"
       },
       "defaults": {
-        "role": "support",
+        "role": "core",
         "allegiance": {
           "default": "evil"
         },
@@ -157,13 +159,13 @@
       }
     },
     {
-      "teamId": "team:grimm:maldito",
+      "teamId": "team:grimm:siervo",
       "terms": {
-        "singular": "Cursed player",
-        "plural": "Cursed players"
+        "singular": "Servant",
+        "plural": "Servants"
       },
       "defaults": {
-        "role": "core",
+        "role": "support",
         "allegiance": {
           "default": "evil"
         },
@@ -185,6 +187,40 @@
           "to": "#993e37"
         }
       }
+    },
+    {
+      "teamId": "team:grimm:errante",
+      "terms": {
+        "singular": "Wanderer",
+        "plural": "Wanderers"
+      },
+      "defaults": {
+        "role": "independent",
+        "allegiance": {
+          "default": "neutral"
+        },
+        "victory": {
+          "type": "personal",
+          "condition": {
+            "type": "storytellerDecision",
+            "decision": "resolveCharacterPersonalVictory"
+          }
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#577886",
+          "onDark": "#7fa2af"
+        },
+        "surface": "#577886",
+        "border": "#577886",
+        "reminderSurface": "#4d6b77",
+        "gradient": {
+          "from": "#688b98",
+          "to": "#4d6b77"
+        }
+      }
     }
   ],
   "characters": [
@@ -198,7 +234,7 @@
       },
       "info": {
         "name": "Hansel",
-        "ability": "Each night, choose another player. If an abandonment, poison, or death ability targets them, learn the faction of one source."
+        "ability": "Each night, choose another player. If an abandonment, poison, or death ability targets them, learn the team of one source."
       },
       "rules": {
         "wake": {
@@ -238,7 +274,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Hansel chooses another player and receives any pending source-faction information at dawn."
+            "body": "Hansel chooses another player and receives any pending source-team information at dawn."
           }
         ],
         "mechanics": [
@@ -339,23 +375,27 @@
                 },
                 "presentation": {
                   "kind": "identity",
-                  "title": "Source faction",
+                  "title": "Source team",
                   "options": [
                     {
                       "value": "team:grimm:pueblo",
                       "label": "Village"
                     },
                     {
-                      "value": "team:grimm:corte",
-                      "label": "Court"
+                      "value": "team:grimm:ayudante",
+                      "label": "Helper"
                     },
                     {
-                      "value": "team:grimm:bosque",
-                      "label": "Forest"
+                      "value": "team:grimm:siervo",
+                      "label": "Servant"
                     },
                     {
-                      "value": "team:grimm:maldito",
-                      "label": "Cursed"
+                      "value": "team:grimm:oscuro",
+                      "label": "Dark"
+                    },
+                    {
+                      "value": "team:grimm:errante",
+                      "label": "Wanderer"
                     }
                   ]
                 },
@@ -754,8 +794,8 @@
               },
               {
                 "type": "manualInstruction",
-                "instruction": "Resuelve manualmente esta protección cuando se intente abandonar o cebar al objetivo.",
-                "reason": "Abandono y cebado no son todavía eventos tipados."
+                "instruction": "Resuelve manualmente esta protección cuando se intente abandonar al objetivo.",
+                "reason": "El abandono no es todavía un evento tipado."
               }
             ],
             "presentation": {
@@ -796,16 +836,16 @@
     },
     {
       "id": "character:grimm:madre-hambrienta",
-      "teamId": "team:grimm:corte",
+      "teamId": "team:grimm:oscuro",
       "gameplay": {
-        "role": "support",
+        "role": "core",
         "allegiance": {
           "default": "evil"
         }
       },
       "info": {
         "name": "The Starving Mother",
-        "ability": "Each night, abandon a player other than last night's target. They lose their ability, speech, and vote through the following day."
+        "ability": "Each night, abandon a player other than last night's target. They lose their ability and vote through the following day."
       },
       "rules": {
         "wake": {
@@ -860,7 +900,8 @@
             "mechanicId": "mechanic:grimm:madre-hambrienta:status-choice:1",
             "tags": [
               "status-choice",
-              "abandonment"
+              "abandonment",
+              "starvingMother"
             ],
             "when": {
               "window": "night",
@@ -992,7 +1033,6 @@
                 },
                 "restrictions": [
                   "ability",
-                  "speak",
                   "vote"
                 ],
                 "duration": {
@@ -1014,9 +1054,9 @@
     },
     {
       "id": "character:grimm:bruja-horno",
-      "teamId": "team:grimm:bosque",
+      "teamId": "team:grimm:oscuro",
       "gameplay": {
-        "role": "support",
+        "role": "core",
         "allegiance": {
           "default": "evil"
         }
@@ -1199,7 +1239,7 @@
     },
     {
       "id": "character:grimm:pajaro-blanco",
-      "teamId": "team:grimm:bosque",
+      "teamId": "team:grimm:errante",
       "gameplay": {
         "allegiance": {
           "default": "neutral"
@@ -1207,7 +1247,7 @@
       },
       "info": {
         "name": "The White Bird",
-        "ability": "Each night, learn a player's faction. You win personally if you survive after guiding at least one {{team:grimm:pueblo}} and one {{team:grimm:bosque}}."
+        "ability": "Each night, learn a player's team. You win personally if you survive after guiding at least one {{team:grimm:ayudante}} and one {{team:grimm:pueblo}}."
       },
       "rules": {
         "wake": {
@@ -1237,7 +1277,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "The White Bird chooses a player and learns their faction."
+            "body": "The White Bird chooses a player and learns their team."
           },
           {
             "when": {
@@ -1248,7 +1288,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "The White Bird chooses a player and learns their faction."
+            "body": "The White Bird chooses a player and learns their team."
           }
         ],
         "mechanics": [
@@ -1325,23 +1365,27 @@
                 },
                 "presentation": {
                   "kind": "identity",
-                  "title": "Player faction",
+                  "title": "Player team",
                   "options": [
                     {
                       "value": "team:grimm:pueblo",
                       "label": "Village"
                     },
                     {
-                      "value": "team:grimm:corte",
-                      "label": "Court"
+                      "value": "team:grimm:ayudante",
+                      "label": "Helper"
                     },
                     {
-                      "value": "team:grimm:bosque",
-                      "label": "Forest"
+                      "value": "team:grimm:siervo",
+                      "label": "Servant"
                     },
                     {
-                      "value": "team:grimm:maldito",
-                      "label": "Cursed"
+                      "value": "team:grimm:oscuro",
+                      "label": "Dark"
+                    },
+                    {
+                      "value": "team:grimm:errante",
+                      "label": "Wanderer"
                     }
                   ]
                 },
@@ -1394,18 +1438,96 @@
             },
             "conditions": [
               {
-                "type": "storytellerDecision",
-                "decision": "survivesAndObservedTeams"
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "actor"
+                    },
+                    {
+                      "type": "alive",
+                      "value": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              },
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "marker",
+                      "markerId": "Guiado",
+                      "active": true
+                    },
+                    {
+                      "type": "identity",
+                      "identityMode": "real",
+                      "facet": "teamId",
+                      "values": [
+                        "team:grimm:ayudante"
+                      ]
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              },
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "marker",
+                      "markerId": "Guiado",
+                      "active": true
+                    },
+                    {
+                      "type": "identity",
+                      "identityMode": "real",
+                      "facet": "teamId",
+                      "values": [
+                        "team:grimm:pueblo"
+                      ]
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
               }
             ],
             "effects": [
               {
-                "type": "manualInstruction",
-                "instruction": "Comprueba manualmente que el Pájaro Blanco siga vivo y haya observado personajes de ambos equipos requeridos.",
-                "reason": "La atribución histórica de observaciones aún requiere decisión del Narrador."
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "personal",
+                  "players": {
+                    "type": "binding",
+                    "binding": "actor"
+                  }
+                },
+                "reason": "El Pájaro Blanco sobrevivió tras guiar al menos a un Ayudante y un Pueblo."
               }
-            ],
-            "requiresManualModeling": true
+            ]
           }
         ]
       },
@@ -1413,7 +1535,7 @@
     },
     {
       "id": "character:grimm:pato-rio",
-      "teamId": "team:grimm:bosque",
+      "teamId": "team:grimm:ayudante",
       "gameplay": {
         "allegiance": {
           "default": "good"
@@ -1652,7 +1774,7 @@
     },
     {
       "id": "character:grimm:gato-tejado",
-      "teamId": "team:grimm:bosque",
+      "teamId": "team:grimm:errante",
       "gameplay": {
         "allegiance": {
           "default": "neutral"
@@ -1841,7 +1963,7 @@
     },
     {
       "id": "character:grimm:cazador-bosque",
-      "teamId": "team:grimm:bosque",
+      "teamId": "team:grimm:errante",
       "gameplay": {
         "allegiance": {
           "default": "neutral"
@@ -1849,7 +1971,7 @@
       },
       "info": {
         "name": "The Forest Hunter",
-        "ability": "Each night, mark a player. If they are nominated the next day, you may kill them immediately. Win personally after killing a {{team:grimm:bosque}} and a {{team:grimm:corte}}."
+        "ability": "Each night, mark a player. If they are nominated the next day, you may kill them immediately. Win personally after killing a {{team:grimm:oscuro}} and a {{team:grimm:siervo}} player."
       },
       "rules": {
         "wake": {
@@ -2089,7 +2211,7 @@
                       "identityMode": "real",
                       "facet": "teamId",
                       "values": [
-                        "team:grimm:bosque"
+                        "team:grimm:oscuro"
                       ]
                     }
                   ]
@@ -2123,7 +2245,7 @@
                       "identityMode": "real",
                       "facet": "teamId",
                       "values": [
-                        "team:grimm:corte"
+                        "team:grimm:siervo"
                       ]
                     }
                   ]
@@ -2336,7 +2458,7 @@
     },
     {
       "id": "character:grimm:espiritu-fuego",
-      "teamId": "team:grimm:maldito",
+      "teamId": "team:grimm:siervo",
       "gameplay": {
         "allegiance": {
           "default": "evil"
@@ -2556,7 +2678,7 @@
       },
       "info": {
         "name": "The Bird Shepherd",
-        "ability": "Each night, choose two players and learn whether they belong to the same faction."
+        "ability": "Each night, choose two players and learn whether they belong to the same team."
       },
       "rules": {
         "wake": {
@@ -2651,7 +2773,7 @@
                 },
                 "presentation": {
                   "kind": "boolean",
-                  "title": "Do they belong to the same faction?",
+                  "title": "Do they belong to the same team?",
                   "trueLabel": "Same",
                   "falseLabel": "Different"
                 },
@@ -2686,7 +2808,7 @@
     },
     {
       "id": "character:grimm:comadrona-corte",
-      "teamId": "team:grimm:corte",
+      "teamId": "team:grimm:ayudante",
       "gameplay": {
         "role": "support",
         "allegiance": {
@@ -3043,6 +3165,281 @@
         ]
       },
       "links": []
+    },
+    {
+      "id": "character:grimm:cuervo-pocos-panes",
+      "teamId": "team:grimm:siervo",
+      "gameplay": {
+        "allegiance": {
+          "default": "evil"
+        }
+      },
+      "info": {
+        "name": "The Crow of the Last Loaves",
+        "ability": "Each night, mark a player with Hunger. When they receive their second mark, they cannot use their ability the following day. If the Starving Mother is dead, you lose this ability; existing marks remain."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 24,
+          "otherOrder": 24
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "hambre_1",
+            "kind": "reminder",
+            "value": "Hambre 1",
+            "label": "Hunger 1",
+            "duration": "game",
+            "count": 14
+          },
+          {
+            "id": "hambre_2",
+            "kind": "reminder",
+            "value": "Hambre 2",
+            "label": "Hunger 2",
+            "duration": "game",
+            "count": 14
+          },
+          {
+            "id": "hambriento",
+            "kind": "reminder",
+            "value": "Hambriento",
+            "label": "Hungry",
+            "duration": "tomorrowDay",
+            "count": 14
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Crow chooses a player and advances their Hunger mark."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "If the Starving Mother lives, the Crow chooses a player and advances their Hunger mark."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:cuervo-pocos-panes:cumulative-hunger:1",
+            "tags": [
+              "cumulative-marker",
+              "hunger",
+              "ability-restriction",
+              "starvingMotherServant"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              },
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "identity",
+                      "identityMode": "real",
+                      "facet": "mechanicTags",
+                      "values": [
+                        "starvingMother"
+                      ],
+                      "match": "all"
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "adjustCounter",
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "alive",
+                          "value": true
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "real",
+                          "facet": "mechanicTags",
+                          "values": [
+                            "starvingMother"
+                          ],
+                          "match": "all"
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ],
+                "counter": "hunger-progress",
+                "delta": 1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 2
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Hambre 1"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Hambre 2"
+                    }
+                  ]
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 2,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "applyMarker",
+                    "kind": "reminder",
+                    "id": "Hambriento",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "effectTarget"
+                    },
+                    "active": true,
+                    "duration": {
+                      "type": "untilWindow",
+                      "window": "dusk",
+                      "count": 1
+                    }
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:cuervo-pocos-panes:ability-restriction:1",
+            "tags": [
+              "ability-restriction"
+            ],
+            "when": {
+              "stage": "whileReminderActive"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "restrict",
+                "reminder": "Hambriento",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Hambriento",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "restrictions": [
+                  "ability"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "links": []
     }
   ],
   "gameRules": [],
@@ -3065,7 +3462,7 @@
       "text": {
         "name": "Hansel and Gretel",
         "tagline": "Pebbles, hunger, and a burning oven: find the way home before the forest devours you.",
-        "description": "A playable adaptation of Hansel and Gretel with Village, Court, Forest, and Cursed factions."
+        "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Servant, Dark, and Wanderer teams."
       },
       "difficulty": {
         "label": "advanced",
@@ -3081,28 +3478,60 @@
       "gameRuleBindings": [],
       "recommendedCounts": {
         "7": {
+          "townsfolk": 3,
+          "outsider": 1,
+          "minion": 0,
+          "demon": 2,
+          "independent": 1
+        },
+        "8": {
+          "townsfolk": 3,
+          "outsider": 1,
+          "minion": 1,
+          "demon": 2,
+          "independent": 1
+        },
+        "9": {
+          "townsfolk": 3,
+          "outsider": 1,
+          "minion": 1,
+          "demon": 2,
+          "independent": 2
+        },
+        "10": {
           "townsfolk": 4,
           "outsider": 1,
           "minion": 1,
-          "demon": 1
+          "demon": 2,
+          "independent": 2
         },
-        "9": {
+        "11": {
+          "townsfolk": 4,
+          "outsider": 1,
+          "minion": 2,
+          "demon": 2,
+          "independent": 2
+        },
+        "12": {
           "townsfolk": 5,
           "outsider": 1,
           "minion": 2,
-          "demon": 1
-        },
-        "11": {
-          "townsfolk": 5,
-          "outsider": 2,
-          "minion": 3,
-          "demon": 1
+          "demon": 2,
+          "independent": 2
         },
         "13": {
           "townsfolk": 5,
           "outsider": 2,
-          "minion": 5,
-          "demon": 1
+          "minion": 2,
+          "demon": 2,
+          "independent": 2
+        },
+        "14": {
+          "townsfolk": 5,
+          "outsider": 2,
+          "minion": 2,
+          "demon": 2,
+          "independent": 3
         }
       },
       "nightOrder": {
@@ -3110,6 +3539,7 @@
           "character:grimm:gato-tejado",
           "character:grimm:hansel-rastreador",
           "character:grimm:madre-hambrienta",
+          "character:grimm:cuervo-pocos-panes",
           "character:grimm:pajaro-blanco",
           "character:grimm:anciana-caminos",
           "character:grimm:lenador-padre",
@@ -3122,6 +3552,7 @@
           "character:grimm:gato-tejado",
           "character:grimm:hansel-rastreador",
           "character:grimm:madre-hambrienta",
+          "character:grimm:cuervo-pocos-panes",
           "character:grimm:pajaro-blanco",
           "character:grimm:anciana-caminos",
           "character:grimm:lenador-padre",
@@ -3141,13 +3572,13 @@
           "winner": "good",
           "eliminatedAlignment": "evil",
           "requireAliveAlignment": "good",
-          "reason": "Todos los personajes oscuros han sido eliminados y queda al menos un personaje bueno vivo."
+          "reason": "Todos los Oscuros han sido eliminados y queda al menos un Pueblo o Ayudante vivo."
         },
         {
           "type": "alignmentElimination",
           "winner": "evil",
           "eliminatedAlignment": "good",
-          "reason": "No queda ningún personaje bueno vivo."
+          "reason": "No queda ningún Pueblo ni Ayudante vivo."
         }
       ],
       "elements": [],
@@ -3185,10 +3616,10 @@
           }
         },
         {
-          "teamId": "team:grimm:corte",
+          "teamId": "team:grimm:ayudante",
           "terms": {
-            "singular": "Court player",
-            "plural": "Court players"
+            "singular": "Helper",
+            "plural": "Helpers"
           },
           "defaults": {
             "role": "support",
@@ -3215,13 +3646,13 @@
           }
         },
         {
-          "teamId": "team:grimm:bosque",
+          "teamId": "team:grimm:oscuro",
           "terms": {
-            "singular": "Forest player",
-            "plural": "Forest players"
+            "singular": "Dark player",
+            "plural": "Dark players"
           },
           "defaults": {
-            "role": "support",
+            "role": "core",
             "allegiance": {
               "default": "evil"
             },
@@ -3245,13 +3676,13 @@
           }
         },
         {
-          "teamId": "team:grimm:maldito",
+          "teamId": "team:grimm:siervo",
           "terms": {
-            "singular": "Cursed player",
-            "plural": "Cursed players"
+            "singular": "Servant",
+            "plural": "Servants"
           },
           "defaults": {
-            "role": "core",
+            "role": "support",
             "allegiance": {
               "default": "evil"
             },
@@ -3273,6 +3704,40 @@
               "to": "#993e37"
             }
           }
+        },
+        {
+          "teamId": "team:grimm:errante",
+          "terms": {
+            "singular": "Wanderer",
+            "plural": "Wanderers"
+          },
+          "defaults": {
+            "role": "independent",
+            "allegiance": {
+              "default": "neutral"
+            },
+            "victory": {
+              "type": "personal",
+              "condition": {
+                "type": "storytellerDecision",
+                "decision": "resolveCharacterPersonalVictory"
+              }
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#577886",
+              "onDark": "#7fa2af"
+            },
+            "surface": "#577886",
+            "border": "#577886",
+            "reminderSurface": "#4d6b77",
+            "gradient": {
+              "from": "#688b98",
+              "to": "#4d6b77"
+            }
+          }
         }
       ],
       "characterIds": [
@@ -3288,7 +3753,8 @@
         "character:grimm:anciana-caminos",
         "character:grimm:espiritu-fuego",
         "character:grimm:pastor-aves",
-        "character:grimm:comadrona-corte"
+        "character:grimm:comadrona-corte",
+        "character:grimm:cuervo-pocos-panes"
       ]
     }
   ]
