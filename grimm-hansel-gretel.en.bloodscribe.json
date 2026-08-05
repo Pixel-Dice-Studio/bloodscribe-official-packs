@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.25",
+  "version": "6.29",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
@@ -1971,7 +1971,7 @@
       },
       "info": {
         "name": "The Forest Hunter",
-        "ability": "Each night, mark a player. If they are nominated the next day, you may kill them immediately. Win personally after killing a {{team:grimm:oscuro}} and a {{team:grimm:siervo}} player."
+        "ability": "Each night, mark a player. If another player nominates them the next day, you may kill them immediately. Win personally after killing a {{team:grimm:oscuro}} and a {{team:grimm:siervo}} player."
       },
       "rules": {
         "wake": {
@@ -2135,6 +2135,18 @@
                 },
                 "operator": "eq",
                 "right": false
+              },
+              {
+                "type": "compare",
+                "left": {
+                  "type": "binding",
+                  "binding": "nominator"
+                },
+                "operator": "neq",
+                "right": {
+                  "type": "binding",
+                  "binding": "actor"
+                }
               }
             ],
             "effects": [
@@ -2145,6 +2157,7 @@
                 "requiresSourceAlive": true,
                 "consumeTargetReminder": true,
                 "continuesNomination": false,
+                "optional": true,
                 "type": "death",
                 "targets": {
                   "type": "query",
@@ -2171,9 +2184,9 @@
               "consumeOn": "resolution"
             },
             "presentation": {
-              "description": "{characterName}: {playerName} was nominated and may die immediately.",
-              "deathLabel": "The Hunter kills",
-              "survivalLabel": "The Hunter holds fire"
+              "description": "Another player nominated {playerName}. Ask the Hunter whether they want that player to die.",
+              "deathLabel": "Yes, they die",
+              "survivalLabel": "No, they survive"
             }
           },
           {
@@ -3248,7 +3261,36 @@
             "when": {
               "window": "night",
               "cadence": "each",
-              "startsAt": 1
+              "startsAt": 1,
+              "activeWhen": [
+                {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "alive",
+                        "value": true
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "real",
+                        "facet": "mechanicTags",
+                        "values": [
+                          "starvingMother"
+                        ],
+                        "match": "all"
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                }
+              ]
             },
             "input": {
               "kind": "players",

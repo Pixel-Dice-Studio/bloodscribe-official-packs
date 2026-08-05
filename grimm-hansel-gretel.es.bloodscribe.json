@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.25",
+  "version": "6.29",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -1977,7 +1977,7 @@
       },
       "info": {
         "name": "El Cazador del Bosque",
-        "ability": "Cada noche marcas a un jugador. Si es nominado al día siguiente, puedes matarlo de inmediato. Ganas al matar a un {{team:grimm:oscuro}} y un {{team:grimm:siervo}}."
+        "ability": "Cada noche marcas a un jugador. Si otro jugador lo nomina al día siguiente, puedes matarlo de inmediato. Ganas al matar a un {{team:grimm:oscuro}} y un {{team:grimm:siervo}}."
       },
       "rules": {
         "wake": {
@@ -2142,6 +2142,18 @@
                 },
                 "operator": "eq",
                 "right": false
+              },
+              {
+                "type": "compare",
+                "left": {
+                  "type": "binding",
+                  "binding": "nominator"
+                },
+                "operator": "neq",
+                "right": {
+                  "type": "binding",
+                  "binding": "actor"
+                }
               }
             ],
             "effects": [
@@ -2152,6 +2164,7 @@
                 "requiresSourceAlive": true,
                 "consumeTargetReminder": true,
                 "continuesNomination": false,
+                "optional": true,
                 "type": "death",
                 "targets": {
                   "type": "query",
@@ -2178,9 +2191,9 @@
               "consumeOn": "resolution"
             },
             "presentation": {
-              "description": "{characterName}: {playerName} fue nominado y puede morir de inmediato.",
-              "deathLabel": "El Cazador mata",
-              "survivalLabel": "El Cazador no dispara"
+              "description": "Otro jugador ha nominado a {playerName}. Pregunta al Cazador si quiere que muera.",
+              "deathLabel": "Sí, que muera",
+              "survivalLabel": "No, que sobreviva"
             }
           },
           {
@@ -3258,7 +3271,36 @@
             "when": {
               "window": "night",
               "cadence": "each",
-              "startsAt": 1
+              "startsAt": 1,
+              "activeWhen": [
+                {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "alive",
+                        "value": true
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "real",
+                        "facet": "mechanicTags",
+                        "values": [
+                          "starvingMother"
+                        ],
+                        "match": "all"
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                }
+              ]
             },
             "input": {
               "kind": "players",
