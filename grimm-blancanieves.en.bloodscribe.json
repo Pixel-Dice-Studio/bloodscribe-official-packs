@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "7.0",
+  "version": "7.5",
   "locale": "en",
   "name": "Snow White",
   "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
@@ -562,7 +562,7 @@
       "info": {
         "name": "Prince",
         "ability": "Once per game at night, you may return a dead player to life.",
-        "lore": "He finds Snow White lying uncorrupted in a glass coffin and begs the dwarfs to give it to him. When his {{team:grimm:siervo|plural}} stumble while carrying it, the piece of apple leaves her throat, and the Prince celebrates his wedding with her."
+        "lore": "A prince from the Grimms' tales who recognizes a young woman cast aside by those around her and restores her to public life. In Snow White he receives the glass coffin and his {{team:grimm:siervo|plural}}' stumble frees the piece of apple; in Cinderella he keeps the golden slipper and rejects the false brides when he discovers their blood."
       },
       "rules": {
         "wake": {
@@ -879,6 +879,29 @@
                 "type": "twoPlayers"
               }
             }
+          },
+          {
+            "mechanicId": "mechanic:grimm:reina-madrastra:required-character:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:enano-bonachon",
+                    "onMissing": "error"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -1887,6 +1910,29 @@
                 "type": "singlePlayer"
               }
             }
+          },
+          {
+            "mechanicId": "mechanic:grimm:enano-bonachon:required-character:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:reina-madrastra",
+                    "onMissing": "error"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },

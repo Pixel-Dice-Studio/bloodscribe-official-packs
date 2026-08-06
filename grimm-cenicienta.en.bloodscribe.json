@@ -1,0 +1,2774 @@
+{
+  "schemaVersion": "bloodscribe-v2",
+  "id": "grimm:grimm-cenicienta",
+  "key": "grimm-cenicienta",
+  "version": "7.5",
+  "locale": "en",
+  "name": "Cinderella",
+  "description": "After her mother's death, a young woman is subjected to the cruelty of her stepmother and two stepsisters, who make her sleep by the hearth and pick lentils from the ashes. A hazel-tree grows upon her mother's grave and shelters a white bird; aided by the birds, Cinderella secretly attends the King's three-day festival and dances with the Prince. A staircase smeared with pitch keeps hold of her golden slipper. The stepsisters mutilate their feet to claim it, but blood and the pigeons expose the deception; the Prince recognizes Cinderella, and the birds punish her sisters' falsehood for the rest of their lives.",
+  "legal": {
+    "license": "Based on Cinderella (Aschenputtel, KHM 21) by the Brothers Grimm. Text and lore adapted from the 1812 German edition and Margaret Hunt's 1884 public-domain English translation.",
+    "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
+  },
+  "links": [],
+  "popularity": {
+    "capturedAt": "2026-06-11",
+    "note": "Snapshot of the public role vote ordering, from most liked to least liked. The endpoint exposes ordering, not aggregate vote counts.",
+    "roles": {}
+  },
+  "books": [
+    {
+      "id": "book:grimm:cenicienta",
+      "name": "Cinderella",
+      "description": "After her mother's death, a young woman is subjected to the cruelty of her stepmother and two stepsisters, who make her sleep by the hearth and pick lentils from the ashes. A hazel-tree grows upon her mother's grave and shelters a white bird; aided by the birds, Cinderella secretly attends the King's three-day festival and dances with the Prince. A staircase smeared with pitch keeps hold of her golden slipper. The stepsisters mutilate their feet to claim it, but blood and the pigeons expose the deception; the Prince recognizes Cinderella, and the birds punish her sisters' falsehood for the rest of their lives.",
+      "collection": {
+        "id": "collection:grimm",
+        "name": "Brothers Grimm",
+        "description": "Collection of tales and characters inspired by the Brothers Grimm."
+      },
+      "origin": "official",
+      "presentation": {
+        "palette": {
+          "cover": "#514944",
+          "spine": "#302b29",
+          "paper": "#eee2ca",
+          "ink": "#2b211c",
+          "accent": "#b88a39"
+        },
+        "material": "cloth",
+        "format": "large"
+      },
+      "taleIds": [
+        "tale:grimm:grimm-cenicienta"
+      ],
+      "characterIds": [
+        "character:grimm:cenicienta",
+        "character:grimm:principe",
+        "character:grimm:rey-banquete",
+        "character:grimm:pregonero-reino",
+        "character:grimm:pajarito-avellano",
+        "character:grimm:mensajero-rey",
+        "character:grimm:cocinera",
+        "character:grimm:maestro-ceremonias",
+        "character:grimm:guardia-palacio",
+        "character:grimm:paje-banquete",
+        "character:grimm:madrastra",
+        "character:grimm:hermanastra-dedo",
+        "character:grimm:hermanastra-talon",
+        "character:grimm:padre",
+        "character:grimm:musico-banquete"
+      ],
+      "gameRuleIds": [],
+      "teamIds": [
+        "team:grimm:pueblo",
+        "team:grimm:ayudante",
+        "team:grimm:errante",
+        "team:grimm:siervo",
+        "team:grimm:oscuro"
+      ]
+    }
+  ],
+  "teams": [
+    {
+      "teamId": "team:grimm:pueblo",
+      "terms": {
+        "singular": "Village player",
+        "plural": "Village players"
+      },
+      "defaults": {
+        "role": "core",
+        "allegiance": {
+          "default": "good"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#438b54",
+          "onDark": "#438b54"
+        },
+        "surface": "#438b54",
+        "border": "#438b54",
+        "reminderSurface": "#3b7b4a",
+        "gradient": {
+          "from": "#4c9a5e",
+          "to": "#3b7b4a"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:ayudante",
+      "terms": {
+        "singular": "Helper",
+        "plural": "Helpers"
+      },
+      "defaults": {
+        "role": "support",
+        "allegiance": {
+          "default": "good"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#81942d",
+          "onDark": "#81942d"
+        },
+        "surface": "#81942d",
+        "border": "#81942d",
+        "reminderSurface": "#738429",
+        "gradient": {
+          "from": "#91a536",
+          "to": "#738429"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:errante",
+      "terms": {
+        "singular": "Wanderer",
+        "plural": "Wanderers"
+      },
+      "defaults": {
+        "role": "independent",
+        "allegiance": {
+          "default": "neutral"
+        },
+        "victory": {
+          "type": "personal",
+          "condition": {
+            "type": "storytellerDecision",
+            "decision": "resolveCharacterPersonalVictory"
+          }
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#947947",
+          "onDark": "#947947"
+        },
+        "surface": "#947947",
+        "border": "#947947",
+        "reminderSurface": "#836b3f",
+        "gradient": {
+          "from": "#a28852",
+          "to": "#836b3f"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:siervo",
+      "terms": {
+        "singular": "Servant",
+        "plural": "Servants"
+      },
+      "defaults": {
+        "role": "support",
+        "allegiance": {
+          "default": "evil"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#a8443c",
+          "onDark": "#a8443c"
+        },
+        "surface": "#a8443c",
+        "border": "#a8443c",
+        "reminderSurface": "#993e37",
+        "gradient": {
+          "from": "#b74a41",
+          "to": "#993e37"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:oscuro",
+      "terms": {
+        "singular": "Dark player",
+        "plural": "Dark players"
+      },
+      "defaults": {
+        "role": "core",
+        "allegiance": {
+          "default": "evil"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#5d2618",
+          "onDark": "#5d2618"
+        },
+        "surface": "#5d2618",
+        "border": "#5d2618",
+        "reminderSurface": "#522116",
+        "gradient": {
+          "from": "#6b2d1e",
+          "to": "#522116"
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "character:grimm:cenicienta",
+      "teamId": "team:grimm:pueblo",
+      "info": {
+        "name": "Cinderella",
+        "ability": "On each of nights 1–3, choose a player and give them a visible Dance Mark. Three nights later, if they are alive, learn their real character.",
+        "lore": "The only child of a dying woman who bids her remain good and pious. Stripped of her fine clothes and made to sleep beside the hearth, she plants a hazel twig upon her mother's grave and waters it with tears; the white bird that dwells there casts down gold and silver dresses for the three days of the King's festival."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 40,
+          "otherOrder": 260
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "marca_baile",
+            "kind": "reminder",
+            "value": "Marca del baile",
+            "label": "Dance Mark",
+            "duration": "manual",
+            "count": 3
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cinderella chooses a player. Place and announce the Dance Mark, then schedule the private character reveal for three nights later if its bearer is alive."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "On nights 2 and 3, place another Dance Mark. Also resolve any delayed reveal whose bearer remains alive."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:cenicienta:dance-mark:1",
+            "tags": [
+              "reminder-choice",
+              "delayed-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1,
+              "activeWhen": [
+                {
+                  "type": "compare",
+                  "left": {
+                    "type": "game",
+                    "property": "nightNumber"
+                  },
+                  "operator": "lte",
+                  "right": 3
+                }
+              ]
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Marca del baile",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "night",
+                  "count": 3
+                }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "presentation": {
+                  "kind": "player",
+                  "title": "Dance Mark",
+                  "description": "This player publicly bears the Dance Mark."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "public"
+                  }
+                }
+              },
+              {
+                "type": "emitInformation",
+                "delay": {
+                  "unit": "night",
+                  "count": 3
+                },
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "alive",
+                          "value": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ],
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "characterId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "character",
+                  "title": "Bearer of the Dance Mark"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:principe",
+      "teamId": "team:grimm:pueblo",
+      "info": {
+        "name": "Prince",
+        "ability": "Once per game at night, you may return a dead player to life.",
+        "lore": "A prince from the Grimms' tales who recognizes a young woman cast aside by those around her and restores her to public life. In Snow White he receives the glass coffin and his {{team:grimm:siervo|plural}}' stumble frees the piece of apple; in Cinderella he keeps the golden slipper and rejects the false brides when he discovers their blood."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 660,
+          "otherOrder": 660
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "despertar_usado",
+            "kind": "reminder",
+            "value": "Despertar usado",
+            "label": "Awakening Used",
+            "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Prince may return a dead player to life."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "If unused, the Prince may return a dead player to life."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:principe:resurrection-choice:1",
+            "tags": [
+              "resurrection-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 0,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": false
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "resurrect",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:rey-banquete",
+      "teamId": "team:grimm:pueblo",
+      "info": {
+        "name": "King",
+        "ability": "When a player dies by execution, learn their real character.",
+        "lore": "Lord of the palace who appoints a three-day festival and invites every maiden in the land so that his son may choose a bride. His decree opens the court's doors, but also makes every identity and alliance a matter for the whole kingdom."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:rey-banquete:execution-information:1",
+            "tags": [
+              "execution-trigger",
+              "information"
+            ],
+            "when": {
+              "window": "execution",
+              "cadence": "each",
+              "trigger": {
+                "type": "event",
+                "event": "execution",
+                "bindings": {
+                  "eventSubject": "eventSubject"
+                },
+                "where": {
+                  "type": "eventField",
+                  "field": "died",
+                  "value": true
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "eventSubject"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "characterId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "character",
+                  "title": "Executed player's character"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "privateDay"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:pregonero-reino",
+      "teamId": "team:grimm:pueblo",
+      "info": {
+        "name": "Royal Crier",
+        "ability": "Each night, choose a player and learn whether their allegiance is Good, Evil, or Neutral.",
+        "lore": "A figure imagined from the proclamation that carries the royal festival to every house in the land and later announces the trial of the golden slipper. He crosses roads and market squares learning which {{team:grimm:siervo|plural}} protect the kingdom and which voices proclaim a false bride."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 300,
+          "otherOrder": 720
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Royal Crier chooses a player. Show their registered allegiance."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Royal Crier chooses a player. Show their registered allegiance."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:pregonero-reino:allegiance-information:1",
+            "tags": [
+              "information-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "registered",
+                    "property": "allegiance"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "identity",
+                  "title": "Player allegiance",
+                  "options": [
+                    {
+                      "value": "good",
+                      "label": "Good"
+                    },
+                    {
+                      "value": "evil",
+                      "label": "Evil"
+                    },
+                    {
+                      "value": "neutral",
+                      "label": "Neutral"
+                    }
+                  ]
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:pajarito-avellano",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "Hazel-Tree Bird",
+        "ability": "Each night, choose two players. At dawn, learn whether either belongs to the Evil allegiance.",
+        "lore": "The white bird that dwells in the hazel-tree grown upon the mother's grave. It summons pigeons, turtle-doves, and all the birds beneath the sky to sort lentils from ashes, casts down the dresses Cinderella requests, and finally sends the pigeons that expose the false brides' blood and punish their deceit."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 330,
+          "otherOrder": 750
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose two players. At dawn, show Yes if at least one registers as Evil; otherwise show No."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose two players. At dawn, show Yes if at least one registers as Evil; otherwise show No."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:pajarito-avellano:evil-presence:1",
+            "tags": [
+              "information-choice",
+              "prepared-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "selected"
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "presentation": {
+                  "kind": "boolean",
+                  "title": "Does either player belong to the Evil allegiance?",
+                  "trueLabel": "Yes",
+                  "falseLabel": "No"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "dawn"
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:mensajero-rey",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "King's Messenger",
+        "ability": "Each night, choose a player. Learn Yes if their real character matches their public claim, or No if it does not.",
+        "lore": "The {{team:grimm:siervo}} charged with carrying the golden slipper from the palace into the houses of the kingdom. He has seen how a simple trial is twisted by knives, swallowed pain, and blood-stained stockings, so he tests every claim against the identity the slipper finally reveals."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 360,
+          "otherOrder": 780
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Messenger chooses a player. Compare their real character with their latest public character claim and deliver Yes or No."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Messenger chooses a player. Compare their real character with their latest public character claim and deliver Yes or No."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:mensajero-rey:claim-check:1",
+            "tags": [
+              "information-choice",
+              "storyteller-decision"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "inputValue",
+                  "valueType": "boolean"
+                },
+                "presentation": {
+                  "kind": "boolean",
+                  "title": "Does it match their public claim?",
+                  "trueLabel": "Yes",
+                  "falseLabel": "No"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                }
+              }
+            ],
+            "requiresManualModeling": true,
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:cocinera",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "Cook",
+        "ability": "Once per game at night, choose a player and protect them from death for this night and the next two nights.",
+        "lore": "A figure imagined in the kitchen where Cinderella works before daybreak, carrying water, lighting fires, cooking, and washing. She knows the difference between embers that sustain a house and ashes used for humiliation, and keeps food, warmth, and a sheltered corner for someone who may yet survive."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 390,
+          "otherOrder": 810
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "guardado_fuego",
+            "kind": "reminder",
+            "value": "Guardado del fuego",
+            "label": "Kept by the Fire",
+            "duration": "manual"
+          },
+          {
+            "id": "proteccion_usada",
+            "kind": "reminder",
+            "value": "Protección usada",
+            "label": "Protection Used",
+            "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "If unused, the Cook may protect a player from death for three nights."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "If unused, the Cook may protect a player from death for three nights. Remove any completed protection."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:cocinera:three-night-protection:1",
+            "tags": [
+              "protection-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 0,
+              "max": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "death",
+                "reaction": {
+                  "type": "cancel"
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Guardado del fuego",
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "night",
+                  "count": 3
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution",
+              "spentReminder": "Protección usada"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:maestro-ceremonias",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "Master of Ceremonies",
+        "ability": "Once per day, when voting closes, you may add or remove one vote before the nomination resolves.",
+        "lore": "An officer imagined to order the three days of the festival, announce each dance, and clear a path for the King's son. Accustomed to measuring turns, precedence, and the court's murmurs, he can tip a decision when the whole hall seems to hold its breath."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:maestro-ceremonias:vote-adjustment:1",
+            "tags": [
+              "public-day-action",
+              "nomination-trigger"
+            ],
+            "when": {
+              "window": "nomination",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "voteAdjustment",
+                "options": [
+                  "add",
+                  "remove"
+                ]
+              },
+              {
+                "type": "modifyNomination"
+              },
+              {
+                "type": "recordAction",
+                "actionId": "maestro-ceremonias-vote-adjustment"
+              },
+              {
+                "type": "manualInstruction",
+                "instruction": "adjustCurrentVoteTotalByOne",
+                "reason": "storytellerJudgement"
+              }
+            ],
+            "usage": {
+              "scope": "day",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "requiresManualModeling": true,
+            "presentation": {
+              "label": "Weigh the vote",
+              "title": "Master of Ceremonies",
+              "description": "Add or remove one vote before resolving the nomination.",
+              "decisionPrompts": {
+                "voteAdjustment": {
+                  "question": "How does the Master of Ceremonies change the count?",
+                  "options": [
+                    {
+                      "value": "add",
+                      "label": "Add one vote"
+                    },
+                    {
+                      "value": "remove",
+                      "label": "Remove one vote"
+                    }
+                  ]
+                }
+              },
+              "action": {
+                "actionId": "maestro-ceremonias-vote-adjustment",
+                "surface": "nominationAssistant"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:guardia-palacio",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "Palace Guard",
+        "ability": "Each night, choose a player. If their real character is {{team:grimm:pueblo}}, they cannot die by execution during the following day.",
+        "lore": "A guardian imagined at the palace gates and staircases during the festival. He watches the pitch laid to stop the unknown maiden, contains the crowd, and reserves his shield for subjects whose loss would leave the kingdom without a voice."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 420,
+          "otherOrder": 840
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "escudo_pueblo",
+            "kind": "reminder",
+            "value": "Escudo del Pueblo",
+            "label": "Village Shield",
+            "duration": "tomorrow"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Guard chooses a player. If they are {{team:grimm:pueblo}}, protect them from death by execution during the following day."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Guard chooses a player. If they are {{team:grimm:pueblo}}, protect them from death by execution during the following day."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:guardia-palacio:execution-protection:1",
+            "tags": [
+              "protection-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "execution",
+                "reaction": {
+                  "type": "cancel"
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Escudo del Pueblo",
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                },
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "real",
+                          "facet": "teamId",
+                          "values": [
+                            "team:grimm:pueblo"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:paje-banquete",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "Banquet Page",
+        "ability": "Each night, choose a player. At dawn, learn whom they targeted with a targeted ability that night; if they used none, receive no name.",
+        "lore": "A young {{team:grimm:siervo}} imagined among the hall's thousand lights. He carries messages, gathers cloaks, and watches who takes whose hand; when the music ends, he remembers every glance and every step, even those others would rather leave hidden in the crowd."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 450,
+          "otherOrder": 870
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Page chooses a player. At dawn, show the targets that player selected with targeted abilities tonight."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Page chooses a player. At dawn, show the targets that player selected with targeted abilities tonight."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:paje-banquete:target-tracking:1",
+            "tags": [
+              "information-choice",
+              "activity-tracking"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "events"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "eventType",
+                        "values": [
+                          "choose-target"
+                        ]
+                      },
+                      {
+                        "type": "eventPeriod",
+                        "value": "currentNight"
+                      },
+                      {
+                        "type": "eventParticipant",
+                        "binding": "selected",
+                        "participant": "actor"
+                      }
+                    ]
+                  },
+                  "project": {
+                    "type": "eventParticipant",
+                    "binding": "eventSubject"
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "Targets chosen tonight",
+                  "description": "The list is empty if the player used no targeted ability."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "dawn"
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:madrastra",
+      "teamId": "team:grimm:oscuro",
+      "info": {
+        "name": "Stepmother",
+        "ability": "Each night, choose a player and kill them.",
+        "lore": "Cinderella's father's second wife and the mother of two daughters fair of face but vile of heart. She takes away Cinderella's clothes, sends her to the kitchen, scatters lentils in the ashes, and makes a promise about the festival only to break it; later she supplies the knife with which her daughters try to manufacture a bride."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 520,
+          "otherOrder": 520
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "muerto",
+            "kind": "reminder",
+            "value": "Muerto",
+            "label": "Dead",
+            "duration": "manual"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Stepmother chooses a player. Kill them unless a protection intercepts the death."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Stepmother chooses a player. Kill them unless a protection intercepts the death."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:madrastra:night-kill:1",
+            "tags": [
+              "demon-attack-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "death",
+                "cause": "ability",
+                "protection": "normal",
+                "resolution": "demonAttack",
+                "reminder": "Muerto",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:hermanastra-dedo",
+      "teamId": "team:grimm:siervo",
+      "info": {
+        "name": "Toe Stepsister",
+        "ability": "Three times per game at night, choose an in-play character whose ability is not once per game and use their ability tonight. On the second use, the Storyteller decides whether you die; on the third use, you die.",
+        "lore": "The elder of the Stepmother's two daughters, fair of face and hardened by envy. She tries to force her foot into the golden slipper and, at her mother's command, cuts off her toe and swallows the pain; the pigeons in the hazel-tree see the blood and compel the Prince to return the false bride."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 5,
+          "otherOrder": 570
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "copia_1",
+            "kind": "reminder",
+            "value": "Primera copia",
+            "label": "First Copy",
+            "duration": "game"
+          },
+          {
+            "id": "copia_2",
+            "kind": "reminder",
+            "value": "Segunda copia",
+            "label": "Second Copy",
+            "duration": "game"
+          },
+          {
+            "id": "copia_3",
+            "kind": "reminder",
+            "value": "Tercera copia",
+            "label": "Third Copy",
+            "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Before all else, show the Toe Stepsister who the Heel Stepsister is. She may then choose a repeatable ability to copy tonight; advance her counter and resolve the penalty."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "If she has uses remaining, she may choose a repeatable ability to copy tonight. Advance her counter: the Storyteller decides on the second use, and the third kills her."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:hermanastra-dedo:recognition:1",
+            "tags": [
+              "starting-information",
+              "evil-team-recognition"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "facet": "character",
+                    "values": [
+                      "character:grimm:hermanastra-talon"
+                    ]
+                  },
+                  "project": {
+                    "type": "entityId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "player",
+                  "title": "Your sister"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:hermanastra-dedo:copy-ability:1",
+            "tags": [
+              "ability-copy",
+              "counter"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "character",
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "characters"
+                },
+                "where": {
+                  "type": "inPlay",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "grantAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "active": true,
+                "duration": "tonight"
+              },
+              {
+                "type": "adjustCounter",
+                "counter": "copias-dedo",
+                "delta": 1,
+                "scope": "source",
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Primera copia"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Segunda copia"
+                    },
+                    {
+                      "value": 3,
+                      "id": "Tercera copia"
+                    }
+                  ]
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 2,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "storytellerDecision",
+                    "decision": "secondCopyFate",
+                    "options": [
+                      "survives",
+                      "dies"
+                    ]
+                  },
+                  {
+                    "type": "death",
+                    "cause": "ability",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "actor"
+                    },
+                    "when": [
+                      {
+                        "type": "compare",
+                        "left": {
+                          "type": "decisionValue",
+                          "decision": "secondCopyFate"
+                        },
+                        "operator": "eq",
+                        "right": "dies"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "adjustCounter",
+                "counter": "copias-dedo-fatal",
+                "delta": 1,
+                "scope": "source",
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 3,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "death",
+                    "cause": "ability",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "actor"
+                    }
+                  }
+                ]
+              }
+            ],
+            "policies": [
+              {
+                "type": "grantSelectedAbility",
+                "target": "actor",
+                "duration": "currentNight"
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 3
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "decisionPrompts": {
+                "secondCopyFate": {
+                  "question": "This is her second copy. Does the Toe Stepsister die?",
+                  "options": [
+                    {
+                      "value": "survives",
+                      "label": "She survives",
+                      "recommended": true
+                    },
+                    {
+                      "value": "dies",
+                      "label": "She dies"
+                    }
+                  ]
+                }
+              },
+              "nightControl": {
+                "type": "singleCharacter"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:hermanastra-talon",
+      "teamId": "team:grimm:siervo",
+      "info": {
+        "name": "Heel Stepsister",
+        "ability": "Three times per game at night, choose an in-play character whose ability is not once per game and use their ability tonight. On the second use, the Storyteller decides whether you die; on the third use, you die.",
+        "lore": "The Stepmother's second daughter shares her sister's outward beauty and cruel heart. When her toes fit but her heel does not, she obeys the same promise of a life without walking and cuts away a piece; blood rises through her white stocking and reveals the second false bride to the Prince."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 6,
+          "otherOrder": 580
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "copia_1",
+            "kind": "reminder",
+            "value": "Primera copia",
+            "label": "First Copy",
+            "duration": "game"
+          },
+          {
+            "id": "copia_2",
+            "kind": "reminder",
+            "value": "Segunda copia",
+            "label": "Second Copy",
+            "duration": "game"
+          },
+          {
+            "id": "copia_3",
+            "kind": "reminder",
+            "value": "Tercera copia",
+            "label": "Third Copy",
+            "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Before all else, show the Heel Stepsister who the Toe Stepsister is. She may then choose a repeatable ability to copy tonight; advance her counter and resolve the penalty."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "If she has uses remaining, she may choose a repeatable ability to copy tonight. Advance her counter: the Storyteller decides on the second use, and the third kills her."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:hermanastra-talon:recognition:1",
+            "tags": [
+              "starting-information",
+              "evil-team-recognition"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "facet": "character",
+                    "values": [
+                      "character:grimm:hermanastra-dedo"
+                    ]
+                  },
+                  "project": {
+                    "type": "entityId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "player",
+                  "title": "Your sister"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:hermanastra-talon:copy-ability:1",
+            "tags": [
+              "ability-copy",
+              "counter"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "character",
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "characters"
+                },
+                "where": {
+                  "type": "inPlay",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "grantAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "active": true,
+                "duration": "tonight"
+              },
+              {
+                "type": "adjustCounter",
+                "counter": "copias-talon",
+                "delta": 1,
+                "scope": "source",
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Primera copia"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Segunda copia"
+                    },
+                    {
+                      "value": 3,
+                      "id": "Tercera copia"
+                    }
+                  ]
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 2,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "storytellerDecision",
+                    "decision": "secondCopyFate",
+                    "options": [
+                      "survives",
+                      "dies"
+                    ]
+                  },
+                  {
+                    "type": "death",
+                    "cause": "ability",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "actor"
+                    },
+                    "when": [
+                      {
+                        "type": "compare",
+                        "left": {
+                          "type": "decisionValue",
+                          "decision": "secondCopyFate"
+                        },
+                        "operator": "eq",
+                        "right": "dies"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "adjustCounter",
+                "counter": "copias-talon-fatal",
+                "delta": 1,
+                "scope": "source",
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 3,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "death",
+                    "cause": "ability",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "actor"
+                    }
+                  }
+                ]
+              }
+            ],
+            "policies": [
+              {
+                "type": "grantSelectedAbility",
+                "target": "actor",
+                "duration": "currentNight"
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 3
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "decisionPrompts": {
+                "secondCopyFate": {
+                  "question": "This is her second copy. Does the Heel Stepsister die?",
+                  "options": [
+                    {
+                      "value": "survives",
+                      "label": "She survives",
+                      "recommended": true
+                    },
+                    {
+                      "value": "dies",
+                      "label": "She dies"
+                    }
+                  ]
+                }
+              },
+              "nightControl": {
+                "type": "singleCharacter"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:padre",
+      "teamId": "team:grimm:errante",
+      "info": {
+        "name": "Father",
+        "ability": "Win if you survive until the end of the game without contributing to the execution of any {{team:grimm:pueblo}} character.",
+        "lore": "The rich man who gives his daughter the branch she requests, yet never frees her from labour, ashes, or the contempt of his new family. When the Prince asks whether another daughter remains, he reduces Cinderella to a kitchen-wench and still doubts she could be the bride; his failing is not ignorance, but sustained cowardice."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "culpa_pueblo",
+            "kind": "reminder",
+            "value": "Culpa del Pueblo",
+            "label": "Village Guilt",
+            "duration": "game"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:padre:execution-contribution:1",
+            "tags": [
+              "execution-trigger",
+              "activity-tracking"
+            ],
+            "when": {
+              "window": "execution",
+              "cadence": "each",
+              "trigger": {
+                "type": "event",
+                "event": "execution",
+                "bindings": {
+                  "eventSubject": "eventSubject"
+                },
+                "where": {
+                  "type": "eventField",
+                  "field": "died",
+                  "value": true
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "padre-village-execution-contribution",
+                "targets": {
+                  "type": "binding",
+                  "binding": "eventSubject"
+                },
+                "targetRegistrationTeams": [
+                  "team:grimm:pueblo"
+                ],
+                "creates": "Culpa del Pueblo"
+              }
+            ],
+            "requiresManualModeling": true
+          },
+          {
+            "mechanicId": "mechanic:grimm:padre:personal-victory:1",
+            "tags": [
+              "win-condition"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "each"
+            },
+            "conditions": [
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "actor"
+                    },
+                    {
+                      "type": "alive",
+                      "value": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "fatherPersonalVictory",
+                "options": [
+                  "wins",
+                  "loses"
+                ]
+              },
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "personal",
+                  "players": {
+                    "type": "binding",
+                    "binding": "actor"
+                  }
+                },
+                "reason": "El Padre sobrevivió sin contribuir a la ejecución de ningún personaje de Pueblo.",
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "fatherPersonalVictory"
+                    },
+                    "operator": "eq",
+                    "right": "wins"
+                  }
+                ]
+              }
+            ],
+            "requiresManualModeling": true,
+            "presentation": {
+              "decisionPrompts": {
+                "fatherPersonalVictory": {
+                  "question": "Did the Father survive without contributing to the execution of any Village character?",
+                  "options": [
+                    {
+                      "value": "wins",
+                      "label": "Condition fulfilled"
+                    },
+                    {
+                      "value": "loses",
+                      "label": "Condition not fulfilled"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:musico-banquete",
+      "teamId": "team:grimm:errante",
+      "info": {
+        "name": "Banquet Musician",
+        "ability": "Each night, choose a player and learn whether they used their ability that night. Win if you survive until the end after choosing at least one {{team:grimm:oscuro}} or {{team:grimm:siervo}} player.",
+        "lore": "A musician imagined to sustain all three nights of dancing in the palace. From the gallery he sees the Prince refuse every partner but one, notices who leaves the hall before the end, and learns to distinguish those who act between measures from those who merely wish to seem innocent."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 480,
+          "otherOrder": 900
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "espio_maldad",
+            "kind": "reminder",
+            "value": "Espió la maldad",
+            "label": "Spied on Evil",
+            "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Musician chooses a player. Tell him whether they used their ability tonight; if they are {{team:grimm:oscuro}} or {{team:grimm:siervo}}, secretly mark that he has fulfilled his objective."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Musician chooses a player. Tell him whether they used their ability tonight; if they are {{team:grimm:oscuro}} or {{team:grimm:siervo}}, secretly mark that he has fulfilled his objective."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:musico-banquete:ability-use-information:1",
+            "tags": [
+              "information-choice",
+              "activity-tracking"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "events"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "eventPeriod",
+                        "value": "currentNight"
+                      },
+                      {
+                        "type": "eventParticipant",
+                        "binding": "selected",
+                        "participant": "actor"
+                      },
+                      {
+                        "type": "eventCategory",
+                        "values": [
+                          "action"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "presentation": {
+                  "kind": "boolean",
+                  "title": "Did they use their ability tonight?",
+                  "trueLabel": "Yes",
+                  "falseLabel": "No"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                }
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Espió la maldad",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "real",
+                          "facet": "teamId",
+                          "values": [
+                            "team:grimm:oscuro",
+                            "team:grimm:siervo"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:musico-banquete:personal-victory:1",
+            "tags": [
+              "win-condition"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "each"
+            },
+            "conditions": [
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "actor"
+                    },
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "marker",
+                      "markerId": "Espió la maldad",
+                      "active": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "personal",
+                  "players": {
+                    "type": "binding",
+                    "binding": "actor"
+                  }
+                },
+                "reason": "El Músico sobrevivió después de espiar a un Oscuro o Siervo."
+              }
+            ]
+          }
+        ]
+      },
+      "links": []
+    }
+  ],
+  "gameRules": [],
+  "tales": [
+    {
+      "id": "tale:grimm:grimm-cenicienta",
+      "category": "tale",
+      "origin": "official",
+      "author": "Hermanos Grimm · adaptación BloodScribe",
+      "presentation": {
+        "theme": "verdigris"
+      },
+      "narrativeSetting": {
+        "era": "Early 19th century",
+        "location": "A rich man's house, a grave beneath a hazel-tree, and the King's palace",
+        "atmosphere": "Cold ashes, golden dresses, dance music, and cruelty that leaves blood in the slipper",
+        "nuances": "Domestic folklore, grief for a mother, the aid of birds, and the stern justice of an old tale",
+        "goreLevel": "extreme"
+      },
+      "text": {
+        "name": "Cinderella",
+        "tagline": "Ashes, blood, and a golden slipper: find the true bride before the dance is over.",
+        "description": "After her mother's death, a young woman is subjected to the cruelty of her stepmother and two stepsisters, who make her sleep by the hearth and pick lentils from the ashes. A hazel-tree grows upon her mother's grave and shelters a white bird; aided by the birds, Cinderella secretly attends the King's three-day festival and dances with the Prince. A staircase smeared with pitch keeps hold of her golden slipper. The stepsisters mutilate their feet to claim it, but blood and the pigeons expose the deception; the Prince recognizes Cinderella, and the birds punish her sisters' falsehood for the rest of their lives."
+      },
+      "difficulty": {
+        "label": "advanced",
+        "storyteller": 4,
+        "player": 3
+      },
+      "keyCharacterIds": [
+        "character:grimm:cenicienta",
+        "character:grimm:madrastra",
+        "character:grimm:hermanastra-dedo",
+        "character:grimm:hermanastra-talon"
+      ],
+      "gameRuleBindings": [],
+      "recommendedCounts": {
+        "7": {
+          "townsfolk": 2,
+          "outsider": 2,
+          "minion": 1,
+          "demon": 1,
+          "independent": 1
+        },
+        "8": {
+          "townsfolk": 2,
+          "outsider": 3,
+          "minion": 1,
+          "demon": 1,
+          "independent": 1
+        },
+        "9": {
+          "townsfolk": 2,
+          "outsider": 3,
+          "minion": 1,
+          "demon": 1,
+          "independent": 2
+        },
+        "10": {
+          "townsfolk": 3,
+          "outsider": 3,
+          "minion": 1,
+          "demon": 1,
+          "independent": 2
+        },
+        "11": {
+          "townsfolk": 3,
+          "outsider": 4,
+          "minion": 1,
+          "demon": 1,
+          "independent": 2
+        },
+        "12": {
+          "townsfolk": 3,
+          "outsider": 4,
+          "minion": 2,
+          "demon": 1,
+          "independent": 2
+        },
+        "13": {
+          "townsfolk": 3,
+          "outsider": 5,
+          "minion": 2,
+          "demon": 1,
+          "independent": 2
+        },
+        "14": {
+          "townsfolk": 4,
+          "outsider": 5,
+          "minion": 2,
+          "demon": 1,
+          "independent": 2
+        },
+        "15": {
+          "townsfolk": 4,
+          "outsider": 6,
+          "minion": 2,
+          "demon": 1,
+          "independent": 2
+        }
+      },
+      "nightOrder": {
+        "first": [
+          "character:grimm:hermanastra-dedo",
+          "character:grimm:hermanastra-talon",
+          "character:grimm:cenicienta",
+          "character:grimm:pregonero-reino",
+          "character:grimm:pajarito-avellano",
+          "character:grimm:mensajero-rey",
+          "character:grimm:cocinera",
+          "character:grimm:guardia-palacio",
+          "character:grimm:paje-banquete",
+          "character:grimm:musico-banquete",
+          "character:grimm:madrastra",
+          "character:grimm:principe"
+        ],
+        "other": [
+          "character:grimm:cenicienta",
+          "character:grimm:pregonero-reino",
+          "character:grimm:pajarito-avellano",
+          "character:grimm:mensajero-rey",
+          "character:grimm:cocinera",
+          "character:grimm:guardia-palacio",
+          "character:grimm:paje-banquete",
+          "character:grimm:musico-banquete",
+          "character:grimm:madrastra",
+          "character:grimm:hermanastra-dedo",
+          "character:grimm:hermanastra-talon",
+          "character:grimm:principe"
+        ]
+      },
+      "nightInstructions": {
+        "opening": "Make sure every player has closed their eyes. Resolve the stepsisters' recognition before any other first-night step, then resolve temporary copied abilities in ordinary night order.",
+        "dawn": "Remove expired copied abilities and protections, announce deaths and public Dance Marks, then deliver information scheduled for dawn."
+      },
+      "gameEndRules": [
+        {
+          "type": "alignmentElimination",
+          "winner": "good",
+          "eliminatedAlignment": "evil",
+          "requireAliveAlignment": "good",
+          "reason": "Todos los Oscuros han sido eliminados y queda al menos un personaje de Pueblo o Ayudante vivo."
+        },
+        {
+          "type": "alignmentElimination",
+          "winner": "evil",
+          "eliminatedAlignment": "good",
+          "reason": "No queda ningún personaje de Pueblo vivo."
+        }
+      ],
+      "elements": [
+        {
+          "id": "state:grimm:excluded",
+          "kind": "state",
+          "label": "Excluido",
+          "description": "No puede usar su habilidad, hablar, votar ni nominar durante el plazo indicado."
+        }
+      ],
+      "links": [],
+      "bookId": "book:grimm:cenicienta",
+      "teams": [
+        {
+          "teamId": "team:grimm:pueblo",
+          "terms": {
+            "singular": "Village player",
+            "plural": "Village players"
+          },
+          "defaults": {
+            "role": "core",
+            "allegiance": {
+              "default": "good"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#438b54",
+              "onDark": "#438b54"
+            },
+            "surface": "#438b54",
+            "border": "#438b54",
+            "reminderSurface": "#3b7b4a",
+            "gradient": {
+              "from": "#4c9a5e",
+              "to": "#3b7b4a"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:ayudante",
+          "terms": {
+            "singular": "Helper",
+            "plural": "Helpers"
+          },
+          "defaults": {
+            "role": "support",
+            "allegiance": {
+              "default": "good"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#81942d",
+              "onDark": "#81942d"
+            },
+            "surface": "#81942d",
+            "border": "#81942d",
+            "reminderSurface": "#738429",
+            "gradient": {
+              "from": "#91a536",
+              "to": "#738429"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:errante",
+          "terms": {
+            "singular": "Wanderer",
+            "plural": "Wanderers"
+          },
+          "defaults": {
+            "role": "independent",
+            "allegiance": {
+              "default": "neutral"
+            },
+            "victory": {
+              "type": "personal",
+              "condition": {
+                "type": "storytellerDecision",
+                "decision": "resolveCharacterPersonalVictory"
+              }
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#947947",
+              "onDark": "#947947"
+            },
+            "surface": "#947947",
+            "border": "#947947",
+            "reminderSurface": "#836b3f",
+            "gradient": {
+              "from": "#a28852",
+              "to": "#836b3f"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:siervo",
+          "terms": {
+            "singular": "Servant",
+            "plural": "Servants"
+          },
+          "defaults": {
+            "role": "support",
+            "allegiance": {
+              "default": "evil"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#a8443c",
+              "onDark": "#a8443c"
+            },
+            "surface": "#a8443c",
+            "border": "#a8443c",
+            "reminderSurface": "#993e37",
+            "gradient": {
+              "from": "#b74a41",
+              "to": "#993e37"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:oscuro",
+          "terms": {
+            "singular": "Dark player",
+            "plural": "Dark players"
+          },
+          "defaults": {
+            "role": "core",
+            "allegiance": {
+              "default": "evil"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#5d2618",
+              "onDark": "#5d2618"
+            },
+            "surface": "#5d2618",
+            "border": "#5d2618",
+            "reminderSurface": "#522116",
+            "gradient": {
+              "from": "#6b2d1e",
+              "to": "#522116"
+            }
+          }
+        }
+      ],
+      "characterIds": [
+        "character:grimm:cenicienta",
+        "character:grimm:principe",
+        "character:grimm:rey-banquete",
+        "character:grimm:pregonero-reino",
+        "character:grimm:pajarito-avellano",
+        "character:grimm:mensajero-rey",
+        "character:grimm:cocinera",
+        "character:grimm:maestro-ceremonias",
+        "character:grimm:guardia-palacio",
+        "character:grimm:paje-banquete",
+        "character:grimm:madrastra",
+        "character:grimm:hermanastra-dedo",
+        "character:grimm:hermanastra-talon",
+        "character:grimm:padre",
+        "character:grimm:musico-banquete"
+      ]
+    }
+  ]
+}
