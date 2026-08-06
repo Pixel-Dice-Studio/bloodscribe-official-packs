@@ -7,7 +7,7 @@
   "name": "Blancanieves",
   "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
   "legal": {
-    "license": "Basado en Schneewittchen (KHM 53), de los hermanos Grimm. Descripción adaptada de traducciones decimonónicas de dominio público.",
+    "license": "Basado en Schneewittchen (KHM 53), de los hermanos Grimm. Descripción y lore adaptados de traducciones decimonónicas de dominio público.",
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
   },
   "links": [],
@@ -235,7 +235,8 @@
       },
       "info": {
         "name": "Blancanieves",
-        "ability": "Cada noche eliges a otro jugador y conoces su equipo."
+        "ability": "Cada noche eliges a otro jugador y conoces su equipo.",
+        "lore": "Hija deseada en pleno invierno, blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Perdonada por el Cazador, halla refugio con siete enanos y sobrevive a los engaños de su madrastra hasta despertar del ataúd de cristal."
       },
       "rules": {
         "wake": {
@@ -423,7 +424,8 @@
       },
       "info": {
         "name": "Doncella de Palacio",
-        "ability": "Cada noche eliges a dos jugadores. Al amanecer sabes si pertenecen al mismo equipo."
+        "ability": "Cada noche eliges a dos jugadores. Al amanecer sabes si pertenecen al mismo equipo.",
+        "lore": "Sirve en el palacio donde la hermosura de Blancanieves despierta la envidia de la Reina. Entre criados, mensajeros y puertas entreabiertas, aprende a reconocer qué juramentos unen a cada habitante de la corte."
       },
       "rules": {
         "wake": {
@@ -561,7 +563,8 @@
       },
       "info": {
         "name": "Príncipe",
-        "ability": "Una vez por partida, durante la noche, puedes devolver la vida a un jugador muerto."
+        "ability": "Una vez por partida, durante la noche, puedes devolver la vida a un jugador muerto.",
+        "lore": "Encuentra a Blancanieves incorrupta dentro de un ataúd de cristal y ruega a los enanos que se lo entreguen. Cuando sus servidores tropiezan mientras lo llevan, el pedazo de manzana sale de su garganta y el Príncipe celebra sus bodas con ella."
       },
       "rules": {
         "wake": {
@@ -704,7 +707,8 @@
       },
       "info": {
         "name": "Reina Madrastra",
-        "ability": "Cada noche eliges a dos jugadores y añades una Manzana a cada uno. Tener Manzanas envenena; la tercera mata."
+        "ability": "Cada noche eliges a dos jugadores y añades una Manzana a cada uno. Tener Manzanas envenena; la tercera mata.",
+        "lore": "Madrastra soberbia que no soporta que otra mujer la aventaje en hermosura. Consulta a su espejo, envía al Cazador y, al saberse engañada, adopta tres disfraces para atacar con un cordón, un peine y una manzana envenenada."
       },
       "rules": {
         "wake": {
@@ -894,7 +898,8 @@
       },
       "info": {
         "name": "Espejo Encantado",
-        "ability": "Cada noche eliges a un jugador y conoces su equipo. Conservas tu poder aunque muera la Reina."
+        "ability": "Cada noche eliges a un jugador y conoces su equipo. Conservas tu poder aunque muera la Reina.",
+        "lore": "Espejo maravilloso que responde siempre con verdad a quien pregunta por la criatura más hermosa del reino. Su voz revela a la Reina que Blancanieves vive más allá de las siete montañas, con los siete enanos."
       },
       "rules": {
         "wake": {
@@ -1082,7 +1087,8 @@
       },
       "info": {
         "name": "Vendedora del Bosque",
-        "ability": "Cada noche eliges a un jugador y le añades una Manzana. Compartes el contador con la Reina; conservas tu poder si ella muere."
+        "ability": "Cada noche eliges a un jugador y le añades una Manzana. Compartes el contador con la Reina; conservas tu poder si ella muere.",
+        "lore": "Es el último y más peligroso disfraz de la Reina: una vieja campesina que cruza las montañas con una manzana partida en dos, blanca por un lado y roja por el otro. Come la mitad sana para vencer la desconfianza de Blancanieves."
       },
       "rules": {
         "wake": {
@@ -1272,7 +1278,8 @@
       },
       "info": {
         "name": "Enano Sabio",
-        "ability": "Cada noche eliges a un jugador y conoces su personaje real."
+        "ability": "Cada noche eliges a un jugador y conoces su personaje real.",
+        "lore": "El más prudente de los moradores de la cabaña. Lee las huellas del bosque, escucha el relato de Blancanieves y reconoce detrás de cada baratija ofrecida en la puerta la mano persistente de la madrastra."
       },
       "rules": {
         "wake": {
@@ -1438,7 +1445,8 @@
       },
       "info": {
         "name": "Enano Gruñón",
-        "ability": "Una vez por día, cuando vaya a resolverse una ejecución por voto, puedes cancelarla."
+        "ability": "Una vez por día, cuando vaya a resolverse una ejecución por voto, puedes cancelarla.",
+        "lore": "Guarda la puerta de la casa al pie de las montañas y desconfía de todo visitante. Su aspereza nace de haber encontrado demasiadas veces a Blancanieves tendida en el suelo después de desobedecer las advertencias de los enanos."
       },
       "rules": {
         "wake": {
@@ -1569,7 +1577,8 @@
       },
       "info": {
         "name": "Enano Tímido",
-        "ability": "Cada noche eliges a un jugador. Si fuera a morir esa noche, no muere."
+        "ability": "Cada noche eliges a un jugador. Si fuera a morir esa noche, no muere.",
+        "lore": "Permanece lejos de la puerta cuando llaman los extraños, pero no abandona a quien necesita amparo. Entre las sombras de la cabaña vigila a Blancanieves mientras sus compañeros trabajan en las montañas."
       },
       "rules": {
         "wake": {
@@ -1698,7 +1707,8 @@
       },
       "info": {
         "name": "Enano Bonachón",
-        "ability": "Cada noche puedes elegir a un jugador y retirarle una Manzana."
+        "ability": "Cada noche puedes elegir a un jugador y retirarle una Manzana.",
+        "lore": "Comparte con Blancanieves pan, legumbres y una de las siete camas, a condición de que cuide la casa. Cuando el veneno entra en la cabaña, busca con paciencia el cordón, el peine o el fruto que ha causado el mal."
       },
       "rules": {
         "wake": {
@@ -1901,7 +1911,8 @@
       },
       "info": {
         "name": "Enano Vigilante",
-        "ability": "Cada noche eliges a otro jugador. Al amanecer sabes si usó una habilidad dirigida durante esa noche."
+        "ability": "Cada noche eliges a otro jugador. Al amanecer sabes si usó una habilidad dirigida durante esa noche.",
+        "lore": "Regresa cada tarde de cavar en las montañas y examina hasta el menor cambio en la cabaña. Sus ojos atentos descubren las visitas de la falsa buhonera y las señales que delatan cómo fue atacada Blancanieves."
       },
       "rules": {
         "wake": {
@@ -2082,7 +2093,8 @@
       },
       "info": {
         "name": "Enano Cuidador",
-        "ability": "Cada noche eliges a un jugador. No puede quedar Apestado antes del amanecer siguiente."
+        "ability": "Cada noche eliges a un jugador. No puede quedar Apestado antes del amanecer siguiente.",
+        "lore": "Cuida de Blancanieves cada vez que la Reina la derriba: afloja el cordón que le corta el aliento, retira el peine envenenado y vela su cuerpo cuando ningún remedio logra despertarla."
       },
       "rules": {
         "wake": {
@@ -2251,7 +2263,8 @@
       },
       "info": {
         "name": "Enano Mudo",
-        "ability": "Una vez por día, dejas Apestado a un jugador hasta el próximo amanecer."
+        "ability": "Una vez por día, dejas Apestado a un jugador hasta el próximo amanecer.",
+        "lore": "Habla mediante gestos y conoce el valor de una puerta cerrada. En la cabaña recuerda sin palabras la prohibición de dejar entrar a desconocidos, imponiendo un silencio tan severo como las advertencias desoídas por Blancanieves."
       },
       "rules": {
         "wake": {
@@ -2404,7 +2417,8 @@
       },
       "info": {
         "name": "Cazador",
-        "ability": "Cada noche perdonas a un jugador: una muerte causada por un malvado no lo alcanza. Ganas si sobrevives tras perdonar a alguien de {{team:grimm:pueblo}}."
+        "ability": "Cada noche perdonas a un jugador: una muerte causada por un malvado no lo alcanza. Ganas si sobrevives tras perdonar a alguien de {{team:grimm:pueblo}}.",
+        "lore": "Obedece la orden de llevar a Blancanieves al bosque, pero al verla llorar no puede atravesar su corazón. La deja huir y entrega a la Reina los pulmones y el hígado de un jabalí como falsa prueba de su muerte."
       },
       "rules": {
         "wake": {
@@ -2638,7 +2652,8 @@
       },
       "info": {
         "name": "Guardián del Ataúd",
-        "ability": "Cada noche proteges a un jugador de una muerte causada por un malvado; quedas Apestado durante el día siguiente. Ganas si sobrevives."
+        "ability": "Cada noche proteges a un jugador de una muerte causada por un malvado; quedas Apestado durante el día siguiente. Ganas si sobrevives.",
+        "lore": "Forma parte de la vigilia de los enanos ante el cuerpo incorrupto de Blancanieves. Guarda el ataúd transparente, deja que las aves y las bestias del bosque lloren junto a él y espera un despertar que ningún remedio ha conseguido."
       },
       "rules": {
         "wake": {

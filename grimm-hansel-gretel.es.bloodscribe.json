@@ -7,7 +7,7 @@
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
   "legal": {
-    "license": "Basado en Hänsel und Gretel de los hermanos Grimm (dominio público).",
+    "license": "Basado en Hänsel und Gretel (KHM 15), de los hermanos Grimm. Lore adaptado de traducciones decimonónicas de dominio público.",
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
   },
   "links": [],
@@ -234,7 +234,8 @@
       },
       "info": {
         "name": "Hansel",
-        "ability": "Cada noche eliges a otro jugador. Si una habilidad de un jugador malvado lo alcanza, conoces el equipo de una de sus fuentes."
+        "ability": "Cada noche eliges a otro jugador. Si una habilidad de un jugador malvado lo alcanza, conoces el equipo de una de sus fuentes.",
+        "lore": "Hermano precavido que escucha el plan de sus padres y llena sus bolsillos de guijarros blancos para seguir su resplandor bajo la luna. En el segundo abandono deja migas y, preso por la Bruja, engaña su mala vista mostrándole un huesecillo."
       },
       "rules": {
         "wake": {
@@ -551,7 +552,8 @@
       },
       "info": {
         "name": "Gretel",
-        "ability": "Una vez por partida, acusa públicamente a un jugador de ser la Bruja del Horno: si aciertas muere; si fallas, mueres tú."
+        "ability": "Una vez por partida, acusa públicamente a un jugador de ser la Bruja del Horno: si aciertas muere; si fallas, mueres tú.",
+        "lore": "Hermana resuelta que sirve a la Bruja mientras Hansel permanece encerrado. Finge no comprender cómo entrar en el horno, empuja dentro a la anciana cuando se inclina para enseñárselo y libera después a su hermano."
       },
       "rules": {
         "wake": {
@@ -805,7 +807,8 @@
       },
       "info": {
         "name": "Leñador",
-        "ability": "Cada noche proteges a un jugador. El primer día no puedes hablar ni votar; si hablas, mueres."
+        "ability": "Cada noche proteges a un jugador. El primer día no puedes hablar ni votar; si hablas, mueres.",
+        "lore": "Pobre leñador que ama a sus hijos, pero cede dos veces ante el miedo al hambre y los conduce al bosque. Vive arrepentido desde su partida y los recibe entre lágrimas cuando regresan con las riquezas de la Bruja."
       },
       "rules": {
         "wake": {
@@ -1098,7 +1101,8 @@
       },
       "info": {
         "name": "Madre Hambrienta",
-        "ability": "Cada noche apestas a un jugador distinto al de la noche anterior. Queda sin habilidad, sin hablar, sin voto y sin nominar hasta el final del día siguiente."
+        "ability": "Cada noche apestas a un jugador distinto al de la noche anterior. Queda sin habilidad, sin hablar, sin voto y sin nominar hasta el final del día siguiente.",
+        "lore": "Ante la gran carestía, convence al Leñador de abandonar a los niños donde el bosque sea más espeso. Enciende para ellos una hoguera, les entrega un pedazo de pan y confía en que no encuentren el camino de vuelta."
       },
       "rules": {
         "wake": {
@@ -1313,7 +1317,8 @@
       },
       "info": {
         "name": "Bruja del Horno",
-        "ability": "Cada noche cebas a dos jugadores. Al recibir la tercera marca, mueren; una protección puede impedir una marca nueva."
+        "ability": "Cada noche cebas a dos jugadores. Al recibir la tercera marca, mueren; una protección puede impedir una marca nueva.",
+        "lore": "Anciana de ojos turbios y olfato agudo que alza una casa de pan y azúcar para atraer niños. Encierra a Hansel para engordarlo, obliga a Gretel a trabajar y prepara el horno en que pretende cocinarlos."
       },
       "rules": {
         "wake": {
@@ -1496,7 +1501,8 @@
       },
       "info": {
         "name": "Pájaro Blanco",
-        "ability": "Cada noche conoces el equipo de un jugador. Ganas personalmente si sobrevives tras guiar al menos a un {{team:grimm:ayudante}} y un {{team:grimm:pueblo}}."
+        "ability": "Cada noche conoces el equipo de un jugador. Ganas personalmente si sobrevives tras guiar al menos a un {{team:grimm:ayudante}} y un {{team:grimm:pueblo}}.",
+        "lore": "Ave blanca como la nieve cuyo canto detiene a los niños después de tres días perdidos. Cuando termina su canción, vuela delante de ellos y los conduce hasta la casa de pan, bizcocho y azúcar."
       },
       "rules": {
         "wake": {
@@ -1791,7 +1797,8 @@
       },
       "info": {
         "name": "Pato del Río",
-        "ability": "Una vez por partida, evitas una ejecución por voto. El salvado queda Apestado —sin habilidad, hablar, votar ni nominar— hasta el siguiente amanecer."
+        "ability": "Una vez por partida, evitas una ejecución por voto. El salvado queda Apestado —sin habilidad, hablar, votar ni nominar— hasta el siguiente amanecer.",
+        "lore": "Pato blanco que acude cuando el río corta el regreso de Hansel y Gretel. Los transporta uno por uno porque Gretel se niega a cargarlo con ambos a la vez, y así les abre el último camino hacia su padre."
       },
       "rules": {
         "wake": {
@@ -2073,7 +2080,8 @@
       },
       "info": {
         "name": "Gato del Tejado",
-        "ability": "Una vez por partida, eliges dos jugadores; las habilidades dirigidas a cualquiera esa noche alcanzan al otro. Ganas si sobrevives."
+        "ability": "Una vez por partida, eliges dos jugadores; las habilidades dirigidas a cualquiera esa noche alcanzan al otro. Ganas si sobrevives.",
+        "lore": "Figura blanca que Hansel finge mirar sobre el tejado de su casa mientras deja caer guijarros a escondidas. La distracción vuelve ciegos a sus padres ante el rastro que permitirá a los niños regresar."
       },
       "rules": {
         "wake": {
@@ -2262,7 +2270,8 @@
       },
       "info": {
         "name": "Cazador del Bosque",
-        "ability": "Cada noche marcas a un jugador. Si otro jugador lo nomina al día siguiente, puedes matarlo de inmediato. Ganas al matar a un {{team:grimm:oscuro}} y un {{team:grimm:siervo}}."
+        "ability": "Cada noche marcas a un jugador. Si otro jugador lo nomina al día siguiente, puedes matarlo de inmediato. Ganas al matar a un {{team:grimm:oscuro}} y un {{team:grimm:siervo}}.",
+        "lore": "Cazador solitario nacido de los peligros que rodean el gran bosque. Conoce los pasos de las fieras y de quienes acechan viajeros, y ha aprendido a decidir con rapidez quién representa una amenaza cuando el hambre borra toda ley."
       },
       "rules": {
         "wake": {
@@ -2587,7 +2596,8 @@
       },
       "info": {
         "name": "Anciana de los Caminos",
-        "ability": "Cada noche proteges a un jugador de quedar Apestado; no puedes repetir objetivo dos noches seguidas."
+        "ability": "Cada noche proteges a un jugador de quedar Apestado; no puedes repetir objetivo dos noches seguidas.",
+        "lore": "Anciana imaginada entre las aldeas castigadas por la carestía. Guarda una parte de su escaso pan para quienes cruzan los caminos y conoce refugios que pueden salvar a un viajero de quedar solo en el bosque."
       },
       "rules": {
         "wake": {
@@ -2803,7 +2813,8 @@
       },
       "info": {
         "name": "Espíritu del Fuego",
-        "ability": "Cada noche marcas a un jugador con fuego; la segunda marca lo mata. Si muere la Bruja del Horno, mueres."
+        "ability": "Cada noche marcas a un jugador con fuego; la segunda marca lo mata. Si muere la Bruja del Horno, mueres.",
+        "lore": "Encarnación de las llamas que calientan el horno de la Bruja. Se alimenta de la leña que Gretel debe acarrear y de la crueldad de su dueña; cuando la anciana arde, su propio destino queda sellado con el de ella."
       },
       "rules": {
         "wake": {
@@ -3042,7 +3053,8 @@
       },
       "info": {
         "name": "Pastor de Aves",
-        "ability": "Cada noche eliges a dos jugadores y sabes si pertenecen al mismo equipo."
+        "ability": "Cada noche eliges a dos jugadores y sabes si pertenecen al mismo equipo.",
+        "lore": "Guía del innumerable bando de pájaros que desciende sobre el segundo rastro de Hansel. Sus picos devoran una a una las migas de pan y borran la única senda que los niños conocían para volver a casa."
       },
       "rules": {
         "wake": {
@@ -3180,7 +3192,8 @@
       },
       "info": {
         "name": "Comadrona",
-        "ability": "Una vez por partida declaras inocente a un jugador. Si es {{team:grimm:pueblo}} queda protegido de ejecución y de quedar Apestado; si no, mueres."
+        "ability": "Una vez por partida declaras inocente a un jugador. Si es {{team:grimm:pueblo}} queda protegido de ejecución y de quedar Apestado; si no, mueres.",
+        "lore": "Mujer imaginada en la aldea del Leñador, acostumbrada a asistir nacimientos cuando falta hasta el pan. Conoce a las familias que padecen la carestía y se enfrenta a quienes pretenden que los niños paguen por el hambre de los adultos."
       },
       "rules": {
         "wake": {
@@ -3604,7 +3617,8 @@
       },
       "info": {
         "name": "Cuervo de los Pocos Panes",
-        "ability": "Cada noche marcas a un jugador con hambre. Al recibir la segunda marca, no puede usar su habilidad al día siguiente. Si no queda viva la Madre Hambrienta, pierdes esta habilidad; las marcas existentes permanecen."
+        "ability": "Cada noche marcas a un jugador con hambre. Al recibir la segunda marca, no puede usar su habilidad al día siguiente. Si no queda viva la Madre Hambrienta, pierdes esta habilidad; las marcas existentes permanecen.",
+        "lore": "Ave negra nacida del hambre que ronda la casa del Leñador y roba las últimas cortezas. Su presencia convierte la escasez en desesperación y acompaña la decisión de la Madre de abandonar a quienes ya no puede alimentar."
       },
       "rules": {
         "wake": {

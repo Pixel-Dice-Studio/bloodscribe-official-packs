@@ -7,7 +7,7 @@
   "name": "Snow White",
   "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
   "legal": {
-    "license": "Based on Little Snow-White (KHM 53) by the Brothers Grimm. Description adapted from Margaret Hunt's 1884 public-domain translation.",
+    "license": "Based on Little Snow-White (KHM 53) by the Brothers Grimm. Description and lore adapted from Margaret Hunt's 1884 public-domain translation.",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
   },
   "links": [],
@@ -235,7 +235,8 @@
       },
       "info": {
         "name": "Snow White",
-        "ability": "Each night, choose another player and learn their team."
+        "ability": "Each night, choose another player and learn their team.",
+        "lore": "A child wished for in the depth of winter, white as snow, red as blood, and black-haired as ebony. Spared by the Huntsman, she finds shelter with seven dwarfs and survives her stepmother's deceits until she wakes from the glass coffin."
       },
       "rules": {
         "wake": {
@@ -422,7 +423,8 @@
       },
       "info": {
         "name": "Palace Maiden",
-        "ability": "Each night, choose two players. At dawn, learn whether they belong to the same team."
+        "ability": "Each night, choose two players. At dawn, learn whether they belong to the same team.",
+        "lore": "She serves in the palace where Snow White's beauty awakens the Queen's envy. Among {{team:grimm:siervo|plural}}, messengers, and half-open doors, she learns which oaths bind every member of the court."
       },
       "rules": {
         "wake": {
@@ -559,7 +561,8 @@
       },
       "info": {
         "name": "Prince",
-        "ability": "Once per game at night, you may return a dead player to life."
+        "ability": "Once per game at night, you may return a dead player to life.",
+        "lore": "He finds Snow White lying uncorrupted in a glass coffin and begs the dwarfs to give it to him. When his {{team:grimm:siervo|plural}} stumble while carrying it, the piece of apple leaves her throat, and the Prince celebrates his wedding with her."
       },
       "rules": {
         "wake": {
@@ -701,7 +704,8 @@
       },
       "info": {
         "name": "Wicked Queen",
-        "ability": "Each night, choose two players and give each one an Apple. Any Apple poisons them; their third Apple kills them."
+        "ability": "Each night, choose two players and give each one an Apple. Any Apple poisons them; their third Apple kills them.",
+        "lore": "A proud stepmother who cannot bear to be surpassed in beauty. She questions her looking-glass, sends the Huntsman, and, when she learns she was deceived, assumes three disguises to attack with laces, a comb, and a poisoned apple."
       },
       "rules": {
         "wake": {
@@ -890,7 +894,8 @@
       },
       "info": {
         "name": "Magic Mirror",
-        "ability": "Each night, choose a player and learn their team. You keep this ability if the Queen dies."
+        "ability": "Each night, choose a player and learn their team. You keep this ability if the Queen dies.",
+        "lore": "A wonderful looking-glass that always answers truthfully when asked who is fairest in the land. Its voice tells the Queen that Snow White still lives beyond the seven mountains with the seven dwarfs."
       },
       "rules": {
         "wake": {
@@ -1077,7 +1082,8 @@
       },
       "info": {
         "name": "Forest Peddler",
-        "ability": "Each night, choose a player and give them an Apple. You share the counter with the Queen and keep this ability if she dies."
+        "ability": "Each night, choose a player and give them an Apple. You share the counter with the Queen and keep this ability if she dies.",
+        "lore": "She is the Queen's final and most dangerous disguise: an old countrywoman who crosses the mountains with an apple divided in two, white on one side and red on the other. She eats the harmless half to overcome Snow White's mistrust."
       },
       "rules": {
         "wake": {
@@ -1266,7 +1272,8 @@
       },
       "info": {
         "name": "Wise Dwarf",
-        "ability": "Each night, choose a player and learn their real character."
+        "ability": "Each night, choose a player and learn their real character.",
+        "lore": "The most prudent inhabitant of the cottage. He reads the forest tracks, listens to Snow White's tale, and recognizes behind every trinket offered at the door the stepmother's relentless hand."
       },
       "rules": {
         "wake": {
@@ -1431,7 +1438,8 @@
       },
       "info": {
         "name": "Grumpy Dwarf",
-        "ability": "Once per day, when a voted execution would resolve, you may cancel it."
+        "ability": "Once per day, when a voted execution would resolve, you may cancel it.",
+        "lore": "He guards the cottage door beneath the mountains and distrusts every visitor. His rough temper was forged by finding Snow White stretched upon the floor too many times after she ignored the dwarfs' warnings."
       },
       "rules": {
         "wake": {
@@ -1562,7 +1570,8 @@
       },
       "info": {
         "name": "Shy Dwarf",
-        "ability": "Each night, choose a player. If they would die tonight, they do not."
+        "ability": "Each night, choose a player. If they would die tonight, they do not.",
+        "lore": "He keeps far from the door when strangers knock, yet never abandons anyone in need of shelter. From the cottage shadows he watches over Snow White while his companions work in the mountains."
       },
       "rules": {
         "wake": {
@@ -1690,7 +1699,8 @@
       },
       "info": {
         "name": "Kind Dwarf",
-        "ability": "Each night, you may choose a player and remove one Apple."
+        "ability": "Each night, you may choose a player and remove one Apple.",
+        "lore": "He shares bread, vegetables, and one of the seven beds with Snow White on condition that she tend the cottage. When poison enters their home, he patiently searches for the laces, comb, or fruit that caused the harm."
       },
       "rules": {
         "wake": {
@@ -1892,7 +1902,8 @@
       },
       "info": {
         "name": "Watchful Dwarf",
-        "ability": "Each night, choose another player. At dawn, learn whether they used a targeted ability that night."
+        "ability": "Each night, choose another player. At dawn, learn whether they used a targeted ability that night.",
+        "lore": "He returns each evening from digging in the mountains and examines the smallest change in the cottage. His watchful eyes uncover the false peddler's visits and the signs that reveal how Snow White was attacked."
       },
       "rules": {
         "wake": {
@@ -2072,7 +2083,8 @@
       },
       "info": {
         "name": "Caring Dwarf",
-        "ability": "Each night, choose a player. They cannot become Plagued before the next dawn."
+        "ability": "Each night, choose a player. They cannot become Plagued before the next dawn.",
+        "lore": "He tends Snow White whenever the Queen strikes her down: loosening the laces that steal her breath, removing the poisoned comb, and watching over her body when no remedy can wake her."
       },
       "rules": {
         "wake": {
@@ -2240,7 +2252,8 @@
       },
       "info": {
         "name": "Silent Dwarf",
-        "ability": "Once per day, make a player Plagued until the next dawn."
+        "ability": "Once per day, make a player Plagued until the next dawn.",
+        "lore": "He speaks through gestures and knows the worth of a barred door. In the cottage he wordlessly repeats the command to admit no stranger, imposing a silence as stern as the warnings Snow White ignored."
       },
       "rules": {
         "wake": {
@@ -2393,7 +2406,8 @@
       },
       "info": {
         "name": "Hunter",
-        "ability": "Each night, spare a player from a death caused by an evil ability. Win if you survive after sparing a {{team:grimm:pueblo}} character."
+        "ability": "Each night, spare a player from a death caused by an evil ability. Win if you survive after sparing a {{team:grimm:pueblo}} character.",
+        "lore": "He obeys the command to take Snow White into the forest, but cannot pierce her heart when she weeps. He lets her flee and carries the lungs and liver of a wild boar to the Queen as false proof of her death."
       },
       "rules": {
         "wake": {
@@ -2626,7 +2640,8 @@
       },
       "info": {
         "name": "Coffin Keeper",
-        "ability": "Each night, protect a player from a death caused by an evil ability; you are Plagued during the following day. Win if you survive."
+        "ability": "Each night, protect a player from a death caused by an evil ability; you are Plagued during the following day. Win if you survive.",
+        "lore": "He belongs to the dwarfs' vigil beside Snow White's uncorrupted body. He guards the transparent coffin, lets the birds and forest beasts mourn beside it, and waits for an awakening that no remedy has brought."
       },
       "rules": {
         "wake": {
