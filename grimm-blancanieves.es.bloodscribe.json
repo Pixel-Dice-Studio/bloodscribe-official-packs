@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "7.0",
+  "version": "7.5",
   "locale": "es",
   "name": "Blancanieves",
   "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
@@ -564,7 +564,7 @@
       "info": {
         "name": "Príncipe",
         "ability": "Una vez por partida, durante la noche, puedes devolver la vida a un jugador muerto.",
-        "lore": "Encuentra a Blancanieves incorrupta dentro de un ataúd de cristal y ruega a los enanos que se lo entreguen. Cuando sus servidores tropiezan mientras lo llevan, el pedazo de manzana sale de su garganta y el Príncipe celebra sus bodas con ella."
+        "lore": "Príncipe de los relatos de los Grimm que reconoce a una joven apartada por quienes la rodean y la devuelve a la vida pública. En Blancanieves recibe el ataúd de cristal y el tropiezo de sus servidores libera el pedazo de manzana; en Cenicienta conserva el zapato de oro y rechaza a las falsas novias cuando descubre su sangre."
       },
       "rules": {
         "wake": {
@@ -883,6 +883,29 @@
                 "label": "Entrega dos Manzanas"
               }
             }
+          },
+          {
+            "mechanicId": "mechanic:grimm:reina-madrastra:required-character:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:enano-bonachon",
+                    "onMissing": "error"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -1896,6 +1919,29 @@
                 "label": "Retira una Manzana"
               }
             }
+          },
+          {
+            "mechanicId": "mechanic:grimm:enano-bonachon:required-character:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:reina-madrastra",
+                    "onMissing": "error"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },

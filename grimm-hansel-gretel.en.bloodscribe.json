@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "7.0",
+  "version": "7.5",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
@@ -551,7 +551,7 @@
       },
       "info": {
         "name": "Gretel",
-        "ability": "Once per game, publicly accuse a player of being the Oven Witch. If correct, they die; if wrong, you die.",
+        "ability": "Once per game, publicly choose a player. If they register as a Killer, they die; otherwise, you die.",
         "lore": "A resolute sister forced to serve the Witch while Hansel remains caged. She pretends not to understand how to enter the oven, pushes the old woman inside when she bends down to demonstrate, and then frees her brother."
       },
       "rules": {
@@ -651,9 +651,17 @@
                         {
                           "type": "identity",
                           "identityMode": "registered",
-                          "facet": "character",
+                          "facet": "allegiance",
                           "values": [
-                            "character:grimm:bruja-horno"
+                            "evil"
+                          ]
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "registered",
+                          "facet": "role",
+                          "values": [
+                            "core"
                           ]
                         }
                       ]
@@ -722,9 +730,17 @@
                           {
                             "type": "identity",
                             "identityMode": "registered",
-                            "facet": "character",
+                            "facet": "allegiance",
                             "values": [
-                              "character:grimm:bruja-horno"
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "core"
                             ]
                           }
                         ]
@@ -752,12 +768,12 @@
             "presentation": {
               "label": "Gretel accuses",
               "title": "Gretel",
-              "description": "Publicly choose the player you believe is the Oven Witch and record the outcome.",
+              "description": "Publicly choose a player and check whether they register as a Killer.",
               "outcomeLabel": "The accusation",
               "outcomes": [
                 {
                   "value": "targetIdentified",
-                  "label": "Identifies the Witch"
+                  "label": "Is a Killer"
                 },
                 {
                   "value": "wrongTarget",
@@ -768,29 +784,6 @@
                 "actionId": "grimm-oven-guess"
               }
             }
-          },
-          {
-            "mechanicId": "mechanic:grimm:gretel-empujadora:required-character:1",
-            "tags": [
-              "setup-modifier"
-            ],
-            "when": {
-              "window": "setup",
-              "cadence": "once"
-            },
-            "conditions": [],
-            "effects": [
-              {
-                "type": "modifySetup",
-                "operations": [
-                  {
-                    "type": "requireCharacter",
-                    "characterId": "character:grimm:bruja-horno",
-                    "onMissing": "error"
-                  }
-                ]
-              }
-            ]
           }
         ]
       },

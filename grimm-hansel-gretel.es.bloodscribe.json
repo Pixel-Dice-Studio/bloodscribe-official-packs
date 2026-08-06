@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "7.0",
+  "version": "7.5",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -552,7 +552,7 @@
       },
       "info": {
         "name": "Gretel",
-        "ability": "Una vez por partida, acusa públicamente a un jugador de ser la Bruja del Horno: si aciertas muere; si fallas, mueres tú.",
+        "ability": "Una vez por partida, eliges públicamente a un jugador. Si se registra como Killer, muere; si no, mueres tú.",
         "lore": "Hermana resuelta que sirve a la Bruja mientras Hansel permanece encerrado. Finge no comprender cómo entrar en el horno, empuja dentro a la anciana cuando se inclina para enseñárselo y libera después a su hermano."
       },
       "rules": {
@@ -652,9 +652,17 @@
                         {
                           "type": "identity",
                           "identityMode": "registered",
-                          "facet": "character",
+                          "facet": "allegiance",
                           "values": [
-                            "character:grimm:bruja-horno"
+                            "evil"
+                          ]
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "registered",
+                          "facet": "role",
+                          "values": [
+                            "core"
                           ]
                         }
                       ]
@@ -723,9 +731,17 @@
                           {
                             "type": "identity",
                             "identityMode": "registered",
-                            "facet": "character",
+                            "facet": "allegiance",
                             "values": [
-                              "character:grimm:bruja-horno"
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "core"
                             ]
                           }
                         ]
@@ -753,12 +769,12 @@
             "presentation": {
               "label": "Gretel acusa",
               "title": "Gretel",
-              "description": "Elige públicamente a quien crees que es la Bruja del Horno y registra el resultado.",
+              "description": "Elige públicamente a un jugador y comprueba si se registra como Killer.",
               "outcomeLabel": "La acusación",
               "outcomes": [
                 {
                   "value": "targetIdentified",
-                  "label": "Identifica a la Bruja"
+                  "label": "Es Killer"
                 },
                 {
                   "value": "wrongTarget",
@@ -769,29 +785,6 @@
                 "actionId": "grimm-oven-guess"
               }
             }
-          },
-          {
-            "mechanicId": "mechanic:grimm:gretel-empujadora:required-character:1",
-            "tags": [
-              "setup-modifier"
-            ],
-            "when": {
-              "window": "setup",
-              "cadence": "once"
-            },
-            "conditions": [],
-            "effects": [
-              {
-                "type": "modifySetup",
-                "operations": [
-                  {
-                    "type": "requireCharacter",
-                    "characterId": "character:grimm:bruja-horno",
-                    "onMissing": "error"
-                  }
-                ]
-              }
-            ]
           }
         ]
       },

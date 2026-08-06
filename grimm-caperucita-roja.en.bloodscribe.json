@@ -1,0 +1,2710 @@
+{
+  "schemaVersion": "bloodscribe-v2",
+  "id": "grimm:grimm-caperucita-roja",
+  "key": "grimm-caperucita-roja",
+  "version": "7.5",
+  "locale": "en",
+  "name": "Little Red-Cap",
+  "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
+  "legal": {
+    "license": "Based on Little Red-Cap (Rothkäppchen, KHM 26) by the Brothers Grimm. Description and lore adapted from the 1812 German edition and Margaret Hunt's 1884 public-domain English translation.",
+    "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
+  },
+  "links": [],
+  "popularity": {
+    "capturedAt": "2026-06-11",
+    "note": "Snapshot of the public role vote ordering, from most liked to least liked. The endpoint exposes ordering, not aggregate vote counts.",
+    "roles": {}
+  },
+  "books": [
+    {
+      "id": "book:grimm:caperucita-roja",
+      "name": "Little Red-Cap",
+      "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
+      "collection": {
+        "id": "collection:grimm",
+        "name": "Brothers Grimm",
+        "description": "Collection of tales and characters inspired by the Brothers Grimm."
+      },
+      "origin": "official",
+      "presentation": {
+        "palette": {
+          "cover": "#6b2727",
+          "spine": "#35191b",
+          "paper": "#eee1c8",
+          "ink": "#2b201b",
+          "accent": "#b58b4d"
+        },
+        "material": "cloth",
+        "format": "large"
+      },
+      "taleIds": [
+        "tale:grimm:grimm-caperucita-roja"
+      ],
+      "characterIds": [
+        "character:grimm:caperucita-roja",
+        "character:grimm:madre",
+        "character:grimm:abuela",
+        "character:grimm:cazador-caperucita",
+        "character:grimm:florista",
+        "character:grimm:molinero",
+        "character:grimm:mozo-bosque",
+        "character:grimm:lobo",
+        "character:grimm:zorro",
+        "character:grimm:perro"
+      ],
+      "gameRuleIds": [],
+      "teamIds": [
+        "team:grimm:pueblo",
+        "team:grimm:ayudante",
+        "team:grimm:siervo",
+        "team:grimm:oscuro"
+      ]
+    }
+  ],
+  "teams": [
+    {
+      "teamId": "team:grimm:pueblo",
+      "terms": {
+        "singular": "Village player",
+        "plural": "Village players"
+      },
+      "defaults": {
+        "role": "core",
+        "allegiance": {
+          "default": "good"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#438b54",
+          "onDark": "#438b54"
+        },
+        "surface": "#438b54",
+        "border": "#438b54",
+        "reminderSurface": "#3b7b4a",
+        "gradient": {
+          "from": "#4c9a5e",
+          "to": "#3b7b4a"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:ayudante",
+      "terms": {
+        "singular": "Helper",
+        "plural": "Helpers"
+      },
+      "defaults": {
+        "role": "support",
+        "allegiance": {
+          "default": "good"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#81942d",
+          "onDark": "#81942d"
+        },
+        "surface": "#81942d",
+        "border": "#81942d",
+        "reminderSurface": "#738429",
+        "gradient": {
+          "from": "#91a536",
+          "to": "#738429"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:siervo",
+      "terms": {
+        "singular": "Servant",
+        "plural": "Servants"
+      },
+      "defaults": {
+        "role": "support",
+        "allegiance": {
+          "default": "evil"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#a8443c",
+          "onDark": "#a8443c"
+        },
+        "surface": "#a8443c",
+        "border": "#a8443c",
+        "reminderSurface": "#993e37",
+        "gradient": {
+          "from": "#b74a41",
+          "to": "#993e37"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:oscuro",
+      "terms": {
+        "singular": "Dark player",
+        "plural": "Dark players"
+      },
+      "defaults": {
+        "role": "core",
+        "allegiance": {
+          "default": "evil"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#5d2618",
+          "onDark": "#5d2618"
+        },
+        "surface": "#5d2618",
+        "border": "#5d2618",
+        "reminderSurface": "#522116",
+        "gradient": {
+          "from": "#6b2d1e",
+          "to": "#522116"
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "character:grimm:caperucita-roja",
+      "teamId": "team:grimm:pueblo",
+      "info": {
+        "name": "Little Red-Cap",
+        "ability": "Once per day, choose a player and learn whether they register as a character other than their real character.",
+        "lore": "A little girl loved by everyone who sees her, and most of all by her grandmother, who gives her a cap of red velvet. She carries cake and wine through the wood, leaves the path to gather flowers, and is swallowed by the Wolf; rescued from his belly, she carries the stones that bring him down and learns never again to disregard her mother's warning."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "mirada_atenta",
+            "kind": "reminder",
+            "value": "Mirada atenta",
+            "label": "Watchful Gaze",
+            "duration": "untilDusk"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:caperucita-roja:registration-comparison:1",
+            "tags": [
+              "public-day-action",
+              "registration-comparison",
+              "information-choice"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "devoured"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "grimm-red-cap-inspects"
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Mirada atenta",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "compare",
+                  "left": {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "isBinding",
+                      "binding": "selected"
+                    },
+                    "project": {
+                      "type": "identity",
+                      "identityMode": "real",
+                      "property": "characterId"
+                    },
+                    "aggregate": {
+                      "type": "first"
+                    }
+                  },
+                  "operator": "neq",
+                  "right": {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "isBinding",
+                      "binding": "selected"
+                    },
+                    "project": {
+                      "type": "identity",
+                      "identityMode": "registered",
+                      "property": "characterId"
+                    },
+                    "aggregate": {
+                      "type": "first"
+                    }
+                  }
+                },
+                "presentation": {
+                  "kind": "boolean",
+                  "title": "Are they wearing another face?",
+                  "trueLabel": "Yes",
+                  "falseLabel": "No"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "privateDay"
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "devoured"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "usage": {
+              "scope": "day",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "label": "Red-Cap looks closely",
+              "title": "Little Red-Cap",
+              "description": "Choose a player and privately compare their real character with the character they register as.",
+              "action": {
+                "actionId": "grimm-red-cap-inspects"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:madre",
+      "teamId": "team:grimm:pueblo",
+      "info": {
+        "name": "The Mother",
+        "ability": "Each night, after the Wolf, choose a player. At dawn, learn whether they were Devoured or digested when the Wolf took a disguise that night.",
+        "lore": "A prudent woman who prepares cake and wine for her sick mother. She tells Red-Cap to walk carefully, stay upon the path, greet her grandmother upon entering, and not peer into every corner first; her voice opens the tale and turns each woodland detour into a warning remembered too late."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 560,
+          "otherOrder": 560
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "bajo_la_mirada",
+            "kind": "reminder",
+            "value": "Bajo la mirada",
+            "label": "Under Watch",
+            "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "After the Wolf, the Mother chooses a player. At dawn, show Yes if they were Devoured or digested for a disguise tonight; otherwise show No."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "After the Wolf, the Mother chooses a player. At dawn, show Yes if they were Devoured or digested for a disguise tonight; otherwise show No."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:madre:wolf-trail-information:1",
+            "tags": [
+              "information-choice",
+              "event-history-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "devoured"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Bajo la mirada",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "any",
+                  "conditions": [
+                    {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "selected"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "devoured"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    {
+                      "type": "query",
+                      "from": {
+                        "entity": "events"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "eventPeriod",
+                            "value": "currentNight"
+                          },
+                          {
+                            "type": "eventCategory",
+                            "values": [
+                              "death"
+                            ]
+                          },
+                          {
+                            "type": "eventParticipant",
+                            "binding": "selected",
+                            "participant": "eventSubject"
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    }
+                  ]
+                },
+                "presentation": {
+                  "kind": "boolean",
+                  "title": "Did the Wolf reach them tonight?",
+                  "trueLabel": "Yes",
+                  "falseLabel": "No"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "dawn"
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "devoured"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:abuela",
+      "teamId": "team:grimm:pueblo",
+      "info": {
+        "name": "The Grandmother",
+        "ability": "On your first night, learn which player is Little Red-Cap.",
+        "lore": "A sick old woman who lives alone half an hour into the wood, beneath three great oaks and near the hazel-trees. The Wolf lifts the latch, swallows her, and puts on her clothes; the Huntsman draws her out alive though scarcely able to breathe. During the second encounter she understands the trick, has the door barred, and makes Red-Cap fill a stone trough with sausage-water until another wolf falls in and drowns."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 30
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Point out to the Grandmother the player who is Little Red-Cap."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:abuela:starting-character-information:1",
+            "tags": [
+              "starting-information",
+              "character-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "facet": "character",
+                    "values": [
+                      "character:grimm:caperucita-roja"
+                    ]
+                  },
+                  "project": {
+                    "type": "entityId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "player",
+                  "title": "Little Red-Cap"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "devoured"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:cazador-caperucita",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "The Huntsman",
+        "ability": "Each night, before the Wolf, choose a player without learning whether they are Devoured. If they are, free them and restore their ability.",
+        "lore": "A huntsman passing the cottage who recognizes something strange in the supposed Grandmother's snores. He finds the old enemy he has long sought, but lowers his gun in case the woman still lives; with scissors he opens the sleeping belly, draws out Red-Cap and then the Grandmother, and goes home carrying the Wolf's skin."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 180,
+          "otherOrder": 180
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "rescatado",
+            "kind": "reminder",
+            "value": "Rescatado",
+            "label": "Rescued",
+            "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Before the Wolf, the Huntsman chooses a player. If they are Devoured, remove that state and wake them to announce the rescue."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Before the Wolf, the Huntsman chooses a player. If they are Devoured, remove that state and wake them to announce the rescue."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:cazador-caperucita:devoured-rescue:1",
+            "tags": [
+              "state-removal",
+              "rescue-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "devoured"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "literal",
+                  "value": "El Cazador te ha liberado del vientre del Lobo."
+                },
+                "presentation": {
+                  "kind": "text",
+                  "title": "You have been rescued",
+                  "description": "Your ability works again."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "selected"
+                  },
+                  "timing": "nextRecipientWake"
+                },
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "state",
+                          "values": [
+                            "devoured"
+                          ],
+                          "active": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "setPlayerState",
+                "state": "devoured",
+                "active": false,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "state",
+                          "values": [
+                            "devoured"
+                          ],
+                          "active": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Devorado",
+                "active": false,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                }
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Rescatado",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:florista",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "The Flower Seller",
+        "ability": "Once per game, before the Wolf, you may prepare a lure. If the Wolf chooses to Devour that night, you are Devoured instead of the chosen target. If the Wolf takes a Disguise, the lure is spent without effect.",
+        "lore": "A figure imagined from the flowers that lead Red-Cap away from the path while sunlight crosses the trees and birds sing. She knows which posies catch the eye and which scents can turn a beast aside; when she prepares her lure, the tale's distraction becomes a deliberate sacrifice for one night."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 150,
+          "otherOrder": 150
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "senuelo_preparado",
+            "kind": "reminder",
+            "value": "Señuelo preparado",
+            "label": "Lure Prepared",
+            "duration": "tonight"
+          },
+          {
+            "id": "senuelo_usado",
+            "kind": "reminder",
+            "value": "Señuelo usado",
+            "label": "Lure Spent",
+            "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Before the Wolf, ask whether the Flower Seller prepares her lure. If she does, mark the use and redirect any Devoured state caused by the Wolf tonight to her."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "If her ability remains, before the Wolf ask whether the Flower Seller prepares her lure. If she does, mark the use and redirect any Devoured state caused by the Wolf tonight to her."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:florista:lure-choice:1",
+            "tags": [
+              "protection-choice",
+              "state-redirect"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "devoured"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "prepareFlowerLure",
+                "options": [
+                  "wait",
+                  "prepare"
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Señuelo preparado",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "prepareFlowerLure"
+                    },
+                    "operator": "eq",
+                    "right": "prepare"
+                  }
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Señuelo usado",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "prepareFlowerLure"
+                    },
+                    "operator": "eq",
+                    "right": "prepare"
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success",
+              "spentReminder": "Señuelo usado"
+            },
+            "presentation": {
+              "decisionPrompts": {
+                "prepareFlowerLure": {
+                  "question": "Does the Flower Seller prepare her lure tonight?",
+                  "options": [
+                    {
+                      "value": "wait",
+                      "label": "Wait"
+                    },
+                    {
+                      "value": "prepare",
+                      "label": "Prepare the lure"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:florista:lure-redirect:1",
+            "tags": [
+              "state-redirect",
+              "passive-protection"
+            ],
+            "when": {
+              "stage": "whileReminderActive"
+            },
+            "conditions": [
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "actor"
+                    },
+                    {
+                      "type": "marker",
+                      "markerId": "Señuelo preparado",
+                      "active": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "stateChange",
+                "match": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "eventField",
+                      "field": "state",
+                      "value": "devoured"
+                    },
+                    {
+                      "type": "eventField",
+                      "field": "active",
+                      "value": true
+                    }
+                  ]
+                },
+                "reaction": {
+                  "type": "redirect",
+                  "targets": {
+                    "type": "binding",
+                    "binding": "actor"
+                  }
+                },
+                "scope": "sourceAbility",
+                "priority": 100,
+                "consumption": {
+                  "type": "once",
+                  "reminder": "Señuelo preparado"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:molinero",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "The Miller",
+        "ability": "Once per game, when an execution is about to resolve, you may change its target to another living player.",
+        "lore": "A figure imagined from the hamlet where the previous day was baking-day and the cake beneath Red-Cap's apron was made. Used to sending flour down forking roads and turning a wheel with diverted water, he can change at the last moment the person toward whom his neighbors' judgment leans."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "desvio_usado",
+            "kind": "reminder",
+            "value": "Desvío usado",
+            "label": "Diversion Spent",
+            "duration": "game"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:molinero:execution-redirect:1",
+            "tags": [
+              "execution-redirect",
+              "public-day-action"
+            ],
+            "when": {
+              "window": "execution",
+              "stage": "afterFirstVoteTallied",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "isBinding",
+                      "binding": "nominee",
+                      "value": false
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "devoured"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "grimm-miller-redirects"
+              },
+              {
+                "type": "interceptEvent",
+                "event": "execution",
+                "targets": {
+                  "type": "binding",
+                  "binding": "nominee"
+                },
+                "reaction": {
+                  "type": "redirect",
+                  "targets": {
+                    "type": "binding",
+                    "binding": "selected"
+                  }
+                },
+                "optional": true
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Desvío usado",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "permanent"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution",
+              "spentReminder": "Desvío usado"
+            },
+            "presentation": {
+              "label": "The Miller redirects the execution",
+              "title": "The Miller",
+              "description": "Choose another living player to receive the execution that was about to resolve.",
+              "action": {
+                "actionId": "grimm-miller-redirects"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:mozo-bosque",
+      "teamId": "team:grimm:ayudante",
+      "info": {
+        "name": "The Forest Lad",
+        "ability": "Once per day, publicly mark a player and declare that the Wolf comes that way. If the Wolf Devours them that night, at dawn learn which player is truly the Wolf.",
+        "lore": "A youth imagined as the Huntsman's apprentice, long engaged in tracking the old Wolf. He reads bent grass, trampled flowers, and mud beside the hazel-trees; when he announces publicly where he thinks the beast will pass, he risks his name to preserve a trail that may lead to the creature's true lair."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 620,
+          "otherOrder": 620
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "rastro_del_lobo",
+            "kind": "reminder",
+            "value": "Rastro del Lobo",
+            "label": "Wolf's Trail",
+            "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "If there is a public Wolf's Trail, after the Wolf check whether that player was Devoured tonight. If so, at dawn point out to the Forest Lad the player who is truly the Wolf."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "If there is a public Wolf's Trail, after the Wolf check whether that player was Devoured tonight. If so, at dawn point out to the Forest Lad the player who is truly the Wolf."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:mozo-bosque:public-trail:1",
+            "tags": [
+              "public-day-action",
+              "target-tracking-choice"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "devoured"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "grimm-forest-lad-trails"
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Rastro del Lobo",
+                "active": true,
+                "exclusive": {
+                  "scope": "source",
+                  "maxActiveTargets": 1
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "presentation": {
+                  "kind": "player",
+                  "title": "The Wolf comes this way",
+                  "description": "The Forest Lad has publicly marked this player."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "public"
+                  }
+                }
+              }
+            ],
+            "usage": {
+              "scope": "day",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "label": "The Forest Lad marks a trail",
+              "title": "The Forest Lad",
+              "description": "Publicly declare which player you think the Wolf will reach tonight.",
+              "action": {
+                "actionId": "grimm-forest-lad-trails"
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:mozo-bosque:tracked-devour-information:1",
+            "tags": [
+              "tracked-target-information",
+              "status-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 0,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "marker",
+                  "markerId": "Rastro del Lobo",
+                  "active": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "selected"
+                    },
+                    {
+                      "type": "state",
+                      "values": [
+                        "devoured"
+                      ],
+                      "active": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "facet": "character",
+                    "values": [
+                      "character:grimm:lobo"
+                    ]
+                  },
+                  "project": {
+                    "type": "entityId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "player",
+                  "title": "The true Wolf"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "dawn"
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "devoured"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:lobo",
+      "teamId": "team:grimm:oscuro",
+      "manualDirection": true,
+      "info": {
+        "name": "The Wolf",
+        "ability": "Each night, choose a player and either Devour them or take a Disguise. A Devoured player remains alive but has no ability; if someone was already Devoured, that player dies. To take a Disguise, the Devoured player dies, you learn their real character, and you register as them. If you die, any Devoured player is freed.",
+        "lore": "A cunning beast who greets Red-Cap courteously, asks where she is going, and judges that the child will be a finer mouthful than the old woman. He turns her aside with flowers, runs straight to the cottage, imitates her voice, swallows the Grandmother, and lies in her bed wearing cap and clothes. His hunger ends beneath the weight of stones, though the tale remembers that another wolf comes after him."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 500,
+          "otherOrder": 500
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "devorado",
+            "kind": "state",
+            "value": "devoured",
+            "label": "Devoured",
+            "duration": "manual",
+            "count": 1
+          },
+          {
+            "id": "disfrazado",
+            "kind": "state",
+            "value": "disguised",
+            "label": "Disguised",
+            "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Wolf chooses Devour or Disguise and points to a player. Devour disables the new target's ability and digests the former occupant; Disguise requires the Devoured player, kills them, and manually fixes their real character as the Wolf's registered identity. Then wake any newly Devoured victim."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Wolf chooses Devour or Disguise and points to a player. Devour disables the new target's ability and digests the former occupant; Disguise requires the Devoured player, kills them, and manually fixes their real character as the Wolf's registered identity. Then wake any newly Devoured victim."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:lobo:devour-or-disguise:1",
+            "tags": [
+              "status-choice",
+              "devour",
+              "death",
+              "disguise"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "isBinding",
+                      "binding": "actor",
+                      "value": false
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              },
+              "constraints": [
+                {
+                  "type": "any",
+                  "conditions": [
+                    {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "compare",
+                          "left": {
+                            "type": "decisionValue",
+                            "decision": "wolfNightChoice"
+                          },
+                          "operator": "eq",
+                          "right": "devour"
+                        },
+                        {
+                          "type": "query",
+                          "from": {
+                            "entity": "players"
+                          },
+                          "where": {
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "isBinding",
+                                "binding": "selected"
+                              },
+                              {
+                                "type": "state",
+                                "values": [
+                                  "devoured"
+                                ],
+                                "active": false
+                              }
+                            ]
+                          },
+                          "aggregate": {
+                            "type": "exists"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "compare",
+                          "left": {
+                            "type": "decisionValue",
+                            "decision": "wolfNightChoice"
+                          },
+                          "operator": "eq",
+                          "right": "disguise"
+                        },
+                        {
+                          "type": "query",
+                          "from": {
+                            "entity": "players"
+                          },
+                          "where": {
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "isBinding",
+                                "binding": "selected"
+                              },
+                              {
+                                "type": "state",
+                                "values": [
+                                  "devoured"
+                                ],
+                                "active": true
+                              }
+                            ]
+                          },
+                          "aggregate": {
+                            "type": "exists"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "devoured"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "wolfNightChoice",
+                "options": [
+                  "devour",
+                  "disguise"
+                ]
+              },
+              {
+                "type": "death",
+                "cause": "ability",
+                "bypassesProtection": true,
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "state",
+                    "values": [
+                      "devoured"
+                    ],
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "wolfNightChoice"
+                    },
+                    "operator": "eq",
+                    "right": "devour"
+                  },
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "selected"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "devoured"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
+              },
+              {
+                "type": "setPlayerState",
+                "state": "devoured",
+                "active": false,
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "state",
+                    "values": [
+                      "devoured"
+                    ],
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "wolfNightChoice"
+                    },
+                    "operator": "eq",
+                    "right": "devour"
+                  }
+                ]
+              },
+              {
+                "type": "setPlayerState",
+                "state": "devoured",
+                "active": true,
+                "exclusive": {
+                  "scope": "source",
+                  "maxActiveTargets": 1
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "wolfNightChoice"
+                    },
+                    "operator": "eq",
+                    "right": "devour"
+                  },
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "selected"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "devoured"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
+              },
+              {
+                "type": "restrict",
+                "restrictions": [
+                  "ability"
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "whileCondition",
+                  "condition": {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "state",
+                          "values": [
+                            "devoured"
+                          ],
+                          "active": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "wolfNightChoice"
+                    },
+                    "operator": "eq",
+                    "right": "devour"
+                  }
+                ]
+              },
+              {
+                "type": "death",
+                "cause": "ability",
+                "bypassesProtection": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "wolfNightChoice"
+                    },
+                    "operator": "eq",
+                    "right": "disguise"
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "state",
+                          "values": [
+                            "devoured"
+                          ],
+                          "active": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "setPlayerState",
+                "state": "devoured",
+                "active": false,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "wolfNightChoice"
+                    },
+                    "operator": "eq",
+                    "right": "disguise"
+                  }
+                ]
+              },
+              {
+                "type": "setPlayerState",
+                "state": "disguised",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "wolfNightChoice"
+                    },
+                    "operator": "eq",
+                    "right": "disguise"
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "decisionPrompts": {
+                "wolfNightChoice": {
+                  "question": "What does the Wolf do tonight?",
+                  "options": [
+                    {
+                      "value": "devour",
+                      "label": "Devour",
+                      "description": "Choose someone new; if the belly was occupied, its occupant dies."
+                    },
+                    {
+                      "value": "disguise",
+                      "label": "Take a Disguise",
+                      "description": "Choose the Devoured player; they die and the Wolf takes their identity."
+                    }
+                  ]
+                }
+              },
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:lobo:disguise-registration:1",
+            "tags": [
+              "registration",
+              "disguise"
+            ],
+            "when": {
+              "stage": "whileStateActive"
+            },
+            "conditions": [
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "actor"
+                    },
+                    {
+                      "type": "state",
+                      "values": [
+                        "disguised"
+                      ],
+                      "active": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "registerAs",
+                "mode": "mayRegisterAs",
+                "characterIds": [
+                  "character:grimm:caperucita-roja",
+                  "character:grimm:madre",
+                  "character:grimm:abuela",
+                  "character:grimm:cazador-caperucita",
+                  "character:grimm:florista",
+                  "character:grimm:molinero",
+                  "character:grimm:mozo-bosque",
+                  "character:grimm:zorro",
+                  "character:grimm:perro"
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                }
+              }
+            ],
+            "requiresManualModeling": true
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:zorro",
+      "teamId": "team:grimm:siervo",
+      "info": {
+        "name": "The Fox",
+        "ability": "On your first night, learn which player is the Wolf. You do not die or lose your ability when the Wolf dies.",
+        "lore": "An accomplice imagined from the cunning the tale gives to woodland beasts. He does not belong to the Wolf's pack, but recognizes his trail, bargains with his hunger, and carries rumors from den to den; his loyalty is born of opportunity, and so he survives when the predator he aided falls beneath the stones."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 10
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Point out to the Fox the player who is the Wolf."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:zorro:starting-wolf-information:1",
+            "tags": [
+              "starting-information",
+              "character-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "facet": "character",
+                    "values": [
+                      "character:grimm:lobo"
+                    ]
+                  },
+                  "project": {
+                    "type": "entityId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "player",
+                  "title": "The Wolf"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "devoured"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:perro",
+      "teamId": "team:grimm:siervo",
+      "info": {
+        "name": "The Hound",
+        "ability": "When the Wolf takes a Disguise, learn which player was digested to provide it. Your ability continues to work if the Wolf dies.",
+        "lore": "A hound imagined beside the Huntsman who has long sought the Wolf. He can distinguish the scent of a borrowed cap, hide beneath a gown, and a trail that ends too suddenly at a bed; even if the predator dies, he keeps the identity of the prey whose scent the Wolf tried to wear."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 600,
+          "otherOrder": 600
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "After the Wolf, if he took a Disguise tonight, point out to the Hound the player who was digested to create it."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "After the Wolf, if he took a Disguise tonight, point out to the Hound the player who was digested to create it."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:perro:disguise-victim-information:1",
+            "tags": [
+              "disguise-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 0,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "presentation": {
+                  "kind": "player",
+                  "title": "Victim of the disguise"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "devoured"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "requiresManualModeling": true,
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    }
+  ],
+  "gameRules": [],
+  "tales": [
+    {
+      "id": "tale:grimm:grimm-caperucita-roja",
+      "category": "tale",
+      "origin": "official",
+      "author": "Hermanos Grimm · adaptación BloodScribe",
+      "presentation": {
+        "theme": "verdigris"
+      },
+      "narrativeSetting": {
+        "era": "Early 19th century",
+        "location": "A Central European village, a woodland path, and a house beneath three great oaks",
+        "atmosphere": "Red velvet, bright flowers, a house grown too quiet, and breathing behind the bed-curtains",
+        "nuances": "Obedience, deception, hard-won wisdom, and the bodily justice of an old tale",
+        "goreLevel": "extreme"
+      },
+      "text": {
+        "name": "Little Red-Cap",
+        "tagline": "Red velvet, woodland flowers, and a belly full of stones: recognize the Wolf before he wears another face.",
+        "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again."
+      },
+      "difficulty": {
+        "label": "advanced",
+        "storyteller": 4,
+        "player": 3
+      },
+      "keyCharacterIds": [
+        "character:grimm:caperucita-roja",
+        "character:grimm:lobo",
+        "character:grimm:abuela",
+        "character:grimm:cazador-caperucita"
+      ],
+      "gameRuleBindings": [],
+      "recommendedCounts": {
+        "7": {
+          "townsfolk": 3,
+          "outsider": 2,
+          "minion": 1,
+          "demon": 1,
+          "independent": 0
+        },
+        "8": {
+          "townsfolk": 3,
+          "outsider": 2,
+          "minion": 2,
+          "demon": 1,
+          "independent": 0
+        },
+        "9": {
+          "townsfolk": 3,
+          "outsider": 3,
+          "minion": 2,
+          "demon": 1,
+          "independent": 0
+        },
+        "10": {
+          "townsfolk": 3,
+          "outsider": 4,
+          "minion": 2,
+          "demon": 1,
+          "independent": 0
+        }
+      },
+      "nightOrder": {
+        "first": [
+          "character:grimm:zorro",
+          "character:grimm:abuela",
+          "character:grimm:florista",
+          "character:grimm:cazador-caperucita",
+          "character:grimm:lobo",
+          "character:grimm:madre",
+          "character:grimm:perro",
+          "character:grimm:mozo-bosque"
+        ],
+        "other": [
+          "character:grimm:florista",
+          "character:grimm:cazador-caperucita",
+          "character:grimm:lobo",
+          "character:grimm:madre",
+          "character:grimm:perro",
+          "character:grimm:mozo-bosque"
+        ]
+      },
+      "nightInstructions": {
+        "opening": "Make sure every player has closed their eyes. Resolve the Flower Seller's lure and the Huntsman's rescue before the Wolf; resolve the Mother, Hound, and Forest Lad only after the Wolf has chosen.",
+        "dawn": "Release expired woodland marks, wake the village, announce deaths, and privately deliver every report that was waiting for daylight."
+      },
+      "gameEndRules": [
+        {
+          "type": "alignmentElimination",
+          "winner": "good",
+          "eliminatedAlignment": "evil",
+          "requireAliveAlignment": "good",
+          "reason": "Todos los Oscuros y Siervos han sido eliminados y queda al menos un personaje bueno vivo."
+        },
+        {
+          "type": "alignmentElimination",
+          "winner": "evil",
+          "eliminatedAlignment": "good",
+          "reason": "No queda ningún personaje de Pueblo ni Ayudante vivo."
+        }
+      ],
+      "elements": [
+        {
+          "id": "state:grimm:devoured",
+          "kind": "state",
+          "label": "Devorado",
+          "description": "Permanece vivo y conserva sus acciones públicas, pero su habilidad no funciona mientras siga dentro del vientre del Lobo."
+        },
+        {
+          "id": "state:grimm:disguised",
+          "kind": "state",
+          "label": "Disfrazado",
+          "description": "El Lobo se registra como el personaje real de la última víctima que digirió al disfrazarse."
+        }
+      ],
+      "links": [],
+      "bookId": "book:grimm:caperucita-roja",
+      "teams": [
+        {
+          "teamId": "team:grimm:pueblo",
+          "terms": {
+            "singular": "Village player",
+            "plural": "Village players"
+          },
+          "defaults": {
+            "role": "core",
+            "allegiance": {
+              "default": "good"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#438b54",
+              "onDark": "#438b54"
+            },
+            "surface": "#438b54",
+            "border": "#438b54",
+            "reminderSurface": "#3b7b4a",
+            "gradient": {
+              "from": "#4c9a5e",
+              "to": "#3b7b4a"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:ayudante",
+          "terms": {
+            "singular": "Helper",
+            "plural": "Helpers"
+          },
+          "defaults": {
+            "role": "support",
+            "allegiance": {
+              "default": "good"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#81942d",
+              "onDark": "#81942d"
+            },
+            "surface": "#81942d",
+            "border": "#81942d",
+            "reminderSurface": "#738429",
+            "gradient": {
+              "from": "#91a536",
+              "to": "#738429"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:siervo",
+          "terms": {
+            "singular": "Servant",
+            "plural": "Servants"
+          },
+          "defaults": {
+            "role": "support",
+            "allegiance": {
+              "default": "evil"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#a8443c",
+              "onDark": "#a8443c"
+            },
+            "surface": "#a8443c",
+            "border": "#a8443c",
+            "reminderSurface": "#993e37",
+            "gradient": {
+              "from": "#b74a41",
+              "to": "#993e37"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:oscuro",
+          "terms": {
+            "singular": "Dark player",
+            "plural": "Dark players"
+          },
+          "defaults": {
+            "role": "core",
+            "allegiance": {
+              "default": "evil"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#5d2618",
+              "onDark": "#5d2618"
+            },
+            "surface": "#5d2618",
+            "border": "#5d2618",
+            "reminderSurface": "#522116",
+            "gradient": {
+              "from": "#6b2d1e",
+              "to": "#522116"
+            }
+          }
+        }
+      ],
+      "characterIds": [
+        "character:grimm:caperucita-roja",
+        "character:grimm:madre",
+        "character:grimm:abuela",
+        "character:grimm:cazador-caperucita",
+        "character:grimm:florista",
+        "character:grimm:molinero",
+        "character:grimm:mozo-bosque",
+        "character:grimm:lobo",
+        "character:grimm:zorro",
+        "character:grimm:perro"
+      ]
+    }
+  ]
+}
