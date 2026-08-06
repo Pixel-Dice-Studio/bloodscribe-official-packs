@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.43",
+  "version": "7.0",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
@@ -1096,7 +1096,7 @@
       },
       "info": {
         "name": "Starving Mother",
-        "ability": "Each night, abandon a player other than last night's target. They lose their ability and vote through the following day."
+        "ability": "Each night, plague a player other than last night's target. They cannot use their ability, speak, vote, or nominate through the following day."
       },
       "rules": {
         "wake": {
@@ -1108,10 +1108,10 @@
         "setup": false,
         "reminderTokens": [
           {
-            "id": "abandono",
-            "kind": "reminder",
-            "value": "Abandonado",
-            "label": "Abandoned",
+            "id": "apestado",
+            "kind": "state",
+            "value": "plagued",
+            "label": "Plagued",
             "duration": "tonightAndTomorrowDay"
           }
         ],
@@ -1125,7 +1125,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "The Starving Mother chooses a player to abandon."
+            "body": "The Starving Mother chooses a player to plague, then wakes them for the private status notice."
           },
           {
             "when": {
@@ -1136,7 +1136,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "She chooses a player other than last night's target."
+            "body": "She chooses a player other than last night's target, then wakes them for the private status notice."
           }
         ],
         "mechanics": [
@@ -1144,7 +1144,7 @@
             "mechanicId": "mechanic:grimm:madre-hambrienta:status-choice:1",
             "tags": [
               "status-choice",
-              "abandonment"
+              "plagued"
             ],
             "when": {
               "window": "night",
@@ -1239,9 +1239,8 @@
             ],
             "effects": [
               {
-                "type": "applyMarker",
-                "kind": "reminder",
-                "id": "Abandonado",
+                "type": "setPlayerState",
+                "state": "plagued",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"
@@ -1261,12 +1260,32 @@
                 },
                 "restrictions": [
                   "ability",
-                  "vote"
+                  "speak",
+                  "vote",
+                  "nominate"
                 ],
                 "duration": {
                   "type": "untilWindow",
                   "window": "dusk",
                   "count": 1
+                }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "literal",
+                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                },
+                "presentation": {
+                  "kind": "text",
+                  "title": "You are plagued",
+                  "description": "You cannot use your ability, speak, vote, or nominate while this state lasts."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "selected"
+                  },
+                  "timing": "nextRecipientWake"
                 }
               }
             ],
@@ -1767,7 +1786,7 @@
       },
       "info": {
         "name": "River Duck",
-        "ability": "Once per game, prevent a voted execution. The saved player is exiled and cannot speak or vote until the next dawn."
+        "ability": "Once per game, prevent a voted execution. The saved player becomes Plagued and cannot use their ability, speak, vote, or nominate until the next dawn."
       },
       "rules": {
         "wake": {
@@ -1784,17 +1803,10 @@
             "duration": "game"
           },
           {
-            "id": "exiliado",
+            "id": "apestado",
             "kind": "state",
-            "value": "exiled",
-            "label": "Exiled",
-            "duration": "untilNextDawn"
-          },
-          {
-            "id": "exilio",
-            "kind": "reminder",
-            "value": "Exiliado",
-            "label": "Exiled",
+            "value": "plagued",
+            "label": "Plagued",
             "duration": "untilNextDawn"
           }
         ],
@@ -1877,7 +1889,7 @@
               },
               {
                 "type": "setPlayerState",
-                "state": "exiled",
+                "state": "plagued",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"
@@ -1924,18 +1936,71 @@
               },
               {
                 "type": "restrict",
-                "actions": [
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "restrictions": [
+                  "ability",
                   "speak",
-                  "vote"
+                  "vote",
+                  "nominate"
                 ],
                 "duration": {
                   "type": "untilWindow",
                   "window": "dawn",
                   "count": 1
                 },
-                "targets": {
-                  "type": "binding",
-                  "binding": "selected"
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "poisoned",
+                              "drunk"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "literal",
+                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                },
+                "presentation": {
+                  "kind": "text",
+                  "title": "You are plagued",
+                  "description": "You cannot use your ability, speak, vote, or nominate while this state lasts."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "selected"
+                  },
+                  "timing": "nextRecipientWake"
                 },
                 "when": [
                   {
@@ -1983,7 +2048,7 @@
             "presentation": {
               "label": "The Duck rescues",
               "title": "The River Duck",
-              "description": "When a voted execution is about to resolve, choose its candidate and prevent their death.",
+              "description": "When a voted execution is about to resolve, save its candidate: they become Plagued until the next dawn.",
               "action": {
                 "actionId": "grimm-river-rescue"
               }
@@ -2514,8 +2579,8 @@
         }
       },
       "info": {
-        "name": "Crossroads Crone",
-        "ability": "Each night, protect a player from abandonment. You cannot choose the same player two nights in a row."
+        "name": "Elder of the Roads",
+        "ability": "Each night, protect a player from becoming Plagued. You cannot choose the same player two nights in a row."
       },
       "rules": {
         "wake": {
@@ -2544,7 +2609,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "The Crone gives one player a Provision."
+            "body": "The Elder protects one player from becoming Plagued."
           },
           {
             "when": {
@@ -2555,7 +2620,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "She gives a Provision to someone other than last night's target."
+            "body": "She protects a different player from becoming Plagued."
           }
         ],
         "mechanics": [
@@ -2663,7 +2728,9 @@
                   "type": "eventRestriction",
                   "values": [
                     "ability",
-                    "vote"
+                    "speak",
+                    "vote",
+                    "nominate"
                   ],
                   "match": "all"
                 },
@@ -2676,31 +2743,35 @@
                   "binding": "selected"
                 },
                 "reminder": "Provisión",
-                "when": [
-                  {
-                    "type": "query",
-                    "from": {
-                      "entity": "players"
+                "duration": "tonight"
+              },
+              {
+                "type": "interceptEvent",
+                "event": "stateChange",
+                "match": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "eventField",
+                      "field": "state",
+                      "value": "plagued"
                     },
-                    "where": {
-                      "type": "all",
-                      "conditions": [
-                        {
-                          "type": "isBinding",
-                          "binding": "selected"
-                        },
-                        {
-                          "type": "marker",
-                          "markerId": "Provisión",
-                          "active": true
-                        }
-                      ]
-                    },
-                    "aggregate": {
-                      "type": "exists"
+                    {
+                      "type": "eventField",
+                      "field": "active",
+                      "value": true
                     }
-                  }
-                ],
+                  ]
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Provisión",
                 "duration": "tonight"
               }
             ],
@@ -3099,7 +3170,7 @@
       },
       "info": {
         "name": "Midwife",
-        "ability": "Once per game, declare a player innocent. If they are {{team:grimm:pueblo}}, protect them from execution and abandonment; otherwise, you die."
+        "ability": "Once per game, declare a player innocent. If they are {{team:grimm:pueblo}}, protect them from execution and becoming Plagued; otherwise, you die."
       },
       "rules": {
         "wake": {
@@ -3441,9 +3512,50 @@
                   "type": "eventRestriction",
                   "values": [
                     "ability",
-                    "vote"
+                    "speak",
+                    "vote",
+                    "nominate"
                   ],
                   "match": "all"
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Inocente",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "reminder": "Inocente",
+                "duration": "tonightAndTomorrowDay"
+              },
+              {
+                "type": "interceptEvent",
+                "event": "stateChange",
+                "match": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "eventField",
+                      "field": "state",
+                      "value": "plagued"
+                    },
+                    {
+                      "type": "eventField",
+                      "field": "active",
+                      "value": true
+                    }
+                  ]
                 },
                 "reaction": {
                   "type": "cancel"
@@ -3934,7 +4046,14 @@
           "reason": "No queda ningún Pueblerino ni Ayudante vivo."
         }
       ],
-      "elements": [],
+      "elements": [
+        {
+          "id": "state:grimm:plagued",
+          "kind": "state",
+          "label": "Apestado",
+          "description": "No puede usar su habilidad, hablar, votar ni nominar mientras el estado esté activo."
+        }
+      ],
       "links": [],
       "bookId": "book:grimm:hansel-y-gretel",
       "teams": [

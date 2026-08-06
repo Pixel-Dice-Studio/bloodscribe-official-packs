@@ -1,0 +1,3197 @@
+{
+  "schemaVersion": "bloodscribe-v2",
+  "id": "grimm:grimm-blancanieves",
+  "key": "grimm-blancanieves",
+  "version": "7.0",
+  "locale": "en",
+  "name": "Snow White",
+  "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
+  "legal": {
+    "license": "Based on Little Snow-White (KHM 53) by the Brothers Grimm. Description adapted from Margaret Hunt's 1884 public-domain translation.",
+    "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
+  },
+  "links": [],
+  "popularity": {
+    "capturedAt": "2026-06-11",
+    "note": "Snapshot of the public role vote ordering, from most liked to least liked. The endpoint exposes ordering, not aggregate vote counts.",
+    "roles": {}
+  },
+  "books": [
+    {
+      "id": "book:grimm:blancanieves",
+      "name": "Snow White",
+      "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
+      "collection": {
+        "id": "collection:grimm",
+        "name": "Brothers Grimm",
+        "description": "Collection of tales and characters inspired by the Brothers Grimm."
+      },
+      "origin": "official",
+      "presentation": {
+        "palette": {
+          "cover": "#23354a",
+          "spine": "#172535",
+          "paper": "#f0e6d2",
+          "ink": "#241b17",
+          "accent": "#a43a32"
+        },
+        "material": "cloth",
+        "format": "large"
+      },
+      "taleIds": [
+        "tale:grimm:grimm-blancanieves"
+      ],
+      "characterIds": [
+        "character:grimm:blancanieves",
+        "character:grimm:doncella-palacio",
+        "character:grimm:principe",
+        "character:grimm:reina-madrastra",
+        "character:grimm:espejo-encantado",
+        "character:grimm:vendedora-bosque",
+        "character:grimm:enano-sabio",
+        "character:grimm:enano-grunon",
+        "character:grimm:enano-timido",
+        "character:grimm:enano-bonachon",
+        "character:grimm:enano-vigilante",
+        "character:grimm:enano-cuidador",
+        "character:grimm:enano-mudo",
+        "character:grimm:cazador",
+        "character:grimm:guardian-ataud"
+      ],
+      "gameRuleIds": [],
+      "teamIds": [
+        "team:grimm:pueblo",
+        "team:grimm:ayudante",
+        "team:grimm:errante",
+        "team:grimm:siervo",
+        "team:grimm:oscuro"
+      ]
+    }
+  ],
+  "teams": [
+    {
+      "teamId": "team:grimm:pueblo",
+      "terms": {
+        "singular": "Village player",
+        "plural": "Village players"
+      },
+      "defaults": {
+        "role": "core",
+        "allegiance": {
+          "default": "good"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#438b54",
+          "onDark": "#438b54"
+        },
+        "surface": "#438b54",
+        "border": "#438b54",
+        "reminderSurface": "#3b7b4a",
+        "gradient": {
+          "from": "#4c9a5e",
+          "to": "#3b7b4a"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:ayudante",
+      "terms": {
+        "singular": "Helper",
+        "plural": "Helpers"
+      },
+      "defaults": {
+        "role": "support",
+        "allegiance": {
+          "default": "good"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#81942d",
+          "onDark": "#81942d"
+        },
+        "surface": "#81942d",
+        "border": "#81942d",
+        "reminderSurface": "#738429",
+        "gradient": {
+          "from": "#91a536",
+          "to": "#738429"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:errante",
+      "terms": {
+        "singular": "Wanderer",
+        "plural": "Wanderers"
+      },
+      "defaults": {
+        "role": "independent",
+        "allegiance": {
+          "default": "neutral"
+        },
+        "victory": {
+          "type": "personal",
+          "condition": {
+            "type": "storytellerDecision",
+            "decision": "resolveCharacterPersonalVictory"
+          }
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#947947",
+          "onDark": "#947947"
+        },
+        "surface": "#947947",
+        "border": "#947947",
+        "reminderSurface": "#836b3f",
+        "gradient": {
+          "from": "#a28852",
+          "to": "#836b3f"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:siervo",
+      "terms": {
+        "singular": "Servant",
+        "plural": "Servants"
+      },
+      "defaults": {
+        "role": "support",
+        "allegiance": {
+          "default": "evil"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#a8443c",
+          "onDark": "#a8443c"
+        },
+        "surface": "#a8443c",
+        "border": "#a8443c",
+        "reminderSurface": "#993e37",
+        "gradient": {
+          "from": "#b74a41",
+          "to": "#993e37"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:oscuro",
+      "terms": {
+        "singular": "Dark player",
+        "plural": "Dark players"
+      },
+      "defaults": {
+        "role": "core",
+        "allegiance": {
+          "default": "evil"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "assignment": "player"
+      },
+      "colors": {
+        "text": {
+          "onLight": "#5d2618",
+          "onDark": "#5d2618"
+        },
+        "surface": "#5d2618",
+        "border": "#5d2618",
+        "reminderSurface": "#522116",
+        "gradient": {
+          "from": "#6b2d1e",
+          "to": "#522116"
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "character:grimm:blancanieves",
+      "teamId": "team:grimm:pueblo",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Snow White",
+        "ability": "Each night, choose another player and learn their team."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 565,
+          "otherOrder": 775
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Snow White chooses another player and learns their team."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Snow White chooses another player and learns their team."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:blancanieves:team-information:1",
+            "tags": [
+              "information-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "not",
+                  "condition": {
+                    "type": "isBinding",
+                    "binding": "actor"
+                  }
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "registration"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "registered",
+                    "property": "teamId"
+                  }
+                },
+                "presentation": {
+                  "kind": "identity",
+                  "title": "Player team",
+                  "options": [
+                    {
+                      "value": "team:grimm:pueblo",
+                      "label": "Village"
+                    },
+                    {
+                      "value": "team:grimm:ayudante",
+                      "label": "Helper"
+                    },
+                    {
+                      "value": "team:grimm:errante",
+                      "label": "Wanderer"
+                    },
+                    {
+                      "value": "team:grimm:siervo",
+                      "label": "Servant"
+                    },
+                    {
+                      "value": "team:grimm:oscuro",
+                      "label": "Dark"
+                    }
+                  ]
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "registration"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "excludeActor": true
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:doncella-palacio",
+      "teamId": "team:grimm:pueblo",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Palace Maiden",
+        "ability": "Each night, choose two players. At dawn, learn whether they belong to the same team."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 605,
+          "otherOrder": 845
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose two players and deliver Same or Different at dawn."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose two players and deliver Same or Different at dawn."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:doncella-palacio:team-comparison:1",
+            "tags": [
+              "information-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "registration"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "inputValue",
+                  "valueType": "boolean"
+                },
+                "presentation": {
+                  "kind": "boolean",
+                  "title": "Do they belong to the same team?",
+                  "trueLabel": "Same team",
+                  "falseLabel": "Different teams"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "dawn"
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "registration"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:principe",
+      "teamId": "team:grimm:pueblo",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Prince",
+        "ability": "Once per game at night, you may return a dead player to life."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 660,
+          "otherOrder": 660
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "despertar_usado",
+            "kind": "reminder",
+            "value": "Despertar usado",
+            "label": "Awakening Used",
+            "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Prince may return a dead player to life."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "If unused, the Prince may return a dead player to life."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:principe:resurrection-choice:1",
+            "tags": [
+              "resurrection-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 0,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": false
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "resurrect",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:reina-madrastra",
+      "teamId": "team:grimm:oscuro",
+      "gameplay": {
+        "allegiance": {
+          "default": "evil"
+        }
+      },
+      "info": {
+        "name": "Wicked Queen",
+        "ability": "Each night, choose two players and give each one an Apple. Any Apple poisons them; their third Apple kills them."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 475,
+          "otherOrder": 565
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "manzana_1",
+            "kind": "reminder",
+            "value": "Manzana 1",
+            "label": "Apple 1",
+            "duration": "game",
+            "count": 15
+          },
+          {
+            "id": "manzana_2",
+            "kind": "reminder",
+            "value": "Manzana 2",
+            "label": "Apple 2",
+            "duration": "game",
+            "count": 15
+          },
+          {
+            "id": "manzana_3",
+            "kind": "reminder",
+            "value": "Manzana 3",
+            "label": "Apple 3",
+            "duration": "game",
+            "count": 15
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Give one Apple to each of two players."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Give one Apple to each of two players."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:reina-madrastra:shared-apple-counter:1",
+            "tags": [
+              "cumulative-marker",
+              "poison",
+              "death"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "adjustCounter",
+                "counter": "manzana",
+                "scope": "shared",
+                "delta": 1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Manzana 1"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Manzana 2"
+                    },
+                    {
+                      "value": 3,
+                      "id": "Manzana 3"
+                    }
+                  ]
+                },
+                "stateProjection": {
+                  "state": "poisoned",
+                  "activeWhen": {
+                    "operator": "gte",
+                    "value": 1
+                  }
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 3,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "death",
+                    "cause": "ability",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "effectTarget"
+                    }
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:espejo-encantado",
+      "teamId": "team:grimm:siervo",
+      "gameplay": {
+        "allegiance": {
+          "default": "evil"
+        }
+      },
+      "info": {
+        "name": "Magic Mirror",
+        "ability": "Each night, choose a player and learn their team. You keep this ability if the Queen dies."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 575,
+          "otherOrder": 785
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose one player and learn their team."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose one player and learn their team."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:espejo-encantado:team-information:1",
+            "tags": [
+              "information-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "not",
+                  "condition": {
+                    "type": "isBinding",
+                    "binding": "actor"
+                  }
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "registration"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "registered",
+                    "property": "teamId"
+                  }
+                },
+                "presentation": {
+                  "kind": "identity",
+                  "title": "Player team",
+                  "options": [
+                    {
+                      "value": "team:grimm:pueblo",
+                      "label": "Village"
+                    },
+                    {
+                      "value": "team:grimm:ayudante",
+                      "label": "Helper"
+                    },
+                    {
+                      "value": "team:grimm:errante",
+                      "label": "Wanderer"
+                    },
+                    {
+                      "value": "team:grimm:siervo",
+                      "label": "Servant"
+                    },
+                    {
+                      "value": "team:grimm:oscuro",
+                      "label": "Dark"
+                    }
+                  ]
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "registration"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "excludeActor": true
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:vendedora-bosque",
+      "teamId": "team:grimm:siervo",
+      "gameplay": {
+        "allegiance": {
+          "default": "evil"
+        }
+      },
+      "info": {
+        "name": "Forest Peddler",
+        "ability": "Each night, choose a player and give them an Apple. You share the counter with the Queen and keep this ability if she dies."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 485,
+          "otherOrder": 575
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "manzana_1",
+            "kind": "reminder",
+            "value": "Manzana 1",
+            "label": "Apple 1",
+            "duration": "game",
+            "count": 15
+          },
+          {
+            "id": "manzana_2",
+            "kind": "reminder",
+            "value": "Manzana 2",
+            "label": "Apple 2",
+            "duration": "game",
+            "count": 15
+          },
+          {
+            "id": "manzana_3",
+            "kind": "reminder",
+            "value": "Manzana 3",
+            "label": "Apple 3",
+            "duration": "game",
+            "count": 15
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Give one player an Apple."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Give one player an Apple."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:vendedora-bosque:shared-apple-counter:1",
+            "tags": [
+              "cumulative-marker",
+              "poison",
+              "death"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "adjustCounter",
+                "counter": "manzana",
+                "scope": "shared",
+                "delta": 1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Manzana 1"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Manzana 2"
+                    },
+                    {
+                      "value": 3,
+                      "id": "Manzana 3"
+                    }
+                  ]
+                },
+                "stateProjection": {
+                  "state": "poisoned",
+                  "activeWhen": {
+                    "operator": "gte",
+                    "value": 1
+                  }
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 3,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "death",
+                    "cause": "ability",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "effectTarget"
+                    }
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:enano-sabio",
+      "teamId": "team:grimm:ayudante",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Wise Dwarf",
+        "ability": "Each night, choose a player and learn their real character."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 585,
+          "otherOrder": 805
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose one player and learn their real character."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose one player and learn their real character."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:enano-sabio:character-information:1",
+            "tags": [
+              "information-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "not",
+                  "condition": {
+                    "type": "isBinding",
+                    "binding": "actor"
+                  }
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "registration"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "characterId"
+                  }
+                },
+                "presentation": {
+                  "kind": "character",
+                  "title": "Real character"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "registration"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "excludeActor": true
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:enano-grunon",
+      "teamId": "team:grimm:ayudante",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Grumpy Dwarf",
+        "ability": "Once per day, when a voted execution would resolve, you may cancel it."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "bloqueo_usado",
+            "kind": "reminder",
+            "value": "Bloqueo usado",
+            "label": "Block Used",
+            "duration": "untilNextDawn"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:enano-grunon:cancel-execution:1",
+            "tags": [
+              "public-day-action",
+              "execution-protection"
+            ],
+            "when": {
+              "window": "execution",
+              "stage": "afterFirstVoteTallied",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "binding",
+                "binding": "nominee"
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "grimm-grumpy-blocks-vote"
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Bloqueo usado",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "active": true,
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              },
+              {
+                "type": "execute",
+                "dies": false,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "day",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "label": "The Grumpy Dwarf blocks",
+              "title": "Grumpy Dwarf",
+              "description": "Cancel today's voted execution.",
+              "action": {
+                "actionId": "grimm-grumpy-blocks-vote"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:enano-timido",
+      "teamId": "team:grimm:ayudante",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Shy Dwarf",
+        "ability": "Each night, choose a player. If they would die tonight, they do not."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 385,
+          "otherOrder": 265
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "protegido",
+            "kind": "reminder",
+            "value": "Protegido",
+            "label": "Protected",
+            "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Protect one player tonight."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Protect one player tonight."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:enano-timido:night-protection:1",
+            "tags": [
+              "protection-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "death",
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Protegido",
+                "duration": "tonight"
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:enano-bonachon",
+      "teamId": "team:grimm:ayudante",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Kind Dwarf",
+        "ability": "Each night, you may choose a player and remove one Apple."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 455,
+          "otherOrder": 545
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "manzana_1",
+            "kind": "reminder",
+            "value": "Manzana 1",
+            "label": "Apple 1",
+            "duration": "game",
+            "count": 15
+          },
+          {
+            "id": "manzana_2",
+            "kind": "reminder",
+            "value": "Manzana 2",
+            "label": "Apple 2",
+            "duration": "game",
+            "count": 15
+          },
+          {
+            "id": "manzana_3",
+            "kind": "reminder",
+            "value": "Manzana 3",
+            "label": "Apple 3",
+            "duration": "game",
+            "count": 15
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "May remove one Apple before the Queen and Peddler act."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "May remove one Apple before the Queen and Peddler act."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:enano-bonachon:shared-apple-cure:1",
+            "tags": [
+              "cumulative-marker",
+              "healing"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 0,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "any",
+                  "conditions": [
+                    {
+                      "type": "marker",
+                      "markerId": "Manzana 1",
+                      "active": true
+                    },
+                    {
+                      "type": "marker",
+                      "markerId": "Manzana 2",
+                      "active": true
+                    },
+                    {
+                      "type": "marker",
+                      "markerId": "Manzana 3",
+                      "active": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "adjustCounter",
+                "counter": "manzana",
+                "scope": "shared",
+                "delta": -1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Manzana 1"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Manzana 2"
+                    },
+                    {
+                      "value": 3,
+                      "id": "Manzana 3"
+                    }
+                  ]
+                },
+                "stateProjection": {
+                  "state": "poisoned",
+                  "activeWhen": {
+                    "operator": "gte",
+                    "value": 1
+                  }
+                },
+                "duration": {
+                  "type": "permanent"
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:enano-vigilante",
+      "teamId": "team:grimm:ayudante",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Watchful Dwarf",
+        "ability": "Each night, choose another player. At dawn, learn whether they used a targeted ability that night."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 615,
+          "otherOrder": 855
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose another player and report at dawn whether they made a target choice."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Choose another player and report at dawn whether they made a target choice."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:enano-vigilante:ability-use-information:1",
+            "tags": [
+              "information-choice",
+              "activity-tracking"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "not",
+                  "condition": {
+                    "type": "isBinding",
+                    "binding": "actor"
+                  }
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "registration"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "events"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "eventType",
+                        "values": [
+                          "choose-target"
+                        ]
+                      },
+                      {
+                        "type": "eventPeriod",
+                        "value": "currentNight"
+                      },
+                      {
+                        "type": "eventParticipant",
+                        "binding": "selected",
+                        "participant": "actor"
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "presentation": {
+                  "kind": "boolean",
+                  "title": "Did they use a targeted ability tonight?",
+                  "trueLabel": "Yes",
+                  "falseLabel": "No"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "dawn"
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "registration"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "excludeActor": true
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:enano-cuidador",
+      "teamId": "team:grimm:ayudante",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Caring Dwarf",
+        "ability": "Each night, choose a player. They cannot become Plagued before the next dawn."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 315,
+          "otherOrder": 165
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "cuidado",
+            "kind": "reminder",
+            "value": "Cuidado",
+            "label": "Cared For",
+            "duration": "untilNextDawn"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Protect one player from becoming Plagued."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Protect one player from becoming Plagued."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:enano-cuidador:plague-protection:1",
+            "tags": [
+              "protection-choice",
+              "restriction-protection"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "restrictionChange",
+                "match": {
+                  "type": "eventRestriction",
+                  "values": [
+                    "ability",
+                    "speak",
+                    "vote",
+                    "nominate"
+                  ],
+                  "match": "all"
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Cuidado",
+                "duration": "untilNextDawn"
+              },
+              {
+                "type": "interceptEvent",
+                "event": "stateChange",
+                "match": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "eventField",
+                      "field": "state",
+                      "value": "plagued"
+                    },
+                    {
+                      "type": "eventField",
+                      "field": "active",
+                      "value": true
+                    }
+                  ]
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Cuidado",
+                "duration": "untilNextDawn"
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:enano-mudo",
+      "teamId": "team:grimm:ayudante",
+      "gameplay": {
+        "allegiance": {
+          "default": "good"
+        }
+      },
+      "info": {
+        "name": "Silent Dwarf",
+        "ability": "Once per day, make a player Plagued until the next dawn."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "apestado",
+            "kind": "state",
+            "value": "plagued",
+            "label": "Plagued",
+            "duration": "untilNextDawn"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:enano-mudo:public-plague:1",
+            "tags": [
+              "public-day-action",
+              "ability-restriction"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "recordAction",
+                "actionId": "grimm-silent-dwarf-plagues"
+              },
+              {
+                "type": "setPlayerState",
+                "state": "plagued",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              },
+              {
+                "type": "restrict",
+                "restrictions": [
+                  "ability",
+                  "speak",
+                  "vote",
+                  "nominate"
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "literal",
+                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                },
+                "presentation": {
+                  "kind": "text",
+                  "title": "You are plagued",
+                  "description": "You cannot use your ability, speak, vote, or nominate while this state lasts."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "selected"
+                  },
+                  "timing": "nextRecipientWake"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "day",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "label": "The Silent Dwarf plagues",
+              "title": "Silent Dwarf",
+              "description": "The target becomes Plagued until the next dawn.",
+              "action": {
+                "actionId": "grimm-silent-dwarf-plagues"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:cazador",
+      "teamId": "team:grimm:errante",
+      "gameplay": {
+        "allegiance": {
+          "default": "neutral"
+        }
+      },
+      "info": {
+        "name": "Hunter",
+        "ability": "Each night, spare a player from a death caused by an evil ability. Win if you survive after sparing a {{team:grimm:pueblo}} character."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 425,
+          "otherOrder": 285
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "perdonado",
+            "kind": "reminder",
+            "value": "Perdonado",
+            "label": "Spared",
+            "duration": "tonight"
+          },
+          {
+            "id": "perdono",
+            "kind": "reminder",
+            "value": "Perdonó",
+            "label": "Has Spared",
+            "duration": "game",
+            "count": 15
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Spare one player from a death caused by an evil ability."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Spare one player from a death caused by an evil ability."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:cazador:night-protection:1",
+            "tags": [
+              "protection-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "death",
+                "match": {
+                  "type": "eventParticipantIdentity",
+                  "participant": "source",
+                  "identityMode": "registered",
+                  "facet": "allegiance",
+                  "values": [
+                    "evil"
+                  ]
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Perdonado",
+                "duration": "tonight"
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Perdonó",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "permanent"
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:cazador:win-condition:1",
+            "tags": [
+              "win-condition"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "once"
+            },
+            "conditions": [
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "actor"
+                    },
+                    {
+                      "type": "alive",
+                      "value": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              },
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "marker",
+                      "markerId": "Perdonó",
+                      "active": true
+                    },
+                    {
+                      "type": "identity",
+                      "identityMode": "real",
+                      "facet": "teamId",
+                      "values": [
+                        "team:grimm:pueblo"
+                      ]
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "personal",
+                  "players": {
+                    "type": "binding",
+                    "binding": "actor"
+                  }
+                },
+                "reason": "El Cazador sobrevivió tras perdonar al menos a un personaje de Pueblo."
+              }
+            ]
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:guardian-ataud",
+      "teamId": "team:grimm:errante",
+      "gameplay": {
+        "allegiance": {
+          "default": "neutral"
+        }
+      },
+      "info": {
+        "name": "Coffin Keeper",
+        "ability": "Each night, protect a player from a death caused by an evil ability; you are Plagued during the following day. Win if you survive."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 395,
+          "otherOrder": 275
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "velado",
+            "kind": "reminder",
+            "value": "Velado",
+            "label": "Watched Over",
+            "duration": "tonight"
+          },
+          {
+            "id": "apestado",
+            "kind": "state",
+            "value": "plagued",
+            "label": "Plagued",
+            "duration": "untilNextDusk"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Protect one player, then become Plagued during the following day."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Protect one player, then become Plagued during the following day."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:guardian-ataud:night-protection:1",
+            "tags": [
+              "protection-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "death",
+                "match": {
+                  "type": "eventParticipantIdentity",
+                  "participant": "source",
+                  "identityMode": "registered",
+                  "facet": "allegiance",
+                  "values": [
+                    "evil"
+                  ]
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Velado",
+                "duration": "tonight"
+              },
+              {
+                "type": "setPlayerState",
+                "state": "plagued",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                }
+              },
+              {
+                "type": "restrict",
+                "restrictions": [
+                  "ability",
+                  "speak",
+                  "vote",
+                  "nominate"
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "literal",
+                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                },
+                "presentation": {
+                  "kind": "text",
+                  "title": "You are plagued",
+                  "description": "You cannot use your ability, speak, vote, or nominate while this state lasts."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "nextRecipientWake"
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer"
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:guardian-ataud:win-condition:1",
+            "tags": [
+              "win-condition"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "once"
+            },
+            "conditions": [
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "isBinding",
+                      "binding": "actor"
+                    },
+                    {
+                      "type": "alive",
+                      "value": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "personal",
+                  "players": {
+                    "type": "binding",
+                    "binding": "actor"
+                  }
+                },
+                "reason": "El Guardián del Ataúd sobrevivió al final de la partida."
+              }
+            ]
+          }
+        ]
+      },
+      "links": []
+    }
+  ],
+  "gameRules": [],
+  "tales": [
+    {
+      "id": "tale:grimm:grimm-blancanieves",
+      "category": "tale",
+      "origin": "official",
+      "author": "Hermanos Grimm · adaptación BloodScribe",
+      "presentation": {
+        "theme": "verdigris"
+      },
+      "narrativeSetting": {
+        "era": "Early 19th century",
+        "location": "A Central European kingdom spanning the palace, forest, and seven dwarfs' cottage",
+        "atmosphere": "Vanity, suspicion, and hospitality under the threat of poison",
+        "nuances": "Dark folklore, funerary glass, and a court obsessed with beauty",
+        "goreLevel": "extreme"
+      },
+      "text": {
+        "name": "Snow White",
+        "tagline": "A mirror, a glass coffin, and shared fruit: cure the poison before the third Apple.",
+        "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty."
+      },
+      "difficulty": {
+        "label": "advanced",
+        "storyteller": 4,
+        "player": 3
+      },
+      "keyCharacterIds": [
+        "character:grimm:blancanieves",
+        "character:grimm:reina-madrastra",
+        "character:grimm:vendedora-bosque",
+        "character:grimm:enano-bonachon"
+      ],
+      "gameRuleBindings": [],
+      "recommendedCounts": {
+        "7": {
+          "townsfolk": 2,
+          "outsider": 2,
+          "minion": 1,
+          "demon": 1,
+          "independent": 1
+        },
+        "8": {
+          "townsfolk": 2,
+          "outsider": 3,
+          "minion": 1,
+          "demon": 1,
+          "independent": 1
+        },
+        "9": {
+          "townsfolk": 2,
+          "outsider": 3,
+          "minion": 1,
+          "demon": 1,
+          "independent": 2
+        },
+        "10": {
+          "townsfolk": 3,
+          "outsider": 3,
+          "minion": 1,
+          "demon": 1,
+          "independent": 2
+        },
+        "11": {
+          "townsfolk": 3,
+          "outsider": 4,
+          "minion": 1,
+          "demon": 1,
+          "independent": 2
+        },
+        "12": {
+          "townsfolk": 3,
+          "outsider": 4,
+          "minion": 2,
+          "demon": 1,
+          "independent": 2
+        },
+        "13": {
+          "townsfolk": 3,
+          "outsider": 5,
+          "minion": 2,
+          "demon": 1,
+          "independent": 2
+        },
+        "14": {
+          "townsfolk": 3,
+          "outsider": 6,
+          "minion": 2,
+          "demon": 1,
+          "independent": 2
+        },
+        "15": {
+          "townsfolk": 3,
+          "outsider": 7,
+          "minion": 2,
+          "demon": 1,
+          "independent": 2
+        }
+      },
+      "nightOrder": {
+        "first": [
+          "character:grimm:enano-cuidador",
+          "character:grimm:enano-timido",
+          "character:grimm:guardian-ataud",
+          "character:grimm:cazador",
+          "character:grimm:enano-bonachon",
+          "character:grimm:reina-madrastra",
+          "character:grimm:vendedora-bosque",
+          "character:grimm:blancanieves",
+          "character:grimm:espejo-encantado",
+          "character:grimm:enano-sabio",
+          "character:grimm:doncella-palacio",
+          "character:grimm:enano-vigilante",
+          "character:grimm:principe"
+        ],
+        "other": [
+          "character:grimm:enano-cuidador",
+          "character:grimm:enano-timido",
+          "character:grimm:guardian-ataud",
+          "character:grimm:cazador",
+          "character:grimm:enano-bonachon",
+          "character:grimm:reina-madrastra",
+          "character:grimm:vendedora-bosque",
+          "character:grimm:blancanieves",
+          "character:grimm:espejo-encantado",
+          "character:grimm:enano-sabio",
+          "character:grimm:doncella-palacio",
+          "character:grimm:enano-vigilante",
+          "character:grimm:principe"
+        ]
+      },
+      "nightInstructions": {
+        "opening": "Make sure every player has closed their eyes. Resolve plague and death protection first, remove an Apple next, then resolve the Queen and Peddler.",
+        "dawn": "Wake the village, announce deaths, clear dawn Plagued states, and deliver pending comparison or activity information."
+      },
+      "gameEndRules": [
+        {
+          "type": "alignmentElimination",
+          "winner": "good",
+          "eliminatedAlignment": "evil",
+          "requireAliveAlignment": "good",
+          "reason": "Todos los Oscuros y Siervos han sido eliminados y queda al menos un personaje bueno vivo."
+        },
+        {
+          "type": "alignmentElimination",
+          "winner": "evil",
+          "eliminatedAlignment": "good",
+          "reason": "No queda ningún personaje de Pueblo ni Ayudante vivo."
+        }
+      ],
+      "elements": [
+        {
+          "id": "state:grimm:plagued",
+          "kind": "state",
+          "label": "Apestado",
+          "description": "No puede usar su habilidad, hablar, votar ni nominar mientras el estado esté activo."
+        }
+      ],
+      "links": [],
+      "bookId": "book:grimm:blancanieves",
+      "teams": [
+        {
+          "teamId": "team:grimm:pueblo",
+          "terms": {
+            "singular": "Village player",
+            "plural": "Village players"
+          },
+          "defaults": {
+            "role": "core",
+            "allegiance": {
+              "default": "good"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#438b54",
+              "onDark": "#438b54"
+            },
+            "surface": "#438b54",
+            "border": "#438b54",
+            "reminderSurface": "#3b7b4a",
+            "gradient": {
+              "from": "#4c9a5e",
+              "to": "#3b7b4a"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:ayudante",
+          "terms": {
+            "singular": "Helper",
+            "plural": "Helpers"
+          },
+          "defaults": {
+            "role": "support",
+            "allegiance": {
+              "default": "good"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#81942d",
+              "onDark": "#81942d"
+            },
+            "surface": "#81942d",
+            "border": "#81942d",
+            "reminderSurface": "#738429",
+            "gradient": {
+              "from": "#91a536",
+              "to": "#738429"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:errante",
+          "terms": {
+            "singular": "Wanderer",
+            "plural": "Wanderers"
+          },
+          "defaults": {
+            "role": "independent",
+            "allegiance": {
+              "default": "neutral"
+            },
+            "victory": {
+              "type": "personal",
+              "condition": {
+                "type": "storytellerDecision",
+                "decision": "resolveCharacterPersonalVictory"
+              }
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#947947",
+              "onDark": "#947947"
+            },
+            "surface": "#947947",
+            "border": "#947947",
+            "reminderSurface": "#836b3f",
+            "gradient": {
+              "from": "#a28852",
+              "to": "#836b3f"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:siervo",
+          "terms": {
+            "singular": "Servant",
+            "plural": "Servants"
+          },
+          "defaults": {
+            "role": "support",
+            "allegiance": {
+              "default": "evil"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#a8443c",
+              "onDark": "#a8443c"
+            },
+            "surface": "#a8443c",
+            "border": "#a8443c",
+            "reminderSurface": "#993e37",
+            "gradient": {
+              "from": "#b74a41",
+              "to": "#993e37"
+            }
+          }
+        },
+        {
+          "teamId": "team:grimm:oscuro",
+          "terms": {
+            "singular": "Dark player",
+            "plural": "Dark players"
+          },
+          "defaults": {
+            "role": "core",
+            "allegiance": {
+              "default": "evil"
+            },
+            "victory": {
+              "type": "withCurrentAllegiance"
+            },
+            "assignment": "player"
+          },
+          "colors": {
+            "text": {
+              "onLight": "#5d2618",
+              "onDark": "#5d2618"
+            },
+            "surface": "#5d2618",
+            "border": "#5d2618",
+            "reminderSurface": "#522116",
+            "gradient": {
+              "from": "#6b2d1e",
+              "to": "#522116"
+            }
+          }
+        }
+      ],
+      "characterIds": [
+        "character:grimm:blancanieves",
+        "character:grimm:doncella-palacio",
+        "character:grimm:principe",
+        "character:grimm:reina-madrastra",
+        "character:grimm:espejo-encantado",
+        "character:grimm:vendedora-bosque",
+        "character:grimm:enano-sabio",
+        "character:grimm:enano-grunon",
+        "character:grimm:enano-timido",
+        "character:grimm:enano-bonachon",
+        "character:grimm:enano-vigilante",
+        "character:grimm:enano-cuidador",
+        "character:grimm:enano-mudo",
+        "character:grimm:cazador",
+        "character:grimm:guardian-ataud"
+      ]
+    }
+  ]
+}

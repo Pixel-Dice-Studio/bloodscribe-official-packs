@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "6.43",
+  "version": "7.0",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -1098,7 +1098,7 @@
       },
       "info": {
         "name": "Madre Hambrienta",
-        "ability": "Cada noche abandonas a un jugador distinto al de la noche anterior: pierde habilidad y voto hasta el final del día siguiente."
+        "ability": "Cada noche apestas a un jugador distinto al de la noche anterior. Queda sin habilidad, sin hablar, sin voto y sin nominar hasta el final del día siguiente."
       },
       "rules": {
         "wake": {
@@ -1110,10 +1110,10 @@
         "setup": false,
         "reminderTokens": [
           {
-            "id": "abandono",
-            "kind": "reminder",
-            "value": "Abandonado",
-            "label": "Abandonado",
+            "id": "apestado",
+            "kind": "state",
+            "value": "plagued",
+            "label": "Apestado",
             "duration": "tonightAndTomorrowDay"
           }
         ],
@@ -1127,7 +1127,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "La Madre Hambrienta elige a 1 jugador vivo. :reminder:"
+            "body": "La Madre Hambrienta elige a 1 jugador vivo. Queda Apestado y se le despierta para informarle."
           },
           {
             "when": {
@@ -1138,7 +1138,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "La Madre Hambrienta elige a 1 jugador vivo distinto al de la noche anterior. :reminder:"
+            "body": "La Madre Hambrienta elige a 1 jugador vivo distinto al de la noche anterior. Queda Apestado y se le despierta para informarle."
           }
         ],
         "mechanics": [
@@ -1146,7 +1146,7 @@
             "mechanicId": "mechanic:grimm:madre-hambrienta:status-choice:1",
             "tags": [
               "status-choice",
-              "abandonment"
+              "plagued"
             ],
             "when": {
               "window": "night",
@@ -1241,9 +1241,8 @@
             ],
             "effects": [
               {
-                "type": "applyMarker",
-                "kind": "reminder",
-                "id": "Abandonado",
+                "type": "setPlayerState",
+                "state": "plagued",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"
@@ -1263,19 +1262,39 @@
                 },
                 "restrictions": [
                   "ability",
-                  "vote"
+                  "speak",
+                  "vote",
+                  "nominate"
                 ],
                 "duration": {
                   "type": "untilWindow",
                   "window": "dusk",
                   "count": 1
                 }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "literal",
+                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                },
+                "presentation": {
+                  "kind": "text",
+                  "title": "Eres un apestado",
+                  "description": "No puedes usar tu habilidad, hablar, votar ni nominar mientras dure el estado."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "selected"
+                  },
+                  "timing": "nextRecipientWake"
+                }
               }
             ],
             "presentation": {
               "nightControl": {
                 "type": "singlePlayer",
-                "label": "Abandona a un jugador"
+                "label": "Apesta a un jugador"
               }
             }
           }
@@ -1772,7 +1791,7 @@
       },
       "info": {
         "name": "Pato del Río",
-        "ability": "Una vez por partida, evitas una ejecución por voto. El salvado queda exiliado, sin voz ni voto, hasta el siguiente amanecer."
+        "ability": "Una vez por partida, evitas una ejecución por voto. El salvado queda Apestado —sin habilidad, hablar, votar ni nominar— hasta el siguiente amanecer."
       },
       "rules": {
         "wake": {
@@ -1789,17 +1808,10 @@
             "duration": "game"
           },
           {
-            "id": "exiliado",
+            "id": "apestado",
             "kind": "state",
-            "value": "exiled",
-            "label": "Exiliado",
-            "duration": "untilNextDawn"
-          },
-          {
-            "id": "exilio",
-            "kind": "reminder",
-            "value": "Exiliado",
-            "label": "Exiliado",
+            "value": "plagued",
+            "label": "Apestado",
             "duration": "untilNextDawn"
           }
         ],
@@ -1882,7 +1894,7 @@
               },
               {
                 "type": "setPlayerState",
-                "state": "exiled",
+                "state": "plagued",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"
@@ -1929,18 +1941,71 @@
               },
               {
                 "type": "restrict",
-                "actions": [
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "restrictions": [
+                  "ability",
                   "speak",
-                  "vote"
+                  "vote",
+                  "nominate"
                 ],
                 "duration": {
                   "type": "untilWindow",
                   "window": "dawn",
                   "count": 1
                 },
-                "targets": {
-                  "type": "binding",
-                  "binding": "selected"
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "state",
+                            "values": [
+                              "poisoned",
+                              "drunk"
+                            ],
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "literal",
+                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                },
+                "presentation": {
+                  "kind": "text",
+                  "title": "Eres un apestado",
+                  "description": "No puedes usar tu habilidad, hablar, votar ni nominar mientras dure el estado."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "selected"
+                  },
+                  "timing": "nextRecipientWake"
                 },
                 "when": [
                   {
@@ -1988,7 +2053,7 @@
             "presentation": {
               "label": "El Pato salva",
               "title": "Pato del Río",
-              "description": "Cuando vaya a resolverse una ejecución por voto, elige al candidato y evita su muerte.",
+              "description": "Cuando vaya a resolverse una ejecución por voto, salva al candidato: queda Apestado hasta el siguiente amanecer.",
               "action": {
                 "actionId": "grimm-river-rescue"
               }
@@ -2522,7 +2587,7 @@
       },
       "info": {
         "name": "Anciana de los Caminos",
-        "ability": "Cada noche proteges a un jugador del abandono; no puedes repetir objetivo dos noches seguidas."
+        "ability": "Cada noche proteges a un jugador de quedar Apestado; no puedes repetir objetivo dos noches seguidas."
       },
       "rules": {
         "wake": {
@@ -2551,7 +2616,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "La Anciana de los Caminos elige a 1 jugador vivo. :reminder:"
+            "body": "La Anciana elige a 1 jugador y lo protege de quedar Apestado esta noche."
           },
           {
             "when": {
@@ -2562,7 +2627,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "La Anciana de los Caminos elige a 1 jugador vivo distinto al de la noche anterior. :reminder:"
+            "body": "La Anciana elige a otro jugador y lo protege de quedar Apestado esta noche."
           }
         ],
         "mechanics": [
@@ -2670,7 +2735,9 @@
                   "type": "eventRestriction",
                   "values": [
                     "ability",
-                    "vote"
+                    "speak",
+                    "vote",
+                    "nominate"
                   ],
                   "match": "all"
                 },
@@ -2683,31 +2750,35 @@
                   "binding": "selected"
                 },
                 "reminder": "Provisión",
-                "when": [
-                  {
-                    "type": "query",
-                    "from": {
-                      "entity": "players"
+                "duration": "tonight"
+              },
+              {
+                "type": "interceptEvent",
+                "event": "stateChange",
+                "match": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "eventField",
+                      "field": "state",
+                      "value": "plagued"
                     },
-                    "where": {
-                      "type": "all",
-                      "conditions": [
-                        {
-                          "type": "isBinding",
-                          "binding": "selected"
-                        },
-                        {
-                          "type": "marker",
-                          "markerId": "Provisión",
-                          "active": true
-                        }
-                      ]
-                    },
-                    "aggregate": {
-                      "type": "exists"
+                    {
+                      "type": "eventField",
+                      "field": "active",
+                      "value": true
                     }
-                  }
-                ],
+                  ]
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Provisión",
                 "duration": "tonight"
               }
             ],
@@ -3109,7 +3180,7 @@
       },
       "info": {
         "name": "Comadrona",
-        "ability": "Una vez por partida declaras inocente a un jugador. Si es {{team:grimm:pueblo}} queda protegido de ejecución y abandono; si no, mueres."
+        "ability": "Una vez por partida declaras inocente a un jugador. Si es {{team:grimm:pueblo}} queda protegido de ejecución y de quedar Apestado; si no, mueres."
       },
       "rules": {
         "wake": {
@@ -3451,9 +3522,50 @@
                   "type": "eventRestriction",
                   "values": [
                     "ability",
-                    "vote"
+                    "speak",
+                    "vote",
+                    "nominate"
                   ],
                   "match": "all"
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Inocente",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "reminder": "Inocente",
+                "duration": "tonightAndTomorrowDay"
+              },
+              {
+                "type": "interceptEvent",
+                "event": "stateChange",
+                "match": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "eventField",
+                      "field": "state",
+                      "value": "plagued"
+                    },
+                    {
+                      "type": "eventField",
+                      "field": "active",
+                      "value": true
+                    }
+                  ]
                 },
                 "reaction": {
                   "type": "cancel"
@@ -3945,7 +4057,14 @@
           "reason": "No queda ningún Pueblerino ni Ayudante vivo."
         }
       ],
-      "elements": [],
+      "elements": [
+        {
+          "id": "state:grimm:plagued",
+          "kind": "state",
+          "label": "Apestado",
+          "description": "No puede usar su habilidad, hablar, votar ni nominar mientras el estado esté activo."
+        }
+      ],
       "links": [],
       "bookId": "book:grimm:hansel-y-gretel",
       "teams": [
