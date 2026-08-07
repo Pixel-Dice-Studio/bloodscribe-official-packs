@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "7.5",
+  "version": "7.9",
   "locale": "es",
   "name": "Blancanieves",
   "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
@@ -2309,7 +2309,7 @@
       },
       "info": {
         "name": "Enano Mudo",
-        "ability": "Una vez por día, dejas Apestado a un jugador hasta el próximo amanecer.",
+        "ability": "Una vez por día, dejas Apestado a un jugador distinto al del día anterior hasta el próximo amanecer.",
         "lore": "Habla mediante gestos y conoce el valor de una puerta cerrada. En la cabaña recuerda sin palabras la prohibición de dejar entrar a desconocidos, imponiendo un silencio tan severo como las advertencias desoídas por Blancanieves."
       },
       "rules": {
@@ -2341,7 +2341,60 @@
             "input": {
               "kind": "players",
               "min": 1,
-              "max": 1
+              "max": 1,
+              "candidates": {
+                "type": "set",
+                "operation": "difference",
+                "values": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    }
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "events"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "eventType",
+                          "values": [
+                            "record-public-action"
+                          ]
+                        },
+                        {
+                          "type": "eventPeriod",
+                          "value": "previousDay"
+                        },
+                        {
+                          "type": "eventField",
+                          "field": "actionId",
+                          "value": "grimm-silent-dwarf-plagues"
+                        },
+                        {
+                          "type": "eventParticipant",
+                          "binding": "actor",
+                          "participant": "actor"
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    },
+                    "project": {
+                      "type": "eventParticipant",
+                      "binding": "selected"
+                    }
+                  }
+                ]
+              }
             },
             "conditions": [
               {
@@ -2443,7 +2496,7 @@
             "presentation": {
               "label": "El Enano Mudo apesta",
               "title": "Enano Mudo",
-              "description": "El objetivo queda Apestado hasta el próximo amanecer.",
+              "description": "Elige a alguien distinto del objetivo del día anterior. Queda Apestado hasta el próximo amanecer.",
               "action": {
                 "actionId": "grimm-silent-dwarf-plagues"
               }

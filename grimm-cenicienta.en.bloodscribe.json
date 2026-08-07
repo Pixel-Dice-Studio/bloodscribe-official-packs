@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "7.5",
+  "version": "7.9",
   "locale": "en",
   "name": "Cinderella",
   "description": "After her mother's death, a young woman is subjected to the cruelty of her stepmother and two stepsisters, who make her sleep by the hearth and pick lentils from the ashes. A hazel-tree grows upon her mother's grave and shelters a white bird; aided by the birds, Cinderella secretly attends the King's three-day festival and dances with the Prince. A staircase smeared with pitch keeps hold of her golden slipper. The stepsisters mutilate their feet to claim it, but blood and the pigeons expose the deception; the Prince recognizes Cinderella, and the birds punish her sisters' falsehood for the rest of their lives.",
@@ -1505,7 +1505,7 @@
       "teamId": "team:grimm:siervo",
       "info": {
         "name": "Toe Stepsister",
-        "ability": "Three times per game at night, choose an in-play character whose ability is not once per game and use their ability tonight. On the second use, the Storyteller decides whether you die; on the third use, you die.",
+        "ability": "Three times per game at night, choose an in-play non-Killer character whose ability is not once per game and use their ability tonight. On the second use, the Storyteller decides whether you die; on the third use, you die.",
         "lore": "The elder of the Stepmother's two daughters, fair of face and hardened by envy. She tries to force her foot into the golden slipper and, at her mother's command, cuts off her toe and swallows the pain; the pigeons in the hazel-tree see the blood and compel the Prince to return the false bride."
       },
       "rules": {
@@ -1549,7 +1549,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Before all else, show the Toe Stepsister who the Heel Stepsister is. She may then choose a repeatable ability to copy tonight; advance her counter and resolve the penalty."
+            "body": "Before all else, show the Toe Stepsister who the Heel Stepsister is. She may then choose a repeatable non-Killer ability to copy tonight; advance her counter and resolve the penalty."
           },
           {
             "when": {
@@ -1560,7 +1560,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "If she has uses remaining, she may choose a repeatable ability to copy tonight. Advance her counter: the Storyteller decides on the second use, and the third kills her."
+            "body": "If she has uses remaining, she may choose a repeatable non-Killer ability to copy tonight. Advance her counter: the Storyteller decides on the second use, and the third kills her."
           }
         ],
         "mechanics": [
@@ -1629,8 +1629,35 @@
                   "entity": "characters"
                 },
                 "where": {
-                  "type": "inPlay",
-                  "value": true
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "inPlay",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 },
                 "aggregate": {
                   "type": "collect"
@@ -1789,7 +1816,7 @@
       "teamId": "team:grimm:siervo",
       "info": {
         "name": "Heel Stepsister",
-        "ability": "Three times per game at night, choose an in-play character whose ability is not once per game and use their ability tonight. On the second use, the Storyteller decides whether you die; on the third use, you die.",
+        "ability": "Three times per game at night, choose an in-play non-Killer character whose ability is not once per game and use their ability tonight. On the second use, the Storyteller decides whether you die; on the third use, you die.",
         "lore": "The Stepmother's second daughter shares her sister's outward beauty and cruel heart. When her toes fit but her heel does not, she obeys the same promise of a life without walking and cuts away a piece; blood rises through her white stocking and reveals the second false bride to the Prince."
       },
       "rules": {
@@ -1833,7 +1860,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Before all else, show the Heel Stepsister who the Toe Stepsister is. She may then choose a repeatable ability to copy tonight; advance her counter and resolve the penalty."
+            "body": "Before all else, show the Heel Stepsister who the Toe Stepsister is. She may then choose a repeatable non-Killer ability to copy tonight; advance her counter and resolve the penalty."
           },
           {
             "when": {
@@ -1844,7 +1871,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "If she has uses remaining, she may choose a repeatable ability to copy tonight. Advance her counter: the Storyteller decides on the second use, and the third kills her."
+            "body": "If she has uses remaining, she may choose a repeatable non-Killer ability to copy tonight. Advance her counter: the Storyteller decides on the second use, and the third kills her."
           }
         ],
         "mechanics": [
@@ -1913,8 +1940,35 @@
                   "entity": "characters"
                 },
                 "where": {
-                  "type": "inPlay",
-                  "value": true
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "inPlay",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 },
                 "aggregate": {
                   "type": "collect"

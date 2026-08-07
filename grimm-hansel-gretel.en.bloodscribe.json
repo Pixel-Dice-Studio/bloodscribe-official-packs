@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "7.5",
+  "version": "7.9",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
@@ -2257,7 +2257,7 @@
       },
       "info": {
         "name": "Forest Hunter",
-        "ability": "Each night, mark a player. If another player nominates them the next day, you may kill them immediately. Win personally after killing a {{team:grimm:oscuro}} and a {{team:grimm:siervo}} player.",
+        "ability": "Each night, mark a player. If another player nominates them the next day, you may kill them immediately. Win personally after killing a {{team:grimm:oscuro}} and a {{team:grimm:siervo}} player. If you are in play, at least one {{team:grimm:siervo}} must be in play.",
         "lore": "A solitary hunter born from the dangers surrounding the great forest. He knows the tracks of beasts and those who prey upon travellers, and has learned to decide swiftly who poses a threat when hunger has erased every law."
       },
       "rules": {
@@ -2372,6 +2372,30 @@
                 "type": "singlePlayer"
               }
             }
+          },
+          {
+            "mechanicId": "mechanic:grimm:cazador-bosque:required-servant:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireBucket",
+                    "bucket": "minion",
+                    "minimum": 1,
+                    "replaceFrom": "townsfolk"
+                  }
+                ]
+              }
+            ]
           },
           {
             "mechanicId": "mechanic:grimm:cazador-bosque:nomination-trigger-death:1",

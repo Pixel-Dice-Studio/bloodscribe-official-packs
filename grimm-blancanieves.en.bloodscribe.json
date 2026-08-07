@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "7.5",
+  "version": "7.9",
   "locale": "en",
   "name": "Snow White",
   "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
@@ -2298,7 +2298,7 @@
       },
       "info": {
         "name": "Silent Dwarf",
-        "ability": "Once per day, make a player Plagued until the next dawn.",
+        "ability": "Once per day, make a player other than the previous day's target Plagued until the next dawn.",
         "lore": "He speaks through gestures and knows the worth of a barred door. In the cottage he wordlessly repeats the command to admit no stranger, imposing a silence as stern as the warnings Snow White ignored."
       },
       "rules": {
@@ -2330,7 +2330,60 @@
             "input": {
               "kind": "players",
               "min": 1,
-              "max": 1
+              "max": 1,
+              "candidates": {
+                "type": "set",
+                "operation": "difference",
+                "values": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    }
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "events"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "eventType",
+                          "values": [
+                            "record-public-action"
+                          ]
+                        },
+                        {
+                          "type": "eventPeriod",
+                          "value": "previousDay"
+                        },
+                        {
+                          "type": "eventField",
+                          "field": "actionId",
+                          "value": "grimm-silent-dwarf-plagues"
+                        },
+                        {
+                          "type": "eventParticipant",
+                          "binding": "actor",
+                          "participant": "actor"
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    },
+                    "project": {
+                      "type": "eventParticipant",
+                      "binding": "selected"
+                    }
+                  }
+                ]
+              }
             },
             "conditions": [
               {
@@ -2432,7 +2485,7 @@
             "presentation": {
               "label": "The Silent Dwarf plagues",
               "title": "Silent Dwarf",
-              "description": "The target becomes Plagued until the next dawn.",
+              "description": "Choose someone other than the previous day's target. They become Plagued until the next dawn.",
               "action": {
                 "actionId": "grimm-silent-dwarf-plagues"
               }
