@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "7.5",
+  "version": "7.9",
   "locale": "es",
   "name": "Cenicienta",
   "description": "Tras la muerte de su madre, una joven queda sometida por su madrastra y sus dos hijas, que la obligan a dormir junto al hogar y a separar lentejas de la ceniza. En la tumba materna crece un avellano donde anida un pájaro blanco; con la ayuda de las aves, Cenicienta acude en secreto a las tres jornadas de fiesta convocadas por el rey y baila con el príncipe. Una escalera untada de pez retiene su zapato de oro. Las hermanastras mutilan sus pies para fingirse dueñas del zapato, pero la sangre y las palomas revelan el engaño; el príncipe reconoce a Cenicienta y las aves castigan para siempre la falsedad de sus hermanas.",
@@ -978,7 +978,7 @@
       "id": "character:grimm:cocinera",
       "teamId": "team:grimm:ayudante",
       "info": {
-        "name": "La Cocinera",
+        "name": "Cocinera",
         "ability": "Una vez por partida, durante la noche, eliges a un jugador y lo proteges de morir durante esta noche y las dos siguientes.",
         "lore": "Figura imaginada en la cocina donde Cenicienta trabaja desde antes del amanecer, carga agua, enciende el fuego, guisa y lava. Conoce la diferencia entre las brasas que alimentan la casa y la ceniza usada para humillar; guarda comida, calor y un rincón seguro para quien todavía puede sobrevivir."
       },
@@ -1423,7 +1423,7 @@
       "id": "character:grimm:madrastra",
       "teamId": "team:grimm:oscuro",
       "info": {
-        "name": "La Madrastra",
+        "name": "Madrastra",
         "ability": "Cada noche eliges a un jugador y lo matas.",
         "lore": "Segunda esposa del padre de Cenicienta y madre de dos hijas de rostro hermoso y corazón cruel. Le arrebata sus vestidos, la expulsa a la cocina, derrama lentejas en la ceniza y promete asistir a la fiesta solo para retirar la promesa; más tarde entrega el cuchillo con el que sus hijas intentan fabricar una novia."
       },
@@ -1514,7 +1514,7 @@
       "teamId": "team:grimm:siervo",
       "info": {
         "name": "Hermanastra del Dedo",
-        "ability": "Tres veces por partida, durante la noche, eliges un personaje en juego cuya habilidad no sea de único uso y usas su habilidad esa noche. La segunda vez el Narrador decide si mueres; la tercera vez mueres.",
+        "ability": "Tres veces por partida, durante la noche, eliges un personaje en juego que no sea Killer y cuya habilidad no sea de único uso, y usas su habilidad esa noche. La segunda vez el Narrador decide si mueres; la tercera vez mueres.",
         "lore": "La mayor de las dos hijas de la madrastra, hermosa de rostro y endurecida por la envidia. Intenta introducir el pie en el zapato de oro y, siguiendo la orden de su madre, se corta los dedos y oculta el dolor; las palomas del avellano ven la sangre y obligan al príncipe a devolver a la falsa novia."
       },
       "rules": {
@@ -1558,7 +1558,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Antes de todo, muéstrale a la Hermanastra del Dedo quién es la Hermanastra del Talón. Después puede elegir una habilidad multiuso para copiar esta noche; incrementa su contador y resuelve la penalización."
+            "body": "Antes de todo, muéstrale a la Hermanastra del Dedo quién es la Hermanastra del Talón. Después puede elegir una habilidad multiuso que no sea de Killer para copiar esta noche; incrementa su contador y resuelve la penalización."
           },
           {
             "when": {
@@ -1569,7 +1569,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Si le quedan usos, puede elegir una habilidad multiuso para copiar esta noche. Incrementa su contador: en el segundo uso decide el Narrador y el tercero la mata."
+            "body": "Si le quedan usos, puede elegir una habilidad multiuso que no sea de Killer para copiar esta noche. Incrementa su contador: en el segundo uso decide el Narrador y el tercero la mata."
           }
         ],
         "mechanics": [
@@ -1638,8 +1638,35 @@
                   "entity": "characters"
                 },
                 "where": {
-                  "type": "inPlay",
-                  "value": true
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "inPlay",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 },
                 "aggregate": {
                   "type": "collect"
@@ -1770,7 +1797,7 @@
             "presentation": {
               "nightControl": {
                 "type": "singleCharacter",
-                "label": "Copia una habilidad multiuso"
+                "label": "Copia una habilidad multiuso no Killer"
               },
               "decisionPrompts": {
                 "secondCopyFate": {
@@ -1799,7 +1826,7 @@
       "teamId": "team:grimm:siervo",
       "info": {
         "name": "Hermanastra del Talón",
-        "ability": "Tres veces por partida, durante la noche, eliges un personaje en juego cuya habilidad no sea de único uso y usas su habilidad esa noche. La segunda vez el Narrador decide si mueres; la tercera vez mueres.",
+        "ability": "Tres veces por partida, durante la noche, eliges un personaje en juego que no sea Killer y cuya habilidad no sea de único uso, y usas su habilidad esa noche. La segunda vez el Narrador decide si mueres; la tercera vez mueres.",
         "lore": "La segunda hija de la madrastra comparte la belleza exterior y el corazón cruel de su hermana. Cuando los dedos caben pero el talón no, obedece la misma promesa de una vida sin caminar y se corta un pedazo; la sangre sube por la media blanca y revela al príncipe la segunda novia falsa."
       },
       "rules": {
@@ -1843,7 +1870,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Antes de todo, muéstrale a la Hermanastra del Talón quién es la Hermanastra del Dedo. Después puede elegir una habilidad multiuso para copiar esta noche; incrementa su contador y resuelve la penalización."
+            "body": "Antes de todo, muéstrale a la Hermanastra del Talón quién es la Hermanastra del Dedo. Después puede elegir una habilidad multiuso que no sea de Killer para copiar esta noche; incrementa su contador y resuelve la penalización."
           },
           {
             "when": {
@@ -1854,7 +1881,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Si le quedan usos, puede elegir una habilidad multiuso para copiar esta noche. Incrementa su contador: en el segundo uso decide el Narrador y el tercero la mata."
+            "body": "Si le quedan usos, puede elegir una habilidad multiuso que no sea de Killer para copiar esta noche. Incrementa su contador: en el segundo uso decide el Narrador y el tercero la mata."
           }
         ],
         "mechanics": [
@@ -1923,8 +1950,35 @@
                   "entity": "characters"
                 },
                 "where": {
-                  "type": "inPlay",
-                  "value": true
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "inPlay",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 },
                 "aggregate": {
                   "type": "collect"
@@ -2055,7 +2109,7 @@
             "presentation": {
               "nightControl": {
                 "type": "singleCharacter",
-                "label": "Copia una habilidad multiuso"
+                "label": "Copia una habilidad multiuso no Killer"
               },
               "decisionPrompts": {
                 "secondCopyFate": {
@@ -2083,7 +2137,7 @@
       "id": "character:grimm:padre",
       "teamId": "team:grimm:errante",
       "info": {
-        "name": "El Padre",
+        "name": "Padre",
         "ability": "Ganas si sobrevives hasta el final de la partida sin haber contribuido a la ejecución de ningún personaje de {{team:grimm:pueblo}}.",
         "lore": "Hombre rico que entrega a su hija la rama pedida, pero nunca la libra del trabajo, la ceniza ni el desprecio de su nueva familia. Cuando el príncipe pregunta por otra hija, reduce a Cenicienta a una criada de cocina y duda incluso entonces de que pueda ser la novia; su falta no es ignorancia, sino cobardía sostenida."
       },

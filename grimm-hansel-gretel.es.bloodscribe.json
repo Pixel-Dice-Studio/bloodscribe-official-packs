@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "7.5",
+  "version": "7.9",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -2263,7 +2263,7 @@
       },
       "info": {
         "name": "Cazador del Bosque",
-        "ability": "Cada noche marcas a un jugador. Si otro jugador lo nomina al día siguiente, puedes matarlo de inmediato. Ganas al matar a un {{team:grimm:oscuro}} y un {{team:grimm:siervo}}.",
+        "ability": "Cada noche marcas a un jugador. Si otro jugador lo nomina al día siguiente, puedes matarlo de inmediato. Ganas al matar a un {{team:grimm:oscuro}} y un {{team:grimm:siervo}}. Si estás en juego, debe haber al menos un {{team:grimm:siervo}}.",
         "lore": "Cazador solitario nacido de los peligros que rodean el gran bosque. Conoce los pasos de las fieras y de quienes acechan viajeros, y ha aprendido a decidir con rapidez quién representa una amenaza cuando el hambre borra toda ley."
       },
       "rules": {
@@ -2379,6 +2379,30 @@
                 "label": "Marca al próximo objetivo"
               }
             }
+          },
+          {
+            "mechanicId": "mechanic:grimm:cazador-bosque:required-servant:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireBucket",
+                    "bucket": "minion",
+                    "minimum": 1,
+                    "replaceFrom": "townsfolk"
+                  }
+                ]
+              }
+            ]
           },
           {
             "mechanicId": "mechanic:grimm:cazador-bosque:nomination-trigger-death:1",
