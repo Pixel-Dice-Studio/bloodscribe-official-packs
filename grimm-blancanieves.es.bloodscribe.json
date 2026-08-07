@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "7.9",
+  "version": "7.11",
   "locale": "es",
   "name": "Blancanieves",
   "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
@@ -2515,7 +2515,7 @@
         }
       },
       "info": {
-        "name": "Cazador",
+        "name": "Cazador de Blancanieves",
         "ability": "Cada noche perdonas a un jugador: una muerte causada por un malvado no lo alcanza. Ganas si sobrevives tras perdonar a alguien de {{team:grimm:pueblo}}.",
         "lore": "Obedece la orden de llevar a Blancanieves al bosque, pero al verla llorar no puede atravesar su corazón. La deja huir y entrega a la Reina los pulmones y el hígado de un jabalí como falsa prueba de su muerte."
       },

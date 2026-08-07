@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "7.9",
+  "version": "7.11",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
@@ -605,7 +605,7 @@
       "id": "character:grimm:abuela",
       "teamId": "team:grimm:pueblo",
       "info": {
-        "name": "Grandmother",
+        "name": "Grandmother of Little Red-Cap",
         "ability": "On your first night, learn which player is Little Red-Cap.",
         "lore": "A sick old woman who lives alone half an hour into the wood, beneath three great oaks and near the hazel-trees. The Wolf lifts the latch, swallows her, and puts on her clothes; the Huntsman draws her out alive though scarcely able to breathe. During the second encounter she understands the trick, has the door barred, and makes Red-Cap fill a stone trough with sausage-water until another wolf falls in and drowns."
       },
@@ -731,7 +731,7 @@
       "id": "character:grimm:cazador-caperucita",
       "teamId": "team:grimm:ayudante",
       "info": {
-        "name": "Huntsman",
+        "name": "Huntsman of Little Red-Cap",
         "ability": "Each night, before the Wolf, choose a player without learning whether they are Devoured. If they are, free them and restore their ability.",
         "lore": "A huntsman passing the cottage who recognizes something strange in the supposed Grandmother's snores. He finds the old enemy he has long sought, but lowers his gun in case the woman still lives; with scissors he opens the sleeping belly, draws out Red-Cap and then the Grandmother, and goes home carrying the Wolf's skin."
       },
@@ -980,6 +980,7 @@
             "kind": "reminder",
             "value": "Señuelo preparado",
             "label": "Lure Prepared",
+            "crossedOut": true,
             "duration": "tonight"
           },
           {
@@ -987,6 +988,7 @@
             "kind": "reminder",
             "value": "Señuelo usado",
             "label": "Lure Spent",
+            "crossedOut": true,
             "duration": "game"
           }
         ],
