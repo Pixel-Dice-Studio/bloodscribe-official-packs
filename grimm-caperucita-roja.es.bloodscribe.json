@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "7.11",
+  "version": "7.12",
   "locale": "es",
   "name": "Caperucita Roja",
   "description": "Una niña querida por todos recibe de su abuela una caperuza de terciopelo rojo. Su madre la envía al otro lado del bosque con torta y vino para la anciana enferma y le ordena no apartarse del camino. El Lobo la entretiene con flores, llega primero a la casa, devora a la Abuela y ocupa su cama vestido con sus ropas; después se traga también a Caperucita. Un Cazador oye los ronquidos, abre con tijeras el vientre del animal y rescata a ambas. Caperucita llena de piedras la barriga del Lobo, que cae muerto al despertar. Más adelante, la niña y la Abuela vencen juntas a un segundo lobo sin volver a abandonar el sendero.",
@@ -1370,7 +1370,7 @@
             },
             "presentation": {
               "label": "El Molinero desvía la ejecución",
-              "title": "El Molinero",
+              "title": "Molinero",
               "description": "Elige a otro jugador vivo para que reciba la ejecución que iba a resolverse.",
               "action": {
                 "actionId": "grimm-miller-redirects"
@@ -1545,7 +1545,7 @@
             },
             "presentation": {
               "label": "El Mozo señala un rastro",
-              "title": "El Mozo del Bosque",
+              "title": "Mozo del Bosque",
               "description": "Declara públicamente por qué jugador crees que pasará el Lobo esta noche.",
               "action": {
                 "actionId": "grimm-forest-lad-trails"
