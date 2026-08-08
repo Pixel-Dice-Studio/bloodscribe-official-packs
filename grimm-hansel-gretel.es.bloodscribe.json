@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "7.26",
+  "version": "7.27",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -51,7 +51,7 @@
         "palette": {
           "cover": "#4a3520",
           "spine": "#4a3520",
-          "paper": "#f1e6c9",
+          "paper": "#D8C6AA",
           "ink": "#2b2116",
           "accent": "#b48a54"
         },
