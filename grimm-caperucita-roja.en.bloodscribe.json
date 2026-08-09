@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "7.36",
+  "version": "7.37",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
@@ -2027,6 +2027,72 @@
                 "options": [
                   "devour",
                   "disguise"
+                ]
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "characterId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "character",
+                  "title": "Victim's character"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "wolfNightChoice"
+                    },
+                    "operator": "eq",
+                    "right": "disguise"
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "state",
+                          "values": [
+                            "devoured"
+                          ],
+                          "active": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
                 ]
               },
               {
