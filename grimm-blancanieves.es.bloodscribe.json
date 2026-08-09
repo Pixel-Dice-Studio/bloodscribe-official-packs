@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "7.27",
+  "version": "7.36",
   "locale": "es",
   "name": "Blancanieves",
   "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
@@ -1486,6 +1486,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.2
+      },
       "links": []
     },
     {
@@ -1619,6 +1622,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.4
+      },
       "links": []
     },
     {
@@ -1749,6 +1755,9 @@
             }
           }
         ]
+      },
+      "axes": {
+        "power_balance": 1.2
       },
       "links": []
     },
@@ -1978,6 +1987,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.4
+      },
       "links": []
     },
     {
@@ -2161,6 +2173,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1
+      },
       "links": []
     },
     {
@@ -2331,6 +2346,9 @@
             }
           }
         ]
+      },
+      "axes": {
+        "power_balance": 1.5
       },
       "links": []
     },
@@ -2539,6 +2557,9 @@
             }
           }
         ]
+      },
+      "axes": {
+        "power_balance": 1.5
       },
       "links": []
     },
