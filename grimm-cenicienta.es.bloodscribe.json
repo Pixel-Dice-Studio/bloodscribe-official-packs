@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "7.27",
+  "version": "7.36",
   "locale": "es",
   "name": "Cenicienta",
   "description": "Tras la muerte de su madre, una joven queda sometida por su madrastra y sus dos hijas, que la obligan a dormir junto al hogar y a separar lentejas de la ceniza. En la tumba materna crece un avellano donde anida un pájaro blanco; con la ayuda de las aves, Cenicienta acude en secreto a las tres jornadas de fiesta convocadas por el rey y baila con el príncipe. Una escalera untada de pez retiene su zapato de oro. Las hermanastras mutilan sus pies para fingirse dueñas del zapato, pero la sangre y las palomas revelan el engaño; el príncipe reconoce a Cenicienta y las aves castigan para siempre la falsedad de sus hermanas.",
@@ -81,7 +81,9 @@
         "character:grimm:padre",
         "character:grimm:musico-banquete"
       ],
-      "gameRuleIds": [],
+      "gameRuleIds": [
+        "rule:grimm:stepsisters-recognition"
+      ],
       "teamIds": [
         "team:grimm:pueblo",
         "team:grimm:ayudante",
@@ -909,6 +911,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.2
+      },
       "links": []
     },
     {
@@ -1000,6 +1005,9 @@
             }
           }
         ]
+      },
+      "axes": {
+        "power_balance": 1.2
       },
       "links": []
     },
@@ -1114,6 +1122,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.5
+      },
       "links": []
     },
     {
@@ -1204,6 +1215,9 @@
             }
           }
         ]
+      },
+      "axes": {
+        "power_balance": 1
       },
       "links": []
     },
@@ -1330,6 +1344,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.4
+      },
       "links": []
     },
     {
@@ -1450,6 +1467,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.1
+      },
       "links": []
     },
     {
@@ -1560,6 +1580,9 @@
           "otherOrder": 570
         },
         "setup": false,
+        "requiredGameRuleIds": [
+          "rule:grimm:stepsisters-recognition"
+        ],
         "reminderTokens": [
           {
             "id": "copia_1",
@@ -1593,7 +1616,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Antes de todo, muéstrale a la Hermanastra del Dedo quién es la Hermanastra del Talón. Después puede elegir un personaje multiuso que no sea {{team:grimm:oscuro}}; si está en juego, copia su habilidad esta noche. Incrementa su contador y resuelve la penalización."
+            "body": "Puede elegir un personaje multiuso que no sea {{team:grimm:oscuro}}; si está en juego, copia su habilidad esta noche. Incrementa su contador y resuelve la penalización."
           },
           {
             "when": {
@@ -1608,52 +1631,6 @@
           }
         ],
         "mechanics": [
-          {
-            "mechanicId": "mechanic:grimm:hermanastra-dedo:recognition:1",
-            "tags": [
-              "starting-information",
-              "evil-team-recognition"
-            ],
-            "when": {
-              "window": "firstNight",
-              "cadence": "once"
-            },
-            "conditions": [],
-            "effects": [
-              {
-                "type": "emitInformation",
-                "value": {
-                  "type": "query",
-                  "from": {
-                    "entity": "players"
-                  },
-                  "where": {
-                    "type": "identity",
-                    "identityMode": "real",
-                    "facet": "character",
-                    "values": [
-                      "character:grimm:hermanastra-talon"
-                    ]
-                  },
-                  "project": {
-                    "type": "entityId"
-                  },
-                  "aggregate": {
-                    "type": "first"
-                  }
-                },
-                "presentation": {
-                  "kind": "player",
-                  "title": "Tu hermana"
-                },
-                "delivery": {
-                  "audience": {
-                    "type": "actor"
-                  }
-                }
-              }
-            ]
-          },
           {
             "mechanicId": "mechanic:grimm:hermanastra-dedo:copy-ability:1",
             "tags": [
@@ -1870,6 +1847,9 @@
           "otherOrder": 580
         },
         "setup": false,
+        "requiredGameRuleIds": [
+          "rule:grimm:stepsisters-recognition"
+        ],
         "reminderTokens": [
           {
             "id": "copia_1",
@@ -1903,7 +1883,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Antes de todo, muéstrale a la Hermanastra del Talón quién es la Hermanastra del Dedo. Después puede elegir un personaje multiuso que no sea {{team:grimm:oscuro}}; si está en juego, copia su habilidad esta noche. Incrementa su contador y resuelve la penalización."
+            "body": "Puede elegir un personaje multiuso que no sea {{team:grimm:oscuro}}; si está en juego, copia su habilidad esta noche. Incrementa su contador y resuelve la penalización."
           },
           {
             "when": {
@@ -1918,52 +1898,6 @@
           }
         ],
         "mechanics": [
-          {
-            "mechanicId": "mechanic:grimm:hermanastra-talon:recognition:1",
-            "tags": [
-              "starting-information",
-              "evil-team-recognition"
-            ],
-            "when": {
-              "window": "firstNight",
-              "cadence": "once"
-            },
-            "conditions": [],
-            "effects": [
-              {
-                "type": "emitInformation",
-                "value": {
-                  "type": "query",
-                  "from": {
-                    "entity": "players"
-                  },
-                  "where": {
-                    "type": "identity",
-                    "identityMode": "real",
-                    "facet": "character",
-                    "values": [
-                      "character:grimm:hermanastra-dedo"
-                    ]
-                  },
-                  "project": {
-                    "type": "entityId"
-                  },
-                  "aggregate": {
-                    "type": "first"
-                  }
-                },
-                "presentation": {
-                  "kind": "player",
-                  "title": "Tu hermana"
-                },
-                "delivery": {
-                  "audience": {
-                    "type": "actor"
-                  }
-                }
-              }
-            ]
-          },
           {
             "mechanicId": "mechanic:grimm:hermanastra-talon:copy-ability:1",
             "tags": [
@@ -2536,7 +2470,165 @@
       "links": []
     }
   ],
-  "gameRules": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:stepsisters-recognition",
+      "visibility": "base",
+      "categoryId": "rule-category:grimm:starting-information",
+      "category": {
+        "id": "rule-category:grimm:starting-information",
+        "terms": {
+          "singular": "Regla de información inicial",
+          "plural": "Reglas de información inicial"
+        },
+        "description": "Pasos compartidos de información que acompañan automáticamente a determinados personajes."
+      },
+      "activationTags": [
+        "startingInformation:mutualRecognition"
+      ],
+      "info": {
+        "name": "Las Hermanastras se reconocen",
+        "ability": "En la primera noche, si ambas Hermanastras están en juego, se despiertan juntas y se reconocen.",
+        "howToRun": "Despierta a ambas Hermanastras al mismo tiempo. Indícales que se miren, confirma que se han reconocido y vuelve a dormirlas."
+      },
+      "activeWhen": {
+        "type": "compare",
+        "left": {
+          "type": "query",
+          "from": {
+            "entity": "players"
+          },
+          "where": {
+            "type": "identity",
+            "identityMode": "real",
+            "facet": "character",
+            "values": [
+              "character:grimm:hermanastra-dedo",
+              "character:grimm:hermanastra-talon"
+            ]
+          },
+          "aggregate": {
+            "type": "count"
+          }
+        },
+        "operator": "gte",
+        "right": 2
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 4
+        },
+        "setup": false,
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Despierta juntas a las Hermanastras para que se reconozcan."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:stepsisters-recognition:information:1",
+            "tags": [
+              "information",
+              "starting-information",
+              "mutual-recognition"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "facet": "character",
+                    "values": [
+                      "character:grimm:hermanastra-dedo",
+                      "character:grimm:hermanastra-talon"
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "Las Hermanastras se reconocen",
+                  "emptyLabel": "No están ambas Hermanastras en juego"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "identity",
+                        "identityMode": "real",
+                        "facet": "character",
+                        "values": [
+                          "character:grimm:hermanastra-dedo",
+                          "character:grimm:hermanastra-talon"
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "shared"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Despierta a ambas Hermanastras a la vez."
+                ],
+                "communicate": [
+                  "Indícales que abran los ojos, se miren y se reconozcan mutuamente."
+                ],
+                "checks": [
+                  "Comprueba que solo las dos Hermanastras tienen los ojos abiertos."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:cenicienta"
+      ]
+    }
+  ],
   "tales": [
     {
       "id": "tale:grimm:grimm-cenicienta",
@@ -2569,7 +2661,12 @@
         "character:grimm:hermanastra-dedo",
         "character:grimm:hermanastra-talon"
       ],
-      "gameRuleBindings": [],
+      "gameRuleBindings": [
+        {
+          "ruleId": "rule:grimm:stepsisters-recognition",
+          "activation": "automatic"
+        }
+      ],
       "recommendedCounts": {
         "7": {
           "townsfolk": 2,

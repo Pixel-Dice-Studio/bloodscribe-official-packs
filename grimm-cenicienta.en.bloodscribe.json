@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "7.27",
+  "version": "7.36",
   "locale": "en",
   "name": "Cinderella",
   "description": "After her mother's death, a young woman is subjected to the cruelty of her stepmother and two stepsisters, who make her sleep by the hearth and pick lentils from the ashes. A hazel-tree grows upon her mother's grave and shelters a white bird; aided by the birds, Cinderella secretly attends the King's three-day festival and dances with the Prince. A staircase smeared with pitch keeps hold of her golden slipper. The stepsisters mutilate their feet to claim it, but blood and the pigeons expose the deception; the Prince recognizes Cinderella, and the birds punish her sisters' falsehood for the rest of their lives.",
@@ -81,7 +81,9 @@
         "character:grimm:padre",
         "character:grimm:musico-banquete"
       ],
-      "gameRuleIds": [],
+      "gameRuleIds": [
+        "rule:grimm:stepsisters-recognition"
+      ],
       "teamIds": [
         "team:grimm:pueblo",
         "team:grimm:ayudante",
@@ -905,6 +907,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.2
+      },
       "links": []
     },
     {
@@ -995,6 +1000,9 @@
             }
           }
         ]
+      },
+      "axes": {
+        "power_balance": 1.2
       },
       "links": []
     },
@@ -1108,6 +1116,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.5
+      },
       "links": []
     },
     {
@@ -1198,6 +1209,9 @@
             }
           }
         ]
+      },
+      "axes": {
+        "power_balance": 1
       },
       "links": []
     },
@@ -1323,6 +1337,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.4
+      },
       "links": []
     },
     {
@@ -1442,6 +1459,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 1.1
+      },
       "links": []
     },
     {
@@ -1551,6 +1571,9 @@
           "otherOrder": 570
         },
         "setup": false,
+        "requiredGameRuleIds": [
+          "rule:grimm:stepsisters-recognition"
+        ],
         "reminderTokens": [
           {
             "id": "copia_1",
@@ -1584,7 +1607,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Before all else, show the Toe Stepsister who the Heel Stepsister is. She may then choose a repeatable non-{{team:grimm:oscuro}} character; if they are in play, she copies their ability tonight. Advance her counter and resolve the penalty."
+            "body": "She may choose a repeatable non-{{team:grimm:oscuro}} character; if they are in play, she copies their ability tonight. Advance her counter and resolve the penalty."
           },
           {
             "when": {
@@ -1599,52 +1622,6 @@
           }
         ],
         "mechanics": [
-          {
-            "mechanicId": "mechanic:grimm:hermanastra-dedo:recognition:1",
-            "tags": [
-              "starting-information",
-              "evil-team-recognition"
-            ],
-            "when": {
-              "window": "firstNight",
-              "cadence": "once"
-            },
-            "conditions": [],
-            "effects": [
-              {
-                "type": "emitInformation",
-                "value": {
-                  "type": "query",
-                  "from": {
-                    "entity": "players"
-                  },
-                  "where": {
-                    "type": "identity",
-                    "identityMode": "real",
-                    "facet": "character",
-                    "values": [
-                      "character:grimm:hermanastra-talon"
-                    ]
-                  },
-                  "project": {
-                    "type": "entityId"
-                  },
-                  "aggregate": {
-                    "type": "first"
-                  }
-                },
-                "presentation": {
-                  "kind": "player",
-                  "title": "Your sister"
-                },
-                "delivery": {
-                  "audience": {
-                    "type": "actor"
-                  }
-                }
-              }
-            ]
-          },
           {
             "mechanicId": "mechanic:grimm:hermanastra-dedo:copy-ability:1",
             "tags": [
@@ -1860,6 +1837,9 @@
           "otherOrder": 580
         },
         "setup": false,
+        "requiredGameRuleIds": [
+          "rule:grimm:stepsisters-recognition"
+        ],
         "reminderTokens": [
           {
             "id": "copia_1",
@@ -1893,7 +1873,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "Before all else, show the Heel Stepsister who the Toe Stepsister is. She may then choose a repeatable non-{{team:grimm:oscuro}} character; if they are in play, she copies their ability tonight. Advance her counter and resolve the penalty."
+            "body": "She may choose a repeatable non-{{team:grimm:oscuro}} character; if they are in play, she copies their ability tonight. Advance her counter and resolve the penalty."
           },
           {
             "when": {
@@ -1908,52 +1888,6 @@
           }
         ],
         "mechanics": [
-          {
-            "mechanicId": "mechanic:grimm:hermanastra-talon:recognition:1",
-            "tags": [
-              "starting-information",
-              "evil-team-recognition"
-            ],
-            "when": {
-              "window": "firstNight",
-              "cadence": "once"
-            },
-            "conditions": [],
-            "effects": [
-              {
-                "type": "emitInformation",
-                "value": {
-                  "type": "query",
-                  "from": {
-                    "entity": "players"
-                  },
-                  "where": {
-                    "type": "identity",
-                    "identityMode": "real",
-                    "facet": "character",
-                    "values": [
-                      "character:grimm:hermanastra-dedo"
-                    ]
-                  },
-                  "project": {
-                    "type": "entityId"
-                  },
-                  "aggregate": {
-                    "type": "first"
-                  }
-                },
-                "presentation": {
-                  "kind": "player",
-                  "title": "Your sister"
-                },
-                "delivery": {
-                  "audience": {
-                    "type": "actor"
-                  }
-                }
-              }
-            ]
-          },
           {
             "mechanicId": "mechanic:grimm:hermanastra-talon:copy-ability:1",
             "tags": [
@@ -2524,7 +2458,165 @@
       "links": []
     }
   ],
-  "gameRules": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:stepsisters-recognition",
+      "visibility": "base",
+      "categoryId": "rule-category:grimm:starting-information",
+      "category": {
+        "id": "rule-category:grimm:starting-information",
+        "terms": {
+          "singular": "Starting information rule",
+          "plural": "Starting information rules"
+        },
+        "description": "Shared information steps that automatically accompany specific characters."
+      },
+      "activationTags": [
+        "startingInformation:mutualRecognition"
+      ],
+      "info": {
+        "name": "The Stepsisters recognize each other",
+        "ability": "On the first night, if both Stepsisters are in play, they wake together and recognize each other.",
+        "howToRun": "Wake both Stepsisters at the same time. Tell them to look at one another, confirm that they have recognized each other, then put them back to sleep."
+      },
+      "activeWhen": {
+        "type": "compare",
+        "left": {
+          "type": "query",
+          "from": {
+            "entity": "players"
+          },
+          "where": {
+            "type": "identity",
+            "identityMode": "real",
+            "facet": "character",
+            "values": [
+              "character:grimm:hermanastra-dedo",
+              "character:grimm:hermanastra-talon"
+            ]
+          },
+          "aggregate": {
+            "type": "count"
+          }
+        },
+        "operator": "gte",
+        "right": 2
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 4
+        },
+        "setup": false,
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Wake the Stepsisters together so they can recognize each other."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:stepsisters-recognition:information:1",
+            "tags": [
+              "information",
+              "starting-information",
+              "mutual-recognition"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "facet": "character",
+                    "values": [
+                      "character:grimm:hermanastra-dedo",
+                      "character:grimm:hermanastra-talon"
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "The Stepsisters recognize each other",
+                  "emptyLabel": "Both Stepsisters are not in play"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "identity",
+                        "identityMode": "real",
+                        "facet": "character",
+                        "values": [
+                          "character:grimm:hermanastra-dedo",
+                          "character:grimm:hermanastra-talon"
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "shared"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Wake both Stepsisters together."
+                ],
+                "communicate": [
+                  "Tell them to open their eyes, look at each other, and recognize one another."
+                ],
+                "checks": [
+                  "Check that only the two Stepsisters have their eyes open."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:cenicienta"
+      ]
+    }
+  ],
   "tales": [
     {
       "id": "tale:grimm:grimm-cenicienta",
@@ -2557,7 +2649,12 @@
         "character:grimm:hermanastra-dedo",
         "character:grimm:hermanastra-talon"
       ],
-      "gameRuleBindings": [],
+      "gameRuleBindings": [
+        {
+          "ruleId": "rule:grimm:stepsisters-recognition",
+          "activation": "automatic"
+        }
+      ],
       "recommendedCounts": {
         "7": {
           "townsfolk": 2,

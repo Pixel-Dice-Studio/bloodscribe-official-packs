@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "7.27",
+  "version": "7.36",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
@@ -2086,6 +2086,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 0.7
+      },
       "links": []
     },
     {
@@ -3647,6 +3650,9 @@
             ]
           }
         ]
+      },
+      "axes": {
+        "power_balance": 0.8
       },
       "links": []
     },
