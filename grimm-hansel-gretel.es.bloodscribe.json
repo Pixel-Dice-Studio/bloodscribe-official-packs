@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "7.37",
+  "version": "7.53",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -80,7 +80,10 @@
         "character:grimm:comadrona-corte",
         "character:grimm:cuervo-pocos-panes"
       ],
-      "gameRuleIds": [],
+      "gameRuleIds": [
+        "rule:grimm:hansel-gretel-rastro-de-guijarros",
+        "rule:grimm:hansel-gretel-casa-de-azucar"
+      ],
       "teamIds": [
         "team:grimm:pueblo",
         "team:grimm:ayudante",
@@ -3992,7 +3995,146 @@
       "links": []
     }
   ],
-  "gameRules": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:hansel-gretel-rastro-de-guijarros",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:blessings",
+      "category": {
+        "id": "rule-category:grimm:blessings",
+        "terms": {
+          "singular": "Bendición",
+          "plural": "Bendiciones"
+        },
+        "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Bien."
+      },
+      "info": {
+        "name": "El rastro de guijarros",
+        "ability": "La primera habilidad de un jugador malo durante la primera noche que elegiría jugadores debe elegir a uno menos, hasta un mínimo de cero.",
+        "howToRun": "Mantén la Bendición visible. La primera vez durante la primera noche que un jugador malo vaya a elegir objetivos, reduce en uno tanto el mínimo como el máximo de jugadores que puede elegir. Una habilidad de un objetivo no afecta a nadie; una habilidad de dos objetivos solo afecta a uno. Después, la Bendición queda consumida."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:hansel-gretel:rastro-de-guijarros:1",
+            "tags": [
+              "blessing",
+              "target-count-modifier"
+            ],
+            "when": {
+              "stage": "whileGameRuleActive"
+            },
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "game",
+                  "property": "nightNumber"
+                },
+                "operator": "eq",
+                "right": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "modifyTargets",
+                "delta": -1,
+                "sourceProfile": {
+                  "allegiances": [
+                    "evil"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:hansel-y-gretel"
+      ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:hansel-gretel-casa-de-azucar",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Maldición",
+          "plural": "Maldiciones"
+        },
+        "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Mal."
+      },
+      "info": {
+        "name": "La casa de azúcar",
+        "ability": "Una vez durante la primera noche, una habilidad de un jugador malo puede elegir a un jugador válido adicional.",
+        "howToRun": "Mantén la Maldición visible. Durante la primera noche, permite que una habilidad de un jugador malo elija a un jugador válido adicional. El objetivo adicional recibe los mismos efectos que los demás. La Maldición solo se consume si se elige realmente ese objetivo adicional."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:hansel-gretel:casa-de-azucar:1",
+            "tags": [
+              "curse",
+              "target-count-modifier"
+            ],
+            "when": {
+              "stage": "whileGameRuleActive"
+            },
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "game",
+                  "property": "nightNumber"
+                },
+                "operator": "eq",
+                "right": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "modifyTargets",
+                "delta": 1,
+                "sourceProfile": {
+                  "allegiances": [
+                    "evil"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:hansel-y-gretel"
+      ]
+    }
+  ],
   "tales": [
     {
       "id": "tale:grimm:grimm-hansel-gretel",
@@ -4025,7 +4167,16 @@
         "character:grimm:bruja-horno",
         "character:grimm:madre-hambrienta"
       ],
-      "gameRuleBindings": [],
+      "gameRuleBindings": [
+        {
+          "ruleId": "rule:grimm:hansel-gretel-rastro-de-guijarros",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:hansel-gretel-casa-de-azucar",
+          "activation": "setupChoice"
+        }
+      ],
       "recommendedCounts": {
         "7": {
           "townsfolk": 3,

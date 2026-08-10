@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "7.37",
+  "version": "7.53",
   "locale": "en",
   "name": "Snow White",
   "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
@@ -81,7 +81,10 @@
         "character:grimm:cazador",
         "character:grimm:guardian-ataud"
       ],
-      "gameRuleIds": [],
+      "gameRuleIds": [
+        "rule:grimm:blancanieves-refugio-de-los-siete",
+        "rule:grimm:blancanieves-cesta-envenenada"
+      ],
       "teamIds": [
         "team:grimm:pueblo",
         "team:grimm:ayudante",
@@ -3032,7 +3035,276 @@
       "links": []
     }
   ],
-  "gameRules": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:blancanieves-refugio-de-los-siete",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:blessings",
+      "category": {
+        "id": "rule-category:grimm:blessings",
+        "terms": {
+          "singular": "Blessing",
+          "plural": "Blessings"
+        },
+        "description": "Optional rules that gently tilt the tale toward Good."
+      },
+      "info": {
+        "name": "The Seven's Shelter",
+        "ability": "During the first night, the Storyteller secretly protects two different players: they receive no Apples that night.",
+        "howToRun": "Before characters act, secretly choose two different players and place Shelter on both. Ignore any Apple either would receive during the first night. Remove the markers at dawn."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 2
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "refugio",
+            "kind": "reminder",
+            "value": "Refugio",
+            "label": "Refugio",
+            "duration": "firstNight",
+            "count": 2
+          }
+        ],
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:blancanieves:refugio-de-los-siete:1",
+            "tags": [
+              "blessing",
+              "first-night-protection"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Refugio",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              },
+              {
+                "type": "interceptEvent",
+                "event": "stateChange",
+                "match": {
+                  "type": "eventField",
+                  "field": "state",
+                  "value": "cumulative-marker"
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "reminder": "Refugio",
+                "priority": 120
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers",
+                "label": "Protect two players"
+              },
+              "nightGuide": {
+                "action": [
+                  "Secretly choose two different players."
+                ],
+                "reminders": [
+                  "Place Shelter on both until dawn."
+                ],
+                "checks": [
+                  "No Apples are placed on them tonight."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:blancanieves"
+      ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:blancanieves-cesta-envenenada",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Curse",
+          "plural": "Curses"
+        },
+        "description": "Optional rules that gently tilt the tale toward Evil."
+      },
+      "info": {
+        "name": "The Poisoned Basket",
+        "ability": "At the start of the first night, the Storyteller secretly places one Apple on each of two different players.",
+        "howToRun": "Before characters act, secretly choose two different players. Advance each player's shared Apple counter once: both become poisoned and begin with Apple 1. Never place both Apples on the same player."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 2
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "manzana_1",
+            "kind": "reminder",
+            "value": "Manzana 1",
+            "label": "Manzana 1",
+            "duration": "game",
+            "count": 2
+          }
+        ],
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:blancanieves:cesta-envenenada:1",
+            "tags": [
+              "curse",
+              "cumulative-marker",
+              "poison"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "adjustCounter",
+                "counter": "manzana",
+                "scope": "shared",
+                "delta": 1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Manzana 1"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Manzana 2"
+                    },
+                    {
+                      "value": 3,
+                      "id": "Manzana 3"
+                    }
+                  ]
+                },
+                "stateProjection": {
+                  "state": "poisoned",
+                  "activeWhen": {
+                    "operator": "gte",
+                    "value": 1
+                  }
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 3,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "death",
+                    "cause": "ability",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "effectTarget"
+                    }
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers",
+                "label": "Give two starting Apples"
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:blancanieves"
+      ]
+    }
+  ],
   "tales": [
     {
       "id": "tale:grimm:grimm-blancanieves",
@@ -3065,7 +3337,16 @@
         "character:grimm:vendedora-bosque",
         "character:grimm:enano-bonachon"
       ],
-      "gameRuleBindings": [],
+      "gameRuleBindings": [
+        {
+          "ruleId": "rule:grimm:blancanieves-refugio-de-los-siete",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:blancanieves-cesta-envenenada",
+          "activation": "setupChoice"
+        }
+      ],
       "recommendedCounts": {
         "7": {
           "townsfolk": 2,

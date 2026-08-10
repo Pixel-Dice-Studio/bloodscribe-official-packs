@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "7.37",
+  "version": "7.53",
   "locale": "en",
   "name": "Cinderella",
   "description": "After her mother's death, a young woman is subjected to the cruelty of her stepmother and two stepsisters, who make her sleep by the hearth and pick lentils from the ashes. A hazel-tree grows upon her mother's grave and shelters a white bird; aided by the birds, Cinderella secretly attends the King's three-day festival and dances with the Prince. A staircase smeared with pitch keeps hold of her golden slipper. The stepsisters mutilate their feet to claim it, but blood and the pigeons expose the deception; the Prince recognizes Cinderella, and the birds punish her sisters' falsehood for the rest of their lives.",
@@ -82,7 +82,9 @@
         "character:grimm:musico-banquete"
       ],
       "gameRuleIds": [
-        "rule:grimm:stepsisters-recognition"
+        "rule:grimm:stepsisters-recognition",
+        "rule:grimm:cenicienta-rama-del-avellano",
+        "rule:grimm:cenicienta-baile-de-mascaras"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -274,7 +276,7 @@
             "value": "Marca del baile",
             "label": "Dance Mark",
             "duration": "manual",
-            "count": 3
+            "count": 9
           }
         ],
         "cues": [
@@ -1162,16 +1164,31 @@
                 ]
               },
               {
-                "type": "modifyNomination"
+                "type": "modifyNomination",
+                "voteDelta": {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "voteAdjustment"
+                    },
+                    "operator": "eq",
+                    "right": "add"
+                  },
+                  "then": {
+                    "type": "literal",
+                    "value": 1
+                  },
+                  "else": {
+                    "type": "literal",
+                    "value": -1
+                  }
+                }
               },
               {
                 "type": "recordAction",
                 "actionId": "maestro-ceremonias-vote-adjustment"
-              },
-              {
-                "type": "manualInstruction",
-                "instruction": "adjustCurrentVoteTotalByOne",
-                "reason": "storytellerJudgement"
               }
             ],
             "usage": {
@@ -1182,7 +1199,7 @@
               },
               "consumeOn": "resolution"
             },
-            "requiresManualModeling": true,
+            "requiresManualModeling": false,
             "presentation": {
               "label": "Weigh the vote",
               "title": "Master of Ceremonies",
@@ -2262,7 +2279,8 @@
             "kind": "reminder",
             "value": "Espió la maldad",
             "label": "Spied on Evil",
-            "duration": "game"
+            "duration": "game",
+            "count": 3
           }
         ],
         "cues": [
@@ -2615,6 +2633,234 @@
       "bookIds": [
         "book:grimm:cenicienta"
       ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:cenicienta-rama-del-avellano",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:blessings",
+      "category": {
+        "id": "rule-category:grimm:blessings",
+        "terms": {
+          "singular": "Blessing",
+          "plural": "Blessings"
+        },
+        "description": "Optional rules that gently tilt the tale toward Good."
+      },
+      "info": {
+        "name": "The Hazel Branch",
+        "ability": "The first time during the first night that a good player would die from an ability, they do not die; the ability is still spent.",
+        "howToRun": "Keep the Blessing visible. During the first night, cancel the first ability-caused death whose real target is good. Do not change the target or repeat the ability. The Blessing is spent after preventing that death."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:cenicienta:rama-del-avellano:1",
+            "tags": [
+              "blessing",
+              "first-night-protection"
+            ],
+            "when": {
+              "stage": "whileGameRuleActive"
+            },
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "game",
+                  "property": "nightNumber"
+                },
+                "operator": "eq",
+                "right": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "death",
+                "match": {
+                  "type": "eventField",
+                  "field": "cause",
+                  "value": "demon"
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "eventSubject"
+                },
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "eventSubject"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "real",
+                          "facet": "allegiance",
+                          "values": [
+                            "good"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ],
+                "reaction": {
+                  "type": "cancel"
+                },
+                "consumption": {
+                  "type": "once",
+                  "recordMechanicUse": true
+                },
+                "priority": 120
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:cenicienta"
+      ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:cenicienta-baile-de-mascaras",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Curse",
+          "plural": "Curses"
+        },
+        "description": "Optional rules that gently tilt the tale toward Evil."
+      },
+      "info": {
+        "name": "The Masquerade",
+        "ability": "During the first night, an evil player chosen by the Storyteller may register as Good and as any good character.",
+        "howToRun": "Before giving information during the first night, secretly choose an evil player and place Masked. For each observation involving them, decide whether they register as their real identity or as any valid good character. Remove the marker at dawn."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 3
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "enmascarado",
+            "kind": "reminder",
+            "value": "Enmascarado",
+            "label": "Enmascarado",
+            "duration": "firstNight",
+            "count": 1
+          }
+        ],
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:cenicienta:baile-de-mascaras:1",
+            "tags": [
+              "curse",
+              "registration"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "identity",
+                  "identityMode": "real",
+                  "facet": "allegiance",
+                  "values": [
+                    "evil"
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Enmascarado",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              },
+              {
+                "type": "registerAs",
+                "mode": "mayRegisterAs",
+                "alignment": [
+                  "good"
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Enmascarado",
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "label": "Mask an evil player"
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:cenicienta"
+      ]
     }
   ],
   "tales": [
@@ -2650,6 +2896,14 @@
         "character:grimm:hermanastra-talon"
       ],
       "gameRuleBindings": [
+        {
+          "ruleId": "rule:grimm:cenicienta-rama-del-avellano",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:cenicienta-baile-de-mascaras",
+          "activation": "setupChoice"
+        },
         {
           "ruleId": "rule:grimm:stepsisters-recognition",
           "activation": "automatic"

@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "7.37",
+  "version": "7.53",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
@@ -80,7 +80,10 @@
         "character:grimm:comadrona-corte",
         "character:grimm:cuervo-pocos-panes"
       ],
-      "gameRuleIds": [],
+      "gameRuleIds": [
+        "rule:grimm:hansel-gretel-rastro-de-guijarros",
+        "rule:grimm:hansel-gretel-casa-de-azucar"
+      ],
       "teamIds": [
         "team:grimm:pueblo",
         "team:grimm:ayudante",
@@ -3981,7 +3984,146 @@
       "links": []
     }
   ],
-  "gameRules": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:hansel-gretel-rastro-de-guijarros",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:blessings",
+      "category": {
+        "id": "rule-category:grimm:blessings",
+        "terms": {
+          "singular": "Blessing",
+          "plural": "Blessings"
+        },
+        "description": "Optional rules that gently tilt the tale toward Good."
+      },
+      "info": {
+        "name": "The Pebble Trail",
+        "ability": "The first evil player's ability during the first night that would choose players must choose one fewer, to a minimum of zero.",
+        "howToRun": "Keep the Blessing visible. The first time during the first night that an evil player would choose targets, reduce both the minimum and maximum number of players by one. A one-target ability affects nobody; a two-target ability affects only one player. The Blessing is then spent."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:hansel-gretel:rastro-de-guijarros:1",
+            "tags": [
+              "blessing",
+              "target-count-modifier"
+            ],
+            "when": {
+              "stage": "whileGameRuleActive"
+            },
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "game",
+                  "property": "nightNumber"
+                },
+                "operator": "eq",
+                "right": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "modifyTargets",
+                "delta": -1,
+                "sourceProfile": {
+                  "allegiances": [
+                    "evil"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:hansel-y-gretel"
+      ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:hansel-gretel-casa-de-azucar",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Curse",
+          "plural": "Curses"
+        },
+        "description": "Optional rules that gently tilt the tale toward Evil."
+      },
+      "info": {
+        "name": "The Sugar House",
+        "ability": "Once during the first night, an evil player's ability may choose one additional valid player.",
+        "howToRun": "Keep the Curse visible. During the first night, allow one evil player's ability to choose one additional valid player. The extra target receives the same effects as the others. The Curse is spent only if that additional target is actually chosen."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:hansel-gretel:casa-de-azucar:1",
+            "tags": [
+              "curse",
+              "target-count-modifier"
+            ],
+            "when": {
+              "stage": "whileGameRuleActive"
+            },
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "game",
+                  "property": "nightNumber"
+                },
+                "operator": "eq",
+                "right": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "modifyTargets",
+                "delta": 1,
+                "sourceProfile": {
+                  "allegiances": [
+                    "evil"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:hansel-y-gretel"
+      ]
+    }
+  ],
   "tales": [
     {
       "id": "tale:grimm:grimm-hansel-gretel",
@@ -4014,7 +4156,16 @@
         "character:grimm:bruja-horno",
         "character:grimm:madre-hambrienta"
       ],
-      "gameRuleBindings": [],
+      "gameRuleBindings": [
+        {
+          "ruleId": "rule:grimm:hansel-gretel-rastro-de-guijarros",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:hansel-gretel-casa-de-azucar",
+          "activation": "setupChoice"
+        }
+      ],
       "recommendedCounts": {
         "7": {
           "townsfolk": 3,

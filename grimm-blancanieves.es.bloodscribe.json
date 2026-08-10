@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "7.37",
+  "version": "7.53",
   "locale": "es",
   "name": "Blancanieves",
   "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
@@ -81,7 +81,10 @@
         "character:grimm:cazador",
         "character:grimm:guardian-ataud"
       ],
-      "gameRuleIds": [],
+      "gameRuleIds": [
+        "rule:grimm:blancanieves-refugio-de-los-siete",
+        "rule:grimm:blancanieves-cesta-envenenada"
+      ],
       "teamIds": [
         "team:grimm:pueblo",
         "team:grimm:ayudante",
@@ -3045,7 +3048,276 @@
       "links": []
     }
   ],
-  "gameRules": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:blancanieves-refugio-de-los-siete",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:blessings",
+      "category": {
+        "id": "rule-category:grimm:blessings",
+        "terms": {
+          "singular": "Bendición",
+          "plural": "Bendiciones"
+        },
+        "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Bien."
+      },
+      "info": {
+        "name": "El refugio de los siete",
+        "ability": "Durante la primera noche, el Narrador protege en secreto a dos jugadores distintos: no reciben Manzanas esa noche.",
+        "howToRun": "Antes de que actúen los personajes, elige en secreto a dos jugadores distintos y coloca Refugio sobre ambos. Mientras conserven esa marca durante la primera noche, ignora cualquier Manzana que fueran a recibir. Retira las marcas al amanecer."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 2
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "refugio",
+            "kind": "reminder",
+            "value": "Refugio",
+            "label": "Refugio",
+            "duration": "firstNight",
+            "count": 2
+          }
+        ],
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:blancanieves:refugio-de-los-siete:1",
+            "tags": [
+              "blessing",
+              "first-night-protection"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Refugio",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
+                }
+              },
+              {
+                "type": "interceptEvent",
+                "event": "stateChange",
+                "match": {
+                  "type": "eventField",
+                  "field": "state",
+                  "value": "cumulative-marker"
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "reminder": "Refugio",
+                "priority": 120
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers",
+                "label": "Protege a dos jugadores"
+              },
+              "nightGuide": {
+                "action": [
+                  "Elige en secreto a dos jugadores distintos."
+                ],
+                "reminders": [
+                  "Coloca Refugio sobre ambos hasta el amanecer."
+                ],
+                "checks": [
+                  "Durante esta noche, ninguna Manzana se coloca sobre ellos."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:blancanieves"
+      ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:blancanieves-cesta-envenenada",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Maldición",
+          "plural": "Maldiciones"
+        },
+        "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Mal."
+      },
+      "info": {
+        "name": "La cesta envenenada",
+        "ability": "Al comenzar la primera noche, el Narrador coloca en secreto una Manzana sobre cada uno de dos jugadores distintos.",
+        "howToRun": "Antes de que actúen los personajes, elige en secreto a dos jugadores distintos. Avanza una vez el contador compartido de Manzanas de cada uno: quedan envenenados y comienzan con Manzana 1. Nunca coloques las dos Manzanas sobre el mismo jugador."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 2
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "manzana_1",
+            "kind": "reminder",
+            "value": "Manzana 1",
+            "label": "Manzana 1",
+            "duration": "game",
+            "count": 2
+          }
+        ],
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:blancanieves:cesta-envenenada:1",
+            "tags": [
+              "curse",
+              "cumulative-marker",
+              "poison"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "adjustCounter",
+                "counter": "manzana",
+                "scope": "shared",
+                "delta": 1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "Manzana 1"
+                    },
+                    {
+                      "value": 2,
+                      "id": "Manzana 2"
+                    },
+                    {
+                      "value": 3,
+                      "id": "Manzana 3"
+                    }
+                  ]
+                },
+                "stateProjection": {
+                  "state": "poisoned",
+                  "activeWhen": {
+                    "operator": "gte",
+                    "value": 1
+                  }
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 3,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "death",
+                    "cause": "ability",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "effectTarget"
+                    }
+                  }
+                ]
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "twoPlayers",
+                "label": "Entrega dos Manzanas iniciales"
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:blancanieves"
+      ]
+    }
+  ],
   "tales": [
     {
       "id": "tale:grimm:grimm-blancanieves",
@@ -3078,7 +3350,16 @@
         "character:grimm:vendedora-bosque",
         "character:grimm:enano-bonachon"
       ],
-      "gameRuleBindings": [],
+      "gameRuleBindings": [
+        {
+          "ruleId": "rule:grimm:blancanieves-refugio-de-los-siete",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:blancanieves-cesta-envenenada",
+          "activation": "setupChoice"
+        }
+      ],
       "recommendedCounts": {
         "7": {
           "townsfolk": 2,

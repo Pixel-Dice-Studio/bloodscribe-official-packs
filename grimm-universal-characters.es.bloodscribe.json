@@ -1,0 +1,1047 @@
+{
+  "schemaVersion": "bloodscribe-v2",
+  "id": "grimm:grimm-universal-characters",
+  "key": "grimm-universal-characters",
+  "version": "7.53",
+  "locale": "es",
+  "name": "Personajes universales de Grimm",
+  "description": "Seis personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
+  "legal": {
+    "license": "Contenido original de BloodScribe inspirado en motivos del folclore europeo de dominio público.",
+    "disclaimer": "Pack de contenido declarativo. No ejecuta código remoto."
+  },
+  "links": [],
+  "popularity": {
+    "capturedAt": "2026-06-11",
+    "note": "Snapshot of the public role vote ordering, from most liked to least liked. The endpoint exposes ordering, not aggregate vote counts.",
+    "roles": {}
+  },
+  "books": [],
+  "teams": [
+    {
+      "teamId": "team:grimm:universal",
+      "terms": {
+        "singular": "Universal",
+        "plural": "Universales"
+      },
+      "defaults": {
+        "role": "support",
+        "allegiance": {
+          "default": "good",
+          "allowed": [
+            "good",
+            "evil"
+          ]
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast",
+            "independent"
+          ]
+        }
+      },
+      "colors": {
+        "text": {
+          "onLight": "#553822",
+          "onDark": "#ead8b6"
+        },
+        "surface": "#745136",
+        "border": "#745136",
+        "reminderSurface": "#3d2a24",
+        "gradient": {
+          "from": "#866443",
+          "to": "#3d2a24"
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "character:grimm:costurera-espinos",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M25 93c22-12 23-46 50-58 8-4 19 2 15 12-7 17-34 18-39 39-3 12 14 17 24 8\" fill=\"none\" stroke=\"#ead8b6\" stroke-width=\"7\" stroke-linecap=\"round\"/><path d=\"m34 77-10-8m34-25-7-12m24 30 13-8\" stroke=\"#b96b5b\" stroke-width=\"5\" stroke-linecap=\"round\"/></svg>",
+      "info": {
+        "name": "La Costurera de Espinos",
+        "ability": "Al entrar, elige públicamente a dos jugadores vivos distintos de ti. Mientras ambos vivan, ninguno puede nominar al otro."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "vinculo_espinas",
+            "kind": "reminder",
+            "value": "Vínculo de espinas",
+            "label": "Vínculo de espinas",
+            "duration": "game",
+            "count": 2
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:costurera-espinos:entry-pair:1",
+            "tags": [
+              "public-day-action",
+              "entry-choice",
+              "relational-restriction"
+            ],
+            "when": {
+              "window": "anyTime",
+              "cadence": "once",
+              "trigger": {
+                "type": "event",
+                "event": "characterEntry",
+                "bindings": {
+                  "eventSubject": "actor"
+                }
+              }
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Vínculo de espinas",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "permanent"
+                }
+              },
+              {
+                "type": "restrict",
+                "relation": {
+                  "action": "nominate",
+                  "marker": "Vínculo de espinas",
+                  "symmetric": true
+                }
+              },
+              {
+                "type": "recordAction",
+                "actionId": "costurera-espinos-entry",
+                "outcome": {
+                  "type": "literal",
+                  "value": "success"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "presentation": {
+              "label": "Cose el vínculo",
+              "title": "La Costurera de Espinos",
+              "description": "Elige públicamente a dos jugadores vivos que no sean la Costurera.",
+              "action": {
+                "actionId": "costurera-espinos-entry"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:farolero-bosque",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M50 30h28l8 20-8 42H50l-8-42z\" fill=\"#e6a84c\" stroke=\"#f6e5ba\" stroke-width=\"6\"/><path d=\"M64 17v13M45 99h38\" stroke=\"#f6e5ba\" stroke-width=\"7\" stroke-linecap=\"round\"/></svg>",
+      "info": {
+        "name": "El Farolero del Bosque",
+        "ability": "Cada día, antes de la primera nominación, elige públicamente a otro jugador. Su primer voto cuenta doble; el tuyo no cuenta en esa misma votación."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "voto_iluminado",
+            "kind": "reminder",
+            "value": "Voto iluminado",
+            "label": "Voto iluminado",
+            "duration": "today"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:farolero-bosque:light-voter:1",
+            "tags": [
+              "public-day-action",
+              "vote-choice"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Voto iluminado",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk"
+                }
+              },
+              {
+                "type": "recordAction",
+                "actionId": "farolero-bosque-ilumina",
+                "outcome": {
+                  "type": "literal",
+                  "value": "success"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "day",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "presentation": {
+              "label": "Ilumina un voto",
+              "title": "El Farolero del Bosque",
+              "description": "Elige públicamente a otro jugador antes de la primera nominación del día.",
+              "action": {
+                "actionId": "farolero-bosque-ilumina"
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:farolero-bosque:first-lit-vote:1",
+            "tags": [
+              "vote-modifier"
+            ],
+            "when": {
+              "window": "voting",
+              "cadence": "each"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifyVote",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Voto iluminado",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "weight": 2,
+                "pairedTargets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "pairedWeight": 0
+              }
+            ],
+            "usage": {
+              "scope": "day",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:cuervo-ceniza",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M25 78c20-5 24-34 49-38 15-2 25 9 29 22-17-4-24 8-26 27-18-4-31-1-45 11 3-10 1-17-7-22z\" fill=\"#b7b1aa\"/><circle cx=\"82\" cy=\"54\" r=\"4\" fill=\"#2b1a16\"/></svg>",
+      "info": {
+        "name": "El Cuervo Ceniza",
+        "ability": "Cada noche elige a otro jugador. Al amanecer descubres si fue elegido esa noche por alguna habilidad distinta de la tuya."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 35,
+          "otherOrder": 35
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "marca_ceniza",
+            "kind": "reminder",
+            "value": "Marca de ceniza",
+            "label": "Marca de ceniza",
+            "duration": "tonight"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:cuervo-ceniza:track:1",
+            "tags": [
+              "target-tracking-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "not",
+                  "condition": {
+                    "type": "isBinding",
+                    "binding": "actor"
+                  }
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Marca de ceniza",
+                "active": true,
+                "exclusive": {
+                  "scope": "source",
+                  "maxActiveTargets": 1
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:cuervo-ceniza:dawn-report:1",
+            "tags": [
+              "tracked-target-information"
+            ],
+            "when": {
+              "window": "dawn",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Marca de ceniza",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "events"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "eventPeriod",
+                        "value": "currentNight"
+                      },
+                      {
+                        "type": "eventType",
+                        "values": [
+                          "choose-target"
+                        ]
+                      },
+                      {
+                        "type": "eventParticipant",
+                        "binding": "selected",
+                        "participant": "eventSubject"
+                      },
+                      {
+                        "type": "eventParticipant",
+                        "binding": "actor",
+                        "participant": "actor",
+                        "value": false
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "presentation": {
+                  "kind": "boolean",
+                  "title": "¿Fue elegido?",
+                  "trueLabel": "Sí",
+                  "falseLabel": "No"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "dawn"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:buhonera-cruce",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M34 46h60l-8 53H42z\" fill=\"#c78f56\" stroke=\"#f1ddbb\" stroke-width=\"6\"/><path d=\"M48 47c0-25 32-25 32 0\" fill=\"none\" stroke=\"#f1ddbb\" stroke-width=\"7\"/></svg>",
+      "info": {
+        "name": "La Buhonera del Cruce",
+        "ability": "Una vez por partida, ofrece públicamente un trato a otro jugador vivo. Si acepta, sus votos posteriores no cuentan ese día y no puede morir esa noche. Rechazar no consume el uso."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "trato_sin_voto",
+            "kind": "reminder",
+            "value": "Trato: sin voto",
+            "label": "Trato: sin voto",
+            "duration": "today"
+          },
+          {
+            "id": "trato_protegido",
+            "kind": "reminder",
+            "value": "Trato: protegido",
+            "label": "Trato: protegido",
+            "duration": "tonight"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:buhonera-cruce:offer:1",
+            "tags": [
+              "public-day-action",
+              "consent",
+              "vote-modifier",
+              "passive-protection"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "accepted",
+                "options": [
+                  "yes",
+                  "no"
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Trato: sin voto",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "accepted"
+                    },
+                    "operator": "eq",
+                    "right": "yes"
+                  }
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Trato: protegido",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "accepted"
+                    },
+                    "operator": "eq",
+                    "right": "yes"
+                  }
+                ]
+              },
+              {
+                "type": "interceptEvent",
+                "event": "death",
+                "reminder": "Trato: protegido",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reaction": {
+                  "type": "cancel"
+                }
+              },
+              {
+                "type": "recordAction",
+                "actionId": "buhonera-cruce-trato",
+                "outcome": {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "accepted"
+                    },
+                    "operator": "eq",
+                    "right": "yes"
+                  },
+                  "then": {
+                    "type": "literal",
+                    "value": "success"
+                  },
+                  "else": {
+                    "type": "literal",
+                    "value": "rejected"
+                  }
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "presentation": {
+              "label": "Ofrece un trato",
+              "title": "La Buhonera del Cruce",
+              "description": "Ofrece públicamente un trato a otro jugador vivo y registra si lo acepta.",
+              "action": {
+                "actionId": "buhonera-cruce-trato"
+              },
+              "decisionPrompts": {
+                "accepted": {
+                  "question": "¿Acepta el trato?",
+                  "options": [
+                    {
+                      "value": "yes",
+                      "label": "Acepta"
+                    },
+                    {
+                      "value": "no",
+                      "label": "Rechaza"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:buhonera-cruce:no-vote:1",
+            "tags": [
+              "vote-modifier"
+            ],
+            "when": {
+              "window": "voting",
+              "cadence": "each"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifyVote",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Trato: sin voto",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "weight": 0
+              }
+            ]
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:molinero-tuerto",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"64\" cy=\"64\" r=\"16\" fill=\"#ead8b6\"/><path d=\"M64 18v30M64 80v30M18 64h30M80 64h30M31 31l22 22M75 75l22 22M97 31 75 53M53 75 31 97\" stroke=\"#ead8b6\" stroke-width=\"7\" stroke-linecap=\"round\"/></svg>",
+      "info": {
+        "name": "El Molinero Tuerto",
+        "ability": "Una vez por partida, después de contar una votación en la que no votaste, modifica públicamente el total en +1 o -1. El resultado nunca baja de cero y se recalcula el cadalso."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:molinero-tuerto:adjust-vote:1",
+            "tags": [
+              "public-day-action",
+              "nomination-trigger"
+            ],
+            "when": {
+              "window": "nomination",
+              "cadence": "each",
+              "trigger": {
+                "type": "event",
+                "event": "nomination"
+              }
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "delta",
+                "options": [
+                  "add",
+                  "subtract"
+                ]
+              },
+              {
+                "type": "modifyNomination",
+                "requiresActorAbstention": true,
+                "voteDelta": {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "delta"
+                    },
+                    "operator": "eq",
+                    "right": "add"
+                  },
+                  "then": {
+                    "type": "literal",
+                    "value": 1
+                  },
+                  "else": {
+                    "type": "literal",
+                    "value": -1
+                  }
+                }
+              },
+              {
+                "type": "recordAction",
+                "actionId": "molinero-tuerto-ajusta",
+                "outcome": {
+                  "type": "literal",
+                  "value": "success"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "presentation": {
+              "label": "Inclina el recuento",
+              "title": "El Molinero Tuerto",
+              "description": "Después de una votación en la que no participaste, modifica públicamente el total en uno.",
+              "action": {
+                "actionId": "molinero-tuerto-ajusta"
+              },
+              "decisionPrompts": {
+                "delta": {
+                  "question": "¿Cómo cambia el total?",
+                  "options": [
+                    {
+                      "value": "add",
+                      "label": "+1"
+                    },
+                    {
+                      "value": "subtract",
+                      "label": "-1"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:dama-espejo-agrietado",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"64\" cy=\"60\" rx=\"34\" ry=\"43\" fill=\"#b8c5c9\" stroke=\"#ead8b6\" stroke-width=\"7\"/><path d=\"m59 19 8 28-13 12 18 14-11 30M30 62l25-3M72 73l24 11\" fill=\"none\" stroke=\"#5e4b54\" stroke-width=\"5\"/></svg>",
+      "info": {
+        "name": "La Dama del Espejo Agrietado",
+        "ability": "Una vez por partida, elige de noche a otro jugador vivo. Hasta el amanecer, la primera habilidad ajena que elija exactamente a uno de vosotros se redirige al otro si es válido."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 70,
+          "otherOrder": 70
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "vinculo_espejo",
+            "kind": "reminder",
+            "value": "Vínculo del espejo",
+            "label": "Vínculo del espejo",
+            "duration": "tonight",
+            "count": 2
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:dama-espejo-agrietado:bind:1",
+            "tags": [
+              "reminder-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Vínculo del espejo",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Vínculo del espejo",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:dama-espejo-agrietado:redirect:1",
+            "tags": [
+              "target-redirect"
+            ],
+            "when": {
+              "window": "anyTime",
+              "cadence": "each"
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "binding",
+                  "binding": "nominator"
+                },
+                "operator": "neq",
+                "right": {
+                  "type": "binding",
+                  "binding": "actor"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "mechanicTargeted",
+                "bindings": {
+                  "actor": "nominator"
+                },
+                "match": {
+                  "type": "eventField",
+                  "field": "targetCount",
+                  "value": 1
+                },
+                "reminder": "Vínculo del espejo",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Vínculo del espejo",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "reaction": {
+                  "type": "redirect",
+                  "targets": {
+                    "type": "binding",
+                    "binding": "effectTarget"
+                  }
+                },
+                "consumption": {
+                  "type": "once",
+                  "recordMechanicUse": true
+                },
+                "priority": 100
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            }
+          }
+        ]
+      },
+      "links": []
+    }
+  ],
+  "gameRules": [],
+  "tales": []
+}
