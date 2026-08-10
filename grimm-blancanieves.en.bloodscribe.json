@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "8.0",
+  "version": "8.2",
   "locale": "en",
   "name": "Snow White",
   "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
@@ -3345,6 +3345,9 @@
       "nightInstructions": {
         "opening": "Make sure every player has closed their eyes. Resolve plague and death protection first, remove an Apple next, then resolve the Queen and Peddler.",
         "dawn": "Wake the village, announce deaths, clear dawn Plagued states, and deliver pending comparison or activity information."
+      },
+      "compositionRules": {
+        "maxMainEvils": 2
       },
       "gameEndRules": [
         {
