@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-universal-characters",
   "key": "grimm-universal-characters",
-  "version": "7.54",
+  "version": "7.57",
   "locale": "es",
   "name": "Personajes universales de Grimm",
   "description": "Seis personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
