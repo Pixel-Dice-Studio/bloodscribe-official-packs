@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "8.6",
+  "version": "8.11",
   "locale": "es",
   "name": "Cenicienta",
   "description": "Tras la muerte de su madre, una joven queda sometida por su madrastra y sus dos hijas, que la obligan a dormir junto al hogar y a separar lentejas de la ceniza. En la tumba materna crece un avellano donde anida un pájaro blanco; con la ayuda de las aves, Cenicienta acude en secreto a las tres jornadas de fiesta convocadas por el rey y baila con el príncipe. Una escalera untada de pez retiene su zapato de oro. Las hermanastras mutilan sus pies para fingirse dueñas del zapato, pero la sangre y las palomas revelan el engaño; el príncipe reconoce a Cenicienta y las aves castigan para siempre la falsedad de sus hermanas.",
@@ -1601,25 +1601,13 @@
         ],
         "reminderTokens": [
           {
-            "id": "copia_1",
+            "id": "copia",
             "kind": "reminder",
-            "value": "Primera copia",
-            "label": "Primera copia",
-            "duration": "game"
-          },
-          {
-            "id": "copia_2",
-            "kind": "reminder",
-            "value": "Segunda copia",
-            "label": "Segunda copia",
-            "duration": "game"
-          },
-          {
-            "id": "copia_3",
-            "kind": "reminder",
-            "value": "Tercera copia",
-            "label": "Tercera copia",
-            "duration": "game"
+            "value": "Copia",
+            "label": "Copia",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"74\" height=\"62\" viewBox=\"0 0 74 62\"><defs><linearGradient id=\"a\" x1=\"50%\" x2=\"50%\" y1=\"0%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#D84542\"/><stop offset=\"97.852%\" stop-color=\"#B02926\"/></linearGradient></defs><path fill=\"url(#a)\" fill-rule=\"evenodd\" d=\"M12.5021287,0 C17.2030005,8.5273 20.5136646,13.773 26.0710362,21.66 C30.0606918,27.285 33.374724,30.734 38.0651274,35.676 C40.571998,38.2893 43.1656267,39.1123687 46.0494519,41.2177687 C47.4611426,42.1630787 48.5345553,42.2919887 50.7716246,41.6122987 C53.008694,40.9326087 54.2360905,40.9326087 56.4595264,39.78533 C62.102648,41.44153 62.4038546,42.1857477 67.2082273,44.6099407 C68.9719304,45.2896307 70.4700195,46.50013 72.1234855,47.48453 C73.659614,48.48062 74.1716568,50.63683 73.9511825,52.48063 C70.9714119,54.30483 67.8244194,55.80483 64.5741991,56.94943 C61.2921184,58.11743 61.5267933,58.79323 58.1274661,59.39863 C53.3519499,60.21113 52.1823075,60.76973 47.3604571,61.07833 C44.3095011,61.09396 41.2052926,60.53536 38.4352547,59.09003 C37.4076189,58.54706 36.4368767,57.85953 35.604773,57.00413 C33.6987903,55.09393 32.0346738,52.91433 30.4381015,50.69553 C27.8103432,47.02753 27.1738626,45.21503 24.4820193,41.60153 C22.561836,39.06243 20.542157,36.55853 18.0850796,34.62883 C15.556908,32.67963 12.5948882,31.29293 9.48703851,31.07023 C8.99988324,41.50823 8.51629634,50.94923 8.02910465,61.39023 C6.75614342,61.39023 5.48309116,61.38632 4.21367918,61.39023 C4.03232954,51.68713 3.67318953,42.98823 3.02601291,33.30823 C2.6348668,27.50353 0.131538113,24.11723 0,18.27723 C0.088896097,13.76553 2.08731324,10.57023 4.60483439,7.11323 C6.6135907,4.3985 9.88502096,1.9922 12.5021287,0 Z\"/></svg>",
+            "duration": "game",
+            "count": 3
           }
         ],
         "cues": [
@@ -1723,20 +1711,8 @@
                 },
                 "projection": {
                   "kind": "reminder",
-                  "stages": [
-                    {
-                      "value": 1,
-                      "id": "Primera copia"
-                    },
-                    {
-                      "value": 2,
-                      "id": "Segunda copia"
-                    },
-                    {
-                      "value": 3,
-                      "id": "Tercera copia"
-                    }
-                  ]
+                  "mode": "copies",
+                  "id": "Copia"
                 },
                 "threshold": {
                   "operator": "gte",
@@ -1866,25 +1842,13 @@
         ],
         "reminderTokens": [
           {
-            "id": "copia_1",
+            "id": "copia",
             "kind": "reminder",
-            "value": "Primera copia",
-            "label": "Primera copia",
-            "duration": "game"
-          },
-          {
-            "id": "copia_2",
-            "kind": "reminder",
-            "value": "Segunda copia",
-            "label": "Segunda copia",
-            "duration": "game"
-          },
-          {
-            "id": "copia_3",
-            "kind": "reminder",
-            "value": "Tercera copia",
-            "label": "Tercera copia",
-            "duration": "game"
+            "value": "Copia",
+            "label": "Copia",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"74\" height=\"62\" viewBox=\"0 0 74 62\"><defs><linearGradient id=\"a\" x1=\"50%\" x2=\"50%\" y1=\"0%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#D84542\"/><stop offset=\"97.852%\" stop-color=\"#B02926\"/></linearGradient></defs><path fill=\"url(#a)\" fill-rule=\"evenodd\" d=\"M12.5021287,0 C17.2030005,8.5273 20.5136646,13.773 26.0710362,21.66 C30.0606918,27.285 33.374724,30.734 38.0651274,35.676 C40.571998,38.2893 43.1656267,39.1123687 46.0494519,41.2177687 C47.4611426,42.1630787 48.5345553,42.2919887 50.7716246,41.6122987 C53.008694,40.9326087 54.2360905,40.9326087 56.4595264,39.78533 C62.102648,41.44153 62.4038546,42.1857477 67.2082273,44.6099407 C68.9719304,45.2896307 70.4700195,46.50013 72.1234855,47.48453 C73.659614,48.48062 74.1716568,50.63683 73.9511825,52.48063 C70.9714119,54.30483 67.8244194,55.80483 64.5741991,56.94943 C61.2921184,58.11743 61.5267933,58.79323 58.1274661,59.39863 C53.3519499,60.21113 52.1823075,60.76973 47.3604571,61.07833 C44.3095011,61.09396 41.2052926,60.53536 38.4352547,59.09003 C37.4076189,58.54706 36.4368767,57.85953 35.604773,57.00413 C33.6987903,55.09393 32.0346738,52.91433 30.4381015,50.69553 C27.8103432,47.02753 27.1738626,45.21503 24.4820193,41.60153 C22.561836,39.06243 20.542157,36.55853 18.0850796,34.62883 C15.556908,32.67963 12.5948882,31.29293 9.48703851,31.07023 C8.99988324,41.50823 8.51629634,50.94923 8.02910465,61.39023 C6.75614342,61.39023 5.48309116,61.38632 4.21367918,61.39023 C4.03232954,51.68713 3.67318953,42.98823 3.02601291,33.30823 C2.6348668,27.50353 0.131538113,24.11723 0,18.27723 C0.088896097,13.76553 2.08731324,10.57023 4.60483439,7.11323 C6.6135907,4.3985 9.88502096,1.9922 12.5021287,0 Z\"/></svg>",
+            "duration": "game",
+            "count": 3
           }
         ],
         "cues": [
@@ -1988,20 +1952,8 @@
                 },
                 "projection": {
                   "kind": "reminder",
-                  "stages": [
-                    {
-                      "value": 1,
-                      "id": "Primera copia"
-                    },
-                    {
-                      "value": 2,
-                      "id": "Segunda copia"
-                    },
-                    {
-                      "value": 3,
-                      "id": "Tercera copia"
-                    }
-                  ]
+                  "mode": "copies",
+                  "id": "Copia"
                 },
                 "threshold": {
                   "operator": "gte",
