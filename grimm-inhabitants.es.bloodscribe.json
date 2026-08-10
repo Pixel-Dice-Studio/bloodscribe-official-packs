@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "8.11",
+  "version": "8.14",
   "locale": "es",
   "name": "Habitantes de Grimm",
-  "description": "Cinco personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
+  "description": "Ocho personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
   "legal": {
     "license": "Contenido original de BloodScribe inspirado en motivos del folclore europeo de dominio público.",
     "disclaimer": "Pack de contenido declarativo. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:inhabitants",
       "name": "Habitantes de Grimm",
-      "description": "Cinco personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
+      "description": "Ocho personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
       "collection": {
         "id": "collection:grimm",
         "name": "Hermanos Grimm",
@@ -29,6 +29,9 @@
       "origin": "community",
       "taleIds": [],
       "characterIds": [
+        "character:grimm:apotecario",
+        "character:grimm:reo",
+        "character:grimm:buhonera-cruce",
         "character:grimm:costurera-espinos",
         "character:grimm:farolero-bosque",
         "character:grimm:cuervo-ceniza",
@@ -84,6 +87,535 @@
     }
   ],
   "characters": [
+    {
+      "id": "character:grimm:apotecario",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M50 19h28v17l10 13v52c0 7-6 12-13 12H53c-7 0-13-5-13-12V49l10-13z\" fill=\"#745136\" stroke=\"#ead8b6\" stroke-width=\"6\" stroke-linejoin=\"round\"/><path d=\"M44 69c14-11 29-11 40 0v31c0 5-4 9-9 9H53c-5 0-9-4-9-9z\" fill=\"#b96b5b\"/><path d=\"M50 35h28M55 18h18\" fill=\"none\" stroke=\"#ead8b6\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M65 61c-9 8-7 20 3 24-3-8 2-17 11-18-4-7-9-9-14-6z\" fill=\"#ead8b6\"/></svg>",
+      "info": {
+        "name": "Apotecario",
+        "ability": "Una vez por partida, por la noche, elige a otro jugador vivo: esa noche no despierta por sus habilidades, pero sus efectos pasivos continúan."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 1,
+          "otherOrder": 1
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "sueno_profundo",
+            "kind": "reminder",
+            "value": "Sueño profundo",
+            "label": "Sueño profundo",
+            "duration": "tonight"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:apotecario:deep-sleep:1",
+            "tags": [
+              "reminder-choice",
+              "night-wake-restriction"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Sueño profundo",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              },
+              {
+                "type": "restrict",
+                "restrictions": [
+                  "wake"
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "onePlayer",
+                "label": "Duerme a otro jugador vivo"
+              },
+              "nightGuide": {
+                "action": [
+                  "Deja que el Apotecario elija a otro jugador vivo."
+                ],
+                "communicate": [
+                  "Ese jugador no despierta por sus pasos nocturnos restantes; sus efectos pasivos continúan."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:reo",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M32 48c0-20 14-34 32-34s32 14 32 34v17H82V48c0-12-7-20-18-20s-18 8-18 20v17H32z\" fill=\"#a28d73\" stroke=\"#ead8b6\" stroke-width=\"6\" stroke-linejoin=\"round\"/><rect x=\"23\" y=\"61\" width=\"82\" height=\"49\" rx=\"11\" fill=\"#5e4b54\" stroke=\"#ead8b6\" stroke-width=\"6\"/><circle cx=\"64\" cy=\"82\" r=\"8\" fill=\"#b96b5b\"/><path d=\"M64 90v11\" stroke=\"#b96b5b\" stroke-width=\"7\" stroke-linecap=\"round\"/></svg>",
+      "info": {
+        "name": "Reo",
+        "ability": "Si te nominaron durante el día, esa noche conoces el equipo registrado del primer jugador que te nominó. Si estás afectado, la información puede ser falsa."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": true,
+          "otherOrder": 20
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:reo:first-nominator-team:1",
+            "tags": [
+              "nomination-information",
+              "registration-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 2,
+              "activeWhen": [
+                {
+                  "type": "query",
+                  "from": {
+                    "entity": "events"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "eventCategory",
+                        "values": [
+                          "nomination"
+                        ]
+                      },
+                      {
+                        "type": "eventPeriod",
+                        "value": "currentDay"
+                      },
+                      {
+                        "type": "eventParticipant",
+                        "binding": "actor",
+                        "participant": "nominee"
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                }
+              ]
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "events"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "eventCategory",
+                        "values": [
+                          "nomination"
+                        ]
+                      },
+                      {
+                        "type": "eventPeriod",
+                        "value": "currentDay"
+                      },
+                      {
+                        "type": "eventParticipant",
+                        "binding": "actor",
+                        "participant": "nominee"
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  },
+                  "project": {
+                    "type": "eventParticipantIdentity",
+                    "participant": "nominator",
+                    "identityMode": "registered",
+                    "property": "teamId"
+                  }
+                },
+                "presentation": {
+                  "kind": "identity",
+                  "title": "Equipo del primer nominador",
+                  "description": "Muestra al Reo el equipo registrado del primer jugador que lo nominó."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "immediate"
+                },
+                "transform": {
+                  "type": "whenSourceAffected",
+                  "affectedBy": [
+                    "poisoned",
+                    "drunk",
+                    "registration"
+                  ],
+                  "reaction": {
+                    "type": "allowArbitraryValue"
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Despierta al Reo solo si fue nominado durante el día."
+                ],
+                "communicate": [
+                  "Muéstrale el equipo registrado del primer nominador válido."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:buhonera-cruce",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"74\" height=\"78\" viewBox=\"0 0 74 78\"><defs><linearGradient id=\"b\" x1=\"50%\" x2=\"50%\" y1=\"0%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#D84542\"/><stop offset=\"97.852%\" stop-color=\"#B02926\"/></linearGradient></defs><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#2B2117\" d=\"M37.121165,77.1386059 C50.5470485,77.1386059 58.0673079,65.6786884 56.1118366,52.6683202 C54.1563653,39.6579519 48.0103905,30.2752109 36.6980239,30.2752109 C25.3856574,30.2752109 19.7139996,40.3260463 17.8302446,53.7069084 C15.9464896,67.0877705 23.6952815,77.1386059 37.121165,77.1386059 Z\"/><path fill=\"#D84542\" d=\"M32.2447294,65.2292563 L25.4827151,74.2885909 C28.7415341,76.6293455 32.7058199,78 37.0249532,78 C41.3402103,78 45.304496,76.6293455 48.5671913,74.2885909 L41.805177,65.2292563 C41.805177,65.2292563 41.6296737,65.184375 41.5642894,65.1636579 L37.0494084,63.7481041 L32.5345275,65.1636579 C32.5345275,65.1636579 32.3796737,65.208548 32.2936399,65.2292563 L32.2447294,65.2292563 Z M17.729277,51.7056623 C17.3782703,53.8496748 17.1786818,56.014369 17.1786818,58.1134825 C17.1786818,63.174865 19.0713199,67.7906167 22.1787913,71.3056401 L29.6015199,61.3624683 L29.6015199,58.3139368 L27.4645056,55.3516678 L17.7088389,51.6851573 L17.729277,51.7056623 Z M56.2709437,51.7056623 L46.515277,55.3721728 L44.4230151,58.3344418 L44.4230151,61.3829733 L51.8216056,71.3261451 C54.9255532,67.8114752 56.8217151,63.1955467 56.8217151,58.1339875 C56.8217151,56.034874 56.6221265,53.8701798 56.2711199,51.7261674 L56.2709437,51.7056623 Z M31.4740458,28.5660958 C29.0514268,29.781372 26.8284315,31.7700058 24.8669029,34.3317198 C22.1792934,37.846387 20.0216649,42.4416337 18.7002363,47.3232437 L28.3008553,50.9483906 L32.4200125,49.557054 L34.7978791,46.3324621 L34.7978791,31.2170772 C35.4792429,31.4587537 36.2294268,31.5933975 37.0002601,31.5933975 C37.7710934,31.5933975 38.5213125,31.4622007 39.202641,31.2170772 L39.202641,46.3324621 L41.5804989,49.557054 L45.699656,50.9483906 L55.3002751,47.3232437 C53.9788465,42.4414569 51.8212179,37.8423214 49.1336084,34.3317198 C47.1720799,31.7700058 44.9490846,29.781372 42.5264656,28.5660958 C43.2078294,27.5268799 30.8133491,27.5268799 31.4740458,28.5660958 Z\"/><path fill=\"url(#b)\" d=\"M32.2447294,65.2292563 L25.4827151,74.2885909 C28.7415341,76.6293455 32.7058199,78 37.0249532,78 C41.3402103,78 45.304496,76.6293455 48.5671913,74.2885909 L41.805177,65.2292563 C41.805177,65.2292563 41.6296737,65.184375 41.5642894,65.1636579 L37.0494084,63.7481041 L32.5345275,65.1636579 C32.5345275,65.1636579 32.3796737,65.208548 32.2936399,65.2292563 L32.2447294,65.2292563 Z M17.729277,51.7056623 C17.3782703,53.8496748 17.1786818,56.014369 17.1786818,58.1134825 C17.1786818,63.174865 19.0713199,67.7906167 22.1787913,71.3056401 L29.6015199,61.3624683 L29.6015199,58.3139368 L27.4645056,55.3516678 L17.7088389,51.6851573 L17.729277,51.7056623 Z M56.2709437,51.7056623 L46.515277,55.3721728 L44.4230151,58.3344418 L44.4230151,61.3829733 L51.8216056,71.3261451 C54.9255532,67.8114752 56.8217151,63.1955467 56.8217151,58.1339875 C56.8217151,56.034874 56.6221265,53.8701798 56.2711199,51.7261674 L56.2709437,51.7056623 Z M31.4740458,28.5660958 C29.0514268,29.781372 26.8284315,31.7700058 24.8669029,34.3317198 C22.1792934,37.846387 20.0216649,42.4416337 18.7002363,47.3232437 L28.3008553,50.9483906 L32.4200125,49.557054 L34.7978791,46.3324621 L34.7978791,31.2170772 C35.4792429,31.4587537 36.2294268,31.5933975 37.0002601,31.5933975 C37.7710934,31.5933975 38.5213125,31.4622007 39.202641,31.2170772 L39.202641,46.3324621 L41.5804989,49.557054 L45.699656,50.9483906 L55.3002751,47.3232437 C53.9788465,42.4414569 51.8212179,37.8423214 49.1336084,34.3317198 C47.1720799,31.7700058 44.9490846,29.781372 42.5264656,28.5660958 C43.2078294,27.5268799 30.8133491,27.5268799 31.4740458,28.5660958 Z\"/><path fill=\"#A28D73\" d=\"M49.5617437,15.5110471 C48.6671208,14.396586 47.3038413,13.6729445 45.7640367,13.6729445 C44.6928886,13.6729445 43.7191176,14.0240724 42.9218718,14.5919958 C42.9036116,14.5919958 42.8823133,14.5736741 42.8640531,14.5523041 C41.3638226,13.7523746 38.6190347,13.6546697 37.003198,13.6546697 C35.3873614,13.6546697 32.6608025,13.7523746 31.142343,14.5523041 C31.142343,14.5523041 31.1027845,14.5706257 31.0845321,14.5919958 C30.2872863,14.0057664 29.2921702,13.6729445 28.2423672,13.6729445 C26.7025625,13.6729445 25.3392831,14.3965703 24.4446602,15.5110471 C15.5958004,14.2439319 7.18475591,8.08852364 3.67918414,1.07182727 C3.21055879,0.1130687 2.04200241,-0.277750869 1.06823139,0.210773592 C0.112689365,0.680976432 -0.276819041,1.8534664 0.210066467,2.83051533 C4.14472459,10.7266339 13.493086,17.6996366 23.4255504,19.3027785 C23.7755003,21.6476959 25.8021749,23.4460913 28.2366025,23.4460913 C29.3655536,23.4460913 30.4184727,23.0552717 31.2552926,22.3896278 C32.0921125,23.7392059 33.0658835,25.1650721 33.8662454,26.3161138 C32.2504087,27.3511604 31.1792606,29.189263 31.1792606,31.2593561 C31.1792606,32.4318148 31.5292105,33.524859 32.1134575,34.4439103 C30.68526,35.1604128 31.6650035,35.9418956 35.052688,36.7883587 C35.6552107,37.0020901 36.3185903,37.121165 37.00023,37.121165 C37.6818697,37.121165 38.3452804,37.0051385 38.947772,36.7883587 C42.3354513,35.9418956 43.3151922,35.1604128 41.8869947,34.4439103 C42.4895174,33.524859 42.8211916,32.4318148 42.8211916,31.2593561 C42.8211916,29.189263 41.7500435,27.3694507 40.1342068,26.3161138 C40.9314527,25.1833624 41.9052237,23.7360794 42.7451596,22.3896278 C43.5637505,23.0552404 44.6135535,23.4460913 45.7638497,23.4460913 C48.1982773,23.4460913 50.2249674,21.6476959 50.5749018,19.3027785 C60.5073662,17.6815026 69.8555679,10.704748 73.7903896,2.83051533 C74.2772751,1.87175676 73.8877667,0.681007698 72.9139957,0.210773592 C71.9584459,-0.277750869 70.7716995,0.1130687 70.303043,1.09011762 C66.8156885,8.10657951 58.4051192,14.2404145 49.5617203,15.532464 L49.5617437,15.5110471 Z\"/></g></svg>",
+      "info": {
+        "name": "Buhonera del Cruce",
+        "ability": "Comienzas con el Relicario maldito. Cada noche, su portador vivo lo conserva o se lo entrega a otro vivo; el Narrador decide si el nuevo portador vive o muere. La maldición termina cuando muere su portador."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 5,
+          "otherOrder": 5
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "relicario_maldito",
+            "kind": "reminder",
+            "value": "Relicario maldito",
+            "label": "Relicario maldito",
+            "duration": "whileTargetAlive"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:buhonera-cruce:setup-reliquary:1",
+            "tags": [
+              "setup-reminder"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "isBinding",
+                  "binding": "actor"
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Relicario maldito",
+                "active": true,
+                "exclusive": {
+                  "scope": "source",
+                  "maxActiveTargets": 1
+                },
+                "ownership": "independent",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "whileTargetAlive"
+                }
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:buhonera-cruce:reliquary-night:1",
+            "tags": [
+              "carried-reminder-choice",
+              "storyteller-death-choice",
+              "private-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1,
+              "actors": {
+                "type": "query",
+                "from": {
+                  "entity": "markers"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "markerId",
+                      "values": [
+                        "Relicario maldito"
+                      ]
+                    },
+                    {
+                      "type": "markerActive",
+                      "value": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                },
+                "project": {
+                  "type": "marker",
+                  "property": "entityId"
+                }
+              }
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Relicario maldito",
+                "active": true,
+                "exclusive": {
+                  "scope": "source",
+                  "maxActiveTargets": 1
+                },
+                "ownership": "independent",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "whileTargetAlive"
+                }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "literal",
+                  "value": "Ahora portas el Relicario maldito."
+                },
+                "presentation": {
+                  "kind": "text",
+                  "title": "Has recibido el Relicario maldito",
+                  "description": "La maldición te acompaña mientras sigas con vida."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "selected"
+                  },
+                  "timing": "immediate"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "binding",
+                      "binding": "selected"
+                    },
+                    "operator": "neq",
+                    "right": {
+                      "type": "binding",
+                      "binding": "actor"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "storytellerDecision",
+                "decision": "reliquaryFate",
+                "options": [
+                  "live",
+                  "die"
+                ]
+              },
+              {
+                "type": "death",
+                "protection": "normal",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "reliquaryFate"
+                    },
+                    "operator": "eq",
+                    "right": "die"
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "night",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "policies": [
+              {
+                "type": "ignoreActorDrunkOrPoisoned"
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "onePlayer",
+                "label": "Conserva o entrega el Relicario"
+              },
+              "nightGuide": {
+                "action": [
+                  "El portador elige conservar el Relicario o entregarlo a otro jugador vivo.",
+                  "Informa en privado al receptor antes de resolver su destino."
+                ],
+                "communicate": [
+                  "Decide Vive o Muere. El Relicario no puede volver a transferirse esta noche."
+                ],
+                "notes": [
+                  "Si el portador duerme, omite este paso. Si el receptor duerme, no lo despiertes: aplaza el aviso, pero resuelve igualmente su destino."
+                ]
+              },
+              "decisionPrompts": {
+                "reliquaryFate": {
+                  "question": "¿Qué destino dicta el Relicario?",
+                  "options": [
+                    {
+                      "value": "live",
+                      "label": "Vive"
+                    },
+                    {
+                      "value": "die",
+                      "label": "Muere"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
     {
       "id": "character:grimm:costurera-espinos",
       "teamId": "team:grimm:universal",
