@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "7.37",
+  "version": "7.53",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
@@ -76,7 +76,10 @@
         "character:grimm:zorro",
         "character:grimm:perro"
       ],
-      "gameRuleIds": [],
+      "gameRuleIds": [
+        "rule:grimm:caperucita-piedras-en-el-vientre",
+        "rule:grimm:caperucita-fuera-del-camino"
+      ],
       "teamIds": [
         "team:grimm:pueblo",
         "team:grimm:ayudante",
@@ -2771,7 +2774,249 @@
       "links": []
     }
   ],
-  "gameRules": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:caperucita-piedras-en-el-vientre",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:blessings",
+      "category": {
+        "id": "rule-category:grimm:blessings",
+        "terms": {
+          "singular": "Blessing",
+          "plural": "Blessings"
+        },
+        "description": "Optional rules that gently tilt the tale toward Good."
+      },
+      "info": {
+        "name": "Stones in the Belly",
+        "ability": "The first time a Devoured player would die from an ability, they leave the belly alive instead of dying.",
+        "howToRun": "Keep the Blessing visible. The first time an ability would kill a Devoured player, cancel that death. Resolve their release and the removal of the Devoured state normally. The Blessing is then spent."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:caperucita:piedras-en-el-vientre:1",
+            "tags": [
+              "blessing",
+              "devoured-protection"
+            ],
+            "when": {
+              "stage": "whileGameRuleActive"
+            },
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "death",
+                "match": {
+                  "type": "eventField",
+                  "field": "cause",
+                  "value": "ability"
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "eventSubject"
+                },
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "eventSubject"
+                        },
+                        {
+                          "type": "state",
+                          "values": [
+                            "devoured"
+                          ],
+                          "active": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ],
+                "reaction": {
+                  "type": "cancel"
+                },
+                "consumption": {
+                  "type": "once",
+                  "recordMechanicUse": true
+                },
+                "appliesWhenProtectionBypassed": true,
+                "priority": 130
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:caperucita-roja"
+      ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:caperucita-fuera-del-camino",
+      "visibility": "public",
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Curse",
+          "plural": "Curses"
+        },
+        "description": "Optional rules that gently tilt the tale toward Evil."
+      },
+      "info": {
+        "name": "Off the Path",
+        "ability": "At the start of the first night, a player secretly chosen by the Storyteller begins Devoured; the Wolf knows who they are.",
+        "howToRun": "Before characters act, secretly choose a living player and make them Devoured. Their ability is restricted like any other occupant of the belly. Wake the Wolf and show them who begins inside their belly."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 2
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "devorado",
+            "kind": "state",
+            "value": "devoured",
+            "label": "Devorado",
+            "duration": "manual",
+            "count": 1
+          }
+        ],
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:caperucita:fuera-del-camino:1",
+            "tags": [
+              "curse",
+              "devour",
+              "starting-state"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "setPlayerState",
+                "state": "devoured",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "permanent"
+                }
+              },
+              {
+                "type": "restrict",
+                "restrictions": [
+                  "ability"
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "whileCondition",
+                  "condition": {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "state",
+                          "values": [
+                            "devoured"
+                          ],
+                          "active": true
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "label": "Place a player in the belly"
+              },
+              "nightGuide": {
+                "action": [
+                  "Secretly choose a living player and leave them Devoured."
+                ],
+                "communicate": [
+                  "Wake the Wolf and show them who begins inside their belly."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:caperucita-roja"
+      ]
+    }
+  ],
   "tales": [
     {
       "id": "tale:grimm:grimm-caperucita-roja",
@@ -2804,7 +3049,16 @@
         "character:grimm:abuela",
         "character:grimm:cazador-caperucita"
       ],
-      "gameRuleBindings": [],
+      "gameRuleBindings": [
+        {
+          "ruleId": "rule:grimm:caperucita-piedras-en-el-vientre",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:caperucita-fuera-del-camino",
+          "activation": "setupChoice"
+        }
+      ],
       "recommendedCounts": {
         "7": {
           "townsfolk": 3,
