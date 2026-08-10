@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "7.57",
+  "version": "8.0",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
@@ -2100,7 +2100,6 @@
               },
               {
                 "type": "death",
-                "cause": "ability",
                 "bypassesProtection": true,
                 "targets": {
                   "type": "query",
@@ -2300,7 +2299,6 @@
               },
               {
                 "type": "death",
-                "cause": "ability",
                 "bypassesProtection": true,
                 "targets": {
                   "type": "binding",
@@ -2821,8 +2819,8 @@
                 "event": "death",
                 "match": {
                   "type": "eventField",
-                  "field": "cause",
-                  "value": "ability"
+                  "field": "attribution",
+                  "value": "evil"
                 },
                 "targets": {
                   "type": "binding",
@@ -3064,28 +3062,28 @@
           "townsfolk": 3,
           "outsider": 2,
           "minion": 1,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 0
         },
         "8": {
           "townsfolk": 3,
           "outsider": 2,
           "minion": 2,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 0
         },
         "9": {
           "townsfolk": 3,
           "outsider": 3,
           "minion": 2,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 0
         },
         "10": {
           "townsfolk": 3,
           "outsider": 4,
           "minion": 2,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 0
         }
       },

@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-universal-characters",
   "key": "grimm-universal-characters",
-  "version": "7.57",
+  "version": "8.0",
   "locale": "en",
   "name": "Universal Grimm Characters",
   "description": "Six support characters that can join any tale as cast members or independently of the cast.",

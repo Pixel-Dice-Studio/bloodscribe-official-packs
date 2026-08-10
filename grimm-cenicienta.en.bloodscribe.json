@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "7.57",
+  "version": "8.0",
   "locale": "en",
   "name": "Cinderella",
   "description": "After her mother's death, a young woman is subjected to the cruelty of her stepmother and two stepsisters, who make her sleep by the hearth and pick lentils from the ashes. A hazel-tree grows upon her mother's grave and shelters a white bird; aided by the birds, Cinderella secretly attends the King's three-day festival and dances with the Prince. A staircase smeared with pitch keeps hold of her golden slipper. The stepsisters mutilate their feet to claim it, but blood and the pigeons expose the deception; the Prince recognizes Cinderella, and the birds punish her sisters' falsehood for the rest of their lives.",
@@ -1535,7 +1535,7 @@
           {
             "mechanicId": "mechanic:grimm:madrastra:night-kill:1",
             "tags": [
-              "demon-attack-choice"
+              "main-evil-attack-choice"
             ],
             "when": {
               "window": "night",
@@ -1551,9 +1551,8 @@
             "effects": [
               {
                 "type": "death",
-                "cause": "ability",
                 "protection": "normal",
-                "resolution": "demonAttack",
+                "resolution": "mainEvilAttack",
                 "reminder": "Muerto",
                 "targets": {
                   "type": "binding",
@@ -1746,7 +1745,6 @@
                   },
                   {
                     "type": "death",
-                    "cause": "ability",
                     "targets": {
                       "type": "binding",
                       "binding": "actor"
@@ -1786,7 +1784,6 @@
                 "onThreshold": [
                   {
                     "type": "death",
-                    "cause": "ability",
                     "targets": {
                       "type": "binding",
                       "binding": "actor"
@@ -2012,7 +2009,6 @@
                   },
                   {
                     "type": "death",
-                    "cause": "ability",
                     "targets": {
                       "type": "binding",
                       "binding": "actor"
@@ -2052,7 +2048,6 @@
                 "onThreshold": [
                   {
                     "type": "death",
-                    "cause": "ability",
                     "targets": {
                       "type": "binding",
                       "binding": "actor"
@@ -2691,8 +2686,8 @@
                 "event": "death",
                 "match": {
                   "type": "eventField",
-                  "field": "cause",
-                  "value": "demon"
+                  "field": "resolution",
+                  "value": "mainEvilAttack"
                 },
                 "targets": {
                   "type": "binding",
@@ -2915,63 +2910,63 @@
           "townsfolk": 2,
           "outsider": 2,
           "minion": 1,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 1
         },
         "8": {
           "townsfolk": 2,
           "outsider": 3,
           "minion": 1,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 1
         },
         "9": {
           "townsfolk": 2,
           "outsider": 3,
           "minion": 1,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 2
         },
         "10": {
           "townsfolk": 3,
           "outsider": 3,
           "minion": 1,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 2
         },
         "11": {
           "townsfolk": 3,
           "outsider": 4,
           "minion": 1,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 2
         },
         "12": {
           "townsfolk": 3,
           "outsider": 4,
           "minion": 2,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 2
         },
         "13": {
           "townsfolk": 3,
           "outsider": 5,
           "minion": 2,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 2
         },
         "14": {
           "townsfolk": 4,
           "outsider": 5,
           "minion": 2,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 2
         },
         "15": {
           "townsfolk": 4,
           "outsider": 6,
           "minion": 2,
-          "demon": 1,
+          "mainEvil": 1,
           "independent": 2
         }
       },
