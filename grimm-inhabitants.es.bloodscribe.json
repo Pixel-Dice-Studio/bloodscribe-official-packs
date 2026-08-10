@@ -1,11 +1,11 @@
 {
   "schemaVersion": "bloodscribe-v2",
-  "id": "grimm:grimm-universal-characters",
-  "key": "grimm-universal-characters",
-  "version": "8.5",
-  "locale": "en",
-  "name": "Inhabitants of Grimm",
-  "description": "Five support characters that can join any tale as cast members or independently of the cast.",
+  "id": "grimm:grimm-inhabitants",
+  "key": "grimm-inhabitants",
+  "version": "8.6",
+  "locale": "es",
+  "name": "Habitantes de Grimm",
+  "description": "Cinco personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
   "legal": {
     "license": "Contenido original de BloodScribe inspirado en motivos del folclore europeo de dominio público.",
     "disclaimer": "Pack de contenido declarativo. No ejecuta código remoto."
@@ -18,13 +18,13 @@
   },
   "books": [
     {
-      "id": "book:grimm:universal-characters",
-      "name": "Inhabitants of Grimm",
-      "description": "Five support characters that can join any tale as cast members or independently of the cast.",
+      "id": "book:grimm:inhabitants",
+      "name": "Habitantes de Grimm",
+      "description": "Cinco personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
       "collection": {
         "id": "collection:grimm",
-        "name": "Brothers Grimm",
-        "description": "Collection of tales and characters inspired by the Brothers Grimm."
+        "name": "Hermanos Grimm",
+        "description": "Colección de cuentos y personajes inspirados en los Hermanos Grimm."
       },
       "origin": "community",
       "taleIds": [],
@@ -46,7 +46,7 @@
       "teamId": "team:grimm:universal",
       "terms": {
         "singular": "Universal",
-        "plural": "Universal characters"
+        "plural": "Universales"
       },
       "defaults": {
         "role": "support",
@@ -89,8 +89,8 @@
       "teamId": "team:grimm:universal",
       "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M25 93c22-12 23-46 50-58 8-4 19 2 15 12-7 17-34 18-39 39-3 12 14 17 24 8\" fill=\"none\" stroke=\"#ead8b6\" stroke-width=\"7\" stroke-linecap=\"round\"/><path d=\"m34 77-10-8m34-25-7-12m24 30 13-8\" stroke=\"#b96b5b\" stroke-width=\"5\" stroke-linecap=\"round\"/></svg>",
       "info": {
-        "name": "The Thorn Seamstress",
-        "ability": "Once per game, at night, choose two living players. At dawn, it becomes public which players were stitched. While both live, neither may nominate the other."
+        "name": "La Costurera de Espinos",
+        "ability": "Una vez por partida, por la noche, elige dos jugadores vivos. Al amanecer se hace público qué jugadores han quedado cosidos. Mientras ambos vivan, ninguno puede nominar al otro."
       },
       "rules": {
         "wake": {
@@ -195,7 +195,16 @@
             },
             "presentation": {
               "nightControl": {
-                "type": "twoPlayers"
+                "type": "twoPlayers",
+                "label": "Cose a dos jugadores vivos"
+              },
+              "nightGuide": {
+                "action": [
+                  "Deja que la Costurera elija en secreto a dos jugadores vivos."
+                ],
+                "communicate": [
+                  "No anuncies sus nombres hasta el amanecer."
+                ]
               }
             }
           },
@@ -277,8 +286,8 @@
       "teamId": "team:grimm:universal",
       "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M50 30h28l8 20-8 42H50l-8-42z\" fill=\"#e6a84c\" stroke=\"#f6e5ba\" stroke-width=\"6\"/><path d=\"M64 17v13M45 99h38\" stroke=\"#f6e5ba\" stroke-width=\"7\" stroke-linecap=\"round\"/></svg>",
       "info": {
-        "name": "The Forest Lamplighter",
-        "ability": "Each day before the first nomination, publicly choose another player. Their first vote counts twice; yours does not count in that vote."
+        "name": "El Farolero del Bosque",
+        "ability": "Cada día, antes de la primera nominación, elige públicamente a otro jugador. Su primer voto cuenta doble; el tuyo no cuenta en esa misma votación."
       },
       "rules": {
         "wake": {
@@ -432,8 +441,8 @@
       "teamId": "team:grimm:universal",
       "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M25 78c20-5 24-34 49-38 15-2 25 9 29 22-17-4-24 8-26 27-18-4-31-1-45 11 3-10 1-17-7-22z\" fill=\"#b7b1aa\"/><circle cx=\"82\" cy=\"54\" r=\"4\" fill=\"#2b1a16\"/></svg>",
       "info": {
-        "name": "The Ash Raven",
-        "ability": "Each night choose another player. At dawn learn whether any ability other than yours chose them that night."
+        "name": "El Cuervo Ceniza",
+        "ability": "Cada noche elige a otro jugador. Al amanecer descubres si fue elegido esa noche por alguna habilidad distinta de la tuya."
       },
       "rules": {
         "wake": {
@@ -595,8 +604,8 @@
       "teamId": "team:grimm:universal",
       "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"64\" cy=\"64\" r=\"16\" fill=\"#ead8b6\"/><path d=\"M64 18v30M64 80v30M18 64h30M80 64h30M31 31l22 22M75 75l22 22M97 31 75 53M53 75 31 97\" stroke=\"#ead8b6\" stroke-width=\"7\" stroke-linecap=\"round\"/></svg>",
       "info": {
-        "name": "The One-Eyed Miller",
-        "ability": "Once per game after a vote you did not join is counted, publicly change its total by +1 or -1. It never drops below zero and the block is recalculated."
+        "name": "El Molinero Tuerto",
+        "ability": "Una vez por partida, después de contar una votación en la que no votaste, modifica públicamente el total en +1 o -1. El resultado nunca baja de cero y se recalcula el cadalso."
       },
       "rules": {
         "wake": {
@@ -707,8 +716,8 @@
       "teamId": "team:grimm:universal",
       "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"64\" cy=\"60\" rx=\"34\" ry=\"43\" fill=\"#b8c5c9\" stroke=\"#ead8b6\" stroke-width=\"7\"/><path d=\"m59 19 8 28-13 12 18 14-11 30M30 62l25-3M72 73l24 11\" fill=\"none\" stroke=\"#5e4b54\" stroke-width=\"5\"/></svg>",
       "info": {
-        "name": "The Lady of the Cracked Mirror",
-        "ability": "Once per game, choose another living player at night. Until dawn, the first foreign ability choosing exactly one of you redirects to the other if valid."
+        "name": "La Dama del Espejo Agrietado",
+        "ability": "Una vez por partida, elige de noche a otro jugador vivo. Hasta el amanecer, la primera habilidad ajena que elija exactamente a uno de vosotros se redirige al otro si es válido."
       },
       "rules": {
         "wake": {
