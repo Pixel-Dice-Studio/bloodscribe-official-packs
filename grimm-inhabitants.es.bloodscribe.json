@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "8.14",
+  "version": "8.15",
   "locale": "es",
   "name": "Habitantes de Grimm",
-  "description": "Ocho personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
+  "description": "Nueve personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
   "legal": {
     "license": "Contenido original de BloodScribe inspirado en motivos del folclore europeo de dominio público.",
     "disclaimer": "Pack de contenido declarativo. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:inhabitants",
       "name": "Habitantes de Grimm",
-      "description": "Ocho personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
+      "description": "Nueve personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
       "collection": {
         "id": "collection:grimm",
         "name": "Hermanos Grimm",
@@ -36,7 +36,8 @@
         "character:grimm:farolero-bosque",
         "character:grimm:cuervo-ceniza",
         "character:grimm:molinero-tuerto",
-        "character:grimm:dama-espejo-agrietado"
+        "character:grimm:dama-espejo-agrietado",
+        "character:grimm:clariaudiente"
       ],
       "gameRuleIds": [],
       "teamIds": [
@@ -1424,6 +1425,123 @@
                 "value": 1
               },
               "consumeOn": "success"
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:clariaudiente",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M72 25c-22-7-39 8-39 29 0 16 10 23 17 31 5 6 4 17 14 20 13 4 23-7 20-20-2-9-13-10-16-3-2 5-8 7-13 3-7-5-9-15-7-24 3-13 15-20 28-16\" fill=\"none\" stroke=\"#ead8b6\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M84 39c9 5 14 13 14 23s-5 18-14 23M96 27c14 8 22 21 22 35s-8 27-22 35\" fill=\"none\" stroke=\"#b96b5b\" stroke-width=\"6\" stroke-linecap=\"round\"/><circle cx=\"56\" cy=\"58\" r=\"7\" fill=\"#a28d73\"/></svg>",
+      "info": {
+        "name": "Clariaudiente",
+        "ability": "En la cuarta noche, si sigues viva, descubres qué otros jugadores han resuelto alguna habilidad nocturna de forma anómala por estar afectados por una ficha."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": true,
+          "otherOrder": 90
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:clariaudiente:fourth-night:1",
+            "tags": [
+              "private-information",
+              "historical-mechanic-use-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "once",
+              "startsAt": 4
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "events"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "eventType",
+                        "values": [
+                          "record-mechanic-use"
+                        ]
+                      },
+                      {
+                        "type": "eventField",
+                        "field": "actorAbilityMode",
+                        "value": "malfunction"
+                      },
+                      {
+                        "type": "any",
+                        "conditions": [
+                          {
+                            "type": "eventField",
+                            "field": "resolutionPhase",
+                            "value": "firstNight"
+                          },
+                          {
+                            "type": "eventField",
+                            "field": "resolutionPhase",
+                            "value": "night"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "eventParticipant",
+                        "binding": "actor",
+                        "participant": "actor",
+                        "value": false
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "eventParticipant",
+                    "binding": "actor"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "Habilidades alteradas",
+                  "description": "Estos jugadores resolvieron al menos una habilidad nocturna de forma anómala porque una ficha afectaba sus habilidades.",
+                  "emptyLabel": "Ningún jugador"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  },
+                  "timing": "immediate"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Revisa las resoluciones nocturnas registradas hasta este momento de la cuarta noche."
+                ],
+                "communicate": [
+                  "Muestra en privado la lista de otros jugadores cuyas habilidades funcionaron de forma anómala por una ficha."
+                ],
+                "notes": [
+                  "No cuentan protecciones, redirecciones ni fallos que no procedan de una ficha que afecte las habilidades del propio jugador."
+                ]
+              }
             }
           }
         ]
