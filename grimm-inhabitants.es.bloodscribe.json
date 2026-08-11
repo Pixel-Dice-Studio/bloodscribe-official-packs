@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "8.15",
+  "version": "8.19",
   "locale": "es",
   "name": "Habitantes de Grimm",
   "description": "Nueve personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
@@ -576,7 +576,7 @@
             },
             "policies": [
               {
-                "type": "ignoreActorDrunkOrPoisoned"
+                "type": "ignoreActorAbilityRestriction"
               }
             ],
             "presentation": {
