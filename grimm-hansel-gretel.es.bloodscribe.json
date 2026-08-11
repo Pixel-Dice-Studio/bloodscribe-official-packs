@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "8.15",
+  "version": "8.19",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -1153,7 +1153,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "La Madre Hambrienta elige a 1 jugador vivo. Queda Apestado y se le despierta para informarle."
+            "body": "La Madre Hambrienta elige a 1 jugador vivo. Queda Apestado y no despierta por su habilidad; al amanecer, despiértale para comunicarle que está abandonado."
           },
           {
             "when": {
@@ -1164,7 +1164,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "La Madre Hambrienta elige a 1 jugador vivo distinto al de la noche anterior. Queda Apestado y se le despierta para informarle."
+            "body": "La Madre Hambrienta elige a 1 jugador vivo distinto al de la noche anterior. Queda Apestado y no despierta por su habilidad; al amanecer, despiértale para comunicarle que está abandonado."
           }
         ],
         "mechanics": [
@@ -1290,7 +1290,8 @@
                   "ability",
                   "speak",
                   "vote",
-                  "nominate"
+                  "nominate",
+                  "wake"
                 ],
                 "duration": {
                   "type": "untilWindow",
@@ -1302,18 +1303,19 @@
                 "type": "emitInformation",
                 "value": {
                   "type": "literal",
-                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                  "value": "Sin habilidad · Sin despertar · Sin hablar · Sin votar · Sin nominar"
                 },
                 "presentation": {
                   "kind": "text",
-                  "title": "Eres un apestado",
-                  "description": "No puedes usar tu habilidad, hablar, votar ni nominar mientras dure el estado."
+                  "title": "Estás abandonado",
+                  "description": "Tu habilidad no funciona y no despiertas por ella. No puedes hablar, votar ni nominar mientras dure el estado."
                 },
                 "delivery": {
                   "audience": {
                     "type": "selected"
                   },
-                  "timing": "nextRecipientWake"
+                  "timing": "nextRecipientWake",
+                  "separateWake": true
                 }
               }
             ],
@@ -1954,7 +1956,8 @@
                   "ability",
                   "speak",
                   "vote",
-                  "nominate"
+                  "nominate",
+                  "wake"
                 ],
                 "duration": {
                   "type": "untilWindow",
@@ -1999,18 +2002,19 @@
                 "type": "emitInformation",
                 "value": {
                   "type": "literal",
-                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                  "value": "Sin habilidad · Sin despertar · Sin hablar · Sin votar · Sin nominar"
                 },
                 "presentation": {
                   "kind": "text",
-                  "title": "Eres un apestado",
-                  "description": "No puedes usar tu habilidad, hablar, votar ni nominar mientras dure el estado."
+                  "title": "Estás abandonado",
+                  "description": "Tu habilidad no funciona y no despiertas por ella. No puedes hablar, votar ni nominar mientras dure el estado."
                 },
                 "delivery": {
                   "audience": {
                     "type": "selected"
                   },
-                  "timing": "nextRecipientWake"
+                  "timing": "nextRecipientWake",
+                  "separateWake": true
                 },
                 "when": [
                   {
@@ -4251,7 +4255,7 @@
           "id": "state:grimm:plagued",
           "kind": "state",
           "label": "Apestado",
-          "description": "No puede usar su habilidad, hablar, votar ni nominar mientras el estado esté activo."
+          "description": "No despierta por su habilidad y no puede hablar, votar ni nominar mientras el estado esté activo."
         }
       ],
       "links": [],

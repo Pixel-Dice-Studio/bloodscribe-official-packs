@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "8.15",
+  "version": "8.19",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
@@ -1151,7 +1151,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "The Starving Mother chooses a player to plague, then wakes them for the private status notice."
+            "body": "The Starving Mother chooses a player to plague. They do not wake for their ability; at dawn, wake them to say that they are abandoned."
           },
           {
             "when": {
@@ -1162,7 +1162,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "She chooses a player other than last night's target, then wakes them for the private status notice."
+            "body": "She chooses a player other than last night's target. They do not wake for their ability; at dawn, wake them to say that they are abandoned."
           }
         ],
         "mechanics": [
@@ -1288,7 +1288,8 @@
                   "ability",
                   "speak",
                   "vote",
-                  "nominate"
+                  "nominate",
+                  "wake"
                 ],
                 "duration": {
                   "type": "untilWindow",
@@ -1300,18 +1301,19 @@
                 "type": "emitInformation",
                 "value": {
                   "type": "literal",
-                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                  "value": "Sin habilidad · Sin despertar · Sin hablar · Sin votar · Sin nominar"
                 },
                 "presentation": {
                   "kind": "text",
-                  "title": "You are plagued",
-                  "description": "You cannot use your ability, speak, vote, or nominate while this state lasts."
+                  "title": "You are abandoned",
+                  "description": "Your ability does not work and you do not wake for it. You cannot speak, vote, or nominate while this state lasts."
                 },
                 "delivery": {
                   "audience": {
                     "type": "selected"
                   },
-                  "timing": "nextRecipientWake"
+                  "timing": "nextRecipientWake",
+                  "separateWake": true
                 }
               }
             ],
@@ -1949,7 +1951,8 @@
                   "ability",
                   "speak",
                   "vote",
-                  "nominate"
+                  "nominate",
+                  "wake"
                 ],
                 "duration": {
                   "type": "untilWindow",
@@ -1994,18 +1997,19 @@
                 "type": "emitInformation",
                 "value": {
                   "type": "literal",
-                  "value": "Sin habilidad · Sin hablar · Sin votar · Sin nominar"
+                  "value": "Sin habilidad · Sin despertar · Sin hablar · Sin votar · Sin nominar"
                 },
                 "presentation": {
                   "kind": "text",
-                  "title": "You are plagued",
-                  "description": "You cannot use your ability, speak, vote, or nominate while this state lasts."
+                  "title": "You are abandoned",
+                  "description": "Your ability does not work and you do not wake for it. You cannot speak, vote, or nominate while this state lasts."
                 },
                 "delivery": {
                   "audience": {
                     "type": "selected"
                   },
-                  "timing": "nextRecipientWake"
+                  "timing": "nextRecipientWake",
+                  "separateWake": true
                 },
                 "when": [
                   {
@@ -4240,7 +4244,7 @@
           "id": "state:grimm:plagued",
           "kind": "state",
           "label": "Apestado",
-          "description": "No puede usar su habilidad, hablar, votar ni nominar mientras el estado esté activo."
+          "description": "No despierta por su habilidad y no puede hablar, votar ni nominar mientras el estado esté activo."
         }
       ],
       "links": [],
