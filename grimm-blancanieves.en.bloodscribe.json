@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-v2",
+  "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "8.27",
+  "version": "8.28",
   "locale": "en",
   "name": "Snow White",
   "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
@@ -82,6 +82,7 @@
         "character:grimm:guardian-ataud"
       ],
       "gameRuleIds": [
+        "rule:grimm:grimm-blancanieves-composition",
         "rule:grimm:blancanieves-refugio-de-los-siete",
         "rule:grimm:blancanieves-cesta-envenenada",
         "rule:bloodscribe:voting-simultaneous"
@@ -3013,6 +3014,106 @@
   "gameRules": [
     {
       "entityKind": "gameRule",
+      "id": "rule:grimm:grimm-blancanieves-composition",
+      "visibility": "base",
+      "ruleKind": "composition",
+      "categoryId": "rule-category:common:composition",
+      "category": {
+        "categoryId": "rule-category:common:composition",
+        "terms": {
+          "singular": "Composition",
+          "plural": "Compositions"
+        }
+      },
+      "bookIds": [
+        "book:grimm:blancanieves"
+      ],
+      "info": {
+        "name": "Composition for Snow White",
+        "ability": "Defines the game distribution."
+      },
+      "summaryEs": "Defines the game distribution.",
+      "composition": {
+        "playerCounts": {
+          "7": {
+            "good": 2,
+            "goodSupport": 2,
+            "neutral": 1,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "8": {
+            "good": 2,
+            "goodSupport": 3,
+            "neutral": 1,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "9": {
+            "good": 2,
+            "goodSupport": 3,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "10": {
+            "good": 3,
+            "goodSupport": 3,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "11": {
+            "good": 3,
+            "goodSupport": 4,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "12": {
+            "good": 3,
+            "goodSupport": 4,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "13": {
+            "good": 3,
+            "goodSupport": 5,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "14": {
+            "good": 3,
+            "goodSupport": 6,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "15": {
+            "good": 3,
+            "goodSupport": 7,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 1
+          }
+        },
+        "rosterMinimums": {
+          "good": 3,
+          "goodSupport": 7,
+          "neutral": 2,
+          "evilSupport": 2,
+          "evil": 1
+        },
+        "maxExtraPlayers": 5,
+        "inPlayMaximums": {
+          "evil": 2
+        }
+      }
+    },
+    {
+      "entityKind": "gameRule",
       "id": "rule:grimm:blancanieves-refugio-de-los-siete",
       "visibility": "public",
       "ruleKind": "general",
@@ -3385,6 +3486,10 @@
       ],
       "gameRuleBindings": [
         {
+          "ruleId": "rule:grimm:grimm-blancanieves-composition",
+          "activation": "automatic"
+        },
+        {
           "ruleId": "rule:grimm:blancanieves-refugio-de-los-siete",
           "activation": "setupChoice"
         },
@@ -3394,71 +3499,6 @@
         }
       ],
       "votingRuleId": "rule:bloodscribe:voting-simultaneous",
-      "recommendedCounts": {
-        "7": {
-          "townsfolk": 2,
-          "outsider": 2,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 1
-        },
-        "8": {
-          "townsfolk": 2,
-          "outsider": 3,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 1
-        },
-        "9": {
-          "townsfolk": 2,
-          "outsider": 3,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "10": {
-          "townsfolk": 3,
-          "outsider": 3,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "11": {
-          "townsfolk": 3,
-          "outsider": 4,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "12": {
-          "townsfolk": 3,
-          "outsider": 4,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "13": {
-          "townsfolk": 3,
-          "outsider": 5,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "14": {
-          "townsfolk": 3,
-          "outsider": 6,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "15": {
-          "townsfolk": 3,
-          "outsider": 7,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 2
-        }
-      },
       "nightOrder": {
         "first": [
           "character:grimm:enano-cuidador",
@@ -3494,9 +3534,6 @@
       "nightInstructions": {
         "opening": "Make sure every player has closed their eyes. Resolve plague and death protection first, remove an Apple next, then resolve the Queen and Peddler.",
         "dawn": "Wake the village, announce deaths, clear dawn Plagued states, and deliver pending comparison or activity information."
-      },
-      "compositionRules": {
-        "maxMainEvils": 2
       },
       "gameEndRules": [
         {

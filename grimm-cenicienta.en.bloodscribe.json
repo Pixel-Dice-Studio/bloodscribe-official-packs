@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-v2",
+  "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "8.27",
+  "version": "8.28",
   "locale": "en",
   "name": "Cinderella",
   "description": "After her mother's death, a young woman is subjected to the cruelty of her stepmother and two stepsisters, who make her sleep by the hearth and pick lentils from the ashes. A hazel-tree grows upon her mother's grave and shelters a white bird; aided by the birds, Cinderella secretly attends the King's three-day festival and dances with the Prince. A staircase smeared with pitch keeps hold of her golden slipper. The stepsisters mutilate their feet to claim it, but blood and the pigeons expose the deception; the Prince recognizes Cinderella, and the birds punish her sisters' falsehood for the rest of their lives.",
@@ -82,6 +82,7 @@
         "character:grimm:musico-banquete"
       ],
       "gameRuleIds": [
+        "rule:grimm:grimm-cenicienta-composition",
         "rule:grimm:stepsisters-recognition",
         "rule:grimm:cenicienta-rama-del-avellano",
         "rule:grimm:cenicienta-baile-de-mascaras",
@@ -2427,6 +2428,103 @@
   "gameRules": [
     {
       "entityKind": "gameRule",
+      "id": "rule:grimm:grimm-cenicienta-composition",
+      "visibility": "base",
+      "ruleKind": "composition",
+      "categoryId": "rule-category:common:composition",
+      "category": {
+        "categoryId": "rule-category:common:composition",
+        "terms": {
+          "singular": "Composition",
+          "plural": "Compositions"
+        }
+      },
+      "bookIds": [
+        "book:grimm:cenicienta"
+      ],
+      "info": {
+        "name": "Composition for Cinderella",
+        "ability": "Defines the game distribution."
+      },
+      "summaryEs": "Defines the game distribution.",
+      "composition": {
+        "playerCounts": {
+          "7": {
+            "good": 2,
+            "goodSupport": 2,
+            "neutral": 1,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "8": {
+            "good": 2,
+            "goodSupport": 3,
+            "neutral": 1,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "9": {
+            "good": 2,
+            "goodSupport": 3,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "10": {
+            "good": 3,
+            "goodSupport": 3,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "11": {
+            "good": 3,
+            "goodSupport": 4,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "12": {
+            "good": 3,
+            "goodSupport": 4,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "13": {
+            "good": 3,
+            "goodSupport": 5,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "14": {
+            "good": 4,
+            "goodSupport": 5,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "15": {
+            "good": 4,
+            "goodSupport": 6,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 1
+          }
+        },
+        "rosterMinimums": {
+          "good": 4,
+          "goodSupport": 6,
+          "neutral": 2,
+          "evilSupport": 2,
+          "evil": 1
+        },
+        "maxExtraPlayers": 5
+      }
+    },
+    {
+      "entityKind": "gameRule",
       "id": "rule:grimm:stepsisters-recognition",
       "visibility": "base",
       "ruleKind": "general",
@@ -2930,6 +3028,10 @@
       ],
       "gameRuleBindings": [
         {
+          "ruleId": "rule:grimm:grimm-cenicienta-composition",
+          "activation": "automatic"
+        },
+        {
           "ruleId": "rule:grimm:cenicienta-rama-del-avellano",
           "activation": "setupChoice"
         },
@@ -2943,71 +3045,6 @@
         }
       ],
       "votingRuleId": "rule:bloodscribe:voting-simultaneous",
-      "recommendedCounts": {
-        "7": {
-          "townsfolk": 2,
-          "outsider": 2,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 1
-        },
-        "8": {
-          "townsfolk": 2,
-          "outsider": 3,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 1
-        },
-        "9": {
-          "townsfolk": 2,
-          "outsider": 3,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "10": {
-          "townsfolk": 3,
-          "outsider": 3,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "11": {
-          "townsfolk": 3,
-          "outsider": 4,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "12": {
-          "townsfolk": 3,
-          "outsider": 4,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "13": {
-          "townsfolk": 3,
-          "outsider": 5,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "14": {
-          "townsfolk": 4,
-          "outsider": 5,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 2
-        },
-        "15": {
-          "townsfolk": 4,
-          "outsider": 6,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 2
-        }
-      },
       "nightOrder": {
         "first": [
           "character:grimm:hermanastra-dedo",
