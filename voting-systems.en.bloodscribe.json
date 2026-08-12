@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "bloodscribe:voting-systems",
   "key": "voting-systems",
-  "version": "8.25",
+  "version": "8.26",
   "locale": "en",
   "name": "Voting systems",
   "description": "Generic voting rules with different flows, privacy levels, thresholds, and tie resolutions.",
@@ -240,7 +240,7 @@
       },
       "info": {
         "name": "Simultaneous public election",
-        "ability": "There are no nominations. Only living players vote on their phones for living candidates, with no null vote and no Last Breaths. Ballots stay hidden until voting closes and are then revealed publicly. The highest total wins with no threshold; a tie triggers a runoff and, if it remains after two rounds, nobody is expelled."
+        "ability": "There are no nominations. Only living players vote on their phones for living candidates, with no null vote and no Last Breaths. At close, the Storyteller reviews ballots and totals privately, then communicates them with a synchronized roulette if somebody dies. The highest total wins with no threshold; a tie triggers a runoff and, if it remains after two rounds, nobody is expelled."
       },
       "rules": {
         "setup": false,
@@ -339,7 +339,7 @@
       },
       "info": {
         "name": "Secret jury",
-        "ability": "Nominations are public and only living nominees reach the ballot. A secret jury of 2, 3, 4, or 5 members depending on table size votes simultaneously on their phones before dawn; identities and votes remain private and only the result is public. Judges must remain alive and do not use Last Breaths. There is no threshold, the Storyteller breaks ties, and evil wins if the entire jury dies."
+        "ability": "Nominations are public and only living nominees reach the ballot. A secret jury of 2, 3, 4, or 5 members depending on table size votes simultaneously on their phones before dawn. At close, the Storyteller reviews the result privately and chooses when to communicate it; identities and votes are never published. Judges must remain alive, do not use Last Breaths, and evil wins if the entire jury dies."
       },
       "rules": {
         "setup": false,
@@ -478,7 +478,7 @@
       },
       "info": {
         "name": "Secret election among nominees",
-        "ability": "Nominations are public and may target living or dead players. Only living players vote secretly on their phones among the nominees; null votes are allowed and there are no Last Breaths. The highest total wins with no threshold; a tie triggers a runoff and, if it remains after two rounds, everyone is spared."
+        "ability": "Nominations are public and may target living or dead players. Only living players vote secretly on their phones among the nominees; null votes are allowed and there are no Last Breaths. At close, only the Storyteller sees ballots and totals and chooses when to communicate the outcome. The highest total wins with no threshold; a tie triggers a runoff and, if it remains after two rounds, everyone is spared."
       },
       "rules": {
         "setup": false,
@@ -735,7 +735,7 @@
       },
       "info": {
         "name": "Secret single judge",
-        "ability": "Nominations are public and only living nominees reach the ballot. One secret judge votes on their phone before dawn; their identity and vote remain private and only the result is public. The judge must remain alive and does not use Last Breaths. There is no threshold or ballot tie; evil wins if the judge dies."
+        "ability": "Nominations are public and only living nominees reach the ballot. One secret judge votes on their phone before dawn. At close, the Storyteller reviews the result privately and chooses when to communicate it; the identity and ballot are never published. The judge must remain alive, does not use Last Breaths, and evil wins if the judge dies."
       },
       "rules": {
         "setup": false,
