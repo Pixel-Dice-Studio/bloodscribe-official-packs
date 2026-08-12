@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "8.26",
+  "version": "8.27",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -83,7 +83,7 @@
       "gameRuleIds": [
         "rule:grimm:hansel-gretel-rastro-de-guijarros",
         "rule:grimm:hansel-gretel-casa-de-azucar",
-        "rule:grimm:voting-grimm-hansel-gretel-simultaneous"
+        "rule:bloodscribe:voting-simultaneous"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -4107,7 +4107,7 @@
     },
     {
       "entityKind": "gameRule",
-      "id": "rule:grimm:voting-grimm-hansel-gretel-simultaneous",
+      "id": "rule:bloodscribe:voting-simultaneous",
       "visibility": "public",
       "ruleKind": "voting",
       "voting": {
@@ -4174,7 +4174,7 @@
       },
       "info": {
         "name": "Votación simultánea",
-        "ability": "Las nominaciones son públicas y admiten vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Se exige al menos la mitad de los vivos y el mayor total; un empate o no alcanzar el umbral indulta a todos."
+        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Se exige al menos la mitad de los vivos y el mayor total; un empate o no alcanzar el umbral indulta a todos."
       },
       "rules": {
         "setup": false,
@@ -4229,7 +4229,7 @@
           "activation": "setupChoice"
         }
       ],
-      "votingRuleId": "rule:grimm:voting-grimm-hansel-gretel-simultaneous",
+      "votingRuleId": "rule:bloodscribe:voting-simultaneous",
       "recommendedCounts": {
         "7": {
           "townsfolk": 3,
