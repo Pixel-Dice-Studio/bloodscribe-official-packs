@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "8.26",
+  "version": "8.27",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
@@ -79,7 +79,7 @@
       "gameRuleIds": [
         "rule:grimm:caperucita-piedras-en-el-vientre",
         "rule:grimm:caperucita-fuera-del-camino",
-        "rule:grimm:voting-grimm-caperucita-roja-simultaneous"
+        "rule:bloodscribe:voting-simultaneous"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -3019,7 +3019,7 @@
     },
     {
       "entityKind": "gameRule",
-      "id": "rule:grimm:voting-grimm-caperucita-roja-simultaneous",
+      "id": "rule:bloodscribe:voting-simultaneous",
       "visibility": "public",
       "ruleKind": "voting",
       "voting": {
@@ -3141,7 +3141,7 @@
           "activation": "setupChoice"
         }
       ],
-      "votingRuleId": "rule:grimm:voting-grimm-caperucita-roja-simultaneous",
+      "votingRuleId": "rule:bloodscribe:voting-simultaneous",
       "recommendedCounts": {
         "7": {
           "townsfolk": 3,

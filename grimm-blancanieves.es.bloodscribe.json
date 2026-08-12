@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "8.26",
+  "version": "8.27",
   "locale": "es",
   "name": "Blancanieves",
   "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
@@ -84,7 +84,7 @@
       "gameRuleIds": [
         "rule:grimm:blancanieves-refugio-de-los-siete",
         "rule:grimm:blancanieves-cesta-envenenada",
-        "rule:grimm:voting-grimm-blancanieves-simultaneous"
+        "rule:bloodscribe:voting-simultaneous"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -3284,7 +3284,7 @@
     },
     {
       "entityKind": "gameRule",
-      "id": "rule:grimm:voting-grimm-blancanieves-simultaneous",
+      "id": "rule:bloodscribe:voting-simultaneous",
       "visibility": "public",
       "ruleKind": "voting",
       "voting": {
@@ -3351,7 +3351,7 @@
       },
       "info": {
         "name": "Votación simultánea",
-        "ability": "Las nominaciones son públicas y admiten vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Se exige al menos la mitad de los vivos y el mayor total; un empate o no alcanzar el umbral indulta a todos."
+        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Se exige al menos la mitad de los vivos y el mayor total; un empate o no alcanzar el umbral indulta a todos."
       },
       "rules": {
         "setup": false,
@@ -3406,7 +3406,7 @@
           "activation": "setupChoice"
         }
       ],
-      "votingRuleId": "rule:grimm:voting-grimm-blancanieves-simultaneous",
+      "votingRuleId": "rule:bloodscribe:voting-simultaneous",
       "recommendedCounts": {
         "7": {
           "townsfolk": 2,

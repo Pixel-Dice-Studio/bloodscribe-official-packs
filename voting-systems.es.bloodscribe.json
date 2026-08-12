@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "bloodscribe:voting-systems",
   "key": "voting-systems",
-  "version": "8.26",
+  "version": "8.27",
   "locale": "es",
   "name": "Sistemas de votación",
   "description": "Reglas de votación genéricas con distintos flujos, niveles de privacidad, umbrales y formas de resolver empates.",
