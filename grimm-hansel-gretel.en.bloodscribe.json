@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-v2",
+  "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "8.27",
+  "version": "8.28",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
@@ -81,6 +81,7 @@
         "character:grimm:cuervo-pocos-panes"
       ],
       "gameRuleIds": [
+        "rule:grimm:grimm-hansel-gretel-composition",
         "rule:grimm:hansel-gretel-rastro-de-guijarros",
         "rule:grimm:hansel-gretel-casa-de-azucar",
         "rule:bloodscribe:voting-simultaneous"
@@ -3956,6 +3957,96 @@
   "gameRules": [
     {
       "entityKind": "gameRule",
+      "id": "rule:grimm:grimm-hansel-gretel-composition",
+      "visibility": "base",
+      "ruleKind": "composition",
+      "categoryId": "rule-category:common:composition",
+      "category": {
+        "categoryId": "rule-category:common:composition",
+        "terms": {
+          "singular": "Composition",
+          "plural": "Compositions"
+        }
+      },
+      "bookIds": [
+        "book:grimm:hansel-y-gretel"
+      ],
+      "info": {
+        "name": "Composition for Hansel and Gretel",
+        "ability": "Defines the game distribution."
+      },
+      "summaryEs": "Defines the game distribution.",
+      "composition": {
+        "playerCounts": {
+          "7": {
+            "good": 3,
+            "goodSupport": 1,
+            "neutral": 1,
+            "evilSupport": 0,
+            "evil": 2
+          },
+          "8": {
+            "good": 3,
+            "goodSupport": 1,
+            "neutral": 1,
+            "evilSupport": 1,
+            "evil": 2
+          },
+          "9": {
+            "good": 3,
+            "goodSupport": 1,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 2
+          },
+          "10": {
+            "good": 4,
+            "goodSupport": 1,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 2
+          },
+          "11": {
+            "good": 4,
+            "goodSupport": 1,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 2
+          },
+          "12": {
+            "good": 5,
+            "goodSupport": 1,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 2
+          },
+          "13": {
+            "good": 5,
+            "goodSupport": 2,
+            "neutral": 2,
+            "evilSupport": 2,
+            "evil": 2
+          },
+          "14": {
+            "good": 5,
+            "goodSupport": 2,
+            "neutral": 3,
+            "evilSupport": 2,
+            "evil": 2
+          }
+        },
+        "rosterMinimums": {
+          "good": 5,
+          "goodSupport": 2,
+          "neutral": 3,
+          "evilSupport": 2,
+          "evil": 2
+        },
+        "maxExtraPlayers": 5
+      }
+    },
+    {
+      "entityKind": "gameRule",
       "id": "rule:grimm:hansel-gretel-rastro-de-guijarros",
       "visibility": "public",
       "ruleKind": "general",
@@ -4210,6 +4301,10 @@
       ],
       "gameRuleBindings": [
         {
+          "ruleId": "rule:grimm:grimm-hansel-gretel-composition",
+          "activation": "automatic"
+        },
+        {
           "ruleId": "rule:grimm:hansel-gretel-rastro-de-guijarros",
           "activation": "setupChoice"
         },
@@ -4219,64 +4314,6 @@
         }
       ],
       "votingRuleId": "rule:bloodscribe:voting-simultaneous",
-      "recommendedCounts": {
-        "7": {
-          "townsfolk": 3,
-          "outsider": 1,
-          "minion": 0,
-          "mainEvil": 2,
-          "independent": 1
-        },
-        "8": {
-          "townsfolk": 3,
-          "outsider": 1,
-          "minion": 1,
-          "mainEvil": 2,
-          "independent": 1
-        },
-        "9": {
-          "townsfolk": 3,
-          "outsider": 1,
-          "minion": 1,
-          "mainEvil": 2,
-          "independent": 2
-        },
-        "10": {
-          "townsfolk": 4,
-          "outsider": 1,
-          "minion": 1,
-          "mainEvil": 2,
-          "independent": 2
-        },
-        "11": {
-          "townsfolk": 4,
-          "outsider": 1,
-          "minion": 2,
-          "mainEvil": 2,
-          "independent": 2
-        },
-        "12": {
-          "townsfolk": 5,
-          "outsider": 1,
-          "minion": 2,
-          "mainEvil": 2,
-          "independent": 2
-        },
-        "13": {
-          "townsfolk": 5,
-          "outsider": 2,
-          "minion": 2,
-          "mainEvil": 2,
-          "independent": 2
-        },
-        "14": {
-          "townsfolk": 5,
-          "outsider": 2,
-          "minion": 2,
-          "mainEvil": 2,
-          "independent": 3
-        }
-      },
       "nightOrder": {
         "first": [
           "character:grimm:gato-tejado",

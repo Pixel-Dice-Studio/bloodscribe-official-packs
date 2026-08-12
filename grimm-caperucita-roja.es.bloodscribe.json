@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-v2",
+  "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "8.27",
+  "version": "8.28",
   "locale": "es",
   "name": "Caperucita Roja",
   "description": "Una niña querida por todos recibe de su abuela una caperuza de terciopelo rojo. Su madre la envía al otro lado del bosque con torta y vino para la anciana enferma y le ordena no apartarse del camino. El Lobo la entretiene con flores, llega primero a la casa, devora a la Abuela y ocupa su cama vestido con sus ropas; después se traga también a Caperucita. Un Cazador oye los ronquidos, abre con tijeras el vientre del animal y rescata a ambas. Caperucita llena de piedras la barriga del Lobo, que cae muerto al despertar. Más adelante, la niña y la Abuela vencen juntas a un segundo lobo sin volver a abandonar el sendero.",
@@ -77,6 +77,7 @@
         "character:grimm:perro"
       ],
       "gameRuleIds": [
+        "rule:grimm:grimm-caperucita-roja-composition",
         "rule:grimm:caperucita-piedras-en-el-vientre",
         "rule:grimm:caperucita-fuera-del-camino",
         "rule:bloodscribe:voting-simultaneous"
@@ -2781,6 +2782,68 @@
   "gameRules": [
     {
       "entityKind": "gameRule",
+      "id": "rule:grimm:grimm-caperucita-roja-composition",
+      "visibility": "base",
+      "ruleKind": "composition",
+      "categoryId": "rule-category:common:composition",
+      "category": {
+        "categoryId": "rule-category:common:composition",
+        "terms": {
+          "singular": "Composición",
+          "plural": "Composiciones"
+        }
+      },
+      "bookIds": [
+        "book:grimm:caperucita-roja"
+      ],
+      "info": {
+        "name": "Composición de Caperucita Roja",
+        "ability": "Define la distribución de la partida."
+      },
+      "summaryEs": "Define la distribución de la partida.",
+      "composition": {
+        "playerCounts": {
+          "7": {
+            "good": 3,
+            "goodSupport": 2,
+            "neutral": 0,
+            "evilSupport": 1,
+            "evil": 1
+          },
+          "8": {
+            "good": 3,
+            "goodSupport": 2,
+            "neutral": 0,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "9": {
+            "good": 3,
+            "goodSupport": 3,
+            "neutral": 0,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "10": {
+            "good": 3,
+            "goodSupport": 4,
+            "neutral": 0,
+            "evilSupport": 2,
+            "evil": 1
+          }
+        },
+        "rosterMinimums": {
+          "good": 3,
+          "goodSupport": 4,
+          "neutral": 0,
+          "evilSupport": 2,
+          "evil": 1
+        },
+        "maxExtraPlayers": 5
+      }
+    },
+    {
+      "entityKind": "gameRule",
       "id": "rule:grimm:caperucita-piedras-en-el-vientre",
       "visibility": "public",
       "ruleKind": "general",
@@ -3138,6 +3201,10 @@
       ],
       "gameRuleBindings": [
         {
+          "ruleId": "rule:grimm:grimm-caperucita-roja-composition",
+          "activation": "automatic"
+        },
+        {
           "ruleId": "rule:grimm:caperucita-piedras-en-el-vientre",
           "activation": "setupChoice"
         },
@@ -3147,36 +3214,6 @@
         }
       ],
       "votingRuleId": "rule:bloodscribe:voting-simultaneous",
-      "recommendedCounts": {
-        "7": {
-          "townsfolk": 3,
-          "outsider": 2,
-          "minion": 1,
-          "mainEvil": 1,
-          "independent": 0
-        },
-        "8": {
-          "townsfolk": 3,
-          "outsider": 2,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 0
-        },
-        "9": {
-          "townsfolk": 3,
-          "outsider": 3,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 0
-        },
-        "10": {
-          "townsfolk": 3,
-          "outsider": 4,
-          "minion": 2,
-          "mainEvil": 1,
-          "independent": 0
-        }
-      },
       "nightOrder": {
         "first": [
           "character:grimm:zorro",
