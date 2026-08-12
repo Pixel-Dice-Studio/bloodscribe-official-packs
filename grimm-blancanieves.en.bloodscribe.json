@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "8.23",
+  "version": "8.25",
   "locale": "en",
   "name": "Snow White",
   "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
@@ -83,7 +83,8 @@
       ],
       "gameRuleIds": [
         "rule:grimm:blancanieves-refugio-de-los-siete",
-        "rule:grimm:blancanieves-cesta-envenenada"
+        "rule:grimm:blancanieves-cesta-envenenada",
+        "rule:grimm:voting-grimm-blancanieves-simultaneous"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -3014,6 +3015,7 @@
       "entityKind": "gameRule",
       "id": "rule:grimm:blancanieves-refugio-de-los-siete",
       "visibility": "public",
+      "ruleKind": "general",
       "categoryId": "rule-category:grimm:blessings",
       "category": {
         "id": "rule-category:grimm:blessings",
@@ -3142,6 +3144,7 @@
       "entityKind": "gameRule",
       "id": "rule:grimm:blancanieves-cesta-envenenada",
       "visibility": "public",
+      "ruleKind": "general",
       "categoryId": "rule-category:grimm:curses",
       "category": {
         "id": "rule-category:grimm:curses",
@@ -3265,6 +3268,87 @@
       "bookIds": [
         "book:grimm:blancanieves"
       ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:voting-grimm-blancanieves-simultaneous",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "simultaneous",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 1
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 1,
+            "denominator": 2,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Simultaneous voting",
+        "ability": "Nominations are public and may target living or dead players. Living players and dead players with Last Breaths remaining may vote; each player receives 1 Last Breath for the whole game. Everyone shows approval simultaneously and the Storyteller records it publicly. The highest total must reach half the living players; a tie or missed threshold spares everyone."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:blancanieves"
+      ]
     }
   ],
   "tales": [
@@ -3309,6 +3393,7 @@
           "activation": "setupChoice"
         }
       ],
+      "votingRuleId": "rule:grimm:voting-grimm-blancanieves-simultaneous",
       "recommendedCounts": {
         "7": {
           "townsfolk": 2,

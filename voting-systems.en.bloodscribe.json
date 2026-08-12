@@ -1,0 +1,829 @@
+{
+  "schemaVersion": "bloodscribe-v2",
+  "id": "bloodscribe:voting-systems",
+  "key": "voting-systems",
+  "version": "8.25",
+  "locale": "en",
+  "name": "Voting systems",
+  "description": "Generic voting rules with different flows, privacy levels, thresholds, and tie resolutions.",
+  "legal": {
+    "license": "Check the content holders' terms.",
+    "disclaimer": "Declarative content pack. It does not execute remote code."
+  },
+  "links": [],
+  "books": [],
+  "teams": [],
+  "characters": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-seat-order",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "seatOrder",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 1
+          },
+          "abstention": "allowed",
+          "order": {
+            "start": "afterNominee",
+            "direction": "clockwise"
+          }
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 1,
+            "denominator": 2,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Seat-order voting",
+        "ability": "Nominations are public and may target living or dead players. Living players and dead players with Last Breaths remaining may vote; each player receives 1 Last Breath for the whole game. The Storyteller records visible approvals clockwise, starting after the nominee. The highest total must reach half the living players; a tie or missed threshold spares everyone."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-simultaneous",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "simultaneous",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 1
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 1,
+            "denominator": 2,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Simultaneous voting",
+        "ability": "Nominations are public and may target living or dead players. Living players and dead players with Last Breaths remaining may vote; each player receives 1 Last Breath for the whole game. Everyone shows approval simultaneously and the Storyteller records it publicly. The highest total must reach half the living players; a tie or missed threshold spares everyone."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-public-election",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "none"
+        },
+        "candidates": {
+          "source": "eligiblePlayers",
+          "lifeState": "alive"
+        },
+        "ballot": {
+          "shape": "singleChoice",
+          "enteredBy": "players",
+          "pace": "simultaneous",
+          "reveal": "onClose",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 0
+          },
+          "abstention": "forbidden"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "runoff",
+            "maxRounds": 2,
+            "exhausted": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "day",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Simultaneous public election",
+        "ability": "There are no nominations. Only living players vote on their phones for living candidates, with no null vote and no Last Breaths. Ballots stay hidden until voting closes and are then revealed publicly. The highest total wins with no threshold; a tie triggers a runoff and, if it remains after two rounds, nobody is expelled."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-secret-jury",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "alive"
+        },
+        "ballot": {
+          "shape": "singleChoice",
+          "enteredBy": "players",
+          "pace": "simultaneous",
+          "reveal": "onClose",
+          "visibility": "secret",
+          "electorate": {
+            "kind": "designated",
+            "role": "judge",
+            "countsByPlayerCount": {
+              "5": 2,
+              "6": 2,
+              "7": 2,
+              "8": 2,
+              "9": 3,
+              "10": 3,
+              "11": 3,
+              "12": 3,
+              "13": 4,
+              "14": 4,
+              "15": 4,
+              "16": 4,
+              "17": 5,
+              "18": 5,
+              "19": 5,
+              "20": 5
+            },
+            "identities": "secret",
+            "peers": "hidden",
+            "requireAliveAtResolution": true,
+            "onAllDead": {
+              "winner": "evil"
+            }
+          },
+          "abstention": "forbidden"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "storytellerChoice"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "preDawn",
+          "resolve": "preDawn"
+        },
+        "disclosure": {
+          "publicResult": "resultOnly"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Secret jury",
+        "ability": "Nominations are public and only living nominees reach the ballot. A secret jury of 2, 3, 4, or 5 members depending on table size votes simultaneously on their phones before dawn; identities and votes remain private and only the result is public. Judges must remain alive and do not use Last Breaths. There is no threshold, the Storyteller breaks ties, and evil wins if the entire jury dies."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-none",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "none"
+        },
+        "candidates": {
+          "source": "eligiblePlayers",
+          "lifeState": "alive"
+        },
+        "ballot": {
+          "mode": "none"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "day",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "resultOnly"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "No nominations or voting",
+        "ability": "No nominations, electorate, or ballots are opened: neither the Storyteller nor phones record votes, no public or secret voting information exists, and Last Breaths do not apply. There is no threshold, tie, or daytime execution by vote."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-secret-nominees",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "singleChoice",
+          "enteredBy": "players",
+          "pace": "simultaneous",
+          "reveal": "onClose",
+          "visibility": "secret",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 0
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "runoff",
+            "maxRounds": 2,
+            "exhausted": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "day",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Secret election among nominees",
+        "ability": "Nominations are public and may target living or dead players. Only living players vote secretly on their phones among the nominees; null votes are allowed and there are no Last Breaths. The highest total wins with no threshold; a tie triggers a runoff and, if it remains after two rounds, everyone is spared."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-two-thirds",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "simultaneous",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 1
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 2,
+            "denominator": 3,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Two-thirds majority",
+        "ability": "Nominations are public and may target living or dead players. Living players and dead players with Last Breaths remaining may vote; each player receives 1 Last Breath for the whole game. Everyone shows approval simultaneously and the Storyteller records it publicly. Only the highest total is executed after reaching two thirds of the living players; a tie or missed threshold spares everyone."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-execute-ties",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "simultaneous",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 1
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 1,
+            "denominator": 2,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "executeAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Execute tied candidates",
+        "ability": "Nominations are public and may target living or dead players. Living players and dead players with Last Breaths remaining may vote; each player receives 1 Last Breath for the whole game. Everyone shows approval simultaneously and the Storyteller records it publicly. At least half the living players are required; every tied leader reaching the threshold is executed, while no majority means no execution."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-secret-single-judge",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "alive"
+        },
+        "ballot": {
+          "shape": "singleChoice",
+          "enteredBy": "players",
+          "pace": "simultaneous",
+          "reveal": "onClose",
+          "visibility": "secret",
+          "electorate": {
+            "kind": "designated",
+            "role": "judge",
+            "countsByPlayerCount": {
+              "5": 1,
+              "6": 1,
+              "7": 1,
+              "8": 1,
+              "9": 1,
+              "10": 1,
+              "11": 1,
+              "12": 1,
+              "13": 1,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 1,
+              "18": 1,
+              "19": 1,
+              "20": 1
+            },
+            "identities": "secret",
+            "peers": "hidden",
+            "requireAliveAtResolution": true,
+            "onAllDead": {
+              "winner": "evil"
+            }
+          },
+          "abstention": "forbidden"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "storytellerChoice"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "preDawn",
+          "resolve": "preDawn"
+        },
+        "disclosure": {
+          "publicResult": "resultOnly"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Secret single judge",
+        "ability": "Nominations are public and only living nominees reach the ballot. One secret judge votes on their phone before dawn; their identity and vote remain private and only the result is public. The judge must remain alive and does not use Last Breaths. There is no threshold or ballot tie; evil wins if the judge dies."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-simultaneous-living-only",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "simultaneous",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 0
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 1,
+            "denominator": 2,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Voting system",
+          "plural": "Voting systems"
+        },
+        "description": "Rules controlling nominations, ballots, and execution resolution.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Living-only simultaneous voting",
+        "ability": "Nominations are public and may target living or dead players, but only living players vote: there are 0 Last Breaths. Everyone shows approval simultaneously and the Storyteller records it publicly. The highest total must reach half the living players; a tie or missed threshold spares everyone."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    }
+  ],
+  "tales": []
+}
