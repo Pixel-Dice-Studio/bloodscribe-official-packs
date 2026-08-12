@@ -1,0 +1,829 @@
+{
+  "schemaVersion": "bloodscribe-v2",
+  "id": "bloodscribe:voting-systems",
+  "key": "voting-systems",
+  "version": "8.25",
+  "locale": "es",
+  "name": "Sistemas de votación",
+  "description": "Reglas de votación genéricas con distintos flujos, niveles de privacidad, umbrales y formas de resolver empates.",
+  "legal": {
+    "license": "Consulta las condiciones de los titulares del contenido.",
+    "disclaimer": "Pack de contenido declarativo. No ejecuta codigo remoto."
+  },
+  "links": [],
+  "books": [],
+  "teams": [],
+  "characters": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-seat-order",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "seatOrder",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 1
+          },
+          "abstention": "allowed",
+          "order": {
+            "start": "afterNominee",
+            "direction": "clockwise"
+          }
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 1,
+            "denominator": 2,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Votación por turnos",
+        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. El Narrador registra los apoyos visibles por turnos, en sentido horario desde el asiento posterior al nominado. Se exige al menos la mitad de los vivos y el mayor total; un empate o no alcanzar el umbral indulta a todos."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-simultaneous",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "simultaneous",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 1
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 1,
+            "denominator": 2,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Votación simultánea",
+        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Se exige al menos la mitad de los vivos y el mayor total; un empate o no alcanzar el umbral indulta a todos."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-public-election",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "none"
+        },
+        "candidates": {
+          "source": "eligiblePlayers",
+          "lifeState": "alive"
+        },
+        "ballot": {
+          "shape": "singleChoice",
+          "enteredBy": "players",
+          "pace": "simultaneous",
+          "reveal": "onClose",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 0
+          },
+          "abstention": "forbidden"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "runoff",
+            "maxRounds": 2,
+            "exhausted": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "day",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Elección pública simultánea",
+        "ability": "No hay nominaciones. Solo los jugadores vivos votan desde sus móviles entre jugadores vivos, sin voto nulo ni Últimos suspiros. Las papeletas permanecen ocultas hasta el cierre y entonces se revelan públicamente. Gana el mayor total sin umbral; un empate abre una segunda vuelta y, si persiste tras dos rondas, nadie es expulsado."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-secret-jury",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "alive"
+        },
+        "ballot": {
+          "shape": "singleChoice",
+          "enteredBy": "players",
+          "pace": "simultaneous",
+          "reveal": "onClose",
+          "visibility": "secret",
+          "electorate": {
+            "kind": "designated",
+            "role": "judge",
+            "countsByPlayerCount": {
+              "5": 2,
+              "6": 2,
+              "7": 2,
+              "8": 2,
+              "9": 3,
+              "10": 3,
+              "11": 3,
+              "12": 3,
+              "13": 4,
+              "14": 4,
+              "15": 4,
+              "16": 4,
+              "17": 5,
+              "18": 5,
+              "19": 5,
+              "20": 5
+            },
+            "identities": "secret",
+            "peers": "hidden",
+            "requireAliveAtResolution": true,
+            "onAllDead": {
+              "winner": "evil"
+            }
+          },
+          "abstention": "forbidden"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "storytellerChoice"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "preDawn",
+          "resolve": "preDawn"
+        },
+        "disclosure": {
+          "publicResult": "resultOnly"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Jurado secreto",
+        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un jurado secreto de 2, 3, 4 o 5 miembros según la mesa vota simultáneamente desde sus móviles antes del amanecer; sus identidades y votos son privados y solo se publica el resultado. Los jueces deben seguir vivos y no usan Últimos suspiros. No hay umbral, el Narrador rompe los empates y, si muere todo el jurado, gana el mal."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-none",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "none"
+        },
+        "candidates": {
+          "source": "eligiblePlayers",
+          "lifeState": "alive"
+        },
+        "ballot": {
+          "mode": "none"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "day",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "resultOnly"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Sin nominaciones ni votación",
+        "ability": "No se abren nominaciones, electorado ni papeletas: ni el Narrador ni los móviles registran votos, no existe información pública o secreta de votación y los Últimos suspiros no intervienen. No hay umbral, empate ni ejecución diurna por votación."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-secret-nominees",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "singleChoice",
+          "enteredBy": "players",
+          "pace": "simultaneous",
+          "reveal": "onClose",
+          "visibility": "secret",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 0
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "runoff",
+            "maxRounds": 2,
+            "exhausted": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "day",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Elección secreta entre nominados",
+        "ability": "Las nominaciones son públicas y pueden señalar a vivos o muertos. Solo los jugadores vivos votan en secreto desde sus móviles entre los nominados; pueden emitir voto nulo y no hay Últimos suspiros. Gana el mayor total sin umbral; un empate abre una segunda vuelta y, si persiste tras dos rondas, todos quedan indultados."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-two-thirds",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "simultaneous",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 1
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 2,
+            "denominator": 3,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Mayoría de dos tercios",
+        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Solo se ejecuta el mayor total si alcanza dos tercios de los vivos; un empate o no alcanzar el umbral indulta a todos."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-execute-ties",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "simultaneous",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 1
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 1,
+            "denominator": 2,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "executeAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Ejecución de empatados",
+        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Se exige al menos la mitad de los vivos; todos los candidatos empatados en cabeza que alcancen el umbral son ejecutados y, sin mayoría, nadie lo es."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-secret-single-judge",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "alive"
+        },
+        "ballot": {
+          "shape": "singleChoice",
+          "enteredBy": "players",
+          "pace": "simultaneous",
+          "reveal": "onClose",
+          "visibility": "secret",
+          "electorate": {
+            "kind": "designated",
+            "role": "judge",
+            "countsByPlayerCount": {
+              "5": 1,
+              "6": 1,
+              "7": 1,
+              "8": 1,
+              "9": 1,
+              "10": 1,
+              "11": 1,
+              "12": 1,
+              "13": 1,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 1,
+              "18": 1,
+              "19": 1,
+              "20": 1
+            },
+            "identities": "secret",
+            "peers": "hidden",
+            "requireAliveAtResolution": true,
+            "onAllDead": {
+              "winner": "evil"
+            }
+          },
+          "abstention": "forbidden"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "none"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "storytellerChoice"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "preDawn",
+          "resolve": "preDawn"
+        },
+        "disclosure": {
+          "publicResult": "resultOnly"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Juez único secreto",
+        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un único juez secreto vota desde su móvil antes del amanecer; su identidad y voto son privados y solo se publica el resultado. Debe seguir vivo y no usa Últimos suspiros. No hay umbral ni empate entre papeletas; si el juez muere, gana el mal."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:voting-simultaneous-living-only",
+      "visibility": "public",
+      "ruleKind": "voting",
+      "voting": {
+        "version": 1,
+        "nomination": {
+          "mode": "public",
+          "nomineeLifeState": "any",
+          "allowSelfNomination": false,
+          "maxPerNominatorPerDay": 1,
+          "maxPerNomineePerDay": 1
+        },
+        "candidates": {
+          "source": "nominated",
+          "lifeState": "any"
+        },
+        "ballot": {
+          "shape": "approvalPerNominee",
+          "enteredBy": "storyteller",
+          "pace": "simultaneous",
+          "reveal": "live",
+          "visibility": "public",
+          "electorate": {
+            "kind": "standard",
+            "lastBreathsPerPlayer": 0
+          },
+          "abstention": "allowed"
+        },
+        "resolution": {
+          "threshold": {
+            "kind": "fraction",
+            "base": "livingPlayers",
+            "numerator": 1,
+            "denominator": 2,
+            "comparison": "atLeast"
+          },
+          "winner": "highest",
+          "onTie": {
+            "kind": "spareAll"
+          },
+          "onNoQualifier": {
+            "kind": "spareAll"
+          }
+        },
+        "timing": {
+          "open": "perNomination",
+          "resolve": "dusk"
+        },
+        "disclosure": {
+          "publicResult": "totals"
+        }
+      },
+      "categoryId": "rule-category:common:voting-system",
+      "category": {
+        "id": "rule-category:common:voting-system",
+        "terms": {
+          "singular": "Sistema de votación",
+          "plural": "Sistemas de votación"
+        },
+        "description": "Reglas que controlan nominaciones, papeletas y resolución de la ejecución.",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M57.4832893,31.2310716 L44.3133153,18.2682532 C40.8104939,14.820529 35.1895061,14.820529 31.6866847,18.2682532 L18.5167107,31.2310716 C14.9344645,34.7569713 14.9344645,40.5335856 18.5167107,44.0594853 L22.4,47.8816928 L17.5591036,47.8816928 C15.593465,47.8816928 14,49.4751578 14,51.4407964 C14,53.406435 15.593465,54.9999 17.5591036,54.9999 L58.4408964,54.9999 C60.406535,54.9999 62,53.406435 62,51.4407964 C62,49.4751578 60.406535,47.8816928 58.4408964,47.8816928 L53.6,47.8816928 L57.4832893,44.0594853 C61.0655355,40.5335856 61.0655355,34.7569713 57.4832893,31.2310716 Z M31.9946756,47.8816928 L23.715008,39.0950586 C22.9604071,38.2942531 22.9944053,37.0343061 23.7910944,36.2753605 L36.4713547,24.1958338 C37.2438176,23.4599668 38.4578824,23.4599668 39.2303453,24.1958338 L51.9106056,36.2753605 C52.7072947,37.0343061 52.7412929,38.2942531 51.986692,39.0950586 L43.7070244,47.8816928 L31.9946756,47.8816928 Z\"/></g></svg>\n",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Votación simultánea solo para vivos",
+        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos, pero solo los vivos votan: hay 0 Últimos suspiros. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Se exige al menos la mitad de los vivos y el mayor total; un empate o no alcanzar el umbral indulta a todos."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": []
+      },
+      "links": [],
+      "bookIds": []
+    }
+  ],
+  "tales": []
+}
