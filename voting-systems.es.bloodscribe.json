@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v2",
   "id": "bloodscribe:voting-systems",
   "key": "voting-systems",
-  "version": "8.25",
+  "version": "8.26",
   "locale": "es",
   "name": "Sistemas de votación",
   "description": "Reglas de votación genéricas con distintos flujos, niveles de privacidad, umbrales y formas de resolver empates.",
@@ -240,7 +240,7 @@
       },
       "info": {
         "name": "Elección pública simultánea",
-        "ability": "No hay nominaciones. Solo los jugadores vivos votan desde sus móviles entre jugadores vivos, sin voto nulo ni Últimos suspiros. Las papeletas permanecen ocultas hasta el cierre y entonces se revelan públicamente. Gana el mayor total sin umbral; un empate abre una segunda vuelta y, si persiste tras dos rondas, nadie es expulsado."
+        "ability": "No hay nominaciones. Solo los jugadores vivos votan desde sus móviles entre jugadores vivos, sin voto nulo ni Últimos suspiros. Al cerrar, el Narrador revisa en privado las papeletas y totales; los comunica después con una ruleta sincronizada si alguien muere. Gana el mayor total sin umbral; un empate abre una segunda vuelta y, si persiste tras dos rondas, nadie es expulsado."
       },
       "rules": {
         "setup": false,
@@ -339,7 +339,7 @@
       },
       "info": {
         "name": "Jurado secreto",
-        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un jurado secreto de 2, 3, 4 o 5 miembros según la mesa vota simultáneamente desde sus móviles antes del amanecer; sus identidades y votos son privados y solo se publica el resultado. Los jueces deben seguir vivos y no usan Últimos suspiros. No hay umbral, el Narrador rompe los empates y, si muere todo el jurado, gana el mal."
+        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un jurado secreto de 2, 3, 4 o 5 miembros según la mesa vota simultáneamente desde sus móviles antes del amanecer. Al cerrar, el Narrador revisa el resultado en privado y decide cuándo comunicarlo; las identidades y votos nunca se publican. Los jueces deben seguir vivos, no usan Últimos suspiros y, si muere todo el jurado, gana el mal."
       },
       "rules": {
         "setup": false,
@@ -478,7 +478,7 @@
       },
       "info": {
         "name": "Elección secreta entre nominados",
-        "ability": "Las nominaciones son públicas y pueden señalar a vivos o muertos. Solo los jugadores vivos votan en secreto desde sus móviles entre los nominados; pueden emitir voto nulo y no hay Últimos suspiros. Gana el mayor total sin umbral; un empate abre una segunda vuelta y, si persiste tras dos rondas, todos quedan indultados."
+        "ability": "Las nominaciones son públicas y pueden señalar a vivos o muertos. Solo los jugadores vivos votan en secreto desde sus móviles entre los nominados; pueden emitir voto nulo y no hay Últimos suspiros. Al cerrar, solo el Narrador ve las papeletas y totales y decide cuándo comunicar el desenlace. Gana el mayor total sin umbral; un empate abre una segunda vuelta y, si persiste tras dos rondas, todos quedan indultados."
       },
       "rules": {
         "setup": false,
@@ -735,7 +735,7 @@
       },
       "info": {
         "name": "Juez único secreto",
-        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un único juez secreto vota desde su móvil antes del amanecer; su identidad y voto son privados y solo se publica el resultado. Debe seguir vivo y no usa Últimos suspiros. No hay umbral ni empate entre papeletas; si el juez muere, gana el mal."
+        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un único juez secreto vota desde su móvil antes del amanecer. Al cerrar, el Narrador revisa el resultado en privado y decide cuándo comunicarlo; la identidad y el voto nunca se publican. El juez debe seguir vivo, no usa Últimos suspiros y, si muere, gana el mal."
       },
       "rules": {
         "setup": false,
