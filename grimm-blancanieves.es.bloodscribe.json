@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "9.1",
+  "version": "9.9",
   "locale": "es",
   "name": "Blancanieves",
   "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
@@ -3705,6 +3705,33 @@
                   }
                 },
                 "reason": "Se cumplieron las condiciones estándar de final de partida."
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:common-game-end:storyteller-execution",
+            "tags": [
+              "loss-condition",
+              "game-end-policy"
+            ],
+            "when": {
+              "window": "execution",
+              "cadence": "each",
+              "trigger": {
+                "type": "event",
+                "event": "storytellerExecution"
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "fixed",
+                  "team": "evil"
+                },
+                "reason": "El Narrador fue ejecutado sin una regla activa que conceda la victoria al bien."
               }
             ]
           }

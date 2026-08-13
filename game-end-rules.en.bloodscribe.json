@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "bloodscribe:game-end-rules",
   "key": "game-end-rules",
-  "version": "9.1",
+  "version": "9.9",
   "locale": "en",
   "name": "Game-end rules",
   "description": "Generic conditions determining when a game ends and how its winner is resolved.",
@@ -255,6 +255,33 @@
                   }
                 },
                 "reason": "Se cumplieron las condiciones estándar de final de partida."
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:common-game-end:storyteller-execution",
+            "tags": [
+              "loss-condition",
+              "game-end-policy"
+            ],
+            "when": {
+              "window": "execution",
+              "cadence": "each",
+              "trigger": {
+                "type": "event",
+                "event": "storytellerExecution"
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "fixed",
+                  "team": "evil"
+                },
+                "reason": "El Narrador fue ejecutado sin una regla activa que conceda la victoria al bien."
               }
             ]
           }
