@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "9.10",
+  "version": "9.13",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
@@ -1851,7 +1851,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "The Wolf chooses Devour or Disguise and points to a player. Devour disables the new target's ability and digests the former occupant; Disguise requires the Devoured player, kills them, and manually fixes their real character as the Wolf's registered identity."
+            "body": "The Wolf chooses Devour or Disguise and points to a player. Devour disables the new target's ability and digests the former occupant; Disguise requires the Devoured player, kills them, and registers the Wolf as their real character."
           },
           {
             "when": {
@@ -1862,7 +1862,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "The Wolf chooses Devour or Disguise and points to a player. Devour disables the new target's ability and digests the former occupant; Disguise requires the Devoured player, kills them, and manually fixes their real character as the Wolf's registered identity."
+            "body": "The Wolf chooses Devour or Disguise and points to a player. Devour disables the new target's ability and digests the former occupant; Disguise requires the Devoured player, kills them, and registers the Wolf as their real character."
           }
         ],
         "mechanics": [
@@ -2386,6 +2386,42 @@
                     "right": "disguise"
                   }
                 ]
+              },
+              {
+                "type": "registerAs",
+                "characterId": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "characterId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "wolfNightChoice"
+                    },
+                    "operator": "eq",
+                    "right": "disguise"
+                  }
+                ]
               }
             ],
             "presentation": {
@@ -2410,65 +2446,6 @@
                 "type": "singlePlayer"
               }
             }
-          },
-          {
-            "mechanicId": "mechanic:grimm:lobo:disguise-registration:1",
-            "tags": [
-              "registration",
-              "disguise"
-            ],
-            "when": {
-              "stage": "whileStateActive"
-            },
-            "conditions": [
-              {
-                "type": "query",
-                "from": {
-                  "entity": "players"
-                },
-                "where": {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "isBinding",
-                      "binding": "actor"
-                    },
-                    {
-                      "type": "state",
-                      "values": [
-                        "disguised"
-                      ],
-                      "active": true
-                    }
-                  ]
-                },
-                "aggregate": {
-                  "type": "exists"
-                }
-              }
-            ],
-            "effects": [
-              {
-                "type": "registerAs",
-                "mode": "mayRegisterAs",
-                "characterIds": [
-                  "character:grimm:caperucita-roja",
-                  "character:grimm:madre",
-                  "character:grimm:abuela",
-                  "character:grimm:cazador-caperucita",
-                  "character:grimm:florista",
-                  "character:grimm:molinero",
-                  "character:grimm:mozo-bosque",
-                  "character:grimm:zorro",
-                  "character:grimm:perro"
-                ],
-                "targets": {
-                  "type": "binding",
-                  "binding": "actor"
-                }
-              }
-            ],
-            "requiresManualModeling": true
           }
         ]
       },
