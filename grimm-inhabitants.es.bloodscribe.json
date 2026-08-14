@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "9.22",
+  "version": "9.24",
   "locale": "es",
   "name": "Habitantes de Grimm",
-  "description": "Doce personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
+  "description": "Catorce personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
   "legal": {
     "license": "Contenido original de BloodScribe inspirado en motivos del folclore europeo de dominio público.",
     "disclaimer": "Pack de contenido declarativo. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:inhabitants",
       "name": "Habitantes de Grimm",
-      "description": "Doce personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
+      "description": "Catorce personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
       "collection": {
         "id": "collection:grimm",
         "name": "Hermanos Grimm",
@@ -30,8 +30,10 @@
       "taleIds": [],
       "characterIds": [
         "character:grimm:apotecario",
+        "character:grimm:cerbatanero-sueno",
         "character:grimm:reo",
         "character:grimm:buhonera-cruce",
+        "character:grimm:munequera-maleficio",
         "character:grimm:costurera-espinos",
         "character:grimm:farolero-bosque",
         "character:grimm:cuervo-ceniza",
@@ -208,6 +210,356 @@
                 ],
                 "communicate": [
                   "Ese jugador no despierta por sus pasos nocturnos restantes; sus efectos pasivos continúan."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:cerbatanero-sueno",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M23 91 94 28\" stroke=\"#ead8b6\" stroke-width=\"10\" stroke-linecap=\"round\"/><path d=\"m82 24 24-5-8 23z\" fill=\"#b96b5b\"/><path d=\"M31 72c-8 2-15 8-18 16 9 3 18 1 25-5\" fill=\"none\" stroke=\"#a28d73\" stroke-width=\"7\" stroke-linecap=\"round\"/><circle cx=\"69\" cy=\"50\" r=\"7\" fill=\"#745136\"/></svg>",
+      "info": {
+        "name": "Cerbatanero del Sueño",
+        "ability": "Una vez por partida, por la noche, lanza todos tus dardos a jugadores vivos distintos de ti: tienes 3, luego 2, luego 1 en tus tres primeros despertares. Los elegidos no despiertan esa noche."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 0,
+          "otherOrder": 0
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "dardos_dos",
+            "kind": "reminder",
+            "value": "2 dardos",
+            "label": "2 dardos",
+            "duration": "game"
+          },
+          {
+            "id": "dardos_uno",
+            "kind": "reminder",
+            "value": "1 dardo",
+            "label": "1 dardo",
+            "duration": "game"
+          },
+          {
+            "id": "dardos_agotados",
+            "kind": "reminder",
+            "value": "Dardos agotados",
+            "label": "Dardos agotados",
+            "duration": "game"
+          },
+          {
+            "id": "dardos_lanzados",
+            "kind": "reminder",
+            "value": "Dardos lanzados",
+            "label": "Dardos lanzados",
+            "duration": "game"
+          },
+          {
+            "id": "sedado",
+            "kind": "reminder",
+            "value": "Sedado",
+            "label": "Sedado",
+            "duration": "tonight",
+            "count": 3
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:cerbatanero-sueno:dardos:1",
+            "tags": [
+              "night-wake-restriction",
+              "counter"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1,
+              "activeWhen": [
+                {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "marker",
+                        "markerId": "Dardos lanzados",
+                        "active": false
+                      },
+                      {
+                        "type": "marker",
+                        "markerId": "Dardos agotados",
+                        "active": false
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                }
+              ]
+            },
+            "input": {
+              "kind": "players",
+              "min": 3,
+              "max": 3,
+              "cardinality": [
+                {
+                  "when": [
+                    {
+                      "type": "compare",
+                      "left": {
+                        "type": "decisionValue",
+                        "decision": "dartAction"
+                      },
+                      "operator": "eq",
+                      "right": "wait"
+                    }
+                  ],
+                  "min": 0,
+                  "max": 0
+                },
+                {
+                  "when": [
+                    {
+                      "type": "compare",
+                      "left": {
+                        "type": "decisionValue",
+                        "decision": "dartAction"
+                      },
+                      "operator": "eq",
+                      "right": "throw"
+                    },
+                    {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "marker",
+                            "markerId": "1 dardo",
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    }
+                  ],
+                  "min": 1,
+                  "max": 1
+                },
+                {
+                  "when": [
+                    {
+                      "type": "compare",
+                      "left": {
+                        "type": "decisionValue",
+                        "decision": "dartAction"
+                      },
+                      "operator": "eq",
+                      "right": "throw"
+                    },
+                    {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          },
+                          {
+                            "type": "marker",
+                            "markerId": "2 dardos",
+                            "active": true
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    }
+                  ],
+                  "min": 2,
+                  "max": 2
+                }
+              ],
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "dartAction",
+                "options": [
+                  "wait",
+                  "throw"
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Sedado",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              },
+              {
+                "type": "restrict",
+                "restrictions": [
+                  "wake"
+                ],
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Dardos lanzados",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "dartAction"
+                    },
+                    "operator": "eq",
+                    "right": "throw"
+                  }
+                ]
+              },
+              {
+                "type": "adjustCounter",
+                "counter": "despertares",
+                "delta": 1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 3
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "mode": "stages",
+                  "stages": [
+                    {
+                      "value": 1,
+                      "id": "2 dardos"
+                    },
+                    {
+                      "value": 2,
+                      "id": "1 dardo"
+                    },
+                    {
+                      "value": 3,
+                      "id": "Dardos agotados"
+                    }
+                  ]
+                }
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "multiPlayers",
+                "label": "Lanza todos los dardos disponibles"
+              },
+              "decisionPrompts": {
+                "dartAction": {
+                  "question": "¿Lanza los dardos esta noche?",
+                  "options": [
+                    {
+                      "value": "wait",
+                      "label": "Espera"
+                    },
+                    {
+                      "value": "throw",
+                      "label": "Lanza"
+                    }
+                  ]
+                }
+              },
+              "nightGuide": {
+                "action": [
+                  "Elige Espera o Lanza. Si lanza, debe elegir exactamente tantos jugadores vivos distintos como dardos tenga, sin elegirse a sí mismo."
+                ],
+                "communicate": [
+                  "Los elegidos no despiertan durante el resto de esta noche; sus efectos pasivos continúan."
                 ]
               }
             }
@@ -614,6 +966,472 @@
                   ]
                 }
               }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:munequera-maleficio",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"64\" cy=\"30\" r=\"16\" fill=\"#a28d73\" stroke=\"#ead8b6\" stroke-width=\"5\"/><path d=\"M43 52c10-8 32-8 42 0l10 30-18 7-4 25H55l-4-25-18-7z\" fill=\"#745136\" stroke=\"#ead8b6\" stroke-width=\"5\" stroke-linejoin=\"round\"/><path d=\"m31 27 66 74M96 25 34 101\" stroke=\"#b96b5b\" stroke-width=\"5\" stroke-linecap=\"round\"/></svg>",
+      "info": {
+        "name": "Muñequera del Maleficio",
+        "ability": "Comienzas con un Muñeco vudú. Cada noche puedes conservarlo o transmitirlo una única vez a otro jugador vivo, que no lo sabe. Cuando ocurre la tercera muerte, su portador muere; si es el Demonio, mueres tú."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 4,
+          "otherOrder": 4
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "muneco_vudu",
+            "kind": "reminder",
+            "value": "Muñeco vudú",
+            "label": "Muñeco vudú",
+            "duration": "game"
+          },
+          {
+            "id": "muneco_transmitido",
+            "kind": "reminder",
+            "value": "Muñeco transmitido",
+            "label": "Muñeco transmitido",
+            "duration": "game"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:munequera-maleficio:setup-doll:1",
+            "tags": [
+              "setup-reminder"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "isBinding",
+                  "binding": "actor"
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Muñeco vudú",
+                "active": true,
+                "exclusive": {
+                  "scope": "source",
+                  "maxActiveTargets": 1
+                },
+                "ownership": "independent",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "permanent"
+                }
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:munequera-maleficio:pass-doll:1",
+            "tags": [
+              "carried-reminder-choice"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1,
+              "actors": {
+                "type": "query",
+                "from": {
+                  "entity": "markers"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "markerId",
+                      "values": [
+                        "Muñeco vudú"
+                      ]
+                    },
+                    {
+                      "type": "markerActive",
+                      "value": true
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                },
+                "project": {
+                  "type": "marker",
+                  "property": "sourcePlayerId"
+                }
+              },
+              "activeWhen": [
+                {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "marker",
+                        "markerId": "Muñeco transmitido",
+                        "active": false
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                }
+              ]
+            },
+            "input": {
+              "kind": "players",
+              "min": 0,
+              "max": 1,
+              "cardinality": [
+                {
+                  "when": [
+                    {
+                      "type": "compare",
+                      "left": {
+                        "type": "decisionValue",
+                        "decision": "dollAction"
+                      },
+                      "operator": "eq",
+                      "right": "keep"
+                    }
+                  ],
+                  "min": 0,
+                  "max": 0
+                },
+                {
+                  "when": [
+                    {
+                      "type": "compare",
+                      "left": {
+                        "type": "decisionValue",
+                        "decision": "dollAction"
+                      },
+                      "operator": "eq",
+                      "right": "pass"
+                    }
+                  ],
+                  "min": 1,
+                  "max": 1
+                }
+              ],
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "dollAction",
+                "options": [
+                  "keep",
+                  "pass"
+                ]
+              },
+              {
+                "type": "moveMarker",
+                "kind": "reminder",
+                "id": "Muñeco vudú",
+                "from": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "dollAction"
+                    },
+                    "operator": "eq",
+                    "right": "pass"
+                  }
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Muñeco transmitido",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "dollAction"
+                    },
+                    "operator": "eq",
+                    "right": "pass"
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "onePlayer",
+                "label": "Conserva o transmite el Muñeco"
+              },
+              "decisionPrompts": {
+                "dollAction": {
+                  "question": "¿Conserva o transmite el Muñeco?",
+                  "options": [
+                    {
+                      "value": "keep",
+                      "label": "Conserva"
+                    },
+                    {
+                      "value": "pass",
+                      "label": "Transmite"
+                    }
+                  ]
+                }
+              },
+              "nightGuide": {
+                "action": [
+                  "Despierta solo a la Muñequera. Puede conservar el Muñeco o transmitirlo una única vez a otro jugador vivo."
+                ],
+                "communicate": [
+                  "No despiertes ni informes al receptor; solo el Narrador ve quién porta el Muñeco."
+                ]
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:munequera-maleficio:third-death:1",
+            "tags": [
+              "death-trigger",
+              "linked-death"
+            ],
+            "when": {
+              "trigger": {
+                "type": "event",
+                "event": "death"
+              },
+              "actors": {
+                "type": "array",
+                "items": []
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "events"
+                  },
+                  "where": {
+                    "type": "eventCategory",
+                    "values": [
+                      "death"
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "count"
+                  }
+                },
+                "operator": "eq",
+                "right": 3
+              }
+            ],
+            "effects": [
+              {
+                "type": "death",
+                "protection": "normal",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "markers"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "markerId",
+                        "values": [
+                          "Muñeco vudú"
+                        ]
+                      },
+                      {
+                        "type": "markerActive",
+                        "value": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "marker",
+                    "property": "entityId"
+                  }
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "marker",
+                            "markerId": "Muñeco vudú",
+                            "active": true
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "real",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "real",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
+              },
+              {
+                "type": "death",
+                "protection": "normal",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "marker",
+                          "markerId": "Muñeco vudú",
+                          "active": true
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "real",
+                          "facet": "allegiance",
+                          "values": [
+                            "evil"
+                          ]
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "real",
+                          "facet": "role",
+                          "values": [
+                            "core"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
             }
           }
         ]

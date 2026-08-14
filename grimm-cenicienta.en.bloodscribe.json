@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "9.22",
+  "version": "9.24",
   "locale": "en",
   "name": "Cinderella",
   "description": "After her mother's death, a young woman is subjected to the cruelty of her stepmother and two stepsisters, who make her sleep by the hearth and pick lentils from the ashes. A hazel-tree grows upon her mother's grave and shelters a white bird; aided by the birds, Cinderella secretly attends the King's three-day festival and dances with the Prince. A staircase smeared with pitch keeps hold of her golden slipper. The stepsisters mutilate their feet to claim it, but blood and the pigeons expose the deception; the Prince recognizes Cinderella, and the birds punish her sisters' falsehood for the rest of their lives.",
@@ -82,12 +82,12 @@
         "character:grimm:musico-banquete"
       ],
       "gameRuleIds": [
-        "rule:grimm:grimm-cenicienta-composition",
+        "rule:grimm:composition-extended",
         "rule:grimm:stepsisters-recognition",
         "rule:grimm:cenicienta-rama-del-avellano",
         "rule:grimm:cenicienta-baile-de-mascaras",
         "rule:bloodscribe:voting-simultaneous",
-        "rule:bloodscribe:common-game-end"
+        "rule:bloodscribe:game-end-standard"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -2365,7 +2365,7 @@
   "gameRules": [
     {
       "entityKind": "gameRule",
-      "id": "rule:grimm:grimm-cenicienta-composition",
+      "id": "rule:grimm:composition-extended",
       "visibility": "base",
       "ruleKind": "composition",
       "categoryId": "rule-category:common:composition",
@@ -2381,10 +2381,10 @@
         "book:grimm:cenicienta"
       ],
       "info": {
-        "name": "Composition for Cinderella",
-        "ability": "Defines the game distribution."
+        "name": "Extended composition",
+        "ability": "Extended Grimm distribution for games with 7 to 15 players."
       },
-      "summaryEs": "Defines the game distribution.",
+      "summaryEs": "Distribución Grimm extendida para partidas de 7 a 15 jugadores.",
       "composition": {
         "playerCounts": {
           "7": {
@@ -2451,14 +2451,14 @@
             "evil": 1
           }
         },
+        "maxExtraPlayers": 5,
         "rosterMinimums": {
           "good": 4,
           "goodSupport": 6,
           "neutral": 2,
           "evilSupport": 2,
           "evil": 1
-        },
-        "maxExtraPlayers": 5
+        }
       }
     },
     {
@@ -2933,7 +2933,7 @@
     },
     {
       "entityKind": "gameRule",
-      "id": "rule:bloodscribe:common-game-end",
+      "id": "rule:bloodscribe:game-end-standard",
       "visibility": "public",
       "ruleKind": "general",
       "categoryId": "rule-category:common:game-end",
@@ -2951,14 +2951,14 @@
       },
       "info": {
         "name": "Standard game end",
-        "ability": "Good wins when no Demon remains alive. Evil wins when at most two players remain alive; Travellers and Storyteller rules do not count. If both conditions happen at once, good wins. The Storyteller may declare a mathematically inevitable victory early."
+        "ability": "Good wins when evil's main threat is gone; if the game declares no main threat, when no evil player remains. Evil wins when at most two regular players remain alive. If both conditions happen at once, good wins."
       },
       "rules": {
         "setup": false,
         "cues": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:common-game-end:resolve",
+            "mechanicId": "mechanic:grimm:game-end-standard:resolve",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -2972,120 +2972,9 @@
                 "type": "any",
                 "conditions": [
                   {
-                    "type": "all",
+                    "type": "any",
                     "conditions": [
                       {
-                        "type": "query",
-                        "from": {
-                          "entity": "players"
-                        },
-                        "where": {
-                          "type": "all",
-                          "conditions": [
-                            {
-                              "type": "identity",
-                              "identityMode": "initial",
-                              "facet": "role",
-                              "values": [
-                                "core"
-                              ]
-                            },
-                            {
-                              "type": "identity",
-                              "identityMode": "initial",
-                              "facet": "allegiance",
-                              "values": [
-                                "evil"
-                              ]
-                            }
-                          ]
-                        },
-                        "aggregate": {
-                          "type": "exists"
-                        }
-                      },
-                      {
-                        "type": "compare",
-                        "left": {
-                          "type": "query",
-                          "from": {
-                            "entity": "players"
-                          },
-                          "where": {
-                            "type": "all",
-                            "conditions": [
-                              {
-                                "type": "alive",
-                                "value": true
-                              },
-                              {
-                                "type": "identity",
-                                "identityMode": "base",
-                                "facet": "role",
-                                "values": [
-                                  "core"
-                                ]
-                              },
-                              {
-                                "type": "identity",
-                                "identityMode": "base",
-                                "facet": "allegiance",
-                                "values": [
-                                  "evil"
-                                ]
-                              }
-                            ]
-                          },
-                          "aggregate": {
-                            "type": "count"
-                          }
-                        },
-                        "operator": "eq",
-                        "right": 0
-                      }
-                    ]
-                  },
-                  {
-                    "type": "compare",
-                    "left": {
-                      "type": "query",
-                      "from": {
-                        "entity": "players"
-                      },
-                      "where": {
-                        "type": "all",
-                        "conditions": [
-                          {
-                            "type": "alive",
-                            "value": true
-                          },
-                          {
-                            "type": "assignment",
-                            "values": [
-                              "player"
-                            ]
-                          }
-                        ]
-                      },
-                      "aggregate": {
-                        "type": "count"
-                      }
-                    },
-                    "operator": "lte",
-                    "right": 2
-                  }
-                ]
-              }
-            ],
-            "effects": [
-              {
-                "type": "resolveGameEnd",
-                "mode": "immediate",
-                "winner": {
-                  "type": "condition",
-                  "cases": [
-                    {
-                      "when": {
                         "type": "all",
                         "conditions": [
                           {
@@ -3096,6 +2985,12 @@
                             "where": {
                               "type": "all",
                               "conditions": [
+                                {
+                                  "type": "assignment",
+                                  "values": [
+                                    "player"
+                                  ]
+                                },
                                 {
                                   "type": "identity",
                                   "identityMode": "initial",
@@ -3133,6 +3028,12 @@
                                     "value": true
                                   },
                                   {
+                                    "type": "assignment",
+                                    "values": [
+                                      "player"
+                                    ]
+                                  },
+                                  {
                                     "type": "identity",
                                     "identityMode": "base",
                                     "facet": "role",
@@ -3159,6 +3060,394 @@
                           }
                         ]
                       },
+                      {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "compare",
+                            "left": {
+                              "type": "query",
+                              "from": {
+                                "entity": "players"
+                              },
+                              "where": {
+                                "type": "all",
+                                "conditions": [
+                                  {
+                                    "type": "assignment",
+                                    "values": [
+                                      "player"
+                                    ]
+                                  },
+                                  {
+                                    "type": "identity",
+                                    "identityMode": "initial",
+                                    "facet": "role",
+                                    "values": [
+                                      "core"
+                                    ]
+                                  },
+                                  {
+                                    "type": "identity",
+                                    "identityMode": "initial",
+                                    "facet": "allegiance",
+                                    "values": [
+                                      "evil"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "aggregate": {
+                                "type": "exists"
+                              }
+                            },
+                            "operator": "eq",
+                            "right": false
+                          },
+                          {
+                            "type": "query",
+                            "from": {
+                              "entity": "players"
+                            },
+                            "where": {
+                              "type": "all",
+                              "conditions": [
+                                {
+                                  "type": "assignment",
+                                  "values": [
+                                    "player"
+                                  ]
+                                },
+                                {
+                                  "type": "identity",
+                                  "identityMode": "initial",
+                                  "facet": "allegiance",
+                                  "values": [
+                                    "evil"
+                                  ]
+                                }
+                              ]
+                            },
+                            "aggregate": {
+                              "type": "exists"
+                            }
+                          },
+                          {
+                            "type": "compare",
+                            "left": {
+                              "type": "query",
+                              "from": {
+                                "entity": "players"
+                              },
+                              "where": {
+                                "type": "all",
+                                "conditions": [
+                                  {
+                                    "type": "alive",
+                                    "value": true
+                                  },
+                                  {
+                                    "type": "assignment",
+                                    "values": [
+                                      "player"
+                                    ]
+                                  },
+                                  {
+                                    "type": "identity",
+                                    "identityMode": "base",
+                                    "facet": "allegiance",
+                                    "values": [
+                                      "evil"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "aggregate": {
+                                "type": "count"
+                              }
+                            },
+                            "operator": "eq",
+                            "right": 0
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "query",
+                        "from": {
+                          "entity": "players"
+                        },
+                        "where": {
+                          "type": "all",
+                          "conditions": [
+                            {
+                              "type": "assignment",
+                              "values": [
+                                "player"
+                              ]
+                            },
+                            {
+                              "type": "identity",
+                              "identityMode": "initial",
+                              "facet": "allegiance",
+                              "values": [
+                                "evil"
+                              ]
+                            }
+                          ]
+                        },
+                        "aggregate": {
+                          "type": "exists"
+                        }
+                      },
+                      {
+                        "type": "compare",
+                        "left": {
+                          "type": "query",
+                          "from": {
+                            "entity": "players"
+                          },
+                          "where": {
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "alive",
+                                "value": true
+                              },
+                              {
+                                "type": "assignment",
+                                "values": [
+                                  "player"
+                                ]
+                              }
+                            ]
+                          },
+                          "aggregate": {
+                            "type": "count"
+                          }
+                        },
+                        "operator": "lte",
+                        "right": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "condition",
+                  "cases": [
+                    {
+                      "when": {
+                        "type": "any",
+                        "conditions": [
+                          {
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "query",
+                                "from": {
+                                  "entity": "players"
+                                },
+                                "where": {
+                                  "type": "all",
+                                  "conditions": [
+                                    {
+                                      "type": "assignment",
+                                      "values": [
+                                        "player"
+                                      ]
+                                    },
+                                    {
+                                      "type": "identity",
+                                      "identityMode": "initial",
+                                      "facet": "role",
+                                      "values": [
+                                        "core"
+                                      ]
+                                    },
+                                    {
+                                      "type": "identity",
+                                      "identityMode": "initial",
+                                      "facet": "allegiance",
+                                      "values": [
+                                        "evil"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "aggregate": {
+                                  "type": "exists"
+                                }
+                              },
+                              {
+                                "type": "compare",
+                                "left": {
+                                  "type": "query",
+                                  "from": {
+                                    "entity": "players"
+                                  },
+                                  "where": {
+                                    "type": "all",
+                                    "conditions": [
+                                      {
+                                        "type": "alive",
+                                        "value": true
+                                      },
+                                      {
+                                        "type": "assignment",
+                                        "values": [
+                                          "player"
+                                        ]
+                                      },
+                                      {
+                                        "type": "identity",
+                                        "identityMode": "base",
+                                        "facet": "role",
+                                        "values": [
+                                          "core"
+                                        ]
+                                      },
+                                      {
+                                        "type": "identity",
+                                        "identityMode": "base",
+                                        "facet": "allegiance",
+                                        "values": [
+                                          "evil"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "aggregate": {
+                                    "type": "count"
+                                  }
+                                },
+                                "operator": "eq",
+                                "right": 0
+                              }
+                            ]
+                          },
+                          {
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "compare",
+                                "left": {
+                                  "type": "query",
+                                  "from": {
+                                    "entity": "players"
+                                  },
+                                  "where": {
+                                    "type": "all",
+                                    "conditions": [
+                                      {
+                                        "type": "assignment",
+                                        "values": [
+                                          "player"
+                                        ]
+                                      },
+                                      {
+                                        "type": "identity",
+                                        "identityMode": "initial",
+                                        "facet": "role",
+                                        "values": [
+                                          "core"
+                                        ]
+                                      },
+                                      {
+                                        "type": "identity",
+                                        "identityMode": "initial",
+                                        "facet": "allegiance",
+                                        "values": [
+                                          "evil"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "aggregate": {
+                                    "type": "exists"
+                                  }
+                                },
+                                "operator": "eq",
+                                "right": false
+                              },
+                              {
+                                "type": "query",
+                                "from": {
+                                  "entity": "players"
+                                },
+                                "where": {
+                                  "type": "all",
+                                  "conditions": [
+                                    {
+                                      "type": "assignment",
+                                      "values": [
+                                        "player"
+                                      ]
+                                    },
+                                    {
+                                      "type": "identity",
+                                      "identityMode": "initial",
+                                      "facet": "allegiance",
+                                      "values": [
+                                        "evil"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "aggregate": {
+                                  "type": "exists"
+                                }
+                              },
+                              {
+                                "type": "compare",
+                                "left": {
+                                  "type": "query",
+                                  "from": {
+                                    "entity": "players"
+                                  },
+                                  "where": {
+                                    "type": "all",
+                                    "conditions": [
+                                      {
+                                        "type": "alive",
+                                        "value": true
+                                      },
+                                      {
+                                        "type": "assignment",
+                                        "values": [
+                                          "player"
+                                        ]
+                                      },
+                                      {
+                                        "type": "identity",
+                                        "identityMode": "base",
+                                        "facet": "allegiance",
+                                        "values": [
+                                          "evil"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "aggregate": {
+                                    "type": "count"
+                                  }
+                                },
+                                "operator": "eq",
+                                "right": 0
+                              }
+                            ]
+                          }
+                        ]
+                      },
                       "winner": {
                         "type": "fixed",
                         "team": "good"
@@ -3175,7 +3464,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:grimm:common-game-end:storyteller-execution",
+            "mechanicId": "mechanic:grimm:game-end-standard:storyteller-execution",
             "tags": [
               "loss-condition",
               "game-end-policy"
@@ -3243,7 +3532,7 @@
       ],
       "gameRuleBindings": [
         {
-          "ruleId": "rule:grimm:grimm-cenicienta-composition",
+          "ruleId": "rule:grimm:composition-extended",
           "activation": "automatic"
         },
         {
@@ -3259,7 +3548,7 @@
           "activation": "automatic"
         },
         {
-          "ruleId": "rule:bloodscribe:common-game-end",
+          "ruleId": "rule:bloodscribe:game-end-standard",
           "activation": "automatic"
         }
       ],
