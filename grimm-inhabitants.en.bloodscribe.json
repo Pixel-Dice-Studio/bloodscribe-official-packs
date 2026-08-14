@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "9.24",
+  "version": "9.25",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Fourteen support characters that can join any tale as cast members or independently of the cast.",
