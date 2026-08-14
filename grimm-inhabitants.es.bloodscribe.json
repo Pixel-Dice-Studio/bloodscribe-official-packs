@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "9.19",
+  "version": "9.22",
   "locale": "es",
   "name": "Habitantes de Grimm",
-  "description": "Nueve personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
+  "description": "Doce personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
   "legal": {
     "license": "Contenido original de BloodScribe inspirado en motivos del folclore europeo de dominio público.",
     "disclaimer": "Pack de contenido declarativo. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:inhabitants",
       "name": "Habitantes de Grimm",
-      "description": "Nueve personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
+      "description": "Doce personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
       "collection": {
         "id": "collection:grimm",
         "name": "Hermanos Grimm",
@@ -37,6 +37,9 @@
         "character:grimm:cuervo-ceniza",
         "character:grimm:molinero-tuerto",
         "character:grimm:dama-espejo-agrietado",
+        "character:grimm:arribista",
+        "character:grimm:chaman",
+        "character:grimm:malvada-compania",
         "character:grimm:clariaudiente"
       ],
       "gameRuleIds": [],
@@ -1425,6 +1428,518 @@
                 "value": 1
               },
               "consumeOn": "success"
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:arribista",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M25 105h78L86 72H42z\" fill=\"#745136\" stroke=\"#ead8b6\" stroke-width=\"6\" stroke-linejoin=\"round\"/><path d=\"M38 73l12-20 14 13 15-29 13 36\" fill=\"none\" stroke=\"#b96b5b\" stroke-width=\"8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"80\" cy=\"28\" r=\"10\" fill=\"#a28d73\" stroke=\"#ead8b6\" stroke-width=\"5\"/></svg>",
+      "info": {
+        "name": "Arribista",
+        "ability": "Una vez por partida, de noche, elige a otro jugador vivo. Si su personaje real es un malvado principal, mueres; si no, obtienes permanentemente su habilidad real y adoptas su bando actual."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 2,
+          "otherOrder": 2
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:arribista:copy-real-ability:1",
+            "tags": [
+              "ability-copy",
+              "alignment-change",
+              "private-character-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "death",
+                "protection": "normal",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "base",
+                          "facet": "allegiance",
+                          "values": [
+                            "evil"
+                          ]
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "base",
+                          "facet": "role",
+                          "values": [
+                            "core"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "grantAbility",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "abilityCharacterId": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "characterId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "selected"
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "base",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "base",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
+              },
+              {
+                "type": "changeAlignment",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "alignment": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "allegiance"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "isBinding",
+                            "binding": "selected"
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "base",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "base",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "exists"
+                      }
+                    },
+                    "operator": "eq",
+                    "right": false
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "onePlayer",
+                "label": "Elige a otro jugador vivo"
+              },
+              "nightGuide": {
+                "action": [
+                  "Deja que el Arribista elija a otro jugador vivo."
+                ],
+                "communicate": [
+                  "Si no eligió a un malvado principal, obtiene la habilidad real y el bando actual del objetivo."
+                ],
+                "notes": [
+                  "Si eligió a un malvado principal, el Arribista sufre una muerte normal y no copia nada, aunque una protección evite la muerte."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:chaman",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"64\" cy=\"68\" r=\"39\" fill=\"#3d2a24\" stroke=\"#ead8b6\" stroke-width=\"6\"/><path d=\"M44 77c7 13 33 13 40 0M48 55h1M79 55h1\" fill=\"none\" stroke=\"#a28d73\" stroke-width=\"7\" stroke-linecap=\"round\"/><path d=\"M64 17v18M38 25l11 15M90 25L79 40\" stroke=\"#b96b5b\" stroke-width=\"7\" stroke-linecap=\"round\"/></svg>",
+      "info": {
+        "name": "Chamán",
+        "ability": "Una vez por partida, de noche, elige a otro jugador muerto: pasas a ser su personaje real y adoptas su bando actual."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 3,
+          "otherOrder": 3
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:chaman:take-dead-character:1",
+            "tags": [
+              "character-change",
+              "alignment-change",
+              "private-character-information"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": false
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "changeCharacter",
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "newCharacter": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "characterId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "newAlignment": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "allegiance"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                }
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "onePlayer",
+                "label": "Elige a otro jugador muerto"
+              },
+              "nightGuide": {
+                "action": [
+                  "Deja que el Chamán elija a otro jugador muerto."
+                ],
+                "communicate": [
+                  "Muéstrale en privado su nuevo personaje real."
+                ],
+                "notes": [
+                  "Adopta el bando actual del cadáver y recibe una instancia nueva de la habilidad; el cadáver y sus fichas no cambian."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:malvada-compania",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M24 101c5-22 18-34 40-34s35 12 40 34\" fill=\"#745136\" stroke=\"#ead8b6\" stroke-width=\"6\" stroke-linejoin=\"round\"/><circle cx=\"47\" cy=\"47\" r=\"18\" fill=\"#a28d73\" stroke=\"#ead8b6\" stroke-width=\"5\"/><circle cx=\"83\" cy=\"47\" r=\"18\" fill=\"#b96b5b\" stroke=\"#ead8b6\" stroke-width=\"5\"/><path d=\"M58 48h14\" stroke=\"#ead8b6\" stroke-width=\"6\" stroke-linecap=\"round\"/></svg>",
+      "info": {
+        "name": "Malvada Compañía",
+        "ability": "Cada malvado principal que no empezó como tu vecino está borracho mientras sea tu vecino vivo. Su ataque solo puede matarte a ti; otras causas de borrachera siguen bloqueándolo."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "malvada_compania_borracho",
+            "kind": "state",
+            "value": "drunk",
+            "label": "Borracho por Malvada Compañía",
+            "duration": "whileCondition",
+            "count": 4
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:malvada-compania:neighbor-drunk:1",
+            "tags": [
+              "continuous-state",
+              "neighbor-restriction",
+              "main-evil-attack-exception"
+            ],
+            "when": {
+              "window": "anyTime",
+              "cadence": "each"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "setPlayerState",
+                "state": "drunk",
+                "active": true,
+                "excludeInitialTargets": true,
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players",
+                    "relation": {
+                      "type": "nearestMatching",
+                      "anchor": "actor",
+                      "directions": [
+                        "clockwise",
+                        "counterclockwise"
+                      ],
+                      "limitPerDirection": 1,
+                      "where": {
+                        "type": "alive",
+                        "value": true
+                      }
+                    }
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "identity",
+                        "identityMode": "base",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "base",
+                        "facet": "role",
+                        "values": [
+                          "core"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                }
+              },
+              {
+                "type": "restrict",
+                "restrictions": [
+                  "ability"
+                ],
+                "exception": {
+                  "action": "mainEvilAttack",
+                  "target": "source"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
             }
           }
         ]
