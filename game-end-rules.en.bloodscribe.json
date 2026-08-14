@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "bloodscribe:game-end-rules",
   "key": "game-end-rules",
-  "version": "9.25",
+  "version": "10.0",
   "locale": "en",
   "name": "Game-end rules",
   "description": "Generic conditions determining when a game ends and how its winner is resolved.",
@@ -17,9 +17,10 @@
   "gameRules": [
     {
       "entityKind": "gameRule",
-      "id": "rule:bloodscribe:game-end-standard",
+      "id": "rule:bloodscribe:game-end:fast",
       "visibility": "public",
       "ruleKind": "gameEnd",
+      "systemType": "game-end",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -28,571 +29,6 @@
           "plural": "Game ends"
         },
         "description": "Rules determining when the game ends and who wins.",
-        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M54.5222133,22.0546989 C57.8359218,22.0546989 60.5222133,24.7409904 60.5222133,28.0546989 L60.5222133,49.0546989 C60.5222133,52.3684074 57.8359218,55.0546989 54.5222133,55.0546989 L47.0936419,55.0546989 C43.7799334,55.0546989 41.0936419,52.3684074 41.0936419,49.0546989 L41.0932133,43.8776989 L14.1205371,43.8777676 C11.4380112,43.8777676 9.26339425,41.7031506 9.26339425,39.0206247 C9.26339425,36.3380988 11.4380112,34.1634818 14.1205371,34.1634818 L41.0932133,34.1626989 L41.0936419,28.0546989 C41.0936419,24.7409904 43.7799334,22.0546989 47.0936419,22.0546989 L54.5222133,22.0546989 Z\" transform=\"rotate(-15 35.022 38.055)\"/></g></svg>\n",
-        "selection": {
-          "maxActive": 1
-        }
-      },
-      "info": {
-        "name": "Standard game end",
-        "ability": "Good wins when evil's main threat is gone; if the game declares no main threat, when no evil player remains. Evil wins when at most two regular players remain alive. If both conditions happen at once, good wins."
-      },
-      "rules": {
-        "setup": false,
-        "cues": [],
-        "mechanics": [
-          {
-            "mechanicId": "mechanic:bloodscribe:game-end-standard:resolve",
-            "tags": [
-              "win-condition",
-              "game-end-policy"
-            ],
-            "when": {
-              "window": "gameEnd",
-              "cadence": "each"
-            },
-            "conditions": [
-              {
-                "type": "any",
-                "conditions": [
-                  {
-                    "type": "any",
-                    "conditions": [
-                      {
-                        "type": "all",
-                        "conditions": [
-                          {
-                            "type": "query",
-                            "from": {
-                              "entity": "players"
-                            },
-                            "where": {
-                              "type": "all",
-                              "conditions": [
-                                {
-                                  "type": "assignment",
-                                  "values": [
-                                    "player"
-                                  ]
-                                },
-                                {
-                                  "type": "identity",
-                                  "identityMode": "initial",
-                                  "facet": "role",
-                                  "values": [
-                                    "core"
-                                  ]
-                                },
-                                {
-                                  "type": "identity",
-                                  "identityMode": "initial",
-                                  "facet": "allegiance",
-                                  "values": [
-                                    "evil"
-                                  ]
-                                }
-                              ]
-                            },
-                            "aggregate": {
-                              "type": "exists"
-                            }
-                          },
-                          {
-                            "type": "compare",
-                            "left": {
-                              "type": "query",
-                              "from": {
-                                "entity": "players"
-                              },
-                              "where": {
-                                "type": "all",
-                                "conditions": [
-                                  {
-                                    "type": "alive",
-                                    "value": true
-                                  },
-                                  {
-                                    "type": "assignment",
-                                    "values": [
-                                      "player"
-                                    ]
-                                  },
-                                  {
-                                    "type": "identity",
-                                    "identityMode": "base",
-                                    "facet": "role",
-                                    "values": [
-                                      "core"
-                                    ]
-                                  },
-                                  {
-                                    "type": "identity",
-                                    "identityMode": "base",
-                                    "facet": "allegiance",
-                                    "values": [
-                                      "evil"
-                                    ]
-                                  }
-                                ]
-                              },
-                              "aggregate": {
-                                "type": "count"
-                              }
-                            },
-                            "operator": "eq",
-                            "right": 0
-                          }
-                        ]
-                      },
-                      {
-                        "type": "all",
-                        "conditions": [
-                          {
-                            "type": "compare",
-                            "left": {
-                              "type": "query",
-                              "from": {
-                                "entity": "players"
-                              },
-                              "where": {
-                                "type": "all",
-                                "conditions": [
-                                  {
-                                    "type": "assignment",
-                                    "values": [
-                                      "player"
-                                    ]
-                                  },
-                                  {
-                                    "type": "identity",
-                                    "identityMode": "initial",
-                                    "facet": "role",
-                                    "values": [
-                                      "core"
-                                    ]
-                                  },
-                                  {
-                                    "type": "identity",
-                                    "identityMode": "initial",
-                                    "facet": "allegiance",
-                                    "values": [
-                                      "evil"
-                                    ]
-                                  }
-                                ]
-                              },
-                              "aggregate": {
-                                "type": "exists"
-                              }
-                            },
-                            "operator": "eq",
-                            "right": false
-                          },
-                          {
-                            "type": "query",
-                            "from": {
-                              "entity": "players"
-                            },
-                            "where": {
-                              "type": "all",
-                              "conditions": [
-                                {
-                                  "type": "assignment",
-                                  "values": [
-                                    "player"
-                                  ]
-                                },
-                                {
-                                  "type": "identity",
-                                  "identityMode": "initial",
-                                  "facet": "allegiance",
-                                  "values": [
-                                    "evil"
-                                  ]
-                                }
-                              ]
-                            },
-                            "aggregate": {
-                              "type": "exists"
-                            }
-                          },
-                          {
-                            "type": "compare",
-                            "left": {
-                              "type": "query",
-                              "from": {
-                                "entity": "players"
-                              },
-                              "where": {
-                                "type": "all",
-                                "conditions": [
-                                  {
-                                    "type": "alive",
-                                    "value": true
-                                  },
-                                  {
-                                    "type": "assignment",
-                                    "values": [
-                                      "player"
-                                    ]
-                                  },
-                                  {
-                                    "type": "identity",
-                                    "identityMode": "base",
-                                    "facet": "allegiance",
-                                    "values": [
-                                      "evil"
-                                    ]
-                                  }
-                                ]
-                              },
-                              "aggregate": {
-                                "type": "count"
-                              }
-                            },
-                            "operator": "eq",
-                            "right": 0
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "all",
-                    "conditions": [
-                      {
-                        "type": "query",
-                        "from": {
-                          "entity": "players"
-                        },
-                        "where": {
-                          "type": "all",
-                          "conditions": [
-                            {
-                              "type": "assignment",
-                              "values": [
-                                "player"
-                              ]
-                            },
-                            {
-                              "type": "identity",
-                              "identityMode": "initial",
-                              "facet": "allegiance",
-                              "values": [
-                                "evil"
-                              ]
-                            }
-                          ]
-                        },
-                        "aggregate": {
-                          "type": "exists"
-                        }
-                      },
-                      {
-                        "type": "compare",
-                        "left": {
-                          "type": "query",
-                          "from": {
-                            "entity": "players"
-                          },
-                          "where": {
-                            "type": "all",
-                            "conditions": [
-                              {
-                                "type": "alive",
-                                "value": true
-                              },
-                              {
-                                "type": "assignment",
-                                "values": [
-                                  "player"
-                                ]
-                              }
-                            ]
-                          },
-                          "aggregate": {
-                            "type": "count"
-                          }
-                        },
-                        "operator": "lte",
-                        "right": 2
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "effects": [
-              {
-                "type": "resolveGameEnd",
-                "mode": "immediate",
-                "winner": {
-                  "type": "condition",
-                  "cases": [
-                    {
-                      "when": {
-                        "type": "any",
-                        "conditions": [
-                          {
-                            "type": "all",
-                            "conditions": [
-                              {
-                                "type": "query",
-                                "from": {
-                                  "entity": "players"
-                                },
-                                "where": {
-                                  "type": "all",
-                                  "conditions": [
-                                    {
-                                      "type": "assignment",
-                                      "values": [
-                                        "player"
-                                      ]
-                                    },
-                                    {
-                                      "type": "identity",
-                                      "identityMode": "initial",
-                                      "facet": "role",
-                                      "values": [
-                                        "core"
-                                      ]
-                                    },
-                                    {
-                                      "type": "identity",
-                                      "identityMode": "initial",
-                                      "facet": "allegiance",
-                                      "values": [
-                                        "evil"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "aggregate": {
-                                  "type": "exists"
-                                }
-                              },
-                              {
-                                "type": "compare",
-                                "left": {
-                                  "type": "query",
-                                  "from": {
-                                    "entity": "players"
-                                  },
-                                  "where": {
-                                    "type": "all",
-                                    "conditions": [
-                                      {
-                                        "type": "alive",
-                                        "value": true
-                                      },
-                                      {
-                                        "type": "assignment",
-                                        "values": [
-                                          "player"
-                                        ]
-                                      },
-                                      {
-                                        "type": "identity",
-                                        "identityMode": "base",
-                                        "facet": "role",
-                                        "values": [
-                                          "core"
-                                        ]
-                                      },
-                                      {
-                                        "type": "identity",
-                                        "identityMode": "base",
-                                        "facet": "allegiance",
-                                        "values": [
-                                          "evil"
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  "aggregate": {
-                                    "type": "count"
-                                  }
-                                },
-                                "operator": "eq",
-                                "right": 0
-                              }
-                            ]
-                          },
-                          {
-                            "type": "all",
-                            "conditions": [
-                              {
-                                "type": "compare",
-                                "left": {
-                                  "type": "query",
-                                  "from": {
-                                    "entity": "players"
-                                  },
-                                  "where": {
-                                    "type": "all",
-                                    "conditions": [
-                                      {
-                                        "type": "assignment",
-                                        "values": [
-                                          "player"
-                                        ]
-                                      },
-                                      {
-                                        "type": "identity",
-                                        "identityMode": "initial",
-                                        "facet": "role",
-                                        "values": [
-                                          "core"
-                                        ]
-                                      },
-                                      {
-                                        "type": "identity",
-                                        "identityMode": "initial",
-                                        "facet": "allegiance",
-                                        "values": [
-                                          "evil"
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  "aggregate": {
-                                    "type": "exists"
-                                  }
-                                },
-                                "operator": "eq",
-                                "right": false
-                              },
-                              {
-                                "type": "query",
-                                "from": {
-                                  "entity": "players"
-                                },
-                                "where": {
-                                  "type": "all",
-                                  "conditions": [
-                                    {
-                                      "type": "assignment",
-                                      "values": [
-                                        "player"
-                                      ]
-                                    },
-                                    {
-                                      "type": "identity",
-                                      "identityMode": "initial",
-                                      "facet": "allegiance",
-                                      "values": [
-                                        "evil"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "aggregate": {
-                                  "type": "exists"
-                                }
-                              },
-                              {
-                                "type": "compare",
-                                "left": {
-                                  "type": "query",
-                                  "from": {
-                                    "entity": "players"
-                                  },
-                                  "where": {
-                                    "type": "all",
-                                    "conditions": [
-                                      {
-                                        "type": "alive",
-                                        "value": true
-                                      },
-                                      {
-                                        "type": "assignment",
-                                        "values": [
-                                          "player"
-                                        ]
-                                      },
-                                      {
-                                        "type": "identity",
-                                        "identityMode": "base",
-                                        "facet": "allegiance",
-                                        "values": [
-                                          "evil"
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  "aggregate": {
-                                    "type": "count"
-                                  }
-                                },
-                                "operator": "eq",
-                                "right": 0
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "winner": {
-                        "type": "fixed",
-                        "team": "good"
-                      }
-                    }
-                  ],
-                  "otherwise": {
-                    "type": "fixed",
-                    "team": "evil"
-                  }
-                },
-                "reason": "Se cumplieron las condiciones estándar de final de partida."
-              }
-            ]
-          },
-          {
-            "mechanicId": "mechanic:bloodscribe:game-end-standard:storyteller-execution",
-            "tags": [
-              "loss-condition",
-              "game-end-policy"
-            ],
-            "when": {
-              "window": "execution",
-              "cadence": "each",
-              "trigger": {
-                "type": "event",
-                "event": "storytellerExecution"
-              }
-            },
-            "conditions": [],
-            "effects": [
-              {
-                "type": "resolveGameEnd",
-                "mode": "immediate",
-                "winner": {
-                  "type": "fixed",
-                  "team": "evil"
-                },
-                "reason": "El Narrador fue ejecutado sin una regla activa que conceda la victoria al bien."
-              }
-            ]
-          }
-        ]
-      },
-      "links": [],
-      "bookIds": []
-    },
-    {
-      "entityKind": "gameRule",
-      "id": "rule:bloodscribe:game-end-fast",
-      "visibility": "public",
-      "ruleKind": "gameEnd",
-      "categoryId": "rule-category:common:game-end",
-      "category": {
-        "id": "rule-category:common:game-end",
-        "terms": {
-          "singular": "Game end",
-          "plural": "Game ends"
-        },
-        "description": "Rules determining when the game ends and who wins.",
-        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M54.5222133,22.0546989 C57.8359218,22.0546989 60.5222133,24.7409904 60.5222133,28.0546989 L60.5222133,49.0546989 C60.5222133,52.3684074 57.8359218,55.0546989 54.5222133,55.0546989 L47.0936419,55.0546989 C43.7799334,55.0546989 41.0936419,52.3684074 41.0936419,49.0546989 L41.0932133,43.8776989 L14.1205371,43.8777676 C11.4380112,43.8777676 9.26339425,41.7031506 9.26339425,39.0206247 C9.26339425,36.3380988 11.4380112,34.1634818 14.1205371,34.1634818 L41.0932133,34.1626989 L41.0936419,28.0546989 C41.0936419,24.7409904 43.7799334,22.0546989 47.0936419,22.0546989 L54.5222133,22.0546989 Z\" transform=\"rotate(-15 35.022 38.055)\"/></g></svg>\n",
         "selection": {
           "maxActive": 1
         }
@@ -606,7 +42,7 @@
         "cues": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-fast:resolve",
+            "mechanicId": "mechanic:bloodscribe:fast:resolve",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -1112,7 +548,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-fast:storyteller-execution",
+            "mechanicId": "mechanic:bloodscribe:fast:storyteller-execution",
             "tags": [
               "loss-condition",
               "game-end-policy"
@@ -1145,9 +581,10 @@
     },
     {
       "entityKind": "gameRule",
-      "id": "rule:bloodscribe:game-end-extended",
+      "id": "rule:bloodscribe:game-end:extended",
       "visibility": "public",
       "ruleKind": "gameEnd",
+      "systemType": "game-end",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -1156,7 +593,6 @@
           "plural": "Game ends"
         },
         "description": "Rules determining when the game ends and who wins.",
-        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M54.5222133,22.0546989 C57.8359218,22.0546989 60.5222133,24.7409904 60.5222133,28.0546989 L60.5222133,49.0546989 C60.5222133,52.3684074 57.8359218,55.0546989 54.5222133,55.0546989 L47.0936419,55.0546989 C43.7799334,55.0546989 41.0936419,52.3684074 41.0936419,49.0546989 L41.0932133,43.8776989 L14.1205371,43.8777676 C11.4380112,43.8777676 9.26339425,41.7031506 9.26339425,39.0206247 C9.26339425,36.3380988 11.4380112,34.1634818 14.1205371,34.1634818 L41.0932133,34.1626989 L41.0936419,28.0546989 C41.0936419,24.7409904 43.7799334,22.0546989 47.0936419,22.0546989 L54.5222133,22.0546989 Z\" transform=\"rotate(-15 35.022 38.055)\"/></g></svg>\n",
         "selection": {
           "maxActive": 1
         }
@@ -1170,7 +606,7 @@
         "cues": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-extended:resolve",
+            "mechanicId": "mechanic:bloodscribe:extended:resolve",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -1676,7 +1112,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-extended:storyteller-execution",
+            "mechanicId": "mechanic:bloodscribe:extended:storyteller-execution",
             "tags": [
               "loss-condition",
               "game-end-policy"
@@ -1709,9 +1145,10 @@
     },
     {
       "entityKind": "gameRule",
-      "id": "rule:bloodscribe:game-end-parity",
+      "id": "rule:bloodscribe:game-end:parity",
       "visibility": "public",
       "ruleKind": "gameEnd",
+      "systemType": "game-end",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -1720,7 +1157,6 @@
           "plural": "Game ends"
         },
         "description": "Rules determining when the game ends and who wins.",
-        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M54.5222133,22.0546989 C57.8359218,22.0546989 60.5222133,24.7409904 60.5222133,28.0546989 L60.5222133,49.0546989 C60.5222133,52.3684074 57.8359218,55.0546989 54.5222133,55.0546989 L47.0936419,55.0546989 C43.7799334,55.0546989 41.0936419,52.3684074 41.0936419,49.0546989 L41.0932133,43.8776989 L14.1205371,43.8777676 C11.4380112,43.8777676 9.26339425,41.7031506 9.26339425,39.0206247 C9.26339425,36.3380988 11.4380112,34.1634818 14.1205371,34.1634818 L41.0932133,34.1626989 L41.0936419,28.0546989 C41.0936419,24.7409904 43.7799334,22.0546989 47.0936419,22.0546989 L54.5222133,22.0546989 Z\" transform=\"rotate(-15 35.022 38.055)\"/></g></svg>\n",
         "selection": {
           "maxActive": 1
         }
@@ -1734,7 +1170,7 @@
         "cues": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-parity:none",
+            "mechanicId": "mechanic:bloodscribe:parity:none",
             "tags": [
               "no-winner",
               "game-end-policy"
@@ -1893,7 +1329,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-parity:good",
+            "mechanicId": "mechanic:bloodscribe:parity:good",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -2024,7 +1460,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-parity:evil",
+            "mechanicId": "mechanic:bloodscribe:parity:evil",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -2186,7 +1622,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-parity:storyteller-execution",
+            "mechanicId": "mechanic:bloodscribe:parity:storyteller-execution",
             "tags": [
               "loss-condition",
               "game-end-policy"
@@ -2219,9 +1655,10 @@
     },
     {
       "entityKind": "gameRule",
-      "id": "rule:bloodscribe:game-end-elimination",
+      "id": "rule:bloodscribe:game-end:elimination",
       "visibility": "public",
       "ruleKind": "gameEnd",
+      "systemType": "game-end",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -2230,7 +1667,6 @@
           "plural": "Game ends"
         },
         "description": "Rules determining when the game ends and who wins.",
-        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M54.5222133,22.0546989 C57.8359218,22.0546989 60.5222133,24.7409904 60.5222133,28.0546989 L60.5222133,49.0546989 C60.5222133,52.3684074 57.8359218,55.0546989 54.5222133,55.0546989 L47.0936419,55.0546989 C43.7799334,55.0546989 41.0936419,52.3684074 41.0936419,49.0546989 L41.0932133,43.8776989 L14.1205371,43.8777676 C11.4380112,43.8777676 9.26339425,41.7031506 9.26339425,39.0206247 C9.26339425,36.3380988 11.4380112,34.1634818 14.1205371,34.1634818 L41.0932133,34.1626989 L41.0936419,28.0546989 C41.0936419,24.7409904 43.7799334,22.0546989 47.0936419,22.0546989 L54.5222133,22.0546989 Z\" transform=\"rotate(-15 35.022 38.055)\"/></g></svg>\n",
         "selection": {
           "maxActive": 1
         }
@@ -2244,7 +1680,7 @@
         "cues": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-elimination:none",
+            "mechanicId": "mechanic:bloodscribe:elimination:none",
             "tags": [
               "no-winner",
               "game-end-policy"
@@ -2403,7 +1839,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-elimination:good",
+            "mechanicId": "mechanic:bloodscribe:elimination:good",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -2534,7 +1970,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-elimination:evil",
+            "mechanicId": "mechanic:bloodscribe:elimination:evil",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -2665,7 +2101,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-elimination:storyteller-execution",
+            "mechanicId": "mechanic:bloodscribe:elimination:storyteller-execution",
             "tags": [
               "loss-condition",
               "game-end-policy"
@@ -2698,9 +2134,10 @@
     },
     {
       "entityKind": "gameRule",
-      "id": "rule:bloodscribe:game-end-leaders",
+      "id": "rule:bloodscribe:game-end:leaders",
       "visibility": "public",
       "ruleKind": "gameEnd",
+      "systemType": "game-end",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -2709,7 +2146,6 @@
           "plural": "Game ends"
         },
         "description": "Rules determining when the game ends and who wins.",
-        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M54.5222133,22.0546989 C57.8359218,22.0546989 60.5222133,24.7409904 60.5222133,28.0546989 L60.5222133,49.0546989 C60.5222133,52.3684074 57.8359218,55.0546989 54.5222133,55.0546989 L47.0936419,55.0546989 C43.7799334,55.0546989 41.0936419,52.3684074 41.0936419,49.0546989 L41.0932133,43.8776989 L14.1205371,43.8777676 C11.4380112,43.8777676 9.26339425,41.7031506 9.26339425,39.0206247 C9.26339425,36.3380988 11.4380112,34.1634818 14.1205371,34.1634818 L41.0932133,34.1626989 L41.0936419,28.0546989 C41.0936419,24.7409904 43.7799334,22.0546989 47.0936419,22.0546989 L54.5222133,22.0546989 Z\" transform=\"rotate(-15 35.022 38.055)\"/></g></svg>\n",
         "selection": {
           "maxActive": 1
         }
@@ -2723,7 +2159,7 @@
         "cues": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-leaders:none",
+            "mechanicId": "mechanic:bloodscribe:leaders:none",
             "tags": [
               "no-winner",
               "game-end-policy"
@@ -3156,7 +2592,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-leaders:good",
+            "mechanicId": "mechanic:bloodscribe:leaders:good",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -3589,7 +3025,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-leaders:evil",
+            "mechanicId": "mechanic:bloodscribe:leaders:evil",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -4022,7 +3458,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-leaders:storyteller-execution",
+            "mechanicId": "mechanic:bloodscribe:leaders:storyteller-execution",
             "tags": [
               "loss-condition",
               "game-end-policy"
@@ -4055,9 +3491,10 @@
     },
     {
       "entityKind": "gameRule",
-      "id": "rule:bloodscribe:game-end-last-survivor",
+      "id": "rule:bloodscribe:game-end:last-survivor",
       "visibility": "public",
       "ruleKind": "gameEnd",
+      "systemType": "game-end",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -4066,7 +3503,6 @@
           "plural": "Game ends"
         },
         "description": "Rules determining when the game ends and who wins.",
-        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"76\" viewBox=\"0 0 76 76\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#EBE3D7\" d=\"M38,0 C27.9201752,0 18.2578742,4.00316874 11.1281465,11.1281465 C4.00316874,18.2577554 0,27.9205315 0,38 C0,48.0794685 4.00316874,57.7421258 11.1281465,64.8718535 C18.2577554,71.9968313 27.9205315,76 38,76 C48.0794685,76 57.7421258,71.9968313 64.8718535,64.8718535 C71.9968313,57.7422446 76,48.0794685 76,38 C76,27.9205315 71.9968313,18.2578742 64.8718535,11.1281465 C57.7422446,4.00316874 48.0794685,0 38,0 Z\"/><path fill=\"#2B2117\" d=\"M54.5222133,22.0546989 C57.8359218,22.0546989 60.5222133,24.7409904 60.5222133,28.0546989 L60.5222133,49.0546989 C60.5222133,52.3684074 57.8359218,55.0546989 54.5222133,55.0546989 L47.0936419,55.0546989 C43.7799334,55.0546989 41.0936419,52.3684074 41.0936419,49.0546989 L41.0932133,43.8776989 L14.1205371,43.8777676 C11.4380112,43.8777676 9.26339425,41.7031506 9.26339425,39.0206247 C9.26339425,36.3380988 11.4380112,34.1634818 14.1205371,34.1634818 L41.0932133,34.1626989 L41.0936419,28.0546989 C41.0936419,24.7409904 43.7799334,22.0546989 47.0936419,22.0546989 L54.5222133,22.0546989 Z\" transform=\"rotate(-15 35.022 38.055)\"/></g></svg>\n",
         "selection": {
           "maxActive": 1
         }
@@ -4080,7 +3516,7 @@
         "cues": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-last-survivor:none",
+            "mechanicId": "mechanic:bloodscribe:last-survivor:none",
             "tags": [
               "no-winner",
               "game-end-policy"
@@ -4133,7 +3569,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-last-survivor:winner",
+            "mechanicId": "mechanic:bloodscribe:last-survivor:winner",
             "tags": [
               "win-condition",
               "game-end-policy"
@@ -4209,7 +3645,7 @@
             ]
           },
           {
-            "mechanicId": "mechanic:bloodscribe:game-end-last-survivor:storyteller-execution",
+            "mechanicId": "mechanic:bloodscribe:last-survivor:storyteller-execution",
             "tags": [
               "loss-condition",
               "game-end-policy"
