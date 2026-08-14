@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "bloodscribe:game-end-rules",
   "key": "game-end-rules",
-  "version": "9.24",
+  "version": "9.25",
   "locale": "en",
   "name": "Game-end rules",
   "description": "Generic conditions determining when a game ends and how its winner is resolved.",
@@ -19,7 +19,7 @@
       "entityKind": "gameRule",
       "id": "rule:bloodscribe:game-end-standard",
       "visibility": "public",
-      "ruleKind": "general",
+      "ruleKind": "gameEnd",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -583,7 +583,7 @@
       "entityKind": "gameRule",
       "id": "rule:bloodscribe:game-end-fast",
       "visibility": "public",
-      "ruleKind": "general",
+      "ruleKind": "gameEnd",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -1147,7 +1147,7 @@
       "entityKind": "gameRule",
       "id": "rule:bloodscribe:game-end-extended",
       "visibility": "public",
-      "ruleKind": "general",
+      "ruleKind": "gameEnd",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -1711,7 +1711,7 @@
       "entityKind": "gameRule",
       "id": "rule:bloodscribe:game-end-parity",
       "visibility": "public",
-      "ruleKind": "general",
+      "ruleKind": "gameEnd",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -2221,7 +2221,7 @@
       "entityKind": "gameRule",
       "id": "rule:bloodscribe:game-end-elimination",
       "visibility": "public",
-      "ruleKind": "general",
+      "ruleKind": "gameEnd",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -2700,7 +2700,7 @@
       "entityKind": "gameRule",
       "id": "rule:bloodscribe:game-end-leaders",
       "visibility": "public",
-      "ruleKind": "general",
+      "ruleKind": "gameEnd",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
@@ -4057,7 +4057,7 @@
       "entityKind": "gameRule",
       "id": "rule:bloodscribe:game-end-last-survivor",
       "visibility": "public",
-      "ruleKind": "general",
+      "ruleKind": "gameEnd",
       "categoryId": "rule-category:common:game-end",
       "category": {
         "id": "rule-category:common:game-end",
