@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.1",
+  "version": "10.2",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -24,7 +24,7 @@
       "collection": {
         "id": "collection:grimm",
         "name": "Hermanos Grimm",
-        "description": "Colección de cuentos y personajes inspirados en los Hermanos Grimm."
+        "description": "Bosques encantados, antiguas maldiciones y destinos escritos con sangre."
       },
       "origin": "official",
       "presentation": {

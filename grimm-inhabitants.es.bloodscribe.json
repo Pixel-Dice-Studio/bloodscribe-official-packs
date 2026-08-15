@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.1",
+  "version": "10.2",
   "locale": "es",
   "name": "Habitantes de Grimm",
   "description": "Catorce personajes de apoyo que pueden incorporarse a cualquier cuento como parte del reparto o como independientes del reparto.",
@@ -24,7 +24,7 @@
       "collection": {
         "id": "collection:grimm",
         "name": "Hermanos Grimm",
-        "description": "Colección de cuentos y personajes inspirados en los Hermanos Grimm."
+        "description": "Bosques encantados, antiguas maldiciones y destinos escritos con sangre."
       },
       "origin": "community",
       "taleIds": [],
