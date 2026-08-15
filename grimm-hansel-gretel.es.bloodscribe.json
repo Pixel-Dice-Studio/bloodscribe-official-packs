@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.0",
+  "version": "10.1",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -3947,6 +3947,7 @@
       },
       "summaryEs": "Distribución Grimm para partidas con dos amenazas principales.",
       "composition": {
+        "enforcement": "exact",
         "playerCounts": {
           "7": {
             "good": 3,
