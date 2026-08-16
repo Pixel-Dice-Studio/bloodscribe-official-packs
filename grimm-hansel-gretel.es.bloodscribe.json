@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.2",
+  "version": "10.6",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "Adaptación jugable del cuento de Hansel y Gretel con equipos de Pueblerinos, Ayudantes, Errantes, Siervos y Oscuros.",
@@ -114,7 +114,7 @@
       "colors": {
         "text": {
           "onLight": "#438b54",
-          "onDark": "#438b54"
+          "onDark": "#85ba8f"
         },
         "surface": "#438b54",
         "border": "#438b54",
@@ -144,7 +144,7 @@
       "colors": {
         "text": {
           "onLight": "#81942d",
-          "onDark": "#81942d"
+          "onDark": "#aaba73"
         },
         "surface": "#81942d",
         "border": "#81942d",
@@ -178,7 +178,7 @@
       "colors": {
         "text": {
           "onLight": "#947947",
-          "onDark": "#947947"
+          "onDark": "#c3ae88"
         },
         "surface": "#947947",
         "border": "#947947",
@@ -208,7 +208,7 @@
       "colors": {
         "text": {
           "onLight": "#a8443c",
-          "onDark": "#a8443c"
+          "onDark": "#cf9b8e"
         },
         "surface": "#a8443c",
         "border": "#a8443c",
@@ -238,7 +238,7 @@
       "colors": {
         "text": {
           "onLight": "#5d2618",
-          "onDark": "#5d2618"
+          "onDark": "#e86566"
         },
         "surface": "#5d2618",
         "border": "#5d2618",
@@ -4270,7 +4270,7 @@
           "colors": {
             "text": {
               "onLight": "#438b54",
-              "onDark": "#438b54"
+              "onDark": "#85ba8f"
             },
             "surface": "#438b54",
             "border": "#438b54",
@@ -4300,7 +4300,7 @@
           "colors": {
             "text": {
               "onLight": "#81942d",
-              "onDark": "#81942d"
+              "onDark": "#aaba73"
             },
             "surface": "#81942d",
             "border": "#81942d",
@@ -4334,7 +4334,7 @@
           "colors": {
             "text": {
               "onLight": "#947947",
-              "onDark": "#947947"
+              "onDark": "#c3ae88"
             },
             "surface": "#947947",
             "border": "#947947",
@@ -4364,7 +4364,7 @@
           "colors": {
             "text": {
               "onLight": "#a8443c",
-              "onDark": "#a8443c"
+              "onDark": "#cf9b8e"
             },
             "surface": "#a8443c",
             "border": "#a8443c",
@@ -4394,7 +4394,7 @@
           "colors": {
             "text": {
               "onLight": "#5d2618",
-              "onDark": "#5d2618"
+              "onDark": "#e86566"
             },
             "surface": "#5d2618",
             "border": "#5d2618",

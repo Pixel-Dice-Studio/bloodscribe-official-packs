@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "10.2",
+  "version": "10.6",
   "locale": "es",
   "name": "Blancanieves",
   "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
@@ -115,7 +115,7 @@
       "colors": {
         "text": {
           "onLight": "#438b54",
-          "onDark": "#438b54"
+          "onDark": "#85ba8f"
         },
         "surface": "#438b54",
         "border": "#438b54",
@@ -145,7 +145,7 @@
       "colors": {
         "text": {
           "onLight": "#81942d",
-          "onDark": "#81942d"
+          "onDark": "#aaba73"
         },
         "surface": "#81942d",
         "border": "#81942d",
@@ -179,7 +179,7 @@
       "colors": {
         "text": {
           "onLight": "#947947",
-          "onDark": "#947947"
+          "onDark": "#c3ae88"
         },
         "surface": "#947947",
         "border": "#947947",
@@ -209,7 +209,7 @@
       "colors": {
         "text": {
           "onLight": "#a8443c",
-          "onDark": "#a8443c"
+          "onDark": "#cf9b8e"
         },
         "surface": "#a8443c",
         "border": "#a8443c",
@@ -239,7 +239,7 @@
       "colors": {
         "text": {
           "onLight": "#5d2618",
-          "onDark": "#5d2618"
+          "onDark": "#e86566"
         },
         "surface": "#5d2618",
         "border": "#5d2618",
@@ -3461,7 +3461,7 @@
           "colors": {
             "text": {
               "onLight": "#438b54",
-              "onDark": "#438b54"
+              "onDark": "#85ba8f"
             },
             "surface": "#438b54",
             "border": "#438b54",
@@ -3491,7 +3491,7 @@
           "colors": {
             "text": {
               "onLight": "#81942d",
-              "onDark": "#81942d"
+              "onDark": "#aaba73"
             },
             "surface": "#81942d",
             "border": "#81942d",
@@ -3525,7 +3525,7 @@
           "colors": {
             "text": {
               "onLight": "#947947",
-              "onDark": "#947947"
+              "onDark": "#c3ae88"
             },
             "surface": "#947947",
             "border": "#947947",
@@ -3555,7 +3555,7 @@
           "colors": {
             "text": {
               "onLight": "#a8443c",
-              "onDark": "#a8443c"
+              "onDark": "#cf9b8e"
             },
             "surface": "#a8443c",
             "border": "#a8443c",
@@ -3585,7 +3585,7 @@
           "colors": {
             "text": {
               "onLight": "#5d2618",
-              "onDark": "#5d2618"
+              "onDark": "#e86566"
             },
             "surface": "#5d2618",
             "border": "#5d2618",
