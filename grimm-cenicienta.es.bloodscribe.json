@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.2",
+  "version": "10.6",
   "locale": "es",
   "name": "Cenicienta",
   "description": "Tras la muerte de su madre, una joven queda sometida por su madrastra y sus dos hijas, que la obligan a dormir junto al hogar y a separar lentejas de la ceniza. En la tumba materna crece un avellano donde anida un pájaro blanco; con la ayuda de las aves, Cenicienta acude en secreto a las tres jornadas de fiesta convocadas por el rey y baila con el príncipe. Una escalera untada de pez retiene su zapato de oro. Las hermanastras mutilan sus pies para fingirse dueñas del zapato, pero la sangre y las palomas revelan el engaño; el príncipe reconoce a Cenicienta y las aves castigan para siempre la falsedad de sus hermanas.",
@@ -116,7 +116,7 @@
       "colors": {
         "text": {
           "onLight": "#438b54",
-          "onDark": "#438b54"
+          "onDark": "#85ba8f"
         },
         "surface": "#438b54",
         "border": "#438b54",
@@ -146,7 +146,7 @@
       "colors": {
         "text": {
           "onLight": "#81942d",
-          "onDark": "#81942d"
+          "onDark": "#aaba73"
         },
         "surface": "#81942d",
         "border": "#81942d",
@@ -180,7 +180,7 @@
       "colors": {
         "text": {
           "onLight": "#947947",
-          "onDark": "#947947"
+          "onDark": "#c3ae88"
         },
         "surface": "#947947",
         "border": "#947947",
@@ -210,7 +210,7 @@
       "colors": {
         "text": {
           "onLight": "#a8443c",
-          "onDark": "#a8443c"
+          "onDark": "#cf9b8e"
         },
         "surface": "#a8443c",
         "border": "#a8443c",
@@ -240,7 +240,7 @@
       "colors": {
         "text": {
           "onLight": "#5d2618",
-          "onDark": "#5d2618"
+          "onDark": "#e86566"
         },
         "surface": "#5d2618",
         "border": "#5d2618",
@@ -2981,7 +2981,7 @@
           "colors": {
             "text": {
               "onLight": "#438b54",
-              "onDark": "#438b54"
+              "onDark": "#85ba8f"
             },
             "surface": "#438b54",
             "border": "#438b54",
@@ -3011,7 +3011,7 @@
           "colors": {
             "text": {
               "onLight": "#81942d",
-              "onDark": "#81942d"
+              "onDark": "#aaba73"
             },
             "surface": "#81942d",
             "border": "#81942d",
@@ -3045,7 +3045,7 @@
           "colors": {
             "text": {
               "onLight": "#947947",
-              "onDark": "#947947"
+              "onDark": "#c3ae88"
             },
             "surface": "#947947",
             "border": "#947947",
@@ -3075,7 +3075,7 @@
           "colors": {
             "text": {
               "onLight": "#a8443c",
-              "onDark": "#a8443c"
+              "onDark": "#cf9b8e"
             },
             "surface": "#a8443c",
             "border": "#a8443c",
@@ -3105,7 +3105,7 @@
           "colors": {
             "text": {
               "onLight": "#5d2618",
-              "onDark": "#5d2618"
+              "onDark": "#e86566"
             },
             "surface": "#5d2618",
             "border": "#5d2618",
