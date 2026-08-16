@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "10.6",
+  "version": "10.8",
   "locale": "es",
   "name": "Blancanieves",
-  "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
+  "description": "El espejo exige sangre, la Reina caza a Blancanieves y siete enanos velan un ataúd de cristal. Cuando la manzana envenenada cambie de manos, nadie sabrá quién despertará para las bodas.",
   "legal": {
     "license": "Basado en Schneewittchen (KHM 53), de los hermanos Grimm. Descripción y lore adaptados de traducciones decimonónicas de dominio público.",
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:blancanieves",
       "name": "Blancanieves",
-      "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad.",
+      "description": "El espejo exige sangre, la Reina caza a Blancanieves y siete enanos velan un ataúd de cristal. Cuando la manzana envenenada cambie de manos, nadie sabrá quién despertará para las bodas.",
       "collection": {
         "id": "collection:grimm",
         "name": "Hermanos Grimm",
@@ -3363,7 +3363,7 @@
       "text": {
         "name": "Blancanieves",
         "tagline": "Un espejo, un ataúd de cristal y una fruta compartida: cura el veneno antes de la tercera Manzana.",
-        "description": "En lo más crudo del invierno, una reina desea una hija blanca como la nieve, encarnada como la sangre y de cabellos negros como el ébano. Muerta su madre, la pequeña Blancanieves crece bajo la envidia de una madrastra que consulta a su espejo y manda llevarla al bosque. Acogida por siete enanos y vencida al fin por una manzana envenenada, reposa en un ataúd de cristal hasta que el tropiezo de sus portadores desprende el bocado fatal. En las bodas, la Reina recibe el castigo de su crueldad."
+        "description": "El espejo exige sangre, la Reina caza a Blancanieves y siete enanos velan un ataúd de cristal. Cuando la manzana envenenada cambie de manos, nadie sabrá quién despertará para las bodas."
       },
       "difficulty": {
         "label": "advanced",
