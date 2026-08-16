@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "10.6",
+  "version": "10.8",
   "locale": "en",
   "name": "Snow White",
-  "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
+  "description": "The mirror demands blood, the Queen hunts Snow White, and seven dwarfs keep watch over a glass coffin. When the poisoned apple changes hands, no one knows who will wake for the wedding.",
   "legal": {
     "license": "Based on Little Snow-White (KHM 53) by the Brothers Grimm. Description and lore adapted from Margaret Hunt's 1884 public-domain translation.",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:blancanieves",
       "name": "Snow White",
-      "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty.",
+      "description": "The mirror demands blood, the Queen hunts Snow White, and seven dwarfs keep watch over a glass coffin. When the poisoned apple changes hands, no one knows who will wake for the wedding.",
       "collection": {
         "id": "collection:grimm",
         "name": "Brothers Grimm",
@@ -3350,7 +3350,7 @@
       "text": {
         "name": "Snow White",
         "tagline": "A mirror, a glass coffin, and shared fruit: cure the poison before the third Apple.",
-        "description": "In the depth of winter, a queen wishes for a child as white as snow, as red as blood, and with hair as black as ebony. After her mother's death, little Snow-white grows beneath the envy of a stepmother who questions her looking-glass and has her taken into the forest. Sheltered by seven dwarfs and struck down at last by a poisoned apple, she lies in a glass coffin until her bearers stumble and free the fatal morsel. At the wedding, the Queen receives the reward of her cruelty."
+        "description": "The mirror demands blood, the Queen hunts Snow White, and seven dwarfs keep watch over a glass coffin. When the poisoned apple changes hands, no one knows who will wake for the wedding."
       },
       "difficulty": {
         "label": "advanced",

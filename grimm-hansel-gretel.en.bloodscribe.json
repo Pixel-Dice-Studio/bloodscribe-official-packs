@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.6",
+  "version": "10.8",
   "locale": "en",
   "name": "Hansel and Gretel",
-  "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
+  "description": "Hunger drives Hansel and Gretel into a forest where pebbles vanish and a house of sugar keeps its oven lit. Before dawn, someone will decide who finds the path and who feeds the fire.",
   "legal": {
     "license": "Based on Hänsel and Grethel (KHM 15) by the Brothers Grimm. Lore adapted from Margaret Hunt's 1884 public-domain translation.",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:hansel-y-gretel",
       "name": "Hansel and Gretel",
-      "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams.",
+      "description": "Hunger drives Hansel and Gretel into a forest where pebbles vanish and a house of sugar keeps its oven lit. Before dawn, someone will decide who finds the path and who feeds the fire.",
       "collection": {
         "id": "collection:grimm",
         "name": "Brothers Grimm",
@@ -4165,7 +4165,7 @@
       "text": {
         "name": "Hansel and Gretel",
         "tagline": "Pebbles, hunger, and a burning oven: find the way home before the forest devours you.",
-        "description": "A playable adaptation of Hansel and Gretel with Village, Helper, Wanderer, Servant, and Dark teams."
+        "description": "Hunger drives Hansel and Gretel into a forest where pebbles vanish and a house of sugar keeps its oven lit. Before dawn, someone will decide who finds the path and who feeds the fire."
       },
       "difficulty": {
         "label": "advanced",

@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.6",
+  "version": "10.8",
   "locale": "en",
   "name": "Little Red-Cap",
-  "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
+  "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown.",
   "legal": {
     "license": "Based on Little Red-Cap (Rothkäppchen, KHM 26) by the Brothers Grimm. Description and lore adapted from the 1812 German edition and Margaret Hunt's 1884 public-domain English translation.",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:caperucita-roja",
       "name": "Little Red-Cap",
-      "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again.",
+      "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown.",
       "collection": {
         "id": "collection:grimm",
         "name": "Brothers Grimm",
@@ -3081,7 +3081,7 @@
       "text": {
         "name": "Little Red-Cap",
         "tagline": "Red velvet, woodland flowers, and a belly full of stones: recognize the Wolf before he wears another face.",
-        "description": "A little girl loved by everyone receives a cap of red velvet from her grandmother. Her mother sends her through the wood with cake and wine for the sick old woman and orders her not to leave the path. The Wolf distracts her with flowers, reaches the house first, devours the Grandmother, and lies in her bed wearing her clothes; he then swallows Red-Cap as well. A Huntsman hears the snoring, cuts open the beast's belly with scissors, and rescues them both. Red-Cap fills the Wolf with stones, and he falls dead when he wakes. Later, the girl and her Grandmother defeat a second wolf together without straying from the road again."
+        "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown."
       },
       "difficulty": {
         "label": "advanced",
