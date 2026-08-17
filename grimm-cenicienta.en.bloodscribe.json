@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.9",
+  "version": "10.10",
   "locale": "en",
   "name": "Cinderella",
   "description": "Between ashes and a grave, Cinderella listens to the birds that lead her to a dance of gold and blood. A slipper will name the bride, but no one knows whose feet or eyes will pay the price.",
@@ -120,7 +120,7 @@
         },
         "surface": "#438b54",
         "border": "#438b54",
-        "reminderSurface": "#3b7b4a",
+        "reminderSurface": "#004d19",
         "gradient": {
           "from": "#4c9a5e",
           "to": "#3b7b4a"
@@ -150,7 +150,7 @@
         },
         "surface": "#81942d",
         "border": "#81942d",
-        "reminderSurface": "#738429",
+        "reminderSurface": "#404f00",
         "gradient": {
           "from": "#91a536",
           "to": "#738429"
@@ -184,7 +184,7 @@
         },
         "surface": "#947947",
         "border": "#947947",
-        "reminderSurface": "#836b3f",
+        "reminderSurface": "#543b02",
         "gradient": {
           "from": "#a28852",
           "to": "#836b3f"
@@ -214,7 +214,7 @@
         },
         "surface": "#a8443c",
         "border": "#a8443c",
-        "reminderSurface": "#993e37",
+        "reminderSurface": "#690005",
         "gradient": {
           "from": "#b74a41",
           "to": "#993e37"
@@ -244,7 +244,7 @@
         },
         "surface": "#5d2618",
         "border": "#5d2618",
-        "reminderSurface": "#522116",
+        "reminderSurface": "#380300",
         "gradient": {
           "from": "#6b2d1e",
           "to": "#522116"
@@ -2973,7 +2973,7 @@
             },
             "surface": "#438b54",
             "border": "#438b54",
-            "reminderSurface": "#3b7b4a",
+            "reminderSurface": "#004d19",
             "gradient": {
               "from": "#4c9a5e",
               "to": "#3b7b4a"
@@ -3003,7 +3003,7 @@
             },
             "surface": "#81942d",
             "border": "#81942d",
-            "reminderSurface": "#738429",
+            "reminderSurface": "#404f00",
             "gradient": {
               "from": "#91a536",
               "to": "#738429"
@@ -3037,7 +3037,7 @@
             },
             "surface": "#947947",
             "border": "#947947",
-            "reminderSurface": "#836b3f",
+            "reminderSurface": "#543b02",
             "gradient": {
               "from": "#a28852",
               "to": "#836b3f"
@@ -3067,7 +3067,7 @@
             },
             "surface": "#a8443c",
             "border": "#a8443c",
-            "reminderSurface": "#993e37",
+            "reminderSurface": "#690005",
             "gradient": {
               "from": "#b74a41",
               "to": "#993e37"
@@ -3097,7 +3097,7 @@
             },
             "surface": "#5d2618",
             "border": "#5d2618",
-            "reminderSurface": "#522116",
+            "reminderSurface": "#380300",
             "gradient": {
               "from": "#6b2d1e",
               "to": "#522116"
