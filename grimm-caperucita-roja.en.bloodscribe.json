@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.9",
+  "version": "10.10",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown.",
@@ -113,7 +113,7 @@
         },
         "surface": "#438b54",
         "border": "#438b54",
-        "reminderSurface": "#3b7b4a",
+        "reminderSurface": "#004d19",
         "gradient": {
           "from": "#4c9a5e",
           "to": "#3b7b4a"
@@ -143,7 +143,7 @@
         },
         "surface": "#81942d",
         "border": "#81942d",
-        "reminderSurface": "#738429",
+        "reminderSurface": "#404f00",
         "gradient": {
           "from": "#91a536",
           "to": "#738429"
@@ -173,7 +173,7 @@
         },
         "surface": "#a8443c",
         "border": "#a8443c",
-        "reminderSurface": "#993e37",
+        "reminderSurface": "#690005",
         "gradient": {
           "from": "#b74a41",
           "to": "#993e37"
@@ -203,7 +203,7 @@
         },
         "surface": "#5d2618",
         "border": "#5d2618",
-        "reminderSurface": "#522116",
+        "reminderSurface": "#380300",
         "gradient": {
           "from": "#6b2d1e",
           "to": "#522116"
@@ -3177,7 +3177,7 @@
             },
             "surface": "#438b54",
             "border": "#438b54",
-            "reminderSurface": "#3b7b4a",
+            "reminderSurface": "#004d19",
             "gradient": {
               "from": "#4c9a5e",
               "to": "#3b7b4a"
@@ -3207,7 +3207,7 @@
             },
             "surface": "#81942d",
             "border": "#81942d",
-            "reminderSurface": "#738429",
+            "reminderSurface": "#404f00",
             "gradient": {
               "from": "#91a536",
               "to": "#738429"
@@ -3237,7 +3237,7 @@
             },
             "surface": "#a8443c",
             "border": "#a8443c",
-            "reminderSurface": "#993e37",
+            "reminderSurface": "#690005",
             "gradient": {
               "from": "#b74a41",
               "to": "#993e37"
@@ -3267,7 +3267,7 @@
             },
             "surface": "#5d2618",
             "border": "#5d2618",
-            "reminderSurface": "#522116",
+            "reminderSurface": "#380300",
             "gradient": {
               "from": "#6b2d1e",
               "to": "#522116"

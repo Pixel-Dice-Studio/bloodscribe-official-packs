@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "10.9",
+  "version": "10.10",
   "locale": "es",
   "name": "Blancanieves",
   "description": "El espejo exige sangre, la Reina caza a Blancanieves y siete enanos velan un ataúd de cristal. Cuando la manzana envenenada cambie de manos, nadie sabrá quién despertará para las bodas.",
@@ -119,7 +119,7 @@
         },
         "surface": "#438b54",
         "border": "#438b54",
-        "reminderSurface": "#3b7b4a",
+        "reminderSurface": "#004d19",
         "gradient": {
           "from": "#4c9a5e",
           "to": "#3b7b4a"
@@ -149,7 +149,7 @@
         },
         "surface": "#81942d",
         "border": "#81942d",
-        "reminderSurface": "#738429",
+        "reminderSurface": "#404f00",
         "gradient": {
           "from": "#91a536",
           "to": "#738429"
@@ -183,7 +183,7 @@
         },
         "surface": "#947947",
         "border": "#947947",
-        "reminderSurface": "#836b3f",
+        "reminderSurface": "#543b02",
         "gradient": {
           "from": "#a28852",
           "to": "#836b3f"
@@ -213,7 +213,7 @@
         },
         "surface": "#a8443c",
         "border": "#a8443c",
-        "reminderSurface": "#993e37",
+        "reminderSurface": "#690005",
         "gradient": {
           "from": "#b74a41",
           "to": "#993e37"
@@ -243,7 +243,7 @@
         },
         "surface": "#5d2618",
         "border": "#5d2618",
-        "reminderSurface": "#522116",
+        "reminderSurface": "#380300",
         "gradient": {
           "from": "#6b2d1e",
           "to": "#522116"
@@ -3465,7 +3465,7 @@
             },
             "surface": "#438b54",
             "border": "#438b54",
-            "reminderSurface": "#3b7b4a",
+            "reminderSurface": "#004d19",
             "gradient": {
               "from": "#4c9a5e",
               "to": "#3b7b4a"
@@ -3495,7 +3495,7 @@
             },
             "surface": "#81942d",
             "border": "#81942d",
-            "reminderSurface": "#738429",
+            "reminderSurface": "#404f00",
             "gradient": {
               "from": "#91a536",
               "to": "#738429"
@@ -3529,7 +3529,7 @@
             },
             "surface": "#947947",
             "border": "#947947",
-            "reminderSurface": "#836b3f",
+            "reminderSurface": "#543b02",
             "gradient": {
               "from": "#a28852",
               "to": "#836b3f"
@@ -3559,7 +3559,7 @@
             },
             "surface": "#a8443c",
             "border": "#a8443c",
-            "reminderSurface": "#993e37",
+            "reminderSurface": "#690005",
             "gradient": {
               "from": "#b74a41",
               "to": "#993e37"
@@ -3589,7 +3589,7 @@
             },
             "surface": "#5d2618",
             "border": "#5d2618",
-            "reminderSurface": "#522116",
+            "reminderSurface": "#380300",
             "gradient": {
               "from": "#6b2d1e",
               "to": "#522116"
