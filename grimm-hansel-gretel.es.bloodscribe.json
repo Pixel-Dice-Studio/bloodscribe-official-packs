@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.12",
+  "version": "10.13",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "El hambre empuja a Hansel y Gretel a un bosque donde los guijarros desaparecen y una casa de azúcar mantiene el horno encendido. Antes del amanecer, alguien decidirá quién encuentra el camino y quién alimenta el fuego.",
@@ -109,7 +109,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -139,7 +144,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -173,7 +183,12 @@
             "value": false
           }
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -203,7 +218,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -233,7 +253,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -4265,7 +4290,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -4295,7 +4325,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -4329,7 +4364,12 @@
                 "value": false
               }
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -4359,7 +4399,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -4389,7 +4434,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
