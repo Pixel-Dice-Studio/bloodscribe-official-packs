@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-blancanieves",
   "key": "grimm-blancanieves",
-  "version": "10.12",
+  "version": "10.13",
   "locale": "en",
   "name": "Snow White",
   "description": "The mirror demands blood, the Queen hunts Snow White, and seven dwarfs keep watch over a glass coffin. When the poisoned apple changes hands, no one knows who will wake for the wedding.",
@@ -110,7 +110,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -140,7 +145,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -174,7 +184,12 @@
             "decision": "resolveCharacterPersonalVictory"
           }
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -204,7 +219,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -234,7 +254,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -3443,7 +3468,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3473,7 +3503,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3507,7 +3542,12 @@
                 "decision": "resolveCharacterPersonalVictory"
               }
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3537,7 +3577,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3567,7 +3612,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {

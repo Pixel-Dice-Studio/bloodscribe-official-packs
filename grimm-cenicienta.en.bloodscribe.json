@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.12",
+  "version": "10.13",
   "locale": "en",
   "name": "Cinderella",
   "description": "Between ashes and a grave, Cinderella listens to the birds that lead her to a dance of gold and blood. A slipper will name the bride, but no one knows whose feet or eyes will pay the price.",
@@ -111,7 +111,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -141,7 +146,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -175,7 +185,12 @@
             "decision": "resolveCharacterPersonalVictory"
           }
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -205,7 +220,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -235,7 +255,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -2964,7 +2989,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -2994,7 +3024,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3028,7 +3063,12 @@
                 "decision": "resolveCharacterPersonalVictory"
               }
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3058,7 +3098,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3088,7 +3133,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {

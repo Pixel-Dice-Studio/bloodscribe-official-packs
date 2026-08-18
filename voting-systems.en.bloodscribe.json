@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "bloodscribe:voting-systems",
   "key": "voting-systems",
-  "version": "10.12",
+  "version": "10.13",
   "locale": "en",
   "name": "Voting systems",
   "description": "Generic voting rules with different flows, privacy levels, thresholds, and tie resolutions.",

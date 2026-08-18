@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.12",
+  "version": "10.13",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown.",
@@ -104,7 +104,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -134,7 +139,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -164,7 +174,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -194,7 +209,12 @@
         "victory": {
           "type": "withCurrentAllegiance"
         },
-        "assignment": "player"
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
       },
       "colors": {
         "text": {
@@ -3168,7 +3188,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3198,7 +3223,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3228,7 +3258,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
@@ -3258,7 +3293,12 @@
             "victory": {
               "type": "withCurrentAllegiance"
             },
-            "assignment": "player"
+            "entryMode": {
+              "default": "cast",
+              "allowed": [
+                "cast"
+              ]
+            }
           },
           "colors": {
             "text": {
