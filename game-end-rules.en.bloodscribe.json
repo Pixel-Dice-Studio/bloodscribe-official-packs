@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-v3",
+  "schemaVersion": "bloodscribe-3.1",
   "id": "bloodscribe:game-end-rules",
   "key": "game-end-rules",
-  "version": "10.39",
+  "version": "10.44",
   "locale": "en",
   "name": "Game-end rules",
   "description": "Generic conditions determining when a game ends and how its winner is resolved.",
