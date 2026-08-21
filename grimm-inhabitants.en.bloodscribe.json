@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.46",
+  "version": "10.53",
   "locale": "en",
   "name": "Inhabitants of Grimm",
-  "description": "Fourteen support characters that can join any tale as cast members or independently of the cast.",
+  "description": "Extra characters that can join any Grimm tale.",
   "legal": {
     "license": "Contenido original de BloodScribe inspirado en motivos del folclore europeo de dominio público.",
     "disclaimer": "Pack de contenido declarativo. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:inhabitants",
       "name": "Inhabitants of Grimm",
-      "description": "Fourteen support characters that can join any tale as cast members or independently of the cast.",
+      "description": "Extra characters that can join any Grimm tale.",
       "collection": {
         "id": "collection:grimm",
         "name": "Brothers Grimm",
@@ -42,11 +42,16 @@
         "character:grimm:arribista",
         "character:grimm:chaman",
         "character:grimm:malvada-compania",
-        "character:grimm:clariaudiente"
+        "character:grimm:clariaudiente",
+        "character:grimm:ladron-amuletos",
+        "character:grimm:espejo-concavo",
+        "character:grimm:espejo-convexo",
+        "character:grimm:verdugo-ciego"
       ],
       "gameRuleIds": [],
       "teamIds": [
-        "team:grimm:universal"
+        "team:grimm:universal",
+        "team:grimm:oscuro"
       ]
     }
   ],
@@ -88,6 +93,41 @@
         "gradient": {
           "from": "#866443",
           "to": "#3d2a24"
+        }
+      }
+    },
+    {
+      "teamId": "team:grimm:oscuro",
+      "terms": {
+        "singular": "Dark player",
+        "plural": "Dark players"
+      },
+      "defaults": {
+        "role": "core",
+        "allegiance": {
+          "default": "evil"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
+      },
+      "colors": {
+        "text": {
+          "onLight": "#5d2618",
+          "onDark": "#e86566"
+        },
+        "surface": "#5d2618",
+        "border": "#5d2618",
+        "reminderSurface": "#380300",
+        "gradient": {
+          "from": "#6b2d1e",
+          "to": "#522116"
         }
       }
     }
@@ -2782,6 +2822,971 @@
               }
             ],
             "presentation": {}
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:ladron-amuletos",
+      "teamId": "team:grimm:universal",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M42 20c0 18 8 28 22 36 14-8 22-18 22-36\" fill=\"none\" stroke=\"#ead8b6\" stroke-width=\"6\" stroke-linecap=\"round\"/><circle cx=\"64\" cy=\"72\" r=\"27\" fill=\"#745136\" stroke=\"#ead8b6\" stroke-width=\"6\"/><path d=\"M50 73h28M69 63l10 10-10 10\" fill=\"none\" stroke=\"#b96b5b\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M45 107c11 5 27 5 38 0\" fill=\"none\" stroke=\"#a28d73\" stroke-width=\"6\" stroke-linecap=\"round\"/></svg>",
+      "info": {
+        "name": "Charm Thief",
+        "ability": "Each night, choose another player, then a different player, who may be you. Every active transferable protection moves from the first player to the second. You do not learn whether any moved."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 900,
+          "otherOrder": 900
+        },
+        "setup": false,
+        "reminderTokens": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:ladron-amuletos:transfer-protections:1",
+            "tags": [
+              "protection-transfer",
+              "hidden-outcome"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2,
+              "constraints": [
+                {
+                  "type": "compare",
+                  "left": {
+                    "type": "at",
+                    "value": {
+                      "type": "binding",
+                      "binding": "selected"
+                    },
+                    "index": 0
+                  },
+                  "operator": "neq",
+                  "right": {
+                    "type": "binding",
+                    "binding": "actor"
+                  }
+                }
+              ]
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "moveMarker",
+                "kind": "reminder",
+                "allProtections": true,
+                "from": {
+                  "type": "at",
+                  "value": {
+                    "type": "binding",
+                    "binding": "selected"
+                  },
+                  "index": 0
+                },
+                "targets": {
+                  "type": "at",
+                  "value": {
+                    "type": "binding",
+                    "binding": "selected"
+                  },
+                  "index": 1
+                }
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
+            },
+            "presentation": {
+              "nightControl": {
+                "type": "multiPlayers"
+              }
+            }
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:espejo-concavo",
+      "teamId": "team:grimm:oscuro",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"64\" cy=\"64\" rx=\"39\" ry=\"51\" fill=\"#5d2618\" stroke=\"#e86566\" stroke-width=\"6\"/><path d=\"M61 24c-20 15-22 63-3 80\" fill=\"none\" stroke=\"#f8e5c8\" stroke-width=\"8\" stroke-linecap=\"round\"/><path d=\"M66 42l-9 13 10 8-8 14 12 10\" fill=\"none\" stroke=\"#380300\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+      "info": {
+        "name": "Concave Blackglass",
+        "ability": "Each night, starting on the second night, if your reflection lives, choose 2 different living players; you may choose yourself or your reflection. If you both choose exactly the same pair and both abilities work normally, they die. If your reflection is dead, choose 1 living player: they die. [+1 {{team:grimm:oscuro}}, -1 Villager]"
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": true,
+          "otherOrder": 530
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "muerto",
+            "kind": "reminder",
+            "value": "Muerto",
+            "label": "Muerto",
+            "duration": "manual"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:espejo-concavo:paired-setup:1",
+            "tags": [
+              "paired-setup",
+              "setup-count-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:espejo-convexo",
+                    "onMissing": "add"
+                  },
+                  {
+                    "type": "adjustBucket",
+                    "bucket": "townsfolk",
+                    "delta": -1
+                  },
+                  {
+                    "type": "adjustBucket",
+                    "bucket": "mainEvil",
+                    "delta": 1
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:espejo-concavo:mirror-attack:1",
+            "tags": [
+              "main-evil-attack-choice",
+              "paired-target-consensus"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 2
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2,
+              "cardinality": [
+                {
+                  "when": [
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "query",
+                        "from": {
+                          "entity": "players"
+                        },
+                        "where": {
+                          "type": "all",
+                          "conditions": [
+                            {
+                              "type": "alive",
+                              "value": true
+                            },
+                            {
+                              "type": "identity",
+                              "identityMode": "real",
+                              "facet": "character",
+                              "values": [
+                                "character:grimm:espejo-convexo"
+                              ]
+                            }
+                          ]
+                        },
+                        "aggregate": {
+                          "type": "exists"
+                        }
+                      }
+                    }
+                  ],
+                  "min": 1,
+                  "max": 1
+                }
+              ],
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "death",
+                "protection": "normal",
+                "resolution": "mainEvilAttack",
+                "reminder": "Muerto",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "when": [
+                  {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "not",
+                        "condition": {
+                          "type": "query",
+                          "from": {
+                            "entity": "players"
+                          },
+                          "where": {
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "alive",
+                                "value": true
+                              },
+                              {
+                                "type": "identity",
+                                "identityMode": "real",
+                                "facet": "character",
+                                "values": [
+                                  "character:grimm:espejo-convexo"
+                                ]
+                              }
+                            ]
+                          },
+                          "aggregate": {
+                            "type": "exists"
+                          }
+                        }
+                      },
+                      {
+                        "type": "compare",
+                        "left": {
+                          "type": "length",
+                          "value": {
+                            "type": "set",
+                            "operation": "intersection",
+                            "values": [
+                              {
+                                "type": "query",
+                                "from": {
+                                  "entity": "players"
+                                },
+                                "where": {
+                                  "type": "isBinding",
+                                  "binding": "selected"
+                                },
+                                "aggregate": {
+                                  "type": "collect"
+                                }
+                              },
+                              {
+                                "type": "query",
+                                "from": {
+                                  "entity": "events"
+                                },
+                                "where": {
+                                  "type": "all",
+                                  "conditions": [
+                                    {
+                                      "type": "eventType",
+                                      "values": [
+                                        "record-mechanic-use"
+                                      ]
+                                    },
+                                    {
+                                      "type": "eventPeriod",
+                                      "value": "currentNight"
+                                    },
+                                    {
+                                      "type": "eventField",
+                                      "field": "actorAbilityMode",
+                                      "value": "normal"
+                                    },
+                                    {
+                                      "type": "eventParticipantIdentity",
+                                      "participant": "actor",
+                                      "identityMode": "real",
+                                      "facet": "character",
+                                      "values": [
+                                        "character:grimm:espejo-convexo"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "aggregate": {
+                                  "type": "collect"
+                                },
+                                "project": {
+                                  "type": "eventParticipant",
+                                  "binding": "selected"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "operator": "eq",
+                        "right": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
+            },
+            "policies": [
+              {
+                "type": "recordTargetSelectionWhenDisabled"
+              }
+            ],
+            "presentation": {}
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:espejo-convexo",
+      "teamId": "team:grimm:oscuro",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><ellipse cx=\"64\" cy=\"64\" rx=\"39\" ry=\"51\" fill=\"#5d2618\" stroke=\"#e86566\" stroke-width=\"6\"/><path d=\"M67 24c20 15 22 63 3 80\" fill=\"none\" stroke=\"#f8e5c8\" stroke-width=\"8\" stroke-linecap=\"round\"/><path d=\"M62 42l9 13-10 8 8 14-12 10\" fill=\"none\" stroke=\"#380300\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+      "info": {
+        "name": "Convex Blackglass",
+        "ability": "Each night, starting on the second night, if your reflection lives, choose 2 different living players; you may choose yourself or your reflection. If you both choose exactly the same pair and both abilities work normally, they die. If your reflection is dead, choose 1 living player: they die. [+1 {{team:grimm:oscuro}}, -1 Villager]"
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": true,
+          "otherOrder": 531
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "muerto",
+            "kind": "reminder",
+            "value": "Muerto",
+            "label": "Muerto",
+            "duration": "manual"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:espejo-convexo:paired-setup:1",
+            "tags": [
+              "paired-setup"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:espejo-concavo",
+                    "onMissing": "add"
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:espejo-convexo:mirror-attack:1",
+            "tags": [
+              "main-evil-attack-choice",
+              "paired-target-consensus"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 2
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2,
+              "cardinality": [
+                {
+                  "when": [
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "query",
+                        "from": {
+                          "entity": "players"
+                        },
+                        "where": {
+                          "type": "all",
+                          "conditions": [
+                            {
+                              "type": "alive",
+                              "value": true
+                            },
+                            {
+                              "type": "identity",
+                              "identityMode": "real",
+                              "facet": "character",
+                              "values": [
+                                "character:grimm:espejo-concavo"
+                              ]
+                            }
+                          ]
+                        },
+                        "aggregate": {
+                          "type": "exists"
+                        }
+                      }
+                    }
+                  ],
+                  "min": 1,
+                  "max": 1
+                }
+              ],
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "death",
+                "protection": "normal",
+                "resolution": "mainEvilAttack",
+                "reminder": "Muerto",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "when": [
+                  {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "not",
+                        "condition": {
+                          "type": "query",
+                          "from": {
+                            "entity": "players"
+                          },
+                          "where": {
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "alive",
+                                "value": true
+                              },
+                              {
+                                "type": "identity",
+                                "identityMode": "real",
+                                "facet": "character",
+                                "values": [
+                                  "character:grimm:espejo-concavo"
+                                ]
+                              }
+                            ]
+                          },
+                          "aggregate": {
+                            "type": "exists"
+                          }
+                        }
+                      },
+                      {
+                        "type": "compare",
+                        "left": {
+                          "type": "length",
+                          "value": {
+                            "type": "set",
+                            "operation": "intersection",
+                            "values": [
+                              {
+                                "type": "query",
+                                "from": {
+                                  "entity": "players"
+                                },
+                                "where": {
+                                  "type": "isBinding",
+                                  "binding": "selected"
+                                },
+                                "aggregate": {
+                                  "type": "collect"
+                                }
+                              },
+                              {
+                                "type": "query",
+                                "from": {
+                                  "entity": "events"
+                                },
+                                "where": {
+                                  "type": "all",
+                                  "conditions": [
+                                    {
+                                      "type": "eventType",
+                                      "values": [
+                                        "record-mechanic-use"
+                                      ]
+                                    },
+                                    {
+                                      "type": "eventPeriod",
+                                      "value": "currentNight"
+                                    },
+                                    {
+                                      "type": "eventField",
+                                      "field": "actorAbilityMode",
+                                      "value": "normal"
+                                    },
+                                    {
+                                      "type": "eventParticipantIdentity",
+                                      "participant": "actor",
+                                      "identityMode": "real",
+                                      "facet": "character",
+                                      "values": [
+                                        "character:grimm:espejo-concavo"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "aggregate": {
+                                  "type": "collect"
+                                },
+                                "project": {
+                                  "type": "eventParticipant",
+                                  "binding": "selected"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "operator": "eq",
+                        "right": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
+            },
+            "policies": [
+              {
+                "type": "recordTargetSelectionWhenDisabled"
+              }
+            ],
+            "presentation": {}
+          }
+        ]
+      },
+      "links": []
+    },
+    {
+      "id": "character:grimm:verdugo-ciego",
+      "teamId": "team:grimm:oscuro",
+      "icon": "<svg viewBox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M35 27h58l-7 43c-2 16-11 30-22 38-11-8-20-22-22-38z\" fill=\"#5d2618\" stroke=\"#e86566\" stroke-width=\"6\" stroke-linejoin=\"round\"/><path d=\"M45 55h38\" stroke=\"#380300\" stroke-width=\"11\" stroke-linecap=\"round\"/><path d=\"M64 18v22M50 87l14-10 14 10\" fill=\"none\" stroke=\"#f8e5c8\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"43\" cy=\"112\" r=\"8\" fill=\"#e86566\"/><circle cx=\"85\" cy=\"112\" r=\"8\" fill=\"#380300\"/></svg>",
+      "info": {
+        "name": "The Blind Executioner",
+        "ability": "Each night except the first, choose 2 other different living players. The Storyteller decides which dies and which is Sentenced until the next night. If the Sentenced player nominates, they die."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": true,
+          "otherOrder": 532
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "muerto",
+            "kind": "reminder",
+            "value": "Muerto",
+            "label": "Muerto",
+            "duration": "manual"
+          },
+          {
+            "id": "sentenciado",
+            "kind": "reminder",
+            "value": "Sentenciado",
+            "label": "Sentenciado",
+            "duration": "untilNextNight"
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:verdugo-ciego:sentencia-nocturna:1",
+            "tags": [
+              "main-evil-attack-choice",
+              "storyteller-decision",
+              "nomination-trigger-death"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 2
+            },
+            "input": {
+              "kind": "players",
+              "min": 2,
+              "max": 2,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "sentencedFate",
+                "options": [
+                  "firstDies",
+                  "secondDies"
+                ]
+              },
+              {
+                "type": "death",
+                "protection": "normal",
+                "resolution": "mainEvilAttack",
+                "reminder": "Muerto",
+                "targets": {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "sentencedFate"
+                    },
+                    "operator": "eq",
+                    "right": "firstDies"
+                  },
+                  "then": {
+                    "type": "at",
+                    "value": {
+                      "type": "binding",
+                      "binding": "selected"
+                    },
+                    "index": 0
+                  },
+                  "else": {
+                    "type": "at",
+                    "value": {
+                      "type": "binding",
+                      "binding": "selected"
+                    },
+                    "index": 1
+                  }
+                }
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Sentenciado",
+                "active": true,
+                "exclusive": {
+                  "scope": "source",
+                  "maxActiveTargets": 1
+                },
+                "targets": {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "sentencedFate"
+                    },
+                    "operator": "eq",
+                    "right": "firstDies"
+                  },
+                  "then": {
+                    "type": "at",
+                    "value": {
+                      "type": "binding",
+                      "binding": "selected"
+                    },
+                    "index": 1
+                  },
+                  "else": {
+                    "type": "at",
+                    "value": {
+                      "type": "binding",
+                      "binding": "selected"
+                    },
+                    "index": 0
+                  }
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "night"
+                }
+              }
+            ],
+            "usage": {
+              "scope": "repeat"
+            },
+            "presentation": {
+              "decisionPrompts": {
+                "sentencedFate": {
+                  "question": "What fate does each player receive?",
+                  "options": [
+                    {
+                      "value": "firstDies",
+                      "label": "First player dies"
+                    },
+                    {
+                      "value": "secondDies",
+                      "label": "Second player dies"
+                    }
+                  ]
+                }
+              },
+              "nightControl": {
+                "type": "multiPlayers"
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:verdugo-ciego:muerte-al-nominar:1",
+            "tags": [
+              "nomination-trigger-death"
+            ],
+            "when": {
+              "window": "day",
+              "cadence": "each",
+              "trigger": {
+                "type": "event",
+                "event": "nomination",
+                "bindings": {
+                  "nominator": "selected"
+                }
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk",
+                          "abandoned"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "death",
+                "protection": "normal",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "targetReminder": "Sentenciado",
+                "consumeTargetReminder": true,
+                "continuesNomination": true,
+                "requiresSourceAlive": true
+              }
+            ],
+            "usage": {
+              "scope": "trigger",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
+            "presentation": {
+              "label": "The Sentenced player must die",
+              "description": "{playerName} was Sentenced: they die and the nomination continues.",
+              "deathLabel": "Dies",
+              "survivalLabel": "Survives due to protection"
+            }
           }
         ]
       },
