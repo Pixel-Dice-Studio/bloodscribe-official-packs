@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-v3",
   "id": "bloodscribe:game-end-rules",
   "key": "game-end-rules",
-  "version": "10.37",
+  "version": "10.39",
   "locale": "es",
   "name": "Reglas de final de partida",
   "description": "Condiciones genéricas que determinan cuándo termina una partida y cómo se resuelve su ganador.",
