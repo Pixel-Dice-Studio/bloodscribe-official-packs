@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-musicos-bremen",
   "key": "grimm-musicos-bremen",
-  "version": "10.68",
+  "version": "10.71",
   "locale": "es",
   "name": "Los Músicos de Bremen",
   "description": "Cuatro animales abandonados unen su música para conquistar una casa ocupada por ladrones.",
@@ -76,10 +76,10 @@
         "character:grimm:burro-molino",
         "character:grimm:gallo-corral",
         "character:grimm:censista",
-        "character:grimm:notario",
+        "character:grimm:escribano-bremen",
         "character:grimm:perro-caza",
         "character:grimm:gata-fogon",
-        "character:grimm:partera",
+        "character:grimm:veterinaria-bremen",
         "character:grimm:ladron-amuletos",
         "character:grimm:munequera-maleficio",
         "character:grimm:campanero-bremen",
@@ -514,10 +514,10 @@
       "links": []
     },
     {
-      "id": "character:grimm:notario",
+      "id": "character:grimm:escribano-bremen",
       "teamId": "team:grimm:pueblo",
       "info": {
-        "name": "El Notario",
+        "name": "El Escribano de Bremen",
         "ability": "Una vez por partida, cuando un jugador es ejecutado, conoces el equipo del jugador que lo nominó."
       },
       "rules": {
@@ -529,7 +529,7 @@
         "reminderTokens": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:notario:manual:1",
+            "mechanicId": "mechanic:grimm:escribano-bremen:manual:1",
             "tags": [
               "manual-checkpoint"
             ],
@@ -571,7 +571,7 @@
             },
             "presentation": {
               "label": "Resuelve la habilidad",
-              "title": "character:grimm:notario"
+              "title": "character:grimm:escribano-bremen"
             }
           }
         ]
@@ -756,10 +756,10 @@
       "links": []
     },
     {
-      "id": "character:grimm:partera",
+      "id": "character:grimm:veterinaria-bremen",
       "teamId": "team:grimm:ayudante",
       "info": {
-        "name": "La Partera",
+        "name": "La Veterinaria de Bremen",
         "ability": "Una vez por partida, cuando un jugador fuera a morir, en su lugar queda Excluido hasta el amanecer siguiente."
       },
       "rules": {
@@ -779,7 +779,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:partera:manual:1",
+            "mechanicId": "mechanic:grimm:veterinaria-bremen:manual:1",
             "tags": [
               "manual-checkpoint"
             ],
@@ -823,7 +823,7 @@
             },
             "presentation": {
               "label": "Resuelve la habilidad",
-              "title": "character:grimm:partera"
+              "title": "character:grimm:veterinaria-bremen"
             }
           }
         ]
@@ -2127,10 +2127,10 @@
         "character:grimm:burro-molino",
         "character:grimm:gallo-corral",
         "character:grimm:censista",
-        "character:grimm:notario",
+        "character:grimm:escribano-bremen",
         "character:grimm:perro-caza",
         "character:grimm:gata-fogon",
-        "character:grimm:partera",
+        "character:grimm:veterinaria-bremen",
         "character:grimm:ladron-amuletos",
         "character:grimm:munequera-maleficio",
         "character:grimm:campanero-bremen",

@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-flautista-hamelin",
   "key": "grimm-flautista-hamelin",
-  "version": "10.68",
+  "version": "10.71",
   "locale": "en",
   "name": "El Flautista de Hamelín",
   "description": "Una ciudad ingrata pierde primero sus ratas, después sus votos y finalmente a quienes siguen la música.",
@@ -75,11 +75,11 @@
       "characterIds": [
         "character:grimm:nino-hamelin",
         "character:grimm:notario",
-        "character:grimm:archivero",
+        "character:grimm:cronista-hamelin",
         "character:grimm:cartografo",
         "character:grimm:madre-nino",
         "character:grimm:barquero-weser",
-        "character:grimm:partera",
+        "character:grimm:curandera-hamelin",
         "character:grimm:confesor",
         "character:grimm:cerbatanero-sueno",
         "character:grimm:farolero-bosque",
@@ -342,6 +342,29 @@
               },
               "consumeOn": "resolution"
             }
+          },
+          {
+            "mechanicId": "mechanic:grimm:nino-hamelin:required-character:1",
+            "tags": [
+              "setup-modifier"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "requireCharacter",
+                    "characterId": "character:grimm:flautista",
+                    "onMissing": "error"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -413,10 +436,10 @@
       "links": []
     },
     {
-      "id": "character:grimm:archivero",
+      "id": "character:grimm:cronista-hamelin",
       "teamId": "team:grimm:pueblo",
       "info": {
-        "name": "El Archivero",
+        "name": "Hamelin Chronicler",
         "ability": "Each night, choose a player and learn whether they have ever used their ability this game."
       },
       "rules": {
@@ -428,7 +451,7 @@
         "reminderTokens": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:archivero:information:1",
+            "mechanicId": "mechanic:grimm:cronista-hamelin:information:1",
             "tags": [
               "information-choice"
             ],
@@ -736,10 +759,10 @@
       "links": []
     },
     {
-      "id": "character:grimm:partera",
+      "id": "character:grimm:curandera-hamelin",
       "teamId": "team:grimm:pueblo",
       "info": {
-        "name": "La Partera",
+        "name": "Hamelin Healer",
         "ability": "Once per game, when a player would die, they become Excluded until the next dawn instead."
       },
       "rules": {
@@ -759,7 +782,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:partera:manual:1",
+            "mechanicId": "mechanic:grimm:curandera-hamelin:manual:1",
             "tags": [
               "manual-checkpoint"
             ],
@@ -803,7 +826,7 @@
             },
             "presentation": {
               "label": "Resuelve la habilidad",
-              "title": "character:grimm:partera"
+              "title": "character:grimm:curandera-hamelin"
             }
           }
         ]
@@ -1607,7 +1630,7 @@
       "teamId": "team:grimm:siervo",
       "info": {
         "name": "The Squire",
-        "ability": "Each night, choose a player; if they are a {{team:grimm:oscuro}}, they cannot die that night."
+        "ability": "Each night, choose a player; if they are a {{team:grimm:oscuro}}, they cannot die by execution during the following day."
       },
       "rules": {
         "wake": {
@@ -1615,12 +1638,20 @@
           "other": true
         },
         "setup": false,
-        "reminderTokens": [],
+        "reminderTokens": [
+          {
+            "id": "escudo_oscuro",
+            "kind": "reminder",
+            "value": "Escudo oscuro",
+            "label": "Escudo oscuro",
+            "duration": "tomorrow"
+          }
+        ],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:escudero:manual:1",
+            "mechanicId": "mechanic:grimm:escudero:execution-protection:1",
             "tags": [
-              "manual-checkpoint"
+              "protection-choice"
             ],
             "when": {
               "window": "night",
@@ -1629,26 +1660,53 @@
             },
             "input": {
               "kind": "players",
-              "min": 0,
+              "min": 1,
               "max": 1
             },
             "conditions": [],
             "effects": [
               {
-                "type": "manualCheckpoint",
-                "reason": "storytellerJudgment",
-                "prompt": "Cada noche eliges a un jugador; si es un Oscuro, no puede morir esa noche.",
-                "blocking": true,
-                "outcomes": [
+                "type": "interceptEvent",
+                "event": "execution",
+                "reaction": {
+                  "type": "cancel"
+                },
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Escudo oscuro",
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dusk",
+                  "count": 1
+                },
+                "when": [
                   {
-                    "id": "resolved",
-                    "label": "Resuelto",
-                    "effects": []
-                  },
-                  {
-                    "id": "pass",
-                    "label": "No se resuelve",
-                    "effects": []
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "real",
+                          "facet": "teamId",
+                          "values": [
+                            "team:grimm:oscuro"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
                   }
                 ]
               }
@@ -2068,23 +2126,23 @@
       "votingRuleId": "rule:bloodscribe:voting:standard",
       "nightOrder": {
         "first": [
-          "character:grimm:archivero",
+          "character:grimm:cronista-hamelin",
           "character:grimm:cartografo",
           "character:grimm:barquero-weser",
+          "character:grimm:plaga-roedores",
           "character:grimm:confesor",
           "character:grimm:cerbatanero-sueno",
           "character:grimm:flautista",
-          "character:grimm:plaga-roedores",
           "character:grimm:escudero"
         ],
         "other": [
-          "character:grimm:archivero",
+          "character:grimm:cronista-hamelin",
           "character:grimm:cartografo",
           "character:grimm:barquero-weser",
+          "character:grimm:plaga-roedores",
           "character:grimm:confesor",
           "character:grimm:cerbatanero-sueno",
           "character:grimm:flautista",
-          "character:grimm:plaga-roedores",
           "character:grimm:escudero"
         ]
       },
@@ -2292,11 +2350,11 @@
       "characterIds": [
         "character:grimm:nino-hamelin",
         "character:grimm:notario",
-        "character:grimm:archivero",
+        "character:grimm:cronista-hamelin",
         "character:grimm:cartografo",
         "character:grimm:madre-nino",
         "character:grimm:barquero-weser",
-        "character:grimm:partera",
+        "character:grimm:curandera-hamelin",
         "character:grimm:confesor",
         "character:grimm:cerbatanero-sueno",
         "character:grimm:farolero-bosque",

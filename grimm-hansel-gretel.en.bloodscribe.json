@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.68",
+  "version": "10.71",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "Hunger drives Hansel and Gretel into a forest where pebbles vanish and a house of sugar keeps its oven lit. Before dawn, someone will decide who finds the path and who feeds the fire.",
@@ -78,7 +78,8 @@
         "character:grimm:espiritu-fuego",
         "character:grimm:pastor-aves",
         "character:grimm:comadrona-corte",
-        "character:grimm:cuervo-pocos-panes"
+        "character:grimm:cuervo-pocos-panes",
+        "character:grimm:huesecillo"
       ],
       "gameRuleIds": [
         "rule:grimm:composition:double-threat",
@@ -3936,6 +3937,248 @@
         ]
       },
       "links": []
+    },
+    {
+      "id": "character:grimm:huesecillo",
+      "teamId": "team:grimm:ayudante",
+      "gameplay": {
+        "role": "support",
+        "allegiance": {
+          "default": "good"
+        },
+        "victory": {
+          "type": "withCurrentAllegiance"
+        },
+        "entryMode": {
+          "default": "cast",
+          "allowed": [
+            "cast"
+          ]
+        }
+      },
+      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path data-layer=\"0\" fill=\"#e9ddc4\" stroke=\"#050402\" stroke-linejoin=\"round\" stroke-width=\"1.4\" d=\"M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z\"/><path data-layer=\"1\" fill=\"none\" stroke=\"#fff5df\" stroke-linecap=\"round\" stroke-width=\".6\" d=\"m8.6 15.4 6.8-6.8\"/></svg>",
+      "info": {
+        "name": "The Little Bone",
+        "ability": "Each night, choose another living player, different from the previous night's choice. They cannot die tonight, but they also cannot use their ability.",
+        "lore": "The little bone Hansel shows the Witch when she tries to check whether he has grown fat. The deception delays the oven and preserves a life, but forces its protected player to remain still and helpless throughout the night."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": true,
+          "firstOrder": 245,
+          "otherOrder": 125
+        },
+        "setup": false,
+        "reminderTokens": [
+          {
+            "id": "huesecillo",
+            "kind": "reminder",
+            "value": "Huesecillo",
+            "label": "Little Bone",
+            "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Little Bone chooses another player. They cannot die tonight, but they also cannot use their ability."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "The Little Bone chooses a different player from the previous night. They cannot die tonight, but they also cannot use their ability."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:huesecillo:proteccion-costosa:1",
+            "tags": [
+              "protection-choice",
+              "ability-restriction"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "players",
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "set",
+                "operation": "difference",
+                "values": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "alive",
+                          "value": true
+                        },
+                        {
+                          "type": "not",
+                          "condition": {
+                            "type": "isBinding",
+                            "binding": "actor"
+                          }
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    }
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "events"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "eventType",
+                          "values": [
+                            "choose-target"
+                          ]
+                        },
+                        {
+                          "type": "eventPeriod",
+                          "value": "previousNight"
+                        },
+                        {
+                          "type": "eventParticipant",
+                          "binding": "actor",
+                          "participant": "actor"
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "collect"
+                    },
+                    "project": {
+                      "type": "eventParticipant",
+                      "binding": "selected"
+                    }
+                  }
+                ]
+              }
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "poisoned",
+                          "drunk"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "interceptEvent",
+                "event": "death",
+                "reaction": {
+                  "type": "cancel"
+                },
+                "scope": "sourceAbility",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "reminder": "Huesecillo",
+                "duration": "tonight"
+              },
+              {
+                "type": "restrict",
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "restrictions": [
+                  "ability"
+                ],
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              },
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "literal",
+                  "value": "No puedes morir esta noche, pero tu habilidad no funciona."
+                },
+                "presentation": {
+                  "kind": "text",
+                  "title": "The Little Bone deceives for you",
+                  "description": "You cannot die tonight, but your ability does not work."
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "selected"
+                  },
+                  "timing": "nextRecipientWake",
+                  "separateWake": true
+                }
+              }
+            ],
+            "presentation": {
+              "nightControl": {
+                "type": "singlePlayer",
+                "excludeActor": true
+              }
+            }
+          }
+        ]
+      },
+      "axes": {
+        "power_balance": 0.6
+      },
+      "links": []
     }
   ],
   "gameRules": [
@@ -4019,12 +4262,19 @@
             "neutral": 3,
             "evilSupport": 2,
             "evil": 2
+          },
+          "15": {
+            "good": 5,
+            "goodSupport": 3,
+            "neutral": 3,
+            "evilSupport": 2,
+            "evil": 2
           }
         },
         "maxExtraPlayers": 5,
         "rosterMinimums": {
           "good": 5,
-          "goodSupport": 2,
+          "goodSupport": 3,
           "neutral": 3,
           "evilSupport": 2,
           "evil": 2
@@ -4226,6 +4476,7 @@
       "nightOrder": {
         "first": [
           "character:grimm:gato-tejado",
+          "character:grimm:huesecillo",
           "character:grimm:hansel-rastreador",
           "character:grimm:anciana-caminos",
           "character:grimm:madre-hambrienta",
@@ -4239,6 +4490,7 @@
         ],
         "other": [
           "character:grimm:gato-tejado",
+          "character:grimm:huesecillo",
           "character:grimm:hansel-rastreador",
           "character:grimm:anciana-caminos",
           "character:grimm:madre-hambrienta",
@@ -4460,7 +4712,8 @@
         "character:grimm:espiritu-fuego",
         "character:grimm:pastor-aves",
         "character:grimm:comadrona-corte",
-        "character:grimm:cuervo-pocos-panes"
+        "character:grimm:cuervo-pocos-panes",
+        "character:grimm:huesecillo"
       ]
     }
   ]
