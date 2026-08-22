@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-musicos-bremen",
   "key": "grimm-musicos-bremen",
-  "version": "10.68",
+  "version": "10.71",
   "locale": "en",
   "name": "Los Músicos de Bremen",
   "description": "Cuatro animales abandonados unen su música para conquistar una casa ocupada por ladrones.",
@@ -76,10 +76,10 @@
         "character:grimm:burro-molino",
         "character:grimm:gallo-corral",
         "character:grimm:censista",
-        "character:grimm:notario",
+        "character:grimm:escribano-bremen",
         "character:grimm:perro-caza",
         "character:grimm:gata-fogon",
-        "character:grimm:partera",
+        "character:grimm:veterinaria-bremen",
         "character:grimm:ladron-amuletos",
         "character:grimm:munequera-maleficio",
         "character:grimm:campanero-bremen",
@@ -511,10 +511,10 @@
       "links": []
     },
     {
-      "id": "character:grimm:notario",
+      "id": "character:grimm:escribano-bremen",
       "teamId": "team:grimm:pueblo",
       "info": {
-        "name": "El Notario",
+        "name": "Bremen Scribe",
         "ability": "Once per game, when a player is executed, learn the nominator's team."
       },
       "rules": {
@@ -526,7 +526,7 @@
         "reminderTokens": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:notario:manual:1",
+            "mechanicId": "mechanic:grimm:escribano-bremen:manual:1",
             "tags": [
               "manual-checkpoint"
             ],
@@ -568,7 +568,7 @@
             },
             "presentation": {
               "label": "Resuelve la habilidad",
-              "title": "character:grimm:notario"
+              "title": "character:grimm:escribano-bremen"
             }
           }
         ]
@@ -751,10 +751,10 @@
       "links": []
     },
     {
-      "id": "character:grimm:partera",
+      "id": "character:grimm:veterinaria-bremen",
       "teamId": "team:grimm:ayudante",
       "info": {
-        "name": "La Partera",
+        "name": "Bremen Veterinarian",
         "ability": "Once per game, when a player would die, they become Excluded until the next dawn instead."
       },
       "rules": {
@@ -774,7 +774,7 @@
         ],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:partera:manual:1",
+            "mechanicId": "mechanic:grimm:veterinaria-bremen:manual:1",
             "tags": [
               "manual-checkpoint"
             ],
@@ -818,7 +818,7 @@
             },
             "presentation": {
               "label": "Resuelve la habilidad",
-              "title": "character:grimm:partera"
+              "title": "character:grimm:veterinaria-bremen"
             }
           }
         ]
@@ -2098,10 +2098,10 @@
         "character:grimm:burro-molino",
         "character:grimm:gallo-corral",
         "character:grimm:censista",
-        "character:grimm:notario",
+        "character:grimm:escribano-bremen",
         "character:grimm:perro-caza",
         "character:grimm:gata-fogon",
-        "character:grimm:partera",
+        "character:grimm:veterinaria-bremen",
         "character:grimm:ladron-amuletos",
         "character:grimm:munequera-maleficio",
         "character:grimm:campanero-bremen",

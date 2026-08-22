@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-siete-cuervos",
   "key": "grimm-siete-cuervos",
-  "version": "10.68",
+  "version": "10.71",
   "locale": "es",
   "name": "Los Siete Cuervos",
   "description": "Una hermana cruza el mundo hasta la montaña de cristal para liberar a sus hermanos convertidos en cuervos.",
@@ -81,7 +81,7 @@
         "character:grimm:partera",
         "character:grimm:guardian-puerta-cristal",
         "character:grimm:cuervo-mayor",
-        "character:grimm:eco",
+        "character:grimm:graznido-lejano",
         "character:grimm:cuervo-anillo"
       ],
       "gameRuleIds": [
@@ -915,10 +915,10 @@
       "links": []
     },
     {
-      "id": "character:grimm:eco",
+      "id": "character:grimm:graznido-lejano",
       "teamId": "team:grimm:siervo",
       "info": {
-        "name": "El Eco",
+        "name": "El Graznido Lejano",
         "ability": "Cada noche, si el {{team:grimm:oscuro}} usó su habilidad, sabes a quién apuntó."
       },
       "rules": {
@@ -930,7 +930,7 @@
         "reminderTokens": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:eco:information:1",
+            "mechanicId": "mechanic:grimm:graznido-lejano:information:1",
             "tags": [
               "information-choice"
             ],
@@ -1144,7 +1144,7 @@
           "character:grimm:enano-montana-cristal",
           "character:grimm:guardian-puerta-cristal",
           "character:grimm:cuervo-mayor",
-          "character:grimm:eco",
+          "character:grimm:graznido-lejano",
           "character:grimm:cuervo-anillo"
         ],
         "other": [
@@ -1153,7 +1153,7 @@
           "character:grimm:enano-montana-cristal",
           "character:grimm:guardian-puerta-cristal",
           "character:grimm:cuervo-mayor",
-          "character:grimm:eco",
+          "character:grimm:graznido-lejano",
           "character:grimm:cuervo-anillo"
         ]
       },
@@ -1361,7 +1361,7 @@
         "character:grimm:partera",
         "character:grimm:guardian-puerta-cristal",
         "character:grimm:cuervo-mayor",
-        "character:grimm:eco",
+        "character:grimm:graznido-lejano",
         "character:grimm:cuervo-anillo"
       ]
     }
