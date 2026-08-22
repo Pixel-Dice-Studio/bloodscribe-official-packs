@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-flautista-hamelin",
   "key": "grimm-flautista-hamelin",
-  "version": "10.65",
+  "version": "10.68",
   "locale": "en",
   "name": "El Flautista de Hamelín",
   "description": "Una ciudad ingrata pierde primero sus ratas, después sus votos y finalmente a quienes siguen la música.",
@@ -85,12 +85,12 @@
         "character:grimm:farolero-bosque",
         "character:grimm:flautista",
         "character:grimm:escudero",
-        "character:grimm:eco",
+        "character:grimm:plaga-roedores",
         "character:grimm:alcalde-hamelin",
         "character:grimm:tesorero-avaro"
       ],
       "gameRuleIds": [
-        "rule:grimm:composition:extended"
+        "rule:grimm:composition:balanced-double-threat"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -285,67 +285,62 @@
   "characters": [
     {
       "id": "character:grimm:nino-hamelin",
-      "teamId": "team:grimm:pueblo",
+      "teamId": "team:grimm:siervo",
       "info": {
-        "name": "El Niño de Hamelín",
-        "ability": "Each night, choose a player and learn whether they are Charmed. When the Piper dies, remove one Charmed token."
+        "name": "The Hamelin Child",
+        "ability": "You start Evil. When the Piper dies, you become Good."
       },
       "rules": {
         "wake": {
-          "first": true,
-          "other": true
+          "first": false,
+          "other": false
         },
         "setup": false,
-        "reminderTokens": [
-          {
-            "id": "encantado",
-            "kind": "reminder",
-            "value": "Encantado",
-            "label": "Encantado",
-            "duration": "game"
-          }
-        ],
+        "reminderTokens": [],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:nino-hamelin:information:1",
+            "mechanicId": "mechanic:grimm:nino-hamelin:redemption:1",
             "tags": [
-              "information-choice"
+              "alignment-change",
+              "death-trigger"
             ],
             "when": {
-              "window": "night",
-              "cadence": "each",
-              "startsAt": 1
-            },
-            "input": {
-              "kind": "players",
-              "min": 1,
-              "max": 1
+              "trigger": {
+                "type": "event",
+                "event": "death",
+                "bindings": {
+                  "eventSubject": "selected"
+                },
+                "where": {
+                  "type": "eventParticipantIdentity",
+                  "participant": "eventSubject",
+                  "identityMode": "real",
+                  "facet": "character",
+                  "values": [
+                    "character:grimm:flautista"
+                  ]
+                }
+              }
             },
             "conditions": [],
             "effects": [
               {
-                "type": "emitInformation",
-                "value": {
-                  "type": "inputValue",
-                  "valueType": "boolean"
-                },
-                "presentation": {
-                  "kind": "boolean",
-                  "title": "¿Está Encantado?",
-                  "trueLabel": "Sí",
-                  "falseLabel": "No"
-                },
-                "delivery": {
-                  "audience": {
-                    "type": "actor"
-                  }
+                "type": "changeAlignment",
+                "alignment": "good",
+                "notifyPlayer": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
                 }
               }
             ],
-            "presentation": {
-              "nightControl": {
-                "type": "singlePlayer"
-              }
+            "usage": {
+              "scope": "trigger",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
             }
           }
         ]
@@ -482,8 +477,8 @@
       "id": "character:grimm:cartografo",
       "teamId": "team:grimm:pueblo",
       "info": {
-        "name": "El Cartógrafo",
-        "ability": "Each night, choose a player and learn how many living players sit between them and the {{team:grimm:oscuro}}."
+        "name": "The Cartographer",
+        "ability": "Once per game, at night, choose a player and learn how many living players sit between them and the nearest living {{team:grimm:oscuro}}."
       },
       "rules": {
         "wake": {
@@ -518,7 +513,7 @@
                 },
                 "presentation": {
                   "kind": "number",
-                  "title": "Distancia al Oscuro"
+                  "title": "Distancia al Oscuro más cercano"
                 },
                 "delivery": {
                   "audience": {
@@ -527,6 +522,14 @@
                 }
               }
             ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
+            },
             "presentation": {
               "nightControl": {
                 "type": "singlePlayer"
@@ -614,10 +617,10 @@
     },
     {
       "id": "character:grimm:barquero-weser",
-      "teamId": "team:grimm:ayudante",
+      "teamId": "team:grimm:pueblo",
       "info": {
-        "name": "El Barquero del Weser",
-        "ability": "Each night, choose a player; if an evil ability would kill them, they become Excluded until dawn instead."
+        "name": "The Weser Ferryman",
+        "ability": "Twice per game, at night, choose a player: they and their two living neighbours cannot receive Gnawed tokens that night."
       },
       "rules": {
         "wake": {
@@ -627,18 +630,20 @@
         "setup": false,
         "reminderTokens": [
           {
-            "id": "excluido",
+            "id": "protegido_roedores",
             "kind": "reminder",
-            "value": "Excluido",
-            "label": "Excluido",
-            "duration": "tonight"
+            "value": "Protegido de roedores",
+            "label": "Protegido de roedores",
+            "duration": "tonight",
+            "count": 3
           }
         ],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:barquero-weser:manual:1",
+            "mechanicId": "mechanic:grimm:barquero-weser:rat-ward:1",
             "tags": [
-              "manual-checkpoint"
+              "marker-choice",
+              "protection"
             ],
             "when": {
               "window": "night",
@@ -647,30 +652,79 @@
             },
             "input": {
               "kind": "players",
-              "min": 0,
-              "max": 1
+              "min": 1,
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "alive",
+                  "value": true
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
             },
             "conditions": [],
             "effects": [
               {
-                "type": "manualCheckpoint",
-                "reason": "storytellerJudgment",
-                "prompt": "Cada noche eliges a un jugador; si fuera a morir por una habilidad de un malvado, queda Excluido hasta el amanecer en su lugar.",
-                "blocking": true,
-                "outcomes": [
-                  {
-                    "id": "resolved",
-                    "label": "Resuelto",
-                    "effects": []
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Protegido de roedores",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Protegido de roedores",
+                "active": true,
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players",
+                    "relation": {
+                      "type": "nearestMatching",
+                      "anchor": "selected",
+                      "directions": [
+                        "clockwise",
+                        "counterclockwise"
+                      ],
+                      "limitPerDirection": 1,
+                      "where": {
+                        "type": "alive",
+                        "value": true
+                      }
+                    }
                   },
-                  {
-                    "id": "pass",
-                    "label": "No se resuelve",
-                    "effects": []
+                  "aggregate": {
+                    "type": "collect"
                   }
-                ]
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn"
+                }
               }
             ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 2
+              },
+              "consumeOn": "resolution"
+            },
             "presentation": {
               "nightControl": {
                 "type": "singlePlayer"
@@ -683,7 +737,7 @@
     },
     {
       "id": "character:grimm:partera",
-      "teamId": "team:grimm:ayudante",
+      "teamId": "team:grimm:pueblo",
       "info": {
         "name": "La Partera",
         "ability": "Once per game, when a player would die, they become Excluded until the next dawn instead."
@@ -1336,8 +1390,8 @@
       "id": "character:grimm:flautista",
       "teamId": "team:grimm:oscuro",
       "info": {
-        "name": "El Flautista",
-        "ability": "Each night, choose a player and Charm them. Each Charmed player's first daily vote does not count. Once per game, instead, all Charmed players become Excluded until dawn; anyone already Excluded dies."
+        "name": "The Piper",
+        "ability": "Each night, choose another living player and Charm them. Once per game, after charming, you may Snap: all living Charmed players die."
       },
       "rules": {
         "wake": {
@@ -1355,20 +1409,18 @@
             "count": 14
           },
           {
-            "id": "excluido",
+            "id": "chasquido_usado",
             "kind": "reminder",
-            "value": "Excluido",
-            "label": "Excluido",
-            "duration": "tonight",
-            "count": 14
+            "value": "Chasquido usado",
+            "label": "Chasquido usado",
+            "duration": "game"
           }
         ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:flautista:charm:1",
             "tags": [
-              "marker-choice",
-              "vote-modifier"
+              "marker-choice"
             ],
             "when": {
               "window": "night",
@@ -1378,7 +1430,37 @@
             "input": {
               "kind": "players",
               "min": 1,
-              "max": 1
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    },
+                    {
+                      "type": "marker",
+                      "markerId": "Encantado",
+                      "active": false
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
             },
             "conditions": [],
             "effects": [
@@ -1394,29 +1476,125 @@
                 "duration": {
                   "type": "permanent"
                 }
-              },
-              {
-                "type": "manualCheckpoint",
-                "reason": "storytellerJudgment",
-                "prompt": "Una vez por partida, puede resolver la Marcha en lugar de encantar: todos los Encantados quedan Excluidos hasta el amanecer y quien ya estuviera Excluido muere.",
-                "blocking": true,
-                "outcomes": [
-                  {
-                    "id": "charm",
-                    "label": "Encantar",
-                    "effects": []
-                  },
-                  {
-                    "id": "march",
-                    "label": "Marcha resuelta",
-                    "effects": []
-                  }
-                ]
               }
             ],
             "presentation": {
               "nightControl": {
                 "type": "singlePlayer"
+              }
+            }
+          },
+          {
+            "mechanicId": "mechanic:grimm:flautista:snap:1",
+            "tags": [
+              "death",
+              "once-per-game"
+            ],
+            "when": {
+              "window": "night",
+              "cadence": "each",
+              "startsAt": 1
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "storytellerDecision",
+                "decision": "snapAction",
+                "options": [
+                  "wait",
+                  "snap"
+                ]
+              },
+              {
+                "type": "death",
+                "protection": "normal",
+                "targets": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "alive",
+                        "value": true
+                      },
+                      {
+                        "type": "marker",
+                        "markerId": "Encantado",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  }
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "snapAction"
+                    },
+                    "operator": "eq",
+                    "right": "snap"
+                  }
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Chasquido usado",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "snapAction"
+                    },
+                    "operator": "eq",
+                    "right": "snap"
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "success",
+              "spentReminder": "Chasquido usado"
+            },
+            "presentation": {
+              "decisionPrompts": {
+                "snapAction": {
+                  "question": "¿Hace el Flautista el Chasquido esta noche?",
+                  "options": [
+                    {
+                      "value": "wait",
+                      "label": "Esperar"
+                    },
+                    {
+                      "value": "snap",
+                      "label": "Chasquido"
+                    }
+                  ]
+                }
               }
             }
           }
@@ -1428,8 +1606,8 @@
       "id": "character:grimm:escudero",
       "teamId": "team:grimm:siervo",
       "info": {
-        "name": "El Escudero",
-        "ability": "Each night, choose a player; if they are the {{team:grimm:oscuro}}, they cannot die that night."
+        "name": "The Squire",
+        "ability": "Each night, choose a player; if they are a {{team:grimm:oscuro}}, they cannot die that night."
       },
       "rules": {
         "wake": {
@@ -1459,7 +1637,7 @@
               {
                 "type": "manualCheckpoint",
                 "reason": "storytellerJudgment",
-                "prompt": "Cada noche eliges a un jugador; si es el Oscuro, no puede morir esa noche.",
+                "prompt": "Cada noche eliges a un jugador; si es un Oscuro, no puede morir esa noche.",
                 "blocking": true,
                 "outcomes": [
                   {
@@ -1486,11 +1664,11 @@
       "links": []
     },
     {
-      "id": "character:grimm:eco",
-      "teamId": "team:grimm:siervo",
+      "id": "character:grimm:plaga-roedores",
+      "teamId": "team:grimm:oscuro",
       "info": {
-        "name": "El Eco",
-        "ability": "Each night, if the {{team:grimm:oscuro}} used their ability, learn whom they targeted."
+        "name": "The Plague of Rodents",
+        "ability": "Each night, choose another living player. If they are not Protected from rodents, they gain a Gnawed token; the second token kills them."
       },
       "rules": {
         "wake": {
@@ -1498,12 +1676,22 @@
           "other": true
         },
         "setup": false,
-        "reminderTokens": [],
+        "reminderTokens": [
+          {
+            "id": "roido",
+            "kind": "reminder",
+            "value": "Roído",
+            "label": "Roído",
+            "duration": "game",
+            "count": 14
+          }
+        ],
         "mechanics": [
           {
-            "mechanicId": "mechanic:grimm:eco:information:1",
+            "mechanicId": "mechanic:grimm:plaga-roedores:gnaw:1",
             "tags": [
-              "information-choice"
+              "cumulative-marker",
+              "death"
             ],
             "when": {
               "window": "night",
@@ -1513,27 +1701,100 @@
             "input": {
               "kind": "players",
               "min": 1,
-              "max": 1
+              "max": 1,
+              "candidates": {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "isBinding",
+                        "binding": "actor"
+                      }
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "collect"
+                }
+              }
             },
             "conditions": [],
             "effects": [
               {
-                "type": "emitInformation",
-                "value": {
-                  "type": "inputValue",
-                  "valueType": "playerId"
-                },
-                "presentation": {
-                  "kind": "player",
-                  "title": "Objetivo del Oscuro"
-                },
-                "delivery": {
-                  "audience": {
-                    "type": "actor"
+                "type": "adjustCounter",
+                "when": [
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "marker",
+                          "markerId": "Protegido de roedores",
+                          "active": false
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
                   }
-                }
+                ],
+                "counter": "roeduras",
+                "delta": 1,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "bounds": {
+                  "min": 0,
+                  "max": 2
+                },
+                "projection": {
+                  "kind": "reminder",
+                  "mode": "copies",
+                  "id": "Roído"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "threshold": {
+                  "operator": "gte",
+                  "value": 2,
+                  "trigger": "crossing"
+                },
+                "onThreshold": [
+                  {
+                    "type": "death",
+                    "protection": "normal",
+                    "targets": {
+                      "type": "binding",
+                      "binding": "effectTarget"
+                    }
+                  }
+                ]
               }
             ],
+            "usage": {
+              "scope": "repeat"
+            },
             "presentation": {
               "nightControl": {
                 "type": "singlePlayer"
@@ -1671,7 +1932,7 @@
   "gameRules": [
     {
       "entityKind": "gameRule",
-      "id": "rule:grimm:composition:extended",
+      "id": "rule:grimm:composition:balanced-double-threat",
       "visibility": "base",
       "ruleKind": "composition",
       "systemType": "composition",
@@ -1687,10 +1948,10 @@
         "book:grimm:flautista-hamelin"
       ],
       "info": {
-        "name": "Extended composition",
-        "ability": "Extended Grimm distribution for games with 7 to 15 players."
+        "name": "Balanced double-threat composition",
+        "ability": "Grimm distribution with two main threats and a Good majority."
       },
-      "summaryEs": "Distribución Grimm extendida para partidas de 7 a 15 jugadores.",
+      "summaryEs": "Distribución Grimm con dos amenazas principales y mayoría del bando Bueno.",
       "composition": {
         "enforcement": "exact",
         "playerCounts": {
@@ -1698,73 +1959,73 @@
             "good": 2,
             "goodSupport": 2,
             "neutral": 1,
-            "evilSupport": 1,
-            "evil": 1
+            "evilSupport": 0,
+            "evil": 2
           },
           "8": {
             "good": 2,
-            "goodSupport": 3,
+            "goodSupport": 2,
             "neutral": 1,
             "evilSupport": 1,
-            "evil": 1
+            "evil": 2
           },
           "9": {
-            "good": 2,
-            "goodSupport": 3,
-            "neutral": 2,
+            "good": 3,
+            "goodSupport": 2,
+            "neutral": 1,
             "evilSupport": 1,
-            "evil": 1
+            "evil": 2
           },
           "10": {
             "good": 3,
             "goodSupport": 3,
-            "neutral": 2,
+            "neutral": 1,
             "evilSupport": 1,
-            "evil": 1
+            "evil": 2
           },
           "11": {
-            "good": 3,
+            "good": 4,
+            "goodSupport": 3,
+            "neutral": 1,
+            "evilSupport": 1,
+            "evil": 2
+          },
+          "12": {
+            "good": 4,
+            "goodSupport": 3,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 2
+          },
+          "13": {
+            "good": 4,
             "goodSupport": 4,
             "neutral": 2,
             "evilSupport": 1,
-            "evil": 1
+            "evil": 2
           },
-          "12": {
-            "good": 3,
+          "14": {
+            "good": 5,
+            "goodSupport": 4,
+            "neutral": 2,
+            "evilSupport": 1,
+            "evil": 2
+          },
+          "15": {
+            "good": 5,
             "goodSupport": 4,
             "neutral": 2,
             "evilSupport": 2,
-            "evil": 1
-          },
-          "13": {
-            "good": 3,
-            "goodSupport": 5,
-            "neutral": 2,
-            "evilSupport": 2,
-            "evil": 1
-          },
-          "14": {
-            "good": 4,
-            "goodSupport": 5,
-            "neutral": 2,
-            "evilSupport": 2,
-            "evil": 1
-          },
-          "15": {
-            "good": 4,
-            "goodSupport": 6,
-            "neutral": 2,
-            "evilSupport": 2,
-            "evil": 1
+            "evil": 2
           }
         },
         "maxExtraPlayers": 5,
         "rosterMinimums": {
-          "good": 4,
-          "goodSupport": 6,
+          "good": 5,
+          "goodSupport": 4,
           "neutral": 2,
           "evilSupport": 2,
-          "evil": 1
+          "evil": 2
         }
       }
     }
@@ -1790,12 +2051,13 @@
       "keyCharacterIds": [
         "character:grimm:nino-hamelin",
         "character:grimm:flautista",
+        "character:grimm:plaga-roedores",
         "character:grimm:madre-nino",
         "character:grimm:alcalde-hamelin"
       ],
       "gameRuleBindings": [
         {
-          "ruleId": "rule:grimm:composition:extended",
+          "ruleId": "rule:grimm:composition:balanced-double-threat",
           "activation": "automatic"
         },
         {
@@ -1806,26 +2068,24 @@
       "votingRuleId": "rule:bloodscribe:voting:standard",
       "nightOrder": {
         "first": [
-          "character:grimm:nino-hamelin",
           "character:grimm:archivero",
           "character:grimm:cartografo",
           "character:grimm:barquero-weser",
           "character:grimm:confesor",
           "character:grimm:cerbatanero-sueno",
           "character:grimm:flautista",
-          "character:grimm:escudero",
-          "character:grimm:eco"
+          "character:grimm:plaga-roedores",
+          "character:grimm:escudero"
         ],
         "other": [
-          "character:grimm:nino-hamelin",
           "character:grimm:archivero",
           "character:grimm:cartografo",
           "character:grimm:barquero-weser",
           "character:grimm:confesor",
           "character:grimm:cerbatanero-sueno",
           "character:grimm:flautista",
-          "character:grimm:escudero",
-          "character:grimm:eco"
+          "character:grimm:plaga-roedores",
+          "character:grimm:escudero"
         ]
       },
       "nightInstructions": {
@@ -1843,7 +2103,7 @@
           "id": "state:grimm:charmed",
           "kind": "state",
           "label": "Encantado",
-          "description": "La melodía altera el voto y permite la Marcha."
+          "description": "La melodía prepara al jugador para el Chasquido del Flautista."
         }
       ],
       "links": [],
@@ -2042,7 +2302,7 @@
         "character:grimm:farolero-bosque",
         "character:grimm:flautista",
         "character:grimm:escudero",
-        "character:grimm:eco",
+        "character:grimm:plaga-roedores",
         "character:grimm:alcalde-hamelin",
         "character:grimm:tesorero-avaro"
       ]
