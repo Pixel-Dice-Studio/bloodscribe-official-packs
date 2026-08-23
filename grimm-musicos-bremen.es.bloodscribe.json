@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-musicos-bremen",
   "key": "grimm-musicos-bremen",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "es",
   "name": "Los Músicos de Bremen",
   "description": "Cuatro animales abandonados unen su música para conquistar una casa ocupada por ladrones.",
@@ -307,6 +307,30 @@
             "count": 15
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Música. Si ya tenía Música de otra fuente, conoces su equipo."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Música. Si ya tenía Música de otra fuente, conoces su equipo."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:burro-molino:music:1",
@@ -393,6 +417,30 @@
             "count": 15
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Música. Si ya tenía Música de otra fuente, conoces si es Bueno o Malo."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Música. Si ya tenía Música de otra fuente, conoces si es Bueno o Malo."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:gallo-corral:music:1",
@@ -470,6 +518,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces cuántos jugadores vivos comparten su equipo."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces cuántos jugadores vivos comparten su equipo."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:censista:information:1",
@@ -613,6 +685,30 @@
             "duration": "untilNextDawn"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Música. No puede morir esa noche; si ninguna muerte iba a alcanzarlo, no puedes votar al día siguiente."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Música. No puede morir esa noche; si ninguna muerte iba a alcanzarlo, no puedes votar al día siguiente."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:perro-caza:music:1",
@@ -697,6 +793,30 @@
             "label": "Música",
             "duration": "game",
             "count": 15
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Música. Si ya tenía Música de otra fuente, el Narrador mueve una ficha negativa suya a otro jugador vivo."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Música. Si ya tenía Música de otra fuente, el Narrador mueve una ficha negativa suya a otro jugador vivo."
           }
         ],
         "mechanics": [
@@ -854,6 +974,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, elige a otro jugador y después a un jugador distinto, que puedes ser tú. Todas las protecciones transferibles activas del primero pasan al segundo. No sabes si se transfirió alguna."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, elige a otro jugador y después a un jugador distinto, que puedes ser tú. Todas las protecciones transferibles activas del primero pasan al segundo. No sabes si se transfirió alguna."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:ladron-amuletos:transfer-protections:1",
@@ -968,6 +1112,30 @@
             "value": "Muñeco transmitido",
             "label": "Muñeco transmitido",
             "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Comienzas con un Muñeco vudú. Cada noche puedes conservarlo o transmitirlo una única vez a otro jugador vivo, que no lo sabe. Cuando ocurre la tercera muerte, su portador muere; si es el Demonio, mueres tú."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Comienzas con un Muñeco vudú. Cada noche puedes conservarlo o transmitirlo una única vez a otro jugador vivo, que no lo sabe. Cuando ocurre la tercera muerte, su portador muere; si es el Demonio, mueres tú."
           }
         ],
         "mechanics": [
@@ -1443,6 +1611,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador: copias su habilidad real hasta el amanecer y no puede usarla esa noche."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador: copias su habilidad real hasta el amanecer y no puede usarla esa noche."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:capitan-ladrones:manual:1",
@@ -1503,6 +1695,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces si tiene alguna protección activa. Si el {{team:grimm:oscuro}} muere, pierdes esta habilidad."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces si tiene alguna protección activa. Si el {{team:grimm:oscuro}} muere, pierdes esta habilidad."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:ladron-explorador:information:1",
@@ -1564,6 +1780,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador: la primera Música que fuera a recibir esa noche se retira. Si el {{team:grimm:oscuro}} muere, pierdes esta habilidad."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador: la primera Música que fuera a recibir esa noche se retira. Si el {{team:grimm:oscuro}} muere, pierdes esta habilidad."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:ladron-chimenea:manual:1",
@@ -1624,6 +1864,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces si usó una habilidad. Ganas si sobrevives después de haber elegido a un {{team:grimm:pueblo}} y a un {{team:grimm:oscuro}} que sí la usaron."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces si usó una habilidad. Ganas si sobrevives después de haber elegido a un {{team:grimm:pueblo}} y a un {{team:grimm:oscuro}} que sí la usaron."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:molinero-abandona:information:1",
@@ -1685,6 +1949,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche proteges a un jugador de una muerte causada por un Malvado. Ganas si sobrevives después de proteger a un {{team:grimm:siervo}}."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche proteges a un jugador de una muerte causada por un Malvado. Ganas si sobrevives después de proteger a un {{team:grimm:siervo}}."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cazador-abandona:manual:1",

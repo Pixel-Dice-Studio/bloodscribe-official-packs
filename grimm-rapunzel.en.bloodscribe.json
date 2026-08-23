@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-rapunzel",
   "key": "grimm-rapunzel",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "en",
   "name": "Rapunzel",
   "description": "Una trenza ofrece salida, pero cada rescate deja otra puerta cerrada.",
@@ -306,6 +306,30 @@
             "duration": "game"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player. If Locked Away, remove it; otherwise they cannot die that night."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player. If Locked Away, remove it; otherwise they cannot die that night."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:rapunzel:manual:1",
@@ -436,6 +460,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether any active token affects them."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether any active token affects them."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:madre-antojo:information:1",
@@ -645,6 +693,30 @@
             "duration": "tomorrow"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a Locked Away player: remove the lock until dawn, but they cannot vote or nominate the next day."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a Locked Away player: remove the lock until dawn, but they cannot vote or nominate the next day."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:mensajero-torre:manual:1",
@@ -793,6 +865,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another living player: they do not wake for their abilities that night, but their passive effects continue."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another living player: they do not wake for their abilities that night, but their passive effects continue."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:apotecario:deep-sleep:1",
@@ -915,6 +1011,30 @@
             "value": "Costura pendiente",
             "label": "Costura pendiente",
             "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose two living players. At dawn, it becomes public which players were stitched. While both live, neither may nominate the other."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose two living players. At dawn, it becomes public which players were stitched. While both live, neither may nominate the other."
           }
         ],
         "mechanics": [
@@ -1096,6 +1216,30 @@
             "label": "Vínculo del espejo",
             "duration": "tonight",
             "count": 2
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, choose another living player at night. Until dawn, the first foreign ability choosing exactly one of you redirects to the other if valid."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, choose another living player at night. Until dawn, the first foreign ability choosing exactly one of you redirects to the other if valid."
           }
         ],
         "mechanics": [
@@ -1282,6 +1426,30 @@
             "duration": "tomorrow"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another player: they cannot be nominated the next day, but they also cannot vote or nominate."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another player: they cannot be nominated the next day, but they also cannot vote or nominate."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:guardiana-llave:restriction:1",
@@ -1364,6 +1532,30 @@
             "label": "Encerrado",
             "duration": "game",
             "count": 14
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and Lock them Away. If already Locked Away by you, they die."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and Lock them Away. If already Locked Away by you, they die."
           }
         ],
         "mechanics": [
@@ -1486,6 +1678,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player. The first ability that would remove Locked Away from them that night fails. If the Witch dies, lose this ability."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player. The first ability that would remove Locked Away from them that night fails. If the Witch dies, lose this ability."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:sombra-torre:manual:1",
@@ -1548,6 +1764,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, if the {{team:grimm:oscuro}} used their ability, learn whom they targeted."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, if the {{team:grimm:oscuro}} used their ability, learn whom they targeted."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:eco:information:1",
@@ -1608,6 +1848,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a dead player and learn whether a prepared ability will resurrect them. You win if alive after a correct answer."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a dead player and learn whether a prepared ability will resurrect them. You win if alive after a correct answer."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:gemelo-desierto:information:1",
@@ -1670,6 +1934,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a living player and learn whether they were resurrected this game. You win if alive after finding one."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a living player and learn whether they were resurrected this game. You win if alive after finding one."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:gemela-desierto:information:1",

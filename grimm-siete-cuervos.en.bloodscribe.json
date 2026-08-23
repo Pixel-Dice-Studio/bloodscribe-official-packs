@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-siete-cuervos",
   "key": "grimm-siete-cuervos",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "en",
   "name": "Los Siete Cuervos",
   "description": "Una hermana cruza el mundo hasta la montaña de cristal para liberar a sus hermanos convertidos en cuervos.",
@@ -293,6 +293,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player. If they have Raven, remove it; otherwise learn whether they are Good or Evil."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player. If they have Raven, remove it; otherwise learn whether they are Good or Evil."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:hermana-cuervos:manual:1",
@@ -427,6 +451,30 @@
             "value": "Marca de ceniza",
             "label": "Marca de ceniza",
             "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night choose another player. At dawn learn whether any ability other than yours chose them that night."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night choose another player. At dawn learn whether any ability other than yours chose them that night."
           }
         ],
         "mechanics": [
@@ -589,6 +637,30 @@
             "label": "Cuervo",
             "duration": "tonight",
             "count": 1
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player with Raven: they may use their ability that night, but you receive Raven until dawn."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player with Raven: they may use their ability that night, but you receive Raven until dawn."
           }
         ],
         "mechanics": [
@@ -801,6 +873,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, every player with Raven may use their ability that night; the next day their votes do not count."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, every player with Raven may use their ability that night; the next day their votes do not count."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:guardian-puerta-cristal:manual:1",
@@ -876,6 +972,30 @@
             "count": 10
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Raven, blocking their ability. If every living player except you has Raven, Evil wins."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Raven, blocking their ability. If every living player except you has Raven, Evil wins."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cuervo-mayor:manual:1",
@@ -936,6 +1056,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, if the {{team:grimm:oscuro}} used their ability, learn whom they targeted."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, if the {{team:grimm:oscuro}} used their ability, learn whom they targeted."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:graznido-lejano:information:1",
@@ -996,6 +1140,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they received or lost any marker that night. If the {{team:grimm:oscuro}} dies, you lose this ability."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they received or lost any marker that night. If the {{team:grimm:oscuro}} dies, you lose this ability."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cuervo-anillo:information:1",

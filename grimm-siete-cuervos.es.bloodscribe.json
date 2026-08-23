@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-siete-cuervos",
   "key": "grimm-siete-cuervos",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "es",
   "name": "Los Siete Cuervos",
   "description": "Una hermana cruza el mundo hasta la montaña de cristal para liberar a sus hermanos convertidos en cuervos.",
@@ -293,6 +293,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador. Si tiene Cuervo, lo retiras; si no, conoces si es Bueno o Malo."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador. Si tiene Cuervo, lo retiras; si no, conoces si es Bueno o Malo."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:hermana-cuervos:manual:1",
@@ -427,6 +451,30 @@
             "value": "Marca de ceniza",
             "label": "Marca de ceniza",
             "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche elige a otro jugador. Al amanecer descubres si fue elegido esa noche por alguna habilidad distinta de la tuya."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche elige a otro jugador. Al amanecer descubres si fue elegido esa noche por alguna habilidad distinta de la tuya."
           }
         ],
         "mechanics": [
@@ -589,6 +637,30 @@
             "label": "Cuervo",
             "duration": "tonight",
             "count": 1
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador con Cuervo: puede usar su habilidad esa noche, pero tú recibes Cuervo hasta el amanecer."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador con Cuervo: puede usar su habilidad esa noche, pero tú recibes Cuervo hasta el amanecer."
           }
         ],
         "mechanics": [
@@ -801,6 +873,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, todos los jugadores con Cuervo pueden usar su habilidad esa noche; al día siguiente sus votos no cuentan."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, todos los jugadores con Cuervo pueden usar su habilidad esa noche; al día siguiente sus votos no cuentan."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:guardian-puerta-cristal:manual:1",
@@ -876,6 +972,30 @@
             "count": 10
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Cuervo, que bloquea su habilidad. Si todos los vivos salvo tú tienen Cuervo, los Malos ganan."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le añades Cuervo, que bloquea su habilidad. Si todos los vivos salvo tú tienen Cuervo, los Malos ganan."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cuervo-mayor:manual:1",
@@ -936,6 +1056,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, si el {{team:grimm:oscuro}} usó su habilidad, sabes a quién apuntó."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, si el {{team:grimm:oscuro}} usó su habilidad, sabes a quién apuntó."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:graznido-lejano:information:1",
@@ -997,6 +1141,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces si recibió o perdió alguna ficha esa noche. Si el {{team:grimm:oscuro}} muere, pierdes esta habilidad."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces si recibió o perdió alguna ficha esa noche. Si el {{team:grimm:oscuro}} muere, pierdes esta habilidad."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cuervo-anillo:information:1",

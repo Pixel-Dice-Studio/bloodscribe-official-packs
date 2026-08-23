@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-rumpelstiltskin",
   "key": "grimm-rumpelstiltskin",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "es",
   "name": "Rumpelstiltskin",
   "description": "La paja se vuelve oro, los favores se vuelven deuda y un nombre verdadero puede matar.",
@@ -359,6 +359,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces cuántos jugadores vivos hay entre él y el {{team:grimm:oscuro}} en el círculo."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces cuántos jugadores vivos hay entre él y el {{team:grimm:oscuro}} en el círculo."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:agrimensor-real:information:1",
@@ -420,6 +444,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces cuántos jugadores vivos comparten su equipo."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces cuántos jugadores vivos comparten su equipo."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:contador-palacio:information:1",
@@ -674,6 +722,30 @@
             "count": 2
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y uno de los personajes que haya declarado públicamente. Si coinciden, quedas Excluido hasta el amanecer; si no, queda Excluido el elegido."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y uno de los personajes que haya declarado públicamente. Si coinciden, quedas Excluido hasta el amanecer; si no, queda Excluido el elegido."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:escribano-real:manual:1",
@@ -813,6 +885,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador; si es ejecutado durante el día siguiente, la ejecución se redirige al Farolero."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador; si es ejecutado durante el día siguiente, la ejecución se redirige al Farolero."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:farolero:manual:1",
@@ -882,6 +978,30 @@
             "value": "Confesado",
             "label": "Confesado",
             "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador: no puede usar su habilidad esa noche. No conoces su equipo."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador: no puede usar su habilidad esa noche. No conoces su equipo."
           }
         ],
         "mechanics": [
@@ -958,6 +1078,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y nombras un personaje del cuento. Si aciertas su personaje real, muere; si fallas, conoces cuál es."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y nombras un personaje del cuento. Si aciertas su personaje real, muere; si fallas, conoces cuál es."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:rumpelstiltskin:manual:1",
@@ -1029,6 +1173,30 @@
             "value": "Relicario maldito",
             "label": "Relicario maldito",
             "duration": "whileTargetAlive"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Comienzas con el Relicario maldito. Cada noche, su portador vivo lo conserva o se lo entrega a otro vivo; el Narrador decide si el nuevo portador vive o muere. La maldición termina cuando muere su portador."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Comienzas con el Relicario maldito. Cada noche, su portador vivo lo conserva o se lo entrega a otro vivo; el Narrador decide si el nuevo portador vive o muere. La maldición termina cuando muere su portador."
           }
         ],
         "mechanics": [
@@ -1343,6 +1511,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, si el {{team:grimm:oscuro}} usó su habilidad, sabes a quién apuntó."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, si el {{team:grimm:oscuro}} usó su habilidad, sabes a quién apuntó."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:susurro-molino:information:1",
@@ -1404,6 +1596,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces su personaje. Ganas si sobrevives habiendo descubierto al menos un {{team:grimm:oscuro}} y un {{team:grimm:pueblo}}."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y conoces su personaje. Ganas si sobrevives habiendo descubierto al menos un {{team:grimm:oscuro}} y un {{team:grimm:pueblo}}."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:coleccionista:manual:1",
