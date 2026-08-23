@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "es",
   "name": "Habitantes de Grimm",
   "description": "Personajes extra que pueden incorporarse a cualquier cuento de Grimm.",
@@ -160,6 +160,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, elige a otro jugador vivo: esa noche no despierta por sus habilidades, pero sus efectos pasivos continúan."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, elige a otro jugador vivo: esa noche no despierta por sus habilidades, pero sus efectos pasivos continúan."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:apotecario:deep-sleep:1",
@@ -312,6 +336,30 @@
             "label": "Sedado",
             "duration": "tonight",
             "count": 3
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, lanza todos tus dardos a jugadores vivos distintos de ti: tienes 3, luego 2, luego 1 en tus tres primeros despertares. Los elegidos no despiertan esa noche."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, lanza todos tus dardos a jugadores vivos distintos de ti: tienes 3, luego 2, luego 1 en tus tres primeros despertares. Los elegidos no despiertan esa noche."
           }
         ],
         "mechanics": [
@@ -626,6 +674,19 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Si te nominaron durante el día, esa noche conoces el equipo registrado del primer jugador que te nominó. Si estás afectado, la información puede ser falsa."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:reo:first-nominator-team:1",
@@ -773,6 +834,30 @@
             "value": "Relicario maldito",
             "label": "Relicario maldito",
             "duration": "whileTargetAlive"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Comienzas con el Relicario maldito. Cada noche, su portador vivo lo conserva o se lo entrega a otro vivo; el Narrador decide si el nuevo portador vive o muere. La maldición termina cuando muere su portador."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Comienzas con el Relicario maldito. Cada noche, su portador vivo lo conserva o se lo entrega a otro vivo; el Narrador decide si el nuevo portador vive o muere. La maldición termina cuando muere su portador."
           }
         ],
         "mechanics": [
@@ -1044,6 +1129,30 @@
             "value": "Muñeco transmitido",
             "label": "Muñeco transmitido",
             "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Comienzas con un Muñeco vudú. Cada noche puedes conservarlo o transmitirlo una única vez a otro jugador vivo, que no lo sabe. Cuando ocurre la tercera muerte, su portador muere; si es el Demonio, mueres tú."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Comienzas con un Muñeco vudú. Cada noche puedes conservarlo o transmitirlo una única vez a otro jugador vivo, que no lo sabe. Cuando ocurre la tercera muerte, su portador muere; si es el Demonio, mueres tú."
           }
         ],
         "mechanics": [
@@ -1513,6 +1622,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, elige dos jugadores vivos. Al amanecer se hace público qué jugadores han quedado cosidos. Mientras ambos vivan, ninguno puede nominar al otro."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, elige dos jugadores vivos. Al amanecer se hace público qué jugadores han quedado cosidos. Mientras ambos vivan, ninguno puede nominar al otro."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:costurera-espinos:night-pair:1",
@@ -1857,6 +1990,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche elige a otro jugador. Al amanecer descubres si fue elegido esa noche por alguna habilidad distinta de la tuya."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche elige a otro jugador. Al amanecer descubres si fue elegido esa noche por alguna habilidad distinta de la tuya."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cuervo-ceniza:track:1",
@@ -2133,6 +2290,30 @@
             "count": 2
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, elige de noche a otro jugador vivo. Hasta el amanecer, la primera habilidad ajena que elija exactamente a uno de vosotros se redirige al otro si es válido."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, elige de noche a otro jugador vivo. Hasta el amanecer, la primera habilidad ajena que elija exactamente a uno de vosotros se redirige al otro si es válido."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:dama-espejo-agrietado:bind:1",
@@ -2311,6 +2492,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, de noche, elige a otro jugador vivo. Si su personaje real es un malvado principal, mueres; si no, obtienes permanentemente su habilidad real y adoptas su bando actual."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, de noche, elige a otro jugador vivo. Si su personaje real es un malvado principal, mueres; si no, obtienes permanentemente su habilidad real y adoptas su bando actual."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:arribista:copy-real-ability:1",
@@ -2581,6 +2786,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, de noche, elige a otro jugador muerto: pasas a ser su personaje real y adoptas su bando actual."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, de noche, elige a otro jugador muerto: pasas a ser su personaje real y adoptas su bando actual."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:chaman:take-dead-character:1",
@@ -2822,6 +3051,19 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "En la cuarta noche, si sigues viva, descubres qué otros jugadores han resuelto alguna habilidad nocturna de forma anómala por estar afectados por una ficha."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:clariaudiente:fourth-night:1",
@@ -2940,6 +3182,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, elige a otro jugador y después a un jugador distinto, que puedes ser tú. Todas las protecciones transferibles activas del primero pasan al segundo. No sabes si se transfirió alguna."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, elige a otro jugador y después a un jugador distinto, que puedes ser tú. Todas las protecciones transferibles activas del primero pasan al segundo. No sabes si se transfirió alguna."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:ladron-amuletos:transfer-protections:1",
@@ -3049,6 +3315,19 @@
             "value": "Muerto",
             "label": "Muerto",
             "duration": "manual"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, a partir de la segunda, si tu reflejo vive, elige 2 jugadores vivos distintos; puedes elegirte a ti o a tu reflejo. Si ambos elegís exactamente la misma pareja y vuestras habilidades funcionan con normalidad, mueren. Si tu reflejo está muerto, elige 1 jugador vivo: muere. [+1 {{team:grimm:oscuro}}, -1 {{team:grimm:pueblo}}]"
           }
         ],
         "mechanics": [
@@ -3359,6 +3638,19 @@
             "duration": "manual"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, a partir de la segunda, si tu reflejo vive, elige 2 jugadores vivos distintos; puedes elegirte a ti o a tu reflejo. Si ambos elegís exactamente la misma pareja y vuestras habilidades funcionan con normalidad, mueren. Si tu reflejo está muerto, elige 1 jugador vivo: muere. [+1 {{team:grimm:oscuro}}, -1 {{team:grimm:pueblo}}]"
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:espejo-convexo:paired-setup:1",
@@ -3658,6 +3950,19 @@
             "value": "Sentenciado",
             "label": "Sentenciado",
             "duration": "untilNextNight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche excepto la primera, elige 2 otros jugadores vivos distintos. El Narrador decide cuál muere y cuál queda Sentenciado hasta la noche siguiente. Si el jugador Sentenciado nomina, muere."
           }
         ],
         "mechanics": [

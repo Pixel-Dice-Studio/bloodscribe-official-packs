@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-musicos-bremen",
   "key": "grimm-musicos-bremen",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "en",
   "name": "Los Músicos de Bremen",
   "description": "Cuatro animales abandonados unen su música para conquistar una casa ocupada por ladrones.",
@@ -307,6 +307,30 @@
             "count": 15
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Music. If they already had Music from another source, learn their team."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Music. If they already had Music from another source, learn their team."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:burro-molino:music:1",
@@ -392,6 +416,30 @@
             "count": 15
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Music. If they already had Music from another source, learn whether they are Good or Evil."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Music. If they already had Music from another source, learn whether they are Good or Evil."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:gallo-corral:music:1",
@@ -468,6 +516,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn how many living players share their team."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn how many living players share their team."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:censista:information:1",
@@ -610,6 +682,30 @@
             "duration": "untilNextDawn"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Music. They cannot die that night; if no death would have reached them, you cannot vote the next day."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Music. They cannot die that night; if no death would have reached them, you cannot vote the next day."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:perro-caza:music:1",
@@ -693,6 +789,30 @@
             "label": "Música",
             "duration": "game",
             "count": 15
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Music. If they already had Music from another source, the Storyteller moves one of their negative markers to another living player."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and add Music. If they already had Music from another source, the Storyteller moves one of their negative markers to another living player."
           }
         ],
         "mechanics": [
@@ -849,6 +969,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another player, then a different player, who may be you. Every active transferable protection moves from the first player to the second. You do not learn whether any moved."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another player, then a different player, who may be you. Every active transferable protection moves from the first player to the second. You do not learn whether any moved."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:ladron-amuletos:transfer-protections:1",
@@ -951,6 +1095,30 @@
             "value": "Muñeco transmitido",
             "label": "Muñeco transmitido",
             "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "You begin holding a Voodoo Doll. Each night, you may keep it or pass it once to another living player, who does not know. When the third death occurs, its holder dies; if they are the Demon, you die instead."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "You begin holding a Voodoo Doll. Each night, you may keep it or pass it once to another living player, who does not know. When the third death occurs, its holder dies; if they are the Demon, you die instead."
           }
         ],
         "mechanics": [
@@ -1417,6 +1585,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player: copy their real ability until dawn and they cannot use it that night."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player: copy their real ability until dawn and they cannot use it that night."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:capitan-ladrones:manual:1",
@@ -1477,6 +1669,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they have any active protection. If the {{team:grimm:oscuro}} dies, you lose this ability."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they have any active protection. If the {{team:grimm:oscuro}} dies, you lose this ability."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:ladron-explorador:information:1",
@@ -1537,6 +1753,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player: the first Music they would receive that night is removed. If the {{team:grimm:oscuro}} dies, you lose this ability."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player: the first Music they would receive that night is removed. If the {{team:grimm:oscuro}} dies, you lose this ability."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:ladron-chimenea:manual:1",
@@ -1597,6 +1837,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they used an ability. You win if you survive after choosing both a Town player and a {{team:grimm:oscuro}} who did."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they used an ability. You win if you survive after choosing both a Town player and a {{team:grimm:oscuro}} who did."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:molinero-abandona:information:1",
@@ -1657,6 +1921,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, protect a player from death caused by an Evil player. You win if you survive after protecting a {{team:grimm:siervo}}."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, protect a player from death caused by an Evil player. You win if you survive after protecting a {{team:grimm:siervo}}."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cazador-abandona:manual:1",

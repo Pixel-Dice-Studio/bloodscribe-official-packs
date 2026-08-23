@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-rapunzel",
   "key": "grimm-rapunzel",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "es",
   "name": "Rapunzel",
   "description": "Una trenza ofrece salida, pero cada rescate deja otra puerta cerrada.",
@@ -306,6 +306,30 @@
             "duration": "game"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador. Si está Encerrado, retiras su Encierro; si no, no puede morir esa noche."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador. Si está Encerrado, retiras su Encierro; si no, no puede morir esa noche."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:rapunzel:manual:1",
@@ -437,6 +461,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y sabes si está afectado por alguna ficha activa."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y sabes si está afectado por alguna ficha activa."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:madre-antojo:information:1",
@@ -648,6 +696,30 @@
             "duration": "tomorrow"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador Encerrado: retiras su Encierro hasta el amanecer, pero no puede votar ni nominar durante el día siguiente."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador Encerrado: retiras su Encierro hasta el amanecer, pero no puede votar ni nominar durante el día siguiente."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:mensajero-torre:manual:1",
@@ -797,6 +869,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, elige a otro jugador vivo: esa noche no despierta por sus habilidades, pero sus efectos pasivos continúan."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, elige a otro jugador vivo: esa noche no despierta por sus habilidades, pero sus efectos pasivos continúan."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:apotecario:deep-sleep:1",
@@ -928,6 +1024,30 @@
             "value": "Costura pendiente",
             "label": "Costura pendiente",
             "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, elige dos jugadores vivos. Al amanecer se hace público qué jugadores han quedado cosidos. Mientras ambos vivan, ninguno puede nominar al otro."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, elige dos jugadores vivos. Al amanecer se hace público qué jugadores han quedado cosidos. Mientras ambos vivan, ninguno puede nominar al otro."
           }
         ],
         "mechanics": [
@@ -1120,6 +1240,30 @@
             "count": 2
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, elige de noche a otro jugador vivo. Hasta el amanecer, la primera habilidad ajena que elija exactamente a uno de vosotros se redirige al otro si es válido."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, elige de noche a otro jugador vivo. Hasta el amanecer, la primera habilidad ajena que elija exactamente a uno de vosotros se redirige al otro si es válido."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:dama-espejo-agrietado:bind:1",
@@ -1304,6 +1448,30 @@
             "duration": "tomorrow"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a otro jugador: no puede ser nominado al día siguiente, pero tampoco puede votar ni nominar."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a otro jugador: no puede ser nominado al día siguiente, pero tampoco puede votar ni nominar."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:guardiana-llave:restriction:1",
@@ -1387,6 +1555,30 @@
             "label": "Encerrado",
             "duration": "game",
             "count": 14
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le das Encerrado. Si ya estaba Encerrado por ti, muere."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y le das Encerrado. Si ya estaba Encerrado por ti, muere."
           }
         ],
         "mechanics": [
@@ -1510,6 +1702,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador. La primera habilidad que fuera a retirarle Encerrado esa noche falla. Si la Bruja muere, pierdes esta habilidad."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador. La primera habilidad que fuera a retirarle Encerrado esa noche falla. Si la Bruja muere, pierdes esta habilidad."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:sombra-torre:manual:1",
@@ -1573,6 +1789,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, si el {{team:grimm:oscuro}} usó su habilidad, sabes a quién apuntó."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, si el {{team:grimm:oscuro}} usó su habilidad, sabes a quién apuntó."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:eco:information:1",
@@ -1634,6 +1874,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador muerto y sabes si volverá a la vida por una habilidad ya preparada. Ganas si sobrevives después de acertar."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador muerto y sabes si volverá a la vida por una habilidad ya preparada. Ganas si sobrevives después de acertar."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:gemelo-desierto:information:1",
@@ -1697,6 +1961,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador vivo y sabes si fue resucitado durante la partida. Ganas si sobrevives después de encontrar a uno."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador vivo y sabes si fue resucitado durante la partida. Ganas si sobrevives después de encontrar a uno."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:gemela-desierto:information:1",

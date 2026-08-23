@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-del-enebro",
   "key": "grimm-del-enebro",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "es",
   "name": "Del enebro",
   "description": "Bajo el enebro, los huesos guardan la verdad de una muerte y prometen un regreso.",
@@ -302,6 +302,30 @@
             "count": 10
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador muerto y le das Huesos. Cuando un jugador con Huesos vuelve a la vida, conoces su personaje real."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador muerto y le das Huesos. Cuando un jugador con Huesos vuelve a la vida, conoces su personaje real."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:marlinchen:bones:1",
@@ -360,6 +384,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y sabes si murió por una habilidad o por ejecución."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y sabes si murió por una habilidad o por ejecución."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:padre-enebro:information:1",
@@ -421,6 +469,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y sabes si ha usado su habilidad alguna vez en la partida."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y sabes si ha usado su habilidad alguna vez en la partida."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:archivero:information:1",
@@ -484,6 +556,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida eliges a un jugador muerto con Huesos y lo resucitas; después mueres. Si no hay objetivo válido, conservas el uso."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida eliges a un jugador muerto con Huesos y lo resucitas; después mueres. Si no hay objetivo válido, conservas el uso."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:pajaro-enebro:resurrect:1",
@@ -855,6 +951,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, si la Madre del Cofre mató a un jugador, sabes quién fue. Si la Madre del Cofre muere, pierdes esta habilidad."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche, si la Madre del Cofre mató a un jugador, sabes quién fue. Si la Madre del Cofre muere, pierdes esta habilidad."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cocinera-guiso:information:1",
@@ -918,6 +1038,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, de noche, elige a otro jugador muerto: pasas a ser su personaje real, pero conservas tu bando."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, de noche, elige a otro jugador muerto: pasas a ser su personaje real, pero conservas tu bando."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:chaman:take-dead-character:1",

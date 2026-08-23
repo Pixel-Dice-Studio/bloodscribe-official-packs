@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-flautista-hamelin",
   "key": "grimm-flautista-hamelin",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "en",
   "name": "El Flautista de Hamelín",
   "description": "Una ciudad ingrata pierde primero sus ratas, después sus votos y finalmente a quienes siguen la música.",
@@ -452,6 +452,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they have ever used their ability this game."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they have ever used their ability this game."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cronista-hamelin:information:1",
@@ -514,6 +538,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose a player and learn how many living players sit between them and the nearest living {{team:grimm:oscuro}}."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose a player and learn how many living players sit between them and the nearest living {{team:grimm:oscuro}}."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cartografo:information:1",
@@ -665,6 +713,30 @@
             "label": "Protegido de roedores",
             "duration": "tonight",
             "count": 3
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Twice per game, at night, choose a player: they and their two living neighbours cannot receive Gnawed tokens that night."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Twice per game, at night, choose a player: they and their two living neighbours cannot receive Gnawed tokens that night."
           }
         ],
         "mechanics": [
@@ -863,6 +935,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player: they cannot use their ability that night. You do not learn their team."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player: they cannot use their ability that night. You do not learn their team."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:confesor:restriction:1",
@@ -973,6 +1069,30 @@
             "label": "Sedado",
             "duration": "tonight",
             "count": 3
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, fire all your darts at different living players other than yourself: you have 3, then 2, then 1 on your first three wakes. The chosen players do not wake that night."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, fire all your darts at different living players other than yourself: you have 3, then 2, then 1 on your first three wakes. The chosen players do not wake that night."
           }
         ],
         "mechanics": [
@@ -1448,6 +1568,30 @@
             "duration": "game"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another living player and Charm them. Once per game, after charming, you may Snap: all living Charmed players die."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another living player and Charm them. Once per game, after charming, you may Snap: all living Charmed players die."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:flautista:charm:1",
@@ -1689,6 +1833,30 @@
             "duration": "tomorrow"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player; if they are a {{team:grimm:oscuro}}, they cannot die by execution during the following day."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player; if they are a {{team:grimm:oscuro}}, they cannot die by execution during the following day."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:escudero:execution-protection:1",
@@ -1785,6 +1953,30 @@
             "label": "Roído",
             "duration": "game",
             "count": 14
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another living player. If they are not Protected from rodents, they gain a Gnawed token; the second token kills them."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another living player. If they are not Protected from rodents, they gain a Gnawed token; the second token kills them."
           }
         ],
         "mechanics": [

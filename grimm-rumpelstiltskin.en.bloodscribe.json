@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-rumpelstiltskin",
   "key": "grimm-rumpelstiltskin",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "en",
   "name": "Rumpelstiltskin",
   "description": "La paja se vuelve oro, los favores se vuelven deuda y un nombre verdadero puede matar.",
@@ -359,6 +359,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn how many living players sit between them and the {{team:grimm:oscuro}}."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn how many living players sit between them and the {{team:grimm:oscuro}}."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:agrimensor-real:information:1",
@@ -419,6 +443,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn how many living players share their team."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn how many living players share their team."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:contador-palacio:information:1",
@@ -671,6 +719,30 @@
             "count": 2
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and one of their public character claims. If they match, you are Excluded until dawn; otherwise the chosen player is Excluded."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and one of their public character claims. If they match, you are Excluded until dawn; otherwise the chosen player is Excluded."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:escribano-real:manual:1",
@@ -809,6 +881,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player; if they are executed the next day, redirect that execution to the Lamplighter."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player; if they are executed the next day, redirect that execution to the Lamplighter."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:farolero:manual:1",
@@ -877,6 +973,30 @@
             "value": "Confesado",
             "label": "Confesado",
             "duration": "tonight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player: they cannot use their ability that night. You do not learn their team."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player: they cannot use their ability that night. You do not learn their team."
           }
         ],
         "mechanics": [
@@ -952,6 +1072,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and name a tale character. If correct, they die; if wrong, learn their real character."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and name a tale character. If correct, they die; if wrong, learn their real character."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:rumpelstiltskin:manual:1",
@@ -1022,6 +1166,30 @@
             "value": "Relicario maldito",
             "label": "Relicario maldito",
             "duration": "whileTargetAlive"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "You begin with the Cursed Reliquary. Each night, its living holder keeps it or passes it to another living player; the Storyteller decides whether the new holder lives or dies. The curse ends when its holder dies."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "You begin with the Cursed Reliquary. Each night, its living holder keeps it or passes it to another living player; the Storyteller decides whether the new holder lives or dies. The curse ends when its holder dies."
           }
         ],
         "mechanics": [
@@ -1323,6 +1491,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, if the {{team:grimm:oscuro}} used their ability, learn whom they targeted."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, if the {{team:grimm:oscuro}} used their ability, learn whom they targeted."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:susurro-molino:information:1",
@@ -1383,6 +1575,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn their character. You win if alive after discovering a {{team:grimm:oscuro}} and a {{team:grimm:pueblo}} character."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn their character. You win if alive after discovering a {{team:grimm:oscuro}} and a {{team:grimm:pueblo}} character."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:coleccionista:manual:1",

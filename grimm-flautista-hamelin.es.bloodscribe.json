@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-flautista-hamelin",
   "key": "grimm-flautista-hamelin",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "es",
   "name": "El Flautista de Hamelín",
   "description": "Una ciudad ingrata pierde primero sus ratas, después sus votos y finalmente a quienes siguen la música.",
@@ -452,6 +452,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y sabes si ha usado su habilidad alguna vez en la partida."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador y sabes si ha usado su habilidad alguna vez en la partida."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cronista-hamelin:information:1",
@@ -515,6 +539,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, eliges a un jugador y conoces cuántos jugadores vivos hay entre él y el {{team:grimm:oscuro}} vivo más cercano."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, eliges a un jugador y conoces cuántos jugadores vivos hay entre él y el {{team:grimm:oscuro}} vivo más cercano."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cartografo:information:1",
@@ -667,6 +715,30 @@
             "label": "Protegido de roedores",
             "duration": "tonight",
             "count": 3
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Dos veces por partida, por la noche, eliges a un jugador: él y sus dos vecinos vivos no pueden recibir fichas de Roído esa noche."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Dos veces por partida, por la noche, eliges a un jugador: él y sus dos vecinos vivos no pueden recibir fichas de Roído esa noche."
           }
         ],
         "mechanics": [
@@ -866,6 +938,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador: no puede usar su habilidad esa noche. No conoces su equipo."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador: no puede usar su habilidad esa noche. No conoces su equipo."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:confesor:restriction:1",
@@ -977,6 +1073,30 @@
             "label": "Sedado",
             "duration": "tonight",
             "count": 3
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, lanza todos tus dardos a jugadores vivos distintos de ti: tienes 3, luego 2, luego 1 en tus tres primeros despertares. Los elegidos no despiertan esa noche."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Una vez por partida, por la noche, lanza todos tus dardos a jugadores vivos distintos de ti: tienes 3, luego 2, luego 1 en tus tres primeros despertares. Los elegidos no despiertan esa noche."
           }
         ],
         "mechanics": [
@@ -1461,6 +1581,30 @@
             "duration": "game"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a otro jugador vivo y le das Encantado. Una vez por partida, después de encantar, puedes hacer el Chasquido: todos los Encantados vivos mueren."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a otro jugador vivo y le das Encantado. Una vez por partida, después de encantar, puedes hacer el Chasquido: todos los Encantados vivos mueren."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:flautista:charm:1",
@@ -1703,6 +1847,30 @@
             "duration": "tomorrow"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador; si es un {{team:grimm:oscuro}}, no puede morir por ejecución durante el día siguiente."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a un jugador; si es un {{team:grimm:oscuro}}, no puede morir por ejecución durante el día siguiente."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:escudero:execution-protection:1",
@@ -1800,6 +1968,30 @@
             "label": "Roído",
             "duration": "game",
             "count": 14
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a otro jugador vivo. Si no está Protegido de roedores, recibe una ficha Roído; la segunda ficha lo mata."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Cada noche eliges a otro jugador vivo. Si no está Protegido de roedores, recibe una ficha Roído; la segunda ficha lo mata."
           }
         ],
         "mechanics": [

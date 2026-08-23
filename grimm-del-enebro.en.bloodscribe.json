@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-del-enebro",
   "key": "grimm-del-enebro",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "en",
   "name": "Del enebro",
   "description": "Bajo el enebro, los huesos guardan la verdad de una muerte y prometen un regreso.",
@@ -302,6 +302,30 @@
             "count": 10
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a dead player and give them Bones. When a player with Bones returns to life, learn their real character."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a dead player and give them Bones. When a player with Bones returns to life, learn their real character."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:marlinchen:bones:1",
@@ -359,6 +383,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they died by an ability or execution."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they died by an ability or execution."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:padre-enebro:information:1",
@@ -419,6 +467,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they have ever used their ability this game."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose a player and learn whether they have ever used their ability this game."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:archivero:information:1",
@@ -481,6 +553,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, choose a dead player with Bones and resurrect them; then you die. If there is no valid target, keep the use."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, choose a dead player with Bones and resurrect them; then you die. If there is no valid target, keep the use."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:pajaro-enebro:resurrect:1",
@@ -850,6 +946,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, if the Chest Mother killed a player, learn who it was. If the Chest Mother dies, lose this ability."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, if the Chest Mother killed a player, learn who it was. If the Chest Mother dies, lose this ability."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cocinera-guiso:information:1",
@@ -912,6 +1032,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another dead player: you become their real character, but keep your alignment."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another dead player: you become their real character, but keep your alignment."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:chaman:take-dead-character:1",

@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.79",
+  "version": "10.80",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -160,6 +160,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another living player: they do not wake for their abilities that night, but their passive effects continue."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another living player: they do not wake for their abilities that night, but their passive effects continue."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:apotecario:deep-sleep:1",
@@ -303,6 +327,30 @@
             "label": "Sedado",
             "duration": "tonight",
             "count": 3
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, fire all your darts at different living players other than yourself: you have 3, then 2, then 1 on your first three wakes. The chosen players do not wake that night."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, fire all your darts at different living players other than yourself: you have 3, then 2, then 1 on your first three wakes. The chosen players do not wake that night."
           }
         ],
         "mechanics": [
@@ -608,6 +656,19 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "If you were nominated during the day, that night you learn the registered team of the first player who nominated you. If affected, this information may be false."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:reo:first-nominator-team:1",
@@ -746,6 +807,30 @@
             "value": "Relicario maldito",
             "label": "Relicario maldito",
             "duration": "whileTargetAlive"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "You begin with the Cursed Reliquary. Each night, its living holder keeps it or passes it to another living player; the Storyteller decides whether the new holder lives or dies. The curse ends when its holder dies."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "You begin with the Cursed Reliquary. Each night, its living holder keeps it or passes it to another living player; the Storyteller decides whether the new holder lives or dies. The curse ends when its holder dies."
           }
         ],
         "mechanics": [
@@ -1004,6 +1089,30 @@
             "value": "Muñeco transmitido",
             "label": "Muñeco transmitido",
             "duration": "game"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "You begin holding a Voodoo Doll. Each night, you may keep it or pass it once to another living player, who does not know. When the third death occurs, its holder dies; if they are the Demon, you die instead."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "You begin holding a Voodoo Doll. Each night, you may keep it or pass it once to another living player, who does not know. When the third death occurs, its holder dies; if they are the Demon, you die instead."
           }
         ],
         "mechanics": [
@@ -1464,6 +1573,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose two living players. At dawn, it becomes public which players were stitched. While both live, neither may nominate the other."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose two living players. At dawn, it becomes public which players were stitched. While both live, neither may nominate the other."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:costurera-espinos:night-pair:1",
@@ -1799,6 +1932,30 @@
             "duration": "tonight"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night choose another player. At dawn learn whether any ability other than yours chose them that night."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night choose another player. At dawn learn whether any ability other than yours chose them that night."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:cuervo-ceniza:track:1",
@@ -2075,6 +2232,30 @@
             "count": 2
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, choose another living player at night. Until dawn, the first foreign ability choosing exactly one of you redirects to the other if valid."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, choose another living player at night. Until dawn, the first foreign ability choosing exactly one of you redirects to the other if valid."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:dama-espejo-agrietado:bind:1",
@@ -2253,6 +2434,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another living player. If their real character is a main evil, you die; otherwise, permanently gain their real ability and adopt their current alignment."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another living player. If their real character is a main evil, you die; otherwise, permanently gain their real ability and adopt their current alignment."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:arribista:copy-real-ability:1",
@@ -2511,6 +2716,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another dead player: you become their real character and adopt their current alignment."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Once per game, at night, choose another dead player: you become their real character and adopt their current alignment."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:chaman:take-dead-character:1",
@@ -2740,6 +2969,19 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "On the fourth night, if alive, you learn which other players resolved a night ability abnormally because they were affected by a marker."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:clariaudiente:fourth-night:1",
@@ -2846,6 +3088,30 @@
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another player, then a different player, who may be you. Every active transferable protection moves from the first player to the second. You do not learn whether any moved."
+          },
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, choose another player, then a different player, who may be you. Every active transferable protection moves from the first player to the second. You do not learn whether any moved."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:ladron-amuletos:transfer-protections:1",
@@ -2943,6 +3209,19 @@
             "value": "Muerto",
             "label": "Muerto",
             "duration": "manual"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, starting on the second night, if your reflection lives, choose 2 different living players; you may choose yourself or your reflection. If you both choose exactly the same pair and both abilities work normally, they die. If your reflection is dead, choose 1 living player: they die. [+1 {{team:grimm:oscuro}}, -1 Villager]"
           }
         ],
         "mechanics": [
@@ -3241,6 +3520,19 @@
             "duration": "manual"
           }
         ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night, starting on the second night, if your reflection lives, choose 2 different living players; you may choose yourself or your reflection. If you both choose exactly the same pair and both abilities work normally, they die. If your reflection is dead, choose 1 living player: they die. [+1 {{team:grimm:oscuro}}, -1 Villager]"
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:espejo-convexo:paired-setup:1",
@@ -3528,6 +3820,19 @@
             "value": "Sentenciado",
             "label": "Sentenciado",
             "duration": "untilNextNight"
+          }
+        ],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "Each night except the first, choose 2 other different living players. The Storyteller decides which dies and which is Sentenced until the next night. If the Sentenced player nominates, they die."
           }
         ],
         "mechanics": [
