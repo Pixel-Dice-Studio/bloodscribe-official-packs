@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-flautista-hamelin",
   "key": "grimm-flautista-hamelin",
-  "version": "10.77",
+  "version": "10.79",
   "locale": "es",
   "name": "El Flautista de Hamelín",
   "description": "Una ciudad ingrata pierde primero sus ratas, después sus votos y finalmente a quienes siguen la música.",
@@ -1470,7 +1470,39 @@
             "when": {
               "window": "night",
               "cadence": "each",
-              "startsAt": 1
+              "startsAt": 1,
+              "activeWhen": [
+                {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "alive",
+                        "value": true
+                      },
+                      {
+                        "type": "not",
+                        "condition": {
+                          "type": "isBinding",
+                          "binding": "actor"
+                        }
+                      },
+                      {
+                        "type": "marker",
+                        "markerId": "Encantado",
+                        "active": false
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                }
+              ]
             },
             "input": {
               "kind": "players",

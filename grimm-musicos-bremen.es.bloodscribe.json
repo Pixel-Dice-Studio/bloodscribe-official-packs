@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-musicos-bremen",
   "key": "grimm-musicos-bremen",
-  "version": "10.77",
+  "version": "10.79",
   "locale": "es",
   "name": "Los Músicos de Bremen",
   "description": "Cuatro animales abandonados unen su música para conquistar una casa ocupada por ladrones.",
@@ -299,9 +299,9 @@
         "setup": false,
         "reminderTokens": [
           {
-            "id": "musica",
+            "id": "music-source-a",
             "kind": "reminder",
-            "value": "Música",
+            "value": "state:grimm:music:source-a",
             "label": "Música",
             "duration": "game",
             "count": 15
@@ -329,7 +329,7 @@
               {
                 "type": "applyMarker",
                 "kind": "reminder",
-                "id": "Música",
+                "id": "state:grimm:music:source-a",
                 "active": true,
                 "targets": {
                   "type": "binding",
@@ -385,9 +385,9 @@
         "setup": false,
         "reminderTokens": [
           {
-            "id": "musica",
+            "id": "music-source-b",
             "kind": "reminder",
-            "value": "Música",
+            "value": "state:grimm:music:source-b",
             "label": "Música",
             "duration": "game",
             "count": 15
@@ -415,7 +415,7 @@
               {
                 "type": "applyMarker",
                 "kind": "reminder",
-                "id": "Música",
+                "id": "state:grimm:music:source-b",
                 "active": true,
                 "targets": {
                   "type": "binding",
@@ -598,9 +598,9 @@
         "setup": false,
         "reminderTokens": [
           {
-            "id": "musica",
+            "id": "music-source-c",
             "kind": "reminder",
-            "value": "Música",
+            "value": "state:grimm:music:source-c",
             "label": "Música",
             "duration": "game",
             "count": 15
@@ -635,7 +635,7 @@
               {
                 "type": "applyMarker",
                 "kind": "reminder",
-                "id": "Música",
+                "id": "state:grimm:music:source-c",
                 "active": true,
                 "targets": {
                   "type": "binding",
@@ -691,9 +691,9 @@
         "setup": false,
         "reminderTokens": [
           {
-            "id": "musica",
+            "id": "music-source-d",
             "kind": "reminder",
-            "value": "Música",
+            "value": "state:grimm:music:source-d",
             "label": "Música",
             "duration": "game",
             "count": 15
@@ -721,7 +721,7 @@
               {
                 "type": "applyMarker",
                 "kind": "reminder",
-                "id": "Música",
+                "id": "state:grimm:music:source-d",
                 "active": true,
                 "targets": {
                   "type": "binding",
@@ -918,7 +918,7 @@
             },
             "presentation": {
               "nightControl": {
-                "type": "multiPlayers",
+                "type": "twoPlayers",
                 "label": "Elige primero a quién roba y después quién recibe"
               },
               "nightGuide": {
@@ -1029,34 +1029,6 @@
               "window": "night",
               "cadence": "each",
               "startsAt": 1,
-              "actors": {
-                "type": "query",
-                "from": {
-                  "entity": "markers"
-                },
-                "where": {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "markerId",
-                      "values": [
-                        "Muñeco vudú"
-                      ]
-                    },
-                    {
-                      "type": "markerActive",
-                      "value": true
-                    }
-                  ]
-                },
-                "aggregate": {
-                  "type": "collect"
-                },
-                "project": {
-                  "type": "marker",
-                  "property": "sourcePlayerId"
-                }
-              },
               "activeWhen": [
                 {
                   "type": "query",
@@ -1282,29 +1254,15 @@
                 "targets": {
                   "type": "query",
                   "from": {
-                    "entity": "markers"
+                    "entity": "players"
                   },
                   "where": {
-                    "type": "all",
-                    "conditions": [
-                      {
-                        "type": "markerId",
-                        "values": [
-                          "Muñeco vudú"
-                        ]
-                      },
-                      {
-                        "type": "markerActive",
-                        "value": true
-                      }
-                    ]
+                    "type": "marker",
+                    "markerId": "Muñeco vudú",
+                    "active": true
                   },
                   "aggregate": {
                     "type": "collect"
-                  },
-                  "project": {
-                    "type": "marker",
-                    "property": "entityId"
                   }
                 },
                 "when": [
