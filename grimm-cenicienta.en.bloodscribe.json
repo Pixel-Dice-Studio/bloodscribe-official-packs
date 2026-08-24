@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.80",
+  "version": "10.96",
   "locale": "en",
   "name": "Cinderella",
   "description": "Between ashes and a grave, Cinderella listens to the birds that lead her to a dance of gold and blood. A slipper will name the bride, but no one knows whose feet or eyes will pay the price.",
@@ -643,10 +643,23 @@
       "rules": {
         "wake": {
           "first": false,
-          "other": false
+          "other": true
         },
         "setup": false,
         "reminderTokens": [],
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "range",
+                "from": 2
+              }
+            },
+            "audience": "storyteller",
+            "body": "The King learns the real character of the player who died by execution during the day."
+          }
+        ],
         "mechanics": [
           {
             "mechanicId": "mechanic:grimm:rey-banquete:execution-information:1",
@@ -655,42 +668,15 @@
               "information"
             ],
             "when": {
-              "window": "execution",
-              "cadence": "each",
-              "trigger": {
-                "type": "event",
-                "event": "execution",
-                "bindings": {
-                  "eventSubject": "eventSubject"
-                },
-                "where": {
-                  "type": "eventField",
-                  "field": "died",
-                  "value": true
-                }
-              }
+              "stage": "otherNightAfterExecution"
             },
             "conditions": [],
             "effects": [
               {
                 "type": "emitInformation",
                 "value": {
-                  "type": "query",
-                  "from": {
-                    "entity": "players"
-                  },
-                  "where": {
-                    "type": "isBinding",
-                    "binding": "eventSubject"
-                  },
-                  "project": {
-                    "type": "identity",
-                    "identityMode": "real",
-                    "property": "characterId"
-                  },
-                  "aggregate": {
-                    "type": "first"
-                  }
+                  "type": "inputValue",
+                  "valueType": "characterId"
                 },
                 "presentation": {
                   "kind": "character",
@@ -699,8 +685,7 @@
                 "delivery": {
                   "audience": {
                     "type": "actor"
-                  },
-                  "timing": "privateDay"
+                  }
                 }
               }
             ]
@@ -1694,6 +1679,16 @@
                           }
                         ]
                       }
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "identity",
+                        "facet": "mechanicTags",
+                        "values": [
+                          "usage:game:1"
+                        ]
+                      }
                     }
                   ]
                 },
@@ -1932,6 +1927,16 @@
                               "core"
                             ]
                           }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "identity",
+                        "facet": "mechanicTags",
+                        "values": [
+                          "usage:game:1"
                         ]
                       }
                     }
