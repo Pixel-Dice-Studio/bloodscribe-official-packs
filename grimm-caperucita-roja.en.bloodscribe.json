@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.96",
+  "version": "10.100",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown.",
@@ -21,6 +21,7 @@
       "id": "book:grimm:caperucita-roja",
       "name": "Little Red-Cap",
       "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown.",
+      "collectionOrder": 3,
       "collection": {
         "id": "collection:grimm",
         "name": "Brothers Grimm",

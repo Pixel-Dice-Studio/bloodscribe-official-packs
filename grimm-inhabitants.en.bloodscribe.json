@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.96",
+  "version": "10.100",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -2866,7 +2866,7 @@
             "id": "malvada_compania_borracho",
             "kind": "state",
             "value": "drunk",
-            "label": "Borracho por Malvada Compañía",
+            "label": "Hechizado por Malvada Compañía",
             "duration": "whileCondition",
             "count": 4
           }
