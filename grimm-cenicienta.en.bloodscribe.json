@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.119",
+  "version": "10.120",
   "locale": "en",
   "name": "Cinderella",
-  "description": "Between ashes and a grave, Cinderella listens to the birds that lead her to a dance of gold and blood. A slipper will name the bride, but no one knows whose feet or eyes will pay the price.",
+  "description": "The Stepmother kills each night while Cinderella marks other players and waits three nights to learn their true character. Discover who is stealing abilities before the Stepsisters pay for using them with blood, and keep your allies alive until the dance ends. To win, the village must identify the true threat and execute her.",
   "legal": {
     "license": "Based on Cinderella (Aschenputtel, KHM 21) by the Brothers Grimm. Text and lore adapted from the 1812 German edition and Margaret Hunt's 1884 public-domain English translation.",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:cenicienta",
       "name": "Cinderella",
-      "description": "Between ashes and a grave, Cinderella listens to the birds that lead her to a dance of gold and blood. A slipper will name the bride, but no one knows whose feet or eyes will pay the price.",
+      "description": "The Stepmother kills each night while Cinderella marks other players and waits three nights to learn their true character. Discover who is stealing abilities before the Stepsisters pay for using them with blood, and keep your allies alive until the dance ends. To win, the village must identify the true threat and execute her.",
       "collectionOrder": 1,
       "collection": {
         "id": "collection:grimm",
@@ -2902,7 +2902,7 @@
       "text": {
         "name": "Cinderella",
         "tagline": "Ashes, blood, and a golden slipper: find the true bride before the dance is over.",
-        "description": "Between ashes and a grave, Cinderella listens to the birds that lead her to a dance of gold and blood. A slipper will name the bride, but no one knows whose feet or eyes will pay the price."
+        "description": "The Stepmother kills each night while Cinderella marks other players and waits three nights to learn their true character. Discover who is stealing abilities before the Stepsisters pay for using them with blood, and keep your allies alive until the dance ends. To win, the village must identify the true threat and execute her."
       },
       "difficulty": {},
       "keyCharacterIds": [

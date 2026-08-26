@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.119",
+  "version": "10.120",
   "locale": "en",
   "name": "Hansel and Gretel",
-  "description": "Hunger drives Hansel and Gretel into a forest where pebbles vanish and a house of sugar keeps its oven lit. Before dawn, someone will decide who finds the path and who feeds the fire.",
+  "description": "The Oven Witch fattens two players each night, and the third mark kills them. Follow Hansel's clues, decide when to risk Gretel's deadly accusation, and discover who is blocking the village's abilities. If you do not execute the Witch before she completes her marks, you will end up feeding the fire.",
   "legal": {
     "license": "Based on Hänsel and Grethel (KHM 15) by the Brothers Grimm. Lore adapted from Margaret Hunt's 1884 public-domain translation.",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:hansel-y-gretel",
       "name": "Hansel and Gretel",
-      "description": "Hunger drives Hansel and Gretel into a forest where pebbles vanish and a house of sugar keeps its oven lit. Before dawn, someone will decide who finds the path and who feeds the fire.",
+      "description": "The Oven Witch fattens two players each night, and the third mark kills them. Follow Hansel's clues, decide when to risk Gretel's deadly accusation, and discover who is blocking the village's abilities. If you do not execute the Witch before she completes her marks, you will end up feeding the fire.",
       "collectionOrder": 2,
       "collection": {
         "id": "collection:grimm",
@@ -4444,7 +4444,7 @@
       "text": {
         "name": "Hansel and Gretel",
         "tagline": "Pebbles, hunger, and a burning oven: find the way home before the forest devours you.",
-        "description": "Hunger drives Hansel and Gretel into a forest where pebbles vanish and a house of sugar keeps its oven lit. Before dawn, someone will decide who finds the path and who feeds the fire."
+        "description": "The Oven Witch fattens two players each night, and the third mark kills them. Follow Hansel's clues, decide when to risk Gretel's deadly accusation, and discover who is blocking the village's abilities. If you do not execute the Witch before she completes her marks, you will end up feeding the fire."
       },
       "difficulty": {},
       "keyCharacterIds": [

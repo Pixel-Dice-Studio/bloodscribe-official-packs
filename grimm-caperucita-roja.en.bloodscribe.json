@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.119",
+  "version": "10.120",
   "locale": "en",
   "name": "Little Red-Cap",
-  "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown.",
+  "description": "The Wolf devours someone each night: the victim remains alive but loses their ability while trapped in his belly. Their allies can still rescue them; if they arrive too late, the Wolf can digest the victim, kill them, and disguise himself as their character. Discover who is on your side and execute the Wolf before no one can recognize his true face.",
   "legal": {
     "license": "Based on Little Red-Cap (Rothkäppchen, KHM 26) by the Brothers Grimm. Description and lore adapted from the 1812 German edition and Margaret Hunt's 1884 public-domain English translation.",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:caperucita-roja",
       "name": "Little Red-Cap",
-      "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown.",
+      "description": "The Wolf devours someone each night: the victim remains alive but loses their ability while trapped in his belly. Their allies can still rescue them; if they arrive too late, the Wolf can digest the victim, kill them, and disguise himself as their character. Discover who is on your side and execute the Wolf before no one can recognize his true face.",
       "collectionOrder": 3,
       "collection": {
         "id": "collection:grimm",
@@ -3104,7 +3104,7 @@
       "text": {
         "name": "Little Red-Cap",
         "tagline": "Red velvet, woodland flowers, and a belly full of stones: recognize the Wolf before he wears another face.",
-        "description": "Red-Cap leaves the path while the Wolf reaches Grandmother's house first and learns to wear stolen faces. Behind the curtains wait scissors, stones, and a breath whose owner is still unknown."
+        "description": "The Wolf devours someone each night: the victim remains alive but loses their ability while trapped in his belly. Their allies can still rescue them; if they arrive too late, the Wolf can digest the victim, kill them, and disguise himself as their character. Discover who is on your side and execute the Wolf before no one can recognize his true face."
       },
       "difficulty": {},
       "keyCharacterIds": [

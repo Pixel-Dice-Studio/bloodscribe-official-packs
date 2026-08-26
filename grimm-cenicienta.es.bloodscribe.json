@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.119",
+  "version": "10.120",
   "locale": "es",
   "name": "Cenicienta",
-  "description": "Entre ceniza y una tumba, Cenicienta escucha a las aves que la conducen a un baile de oro y sangre. Un zapato señalará a la novia, pero nadie sabe qué pies ni qué ojos pagarán el precio.",
+  "description": "La Madrastra mata cada noche mientras Cenicienta marca a otros jugadores y espera tres noches para conocer su verdadero personaje. Descubre quién roba habilidades antes de que las Hermanastras paguen con sangre por usarlas y mantén con vida a tus aliados hasta el final del baile. Para ganar, el pueblo deberá reconocer a la verdadera amenaza y ejecutarla.",
   "legal": {
     "license": "Basado en Aschenputtel (KHM 21), de los hermanos Grimm. Texto y lore adaptados de la edición alemana de 1812 y de la traducción española de José Sánchez Biedma (1879), ambas de dominio público.",
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:cenicienta",
       "name": "Cenicienta",
-      "description": "Entre ceniza y una tumba, Cenicienta escucha a las aves que la conducen a un baile de oro y sangre. Un zapato señalará a la novia, pero nadie sabe qué pies ni qué ojos pagarán el precio.",
+      "description": "La Madrastra mata cada noche mientras Cenicienta marca a otros jugadores y espera tres noches para conocer su verdadero personaje. Descubre quién roba habilidades antes de que las Hermanastras paguen con sangre por usarlas y mantén con vida a tus aliados hasta el final del baile. Para ganar, el pueblo deberá reconocer a la verdadera amenaza y ejecutarla.",
       "collectionOrder": 1,
       "collection": {
         "id": "collection:grimm",
@@ -2914,7 +2914,7 @@
       "text": {
         "name": "Cenicienta",
         "tagline": "Ceniza, sangre y un zapato de oro: reconoce a la verdadera novia antes de que termine el baile.",
-        "description": "Entre ceniza y una tumba, Cenicienta escucha a las aves que la conducen a un baile de oro y sangre. Un zapato señalará a la novia, pero nadie sabe qué pies ni qué ojos pagarán el precio."
+        "description": "La Madrastra mata cada noche mientras Cenicienta marca a otros jugadores y espera tres noches para conocer su verdadero personaje. Descubre quién roba habilidades antes de que las Hermanastras paguen con sangre por usarlas y mantén con vida a tus aliados hasta el final del baile. Para ganar, el pueblo deberá reconocer a la verdadera amenaza y ejecutarla."
       },
       "difficulty": {},
       "keyCharacterIds": [

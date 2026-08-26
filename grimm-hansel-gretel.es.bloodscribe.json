@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.119",
+  "version": "10.120",
   "locale": "es",
   "name": "Hansel y Gretel",
-  "description": "El hambre empuja a Hansel y Gretel a un bosque donde los guijarros desaparecen y una casa de azúcar mantiene el horno encendido. Antes del amanecer, alguien decidirá quién encuentra el camino y quién alimenta el fuego.",
+  "description": "La Bruja del Horno ceba a dos jugadores cada noche y la tercera marca los mata. Sigue las pistas de Hansel, decide cuándo arriesgar la acusación mortal de Gretel y descubre quién bloquea las habilidades del pueblo. Si no ejecutáis a la Bruja antes de que complete sus marcas, acabaréis alimentando el fuego.",
   "legal": {
     "license": "Basado en Hänsel und Gretel (KHM 15), de los hermanos Grimm. Lore adaptado de traducciones decimonónicas de dominio público.",
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:hansel-y-gretel",
       "name": "Hansel y Gretel",
-      "description": "El hambre empuja a Hansel y Gretel a un bosque donde los guijarros desaparecen y una casa de azúcar mantiene el horno encendido. Antes del amanecer, alguien decidirá quién encuentra el camino y quién alimenta el fuego.",
+      "description": "La Bruja del Horno ceba a dos jugadores cada noche y la tercera marca los mata. Sigue las pistas de Hansel, decide cuándo arriesgar la acusación mortal de Gretel y descubre quién bloquea las habilidades del pueblo. Si no ejecutáis a la Bruja antes de que complete sus marcas, acabaréis alimentando el fuego.",
       "collectionOrder": 2,
       "collection": {
         "id": "collection:grimm",
@@ -4456,7 +4456,7 @@
       "text": {
         "name": "Hansel y Gretel",
         "tagline": "Guijarros, hambre y un horno encendido: encuentra el camino antes de que el bosque te devore.",
-        "description": "El hambre empuja a Hansel y Gretel a un bosque donde los guijarros desaparecen y una casa de azúcar mantiene el horno encendido. Antes del amanecer, alguien decidirá quién encuentra el camino y quién alimenta el fuego."
+        "description": "La Bruja del Horno ceba a dos jugadores cada noche y la tercera marca los mata. Sigue las pistas de Hansel, decide cuándo arriesgar la acusación mortal de Gretel y descubre quién bloquea las habilidades del pueblo. Si no ejecutáis a la Bruja antes de que complete sus marcas, acabaréis alimentando el fuego."
       },
       "difficulty": {},
       "keyCharacterIds": [

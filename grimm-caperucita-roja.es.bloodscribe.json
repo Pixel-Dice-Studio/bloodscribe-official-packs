@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.119",
+  "version": "10.120",
   "locale": "es",
   "name": "Caperucita Roja",
-  "description": "Caperucita abandona el sendero mientras el Lobo llega primero a casa de la Abuela y aprende a vestir con rostros ajenos. Tras las cortinas aguardan tijeras, piedras y una respiración cuyo dueño aún se desconoce.",
+  "description": "El Lobo devora a alguien cada noche: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro.",
   "legal": {
     "license": "Basado en Rothkäppchen (KHM 26), de los hermanos Grimm. Descripción y lore adaptados de la edición alemana de 1812 y de la traducción española de José Sánchez Biedma (1879), ambas de dominio público.",
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:caperucita-roja",
       "name": "Caperucita Roja",
-      "description": "Caperucita abandona el sendero mientras el Lobo llega primero a casa de la Abuela y aprende a vestir con rostros ajenos. Tras las cortinas aguardan tijeras, piedras y una respiración cuyo dueño aún se desconoce.",
+      "description": "El Lobo devora a alguien cada noche: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro.",
       "collectionOrder": 3,
       "collection": {
         "id": "collection:grimm",
@@ -3108,7 +3108,7 @@
       "text": {
         "name": "Caperucita Roja",
         "tagline": "Terciopelo rojo, flores y un vientre lleno de piedras: reconoce al lobo antes de que tome otro rostro.",
-        "description": "Caperucita abandona el sendero mientras el Lobo llega primero a casa de la Abuela y aprende a vestir con rostros ajenos. Tras las cortinas aguardan tijeras, piedras y una respiración cuyo dueño aún se desconoce."
+        "description": "El Lobo devora a alguien cada noche: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro."
       },
       "difficulty": {},
       "keyCharacterIds": [
