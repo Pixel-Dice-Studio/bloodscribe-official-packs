@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.137",
+  "version": "10.143",
   "locale": "es",
   "name": "Cenicienta",
   "description": "La Madrastra mata cada noche mientras Cenicienta marca a otros jugadores y espera tres noches para conocer su verdadero personaje. Descubre quién roba habilidades antes de que las Hermanastras paguen con sangre por usarlas y mantén con vida a tus aliados hasta el final del baile. Para ganar, el pueblo deberá reconocer a la verdadera amenaza y ejecutarla.",
@@ -86,7 +86,8 @@
         "rule:grimm:composition:extended",
         "rule:grimm:information:stepsisters-recognition",
         "rule:grimm:cenicienta-rama-del-avellano",
-        "rule:grimm:cenicienta-baile-de-mascaras"
+        "rule:grimm:cenicienta-baile-de-mascaras",
+        "rule:grimm:game-end:elimination"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -2893,6 +2894,316 @@
       "bookIds": [
         "book:grimm:cenicienta"
       ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:game-end:elimination",
+      "visibility": "public",
+      "ruleKind": "gameEnd",
+      "systemType": "game-end",
+      "categoryId": "rule-category:common:game-end",
+      "category": {
+        "id": "rule-category:common:game-end",
+        "terms": {
+          "singular": "Final de partida",
+          "plural": "Finales de partida"
+        },
+        "description": "Reglas que determinan cuándo termina la partida y quién gana.",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Eliminación de bandos",
+        "ability": "El Bien gana cuando no queda ningún Malvado vivo. El Mal gana cuando no queda ningún Bueno vivo. Los neutrales no cuentan; si ambas condiciones coinciden, gana el Bien."
+      },
+      "rules": {
+        "setup": false,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:elimination:resolve",
+            "tags": [
+              "win-condition",
+              "game-end-policy"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "each"
+            },
+            "conditions": [
+              {
+                "type": "any",
+                "conditions": [
+                  {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "query",
+                        "from": {
+                          "entity": "players"
+                        },
+                        "where": {
+                          "type": "all",
+                          "conditions": [
+                            {
+                              "type": "entryMode",
+                              "values": [
+                                "cast"
+                              ]
+                            },
+                            {
+                              "type": "identity",
+                              "identityMode": "initial",
+                              "facet": "allegiance",
+                              "values": [
+                                "evil"
+                              ]
+                            }
+                          ]
+                        },
+                        "aggregate": {
+                          "type": "exists"
+                        }
+                      },
+                      {
+                        "type": "compare",
+                        "left": {
+                          "type": "query",
+                          "from": {
+                            "entity": "players"
+                          },
+                          "where": {
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "alive",
+                                "value": true
+                              },
+                              {
+                                "type": "entryMode",
+                                "values": [
+                                  "cast"
+                                ]
+                              },
+                              {
+                                "type": "identity",
+                                "identityMode": "base",
+                                "facet": "allegiance",
+                                "values": [
+                                  "evil"
+                                ]
+                              }
+                            ]
+                          },
+                          "aggregate": {
+                            "type": "count"
+                          }
+                        },
+                        "operator": "eq",
+                        "right": 0
+                      }
+                    ]
+                  },
+                  {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "query",
+                        "from": {
+                          "entity": "players"
+                        },
+                        "where": {
+                          "type": "all",
+                          "conditions": [
+                            {
+                              "type": "entryMode",
+                              "values": [
+                                "cast"
+                              ]
+                            },
+                            {
+                              "type": "identity",
+                              "identityMode": "initial",
+                              "facet": "allegiance",
+                              "values": [
+                                "good"
+                              ]
+                            }
+                          ]
+                        },
+                        "aggregate": {
+                          "type": "exists"
+                        }
+                      },
+                      {
+                        "type": "compare",
+                        "left": {
+                          "type": "query",
+                          "from": {
+                            "entity": "players"
+                          },
+                          "where": {
+                            "type": "all",
+                            "conditions": [
+                              {
+                                "type": "alive",
+                                "value": true
+                              },
+                              {
+                                "type": "entryMode",
+                                "values": [
+                                  "cast"
+                                ]
+                              },
+                              {
+                                "type": "identity",
+                                "identityMode": "base",
+                                "facet": "allegiance",
+                                "values": [
+                                  "good"
+                                ]
+                              }
+                            ]
+                          },
+                          "aggregate": {
+                            "type": "count"
+                          }
+                        },
+                        "operator": "eq",
+                        "right": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "condition",
+                  "cases": [
+                    {
+                      "when": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "query",
+                            "from": {
+                              "entity": "players"
+                            },
+                            "where": {
+                              "type": "all",
+                              "conditions": [
+                                {
+                                  "type": "entryMode",
+                                  "values": [
+                                    "cast"
+                                  ]
+                                },
+                                {
+                                  "type": "identity",
+                                  "identityMode": "initial",
+                                  "facet": "allegiance",
+                                  "values": [
+                                    "evil"
+                                  ]
+                                }
+                              ]
+                            },
+                            "aggregate": {
+                              "type": "exists"
+                            }
+                          },
+                          {
+                            "type": "compare",
+                            "left": {
+                              "type": "query",
+                              "from": {
+                                "entity": "players"
+                              },
+                              "where": {
+                                "type": "all",
+                                "conditions": [
+                                  {
+                                    "type": "alive",
+                                    "value": true
+                                  },
+                                  {
+                                    "type": "entryMode",
+                                    "values": [
+                                      "cast"
+                                    ]
+                                  },
+                                  {
+                                    "type": "identity",
+                                    "identityMode": "base",
+                                    "facet": "allegiance",
+                                    "values": [
+                                      "evil"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "aggregate": {
+                                "type": "count"
+                              }
+                            },
+                            "operator": "eq",
+                            "right": 0
+                          }
+                        ]
+                      },
+                      "winner": {
+                        "type": "fixed",
+                        "team": "good"
+                      }
+                    }
+                  ],
+                  "otherwise": {
+                    "type": "fixed",
+                    "team": "evil"
+                  }
+                },
+                "reason": "Uno de los dos bandos ha sido eliminado."
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:elimination:storyteller-execution",
+            "tags": [
+              "loss-condition",
+              "game-end-policy"
+            ],
+            "when": {
+              "window": "execution",
+              "cadence": "each",
+              "trigger": {
+                "type": "event",
+                "event": "storytellerExecution"
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "fixed",
+                  "team": "evil"
+                },
+                "reason": "El Narrador fue ejecutado sin una regla activa que conceda la victoria al bien."
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:cenicienta"
+      ]
     }
   ],
   "tales": [
@@ -2941,7 +3252,7 @@
           "activation": "automatic"
         },
         {
-          "ruleId": "rule:bloodscribe:game-end:standard",
+          "ruleId": "rule:grimm:game-end:elimination",
           "activation": "automatic"
         }
       ],
