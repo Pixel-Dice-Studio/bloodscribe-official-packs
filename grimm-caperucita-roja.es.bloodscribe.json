@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.122",
+  "version": "10.135",
   "locale": "es",
   "name": "Caperucita Roja",
   "description": "El Lobo devora a alguien cada noche: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro.",
