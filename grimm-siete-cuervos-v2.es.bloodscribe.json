@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-siete-cuervos-v2",
   "key": "grimm-siete-cuervos-v2",
-  "version": "10.135",
+  "version": "10.137",
   "locale": "es",
   "name": "Los Siete Cuervos · El rastro de las plumas",
   "description": "Los siete hermanos no están en la mesa: son cuervos y esperan en la montaña de cristal. El Narrador reparte Plumas-pista entre los jugadores; quien conserve alguna no puede usar su habilidad. La Hermana recoge las Plumas noche a noche mientras el Padre las traslada, la Luna falsea los recuentos y el Sol frena la búsqueda. Los Buenos ganan al reunir todas las Plumas; los Malos, si la Hermana muere antes o si termina la séptima noche con el rastro incompleto.",
@@ -92,6 +92,7 @@
         "rule:grimm:siete-cuervos-v2-rastro-de-plumas",
         "rule:grimm:siete-cuervos-v2-pistas-acumuladas",
         "rule:grimm:siete-cuervos-v2-plumas-de-los-muertos",
+        "rule:grimm:game-end:siete-cuervos-v2",
         "rule:grimm:siete-cuervos-v2-deseo-airado",
         "rule:grimm:siete-cuervos-v2-luz-del-alba"
       ],
@@ -1282,164 +1283,6 @@
                 ]
               }
             }
-          },
-          {
-            "mechanicId": "mechanic:grimm:hermana-buscadora:good-victory:1",
-            "tags": [
-              "win-condition"
-            ],
-            "when": {
-              "window": "gameEnd",
-              "cadence": "each"
-            },
-            "conditions": [
-              {
-                "type": "compare",
-                "left": {
-                  "type": "game",
-                  "property": "dayNumber"
-                },
-                "operator": "gte",
-                "right": 1
-              },
-              {
-                "type": "compare",
-                "left": {
-                  "type": "query",
-                  "from": {
-                    "entity": "players"
-                  },
-                  "where": {
-                    "type": "marker",
-                    "markerId": "Pluma",
-                    "active": true
-                  },
-                  "aggregate": {
-                    "type": "exists"
-                  }
-                },
-                "operator": "eq",
-                "right": false
-              }
-            ],
-            "effects": [
-              {
-                "type": "resolveGameEnd",
-                "mode": "immediate",
-                "winner": {
-                  "type": "fixed",
-                  "team": "good"
-                },
-                "precedence": "override",
-                "activation": {
-                  "lifeState": "any",
-                  "abilityState": "any"
-                },
-                "reason": "Se han reunido todas las Plumas del rastro."
-              }
-            ]
-          },
-          {
-            "mechanicId": "mechanic:grimm:hermana-buscadora:evil-victory:1",
-            "tags": [
-              "win-condition"
-            ],
-            "when": {
-              "window": "gameEnd",
-              "cadence": "each"
-            },
-            "conditions": [
-              {
-                "type": "query",
-                "from": {
-                  "entity": "players"
-                },
-                "where": {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "isBinding",
-                      "binding": "actor"
-                    },
-                    {
-                      "type": "alive",
-                      "value": false
-                    }
-                  ]
-                },
-                "aggregate": {
-                  "type": "exists"
-                }
-              },
-              {
-                "type": "query",
-                "from": {
-                  "entity": "players"
-                },
-                "where": {
-                  "type": "marker",
-                  "markerId": "Pluma",
-                  "active": true
-                },
-                "aggregate": {
-                  "type": "exists"
-                }
-              }
-            ],
-            "effects": [
-              {
-                "type": "resolveGameEnd",
-                "mode": "immediate",
-                "winner": {
-                  "type": "fixed",
-                  "team": "evil"
-                },
-                "precedence": "override",
-                "activation": {
-                  "lifeState": "any",
-                  "abilityState": "any"
-                },
-                "reason": "La Hermana ha muerto y el rastro sigue incompleto."
-              }
-            ]
-          },
-          {
-            "mechanicId": "mechanic:grimm:hermana-buscadora:block-standard-end:1",
-            "tags": [
-              "game-end-policy"
-            ],
-            "when": {
-              "window": "gameEnd",
-              "cadence": "each"
-            },
-            "conditions": [
-              {
-                "type": "query",
-                "from": {
-                  "entity": "players"
-                },
-                "where": {
-                  "type": "marker",
-                  "markerId": "Pluma",
-                  "active": true
-                },
-                "aggregate": {
-                  "type": "exists"
-                }
-              }
-            ],
-            "effects": [
-              {
-                "type": "blockGameEnd",
-                "winner": "good",
-                "precedence": "standard",
-                "activation": {
-                  "lifeState": "any",
-                  "abilityState": "any"
-                },
-                "reason": "Quedan Plumas por reunir: el Bien solo gana completando el rastro."
-              }
-            ]
           }
         ]
       },
@@ -9074,57 +8917,6 @@
                 ]
               }
             }
-          },
-          {
-            "mechanicId": "mechanic:grimm:padre-culpa:seventh-night-deadline:1",
-            "tags": [
-              "win-condition"
-            ],
-            "when": {
-              "window": "gameEnd",
-              "cadence": "each"
-            },
-            "conditions": [
-              {
-                "type": "compare",
-                "left": {
-                  "type": "game",
-                  "property": "dayNumber"
-                },
-                "operator": "gte",
-                "right": 7
-              },
-              {
-                "type": "query",
-                "from": {
-                  "entity": "players"
-                },
-                "where": {
-                  "type": "marker",
-                  "markerId": "Pluma",
-                  "active": true
-                },
-                "aggregate": {
-                  "type": "exists"
-                }
-              }
-            ],
-            "effects": [
-              {
-                "type": "resolveGameEnd",
-                "mode": "immediate",
-                "winner": {
-                  "type": "fixed",
-                  "team": "evil"
-                },
-                "precedence": "override",
-                "activation": {
-                  "lifeState": "any",
-                  "abilityState": "any"
-                },
-                "reason": "Terminó la séptima noche y el rastro sigue incompleto."
-              }
-            ]
           }
         ]
       },
@@ -9952,6 +9744,234 @@
     },
     {
       "entityKind": "gameRule",
+      "id": "rule:grimm:game-end:siete-cuervos-v2",
+      "visibility": "public",
+      "ruleKind": "gameEnd",
+      "systemType": "game-end",
+      "categoryId": "rule-category:common:game-end",
+      "category": {
+        "id": "rule-category:common:game-end",
+        "terms": {
+          "singular": "Final de partida",
+          "plural": "Finales de partida"
+        },
+        "description": "Reglas que determinan cuándo termina la partida y quién gana.",
+        "selection": {
+          "maxActive": 1
+        }
+      },
+      "info": {
+        "name": "Final del rastro",
+        "ability": "El Bien gana en cuanto no queda ninguna Pluma en juego. El Mal gana si la Hermana muere con el rastro incompleto o si termina la séptima noche sin reunirlas todas. Ni matar al Padre ni el recuento de jugadores vivos terminan la partida.",
+        "howToRun": "Comprueba el rastro después de cada resolución. Si no queda ninguna Pluma sobre la mesa, gana el Bien de inmediato. Si la Hermana muere y todavía queda alguna, gana el Mal en ese momento. Si empieza el séptimo día con Plumas sin recoger, gana el Mal. Cualquier otra muerte, incluida la del Padre o la de todos los Malos, deja la partida abierta."
+      },
+      "rules": {
+        "wake": {
+          "first": false,
+          "other": false
+        },
+        "setup": false,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:siete-cuervos-v2:final-del-rastro:good",
+            "tags": [
+              "win-condition",
+              "game-end-policy"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "each"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "game",
+                  "property": "dayNumber"
+                },
+                "operator": "gte",
+                "right": 1
+              },
+              {
+                "type": "compare",
+                "left": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "marker",
+                    "markerId": "Pluma",
+                    "active": true
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
+                },
+                "operator": "eq",
+                "right": false
+              }
+            ],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "fixed",
+                  "team": "good"
+                },
+                "reason": "Se han reunido todas las Plumas del rastro."
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:siete-cuervos-v2:final-del-rastro:sister-dead",
+            "tags": [
+              "win-condition",
+              "game-end-policy"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "each"
+            },
+            "conditions": [
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": false
+                    },
+                    {
+                      "type": "identity",
+                      "identityMode": "real",
+                      "facet": "character",
+                      "values": [
+                        "character:grimm:hermana-buscadora"
+                      ]
+                    }
+                  ]
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              },
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "marker",
+                  "markerId": "Pluma",
+                  "active": true
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "fixed",
+                  "team": "evil"
+                },
+                "reason": "La Hermana ha muerto y el rastro sigue incompleto."
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:siete-cuervos-v2:final-del-rastro:seventh-night",
+            "tags": [
+              "win-condition",
+              "game-end-policy"
+            ],
+            "when": {
+              "window": "gameEnd",
+              "cadence": "each"
+            },
+            "conditions": [
+              {
+                "type": "compare",
+                "left": {
+                  "type": "game",
+                  "property": "dayNumber"
+                },
+                "operator": "gte",
+                "right": 7
+              },
+              {
+                "type": "query",
+                "from": {
+                  "entity": "players"
+                },
+                "where": {
+                  "type": "marker",
+                  "markerId": "Pluma",
+                  "active": true
+                },
+                "aggregate": {
+                  "type": "exists"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "fixed",
+                  "team": "evil"
+                },
+                "reason": "Terminó la séptima noche y el rastro sigue incompleto."
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:siete-cuervos-v2:final-del-rastro:storyteller-execution",
+            "tags": [
+              "loss-condition",
+              "game-end-policy"
+            ],
+            "when": {
+              "window": "execution",
+              "cadence": "each",
+              "trigger": {
+                "type": "event",
+                "event": "storytellerExecution"
+              }
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "resolveGameEnd",
+                "mode": "immediate",
+                "winner": {
+                  "type": "fixed",
+                  "team": "evil"
+                },
+                "reason": "El Narrador fue ejecutado y el rastro nunca llegó a completarse."
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:siete-cuervos-v2"
+      ]
+    },
+    {
+      "entityKind": "gameRule",
       "id": "rule:grimm:siete-cuervos-v2-deseo-airado",
       "visibility": "public",
       "ruleKind": "general",
@@ -10240,16 +10260,16 @@
           "activation": "automatic"
         },
         {
+          "ruleId": "rule:grimm:game-end:siete-cuervos-v2",
+          "activation": "automatic"
+        },
+        {
           "ruleId": "rule:grimm:siete-cuervos-v2-luz-del-alba",
           "activation": "setupChoice"
         },
         {
           "ruleId": "rule:grimm:siete-cuervos-v2-deseo-airado",
           "activation": "setupChoice"
-        },
-        {
-          "ruleId": "rule:bloodscribe:game-end:standard",
-          "activation": "automatic"
         }
       ],
       "votingRuleId": "rule:bloodscribe:voting:standard",

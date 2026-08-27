@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.135",
+  "version": "10.137",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "La Bruja del Horno ceba a dos jugadores cada noche y la tercera marca los mata. Sigue las pistas de Hansel, decide cuándo arriesgar la acusación mortal de Gretel y descubre quién bloquea las habilidades del pueblo. Si no ejecutáis a la Bruja antes de que complete sus marcas, acabaréis alimentando el fuego.",
