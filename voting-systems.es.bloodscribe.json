@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "bloodscribe:voting-systems",
   "key": "voting-systems",
-  "version": "10.176",
+  "version": "10.194",
   "locale": "es",
   "name": "Sistemas de votación",
   "description": "Reglas de votación genéricas con distintos flujos, niveles de privacidad, umbrales y formas de resolver empates.",
@@ -260,7 +260,7 @@
       },
       "info": {
         "name": "Jurado secreto",
-        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un jurado secreto de 2, 3, 4 o 5 miembros según la mesa vota simultáneamente desde sus móviles antes del amanecer. Al cerrar, el Narrador revisa el resultado en privado y decide cuándo comunicarlo; las identidades y votos nunca se publican. Los jueces deben seguir vivos, no usan Últimos suspiros y, si muere todo el jurado, gana el mal."
+        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un jurado secreto de 2, 3, 4 o 5 miembros según la mesa vota simultáneamente desde sus móviles durante la Noche Tardía. Al cerrar, el Narrador revisa el resultado en privado y decide cuándo comunicarlo; las identidades y votos nunca se publican. Los jueces deben seguir vivos, no usan Últimos suspiros y, si muere todo el jurado, gana el mal."
       },
       "rules": {
         "setup": false,
@@ -656,7 +656,7 @@
       },
       "info": {
         "name": "Juez único secreto",
-        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un único juez secreto vota desde su móvil antes del amanecer. Al cerrar, el Narrador revisa el resultado en privado y decide cuándo comunicarlo; la identidad y el voto nunca se publican. El juez debe seguir vivo, no usa Últimos suspiros y, si muere, gana el mal."
+        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un único juez secreto vota desde su móvil durante la Noche Tardía. Al cerrar, el Narrador revisa el resultado en privado y decide cuándo comunicarlo; la identidad y el voto nunca se publican. El juez debe seguir vivo, no usa Últimos suspiros y, si muere, gana el mal."
       },
       "rules": {
         "setup": false,

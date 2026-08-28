@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "bloodscribe:voting-systems",
   "key": "voting-systems",
-  "version": "10.176",
+  "version": "10.194",
   "locale": "en",
   "name": "Voting systems",
   "description": "Generic voting rules with different flows, privacy levels, thresholds, and tie resolutions.",
@@ -260,7 +260,7 @@
       },
       "info": {
         "name": "Secret jury",
-        "ability": "Nominations are public and only living nominees reach the ballot. A secret jury of 2, 3, 4, or 5 members depending on table size votes simultaneously on their phones before dawn. At close, the Storyteller reviews the result privately and chooses when to communicate it; identities and votes are never published. Judges must remain alive, do not use Last Breaths, and evil wins if the entire jury dies."
+        "ability": "Nominations are public and only living nominees reach the ballot. A secret jury of 2, 3, 4, or 5 members depending on table size votes simultaneously on their phones during Late Night. At close, the Storyteller reviews the result privately and chooses when to communicate it; identities and votes are never published. Judges must remain alive, do not use Last Breaths, and evil wins if the entire jury dies."
       },
       "rules": {
         "setup": false,
@@ -656,7 +656,7 @@
       },
       "info": {
         "name": "Secret single judge",
-        "ability": "Nominations are public and only living nominees reach the ballot. One secret judge votes on their phone before dawn. At close, the Storyteller reviews the result privately and chooses when to communicate it; the identity and ballot are never published. The judge must remain alive, does not use Last Breaths, and evil wins if the judge dies."
+        "ability": "Nominations are public and only living nominees reach the ballot. One secret judge votes on their phone during Late Night. At close, the Storyteller reviews the result privately and chooses when to communicate it; the identity and ballot are never published. The judge must remain alive, does not use Last Breaths, and evil wins if the judge dies."
       },
       "rules": {
         "setup": false,

@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.176",
+  "version": "10.194",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -973,8 +973,6 @@
               {
                 "type": "restrict",
                 "restrictions": [
-                  "ability",
-                  "wake",
                   "speak",
                   "vote",
                   "nominate"
@@ -3620,6 +3618,7 @@
               {
                 "type": "setPlayerState",
                 "state": "drunk",
+                "informationMayBeFalse": true,
                 "active": true,
                 "excludeInitialTargets": true,
                 "targets": {
