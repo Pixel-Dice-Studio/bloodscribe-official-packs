@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.200",
+  "version": "10.215",
   "locale": "es",
   "name": "Caperucita Roja",
-  "description": "El Lobo devora a alguien cada noche: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro.",
+  "description": "El Lobo devora a alguien cada noche, excepto la primera: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro.",
   "legal": {
     "license": "Basado en Rothkäppchen (KHM 26), de los hermanos Grimm. Descripción y lore adaptados de la edición alemana de 1812 y de la traducción española de José Sánchez Biedma (1879), ambas de dominio público.",
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:caperucita-roja",
       "name": "Caperucita Roja",
-      "description": "El Lobo devora a alguien cada noche: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro.",
+      "description": "El Lobo devora a alguien cada noche, excepto la primera: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro.",
       "collectionOrder": 3,
       "collection": {
         "id": "collection:grimm",
@@ -1060,6 +1060,7 @@
               {
                 "type": "setPlayerState",
                 "state": "poisoned",
+                "polarity": "negative",
                 "informationMayBeFalse": true,
                 "active": true,
                 "ownership": "independent",
@@ -2072,14 +2073,13 @@
       "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-89 -89 674 674\"><defs><clipPath id=\"oelrd46\"><path clip-rule=\"evenodd\" d=\"M241 35l12 2 17 9 31 22 23 23 24 11 26 19 15 15 17 25 6 18-2 24 58 39 14 14 0 9-9 15-22 23-10 7-9 3-4 8-15 12-22 2-36-15-27-4-4 7 1 10 14 25 4 15 0 17-5 16-7 1-4-10-3-2-7 29-16 24-28 22-34 15-15 1-9-15-24-20-24-12-34-13-27-16-20-20-12-24-3 3-2 15-3 2-5-1-9-11-8-16-5-17-2-25 3-24 7-23 17-32-9 3-9 7-4 0-3-3 0-9 11-28 13-19 24-25 18-12 0-3-18 0-2-2 2-8 21-19 17-9 14-4-14-41 0-21 8-5 31 5 69 28 1-28 2-5 5-3Z\"/></clipPath></defs><g clip-path=\"url(#oelrd46)\"><path data-layer=\"6\" fill=\"#f1e5d5\" fill-rule=\"evenodd\" d=\"M241 35l12 2 17 9 31 22 23 23 24 11 26 19 15 15 17 25 6 18-2 24 58 39 14 14 0 9-9 15-22 23-10 7-9 3-4 8-15 12-22 2-36-15-27-4-4 7 1 10 14 25 4 15 0 17-5 16-7 1-4-10-3-2-7 29-16 24-28 22-34 15-15 1-9-15-24-20-24-12-34-13-27-16-20-20-12-24-3 3-2 15-3 2-5-1-9-11-8-16-5-17-2-25 3-24 7-23 17-32-9 3-9 7-4 0-3-3 0-9 11-28 13-19 24-25 18-12 0-3-18 0-2-2 2-8 21-19 17-9 14-4-14-41 0-21 8-5 31 5 69 28 1-28 2-5 5-3Z\"/><path data-layer=\"5\" fill=\"#ecd8bf\" fill-rule=\"evenodd\" d=\"M248 201l31 0 22 8 23 15 21 9 15 3 23-1 20 6 29 18 3 3 3 13 13 12 0 4-6 7-15 8-14 1-10-2-23-11-28-26-11-7-9-4-16 0-5 2-14 17-3 14 4 6 15 0 3-2 46 2 23 7 14 8 15 2 2 5-8 7-19 2-42-17-11-2-31 2-14 7-8 9-5 13 0 13-5 2-17-21-7-18 1-20 8-12 10-5 1-3-15-7-8 0-2-2-22 1-17 7-5-1 0-8 9-19 15-13 9-3 0-2-7-3-10-1-1-6 14-11 16-5Z\"/><path data-layer=\"4\" fill=\"#d98b33\" fill-rule=\"evenodd\" d=\"M328 184l5 1 18 13 4 6-1 6-11 0-6-3-9-12 0-10Z\"/><path data-layer=\"3\" fill=\"#3f434c\" fill-rule=\"evenodd\" d=\"M245 45l4 0 17 9 33 24 0 4-31-4-23 0-2-4 0-27 2-1ZM135 49l23 3 42 15 51 23 21 16 1-2-6-8-9-7 1-4 10 0 37 7 41 19 24 18 24 29 9 24-1 12-7 9 71 49 0 3-18 0-9 3-4 5-5 0-17-13-20-10-12-3-38-2-21-9-35-20-16-4-17 0-20 6-16 12 1 2 18 4 1 5-16 8-9 9-8 14-1 14-5 4-8 0-7-11-2-6 1-20-14 2-17 9-4 0 0-10 7-17 17-19-32-1-1-6 51-41 2-4-22-17-17-24-17-40-4-17 0-7 2-1ZM153 69l-1 2 15 15 14 20 1 10 7 11 13 11 10 4 5-1 3-7 6-4 12 0-16-11-14-16-20-17-34-17ZM141 114l6 1 12 21 20 19 0 5-50 43 0 5 7 4 0 4-16 20-10 21-6 29 2 17 4 0 9-10 6-1 4 18 10 18 18 17 47 28 23 22 11 19 5 18 0 20-4 15 3 0 9-9 10-15 6-16 2-20 4-1 4 7 4 0 4-7 3-20-4-18-5-8 0-22 12-13 12-7 13-2 1 20 14 24 4 16-1 13-4 0-9-10-5-1-1 23-6 21-7 12-16 17-17 12-18 9-22 6-10-15-22-18-23-12-32-12-33-19-21-24-8-20-2-12-4 0-5 7-5 15-6 0-6-12-5-18 0-38 11-36 14-24 9-10 0-4-16 1-11 6-4 0 0-7 10-20 16-21 28-25 23-13-2-4-9-3-14-1 0-4 14-11 12-6 13-3ZM307 165l1 3 11 8 3 18 4 8 9 9 10 4 20-2 8 8 2 0-2-11 7-3 4-6-1-12-6-8 2 17-2 4-8 1-43-30-18-8Z\"/><path data-layer=\"2\" fill=\"#52291a\" fill-rule=\"evenodd\" d=\"M144 214l11 0 1 4-8 11-5 13 0 21 5 1 6-5 20-8 2 1 1 14 5 11 13 12 15-10 13-5 23-1 10 2 0 6-4 3-6 12-1 20 9 21 19 23 5 10 3 14-2 16-5 0-11-11-3 2 2 9-1 24-5 15-3 4-3 0-8-32-14-22-26-23-46-28-15-16-8-19-1-19-4-2-13 10-5 0 1-20 6-20 13-23 14-14Z\"/><path data-layer=\"1\" fill=\"#222328\" fill-rule=\"evenodd\" d=\"M156 75l7 1 21 14 34 33 0 6-5 7-6 0-9-5-16-16-11-19-15-17 0-3Z\"/><path data-layer=\"0\" fill=\"#0a0a09\" fill-rule=\"evenodd\" d=\"M241 35l12 2 17 9 31 22 23 23 24 11 26 19 15 15 17 25 6 18-2 24 58 39 14 14 0 9-9 15-22 23-10 7-9 3-4 8-15 12-22 2-36-15-27-4-4 7 1 10 14 25 4 15 0 17-5 16-7 1-4-10-3-2-7 29-16 24-28 22-34 15-15 1-9-15-24-20-24-12-34-13-27-16-20-20-12-24-3 3-2 15-3 2-5-1-9-11-8-16-5-17-2-25 3-24 7-23 17-32-9 3-9 7-4 0-3-3 0-9 11-28 13-19 24-25 18-12 0-3-18 0-2-2 2-8 21-19 17-9 14-4-14-41 0-21 8-5 31 5 69 28 1-28 2-5 5-3ZM247 46l-3 2 0 25 2 4 23 0 23 4 6 0 0-2-11-9-39-24ZM137 50l-3 2 2 15 19 47 17 24 23 18-3 5-51 41 1 4 6 1 26 0 0 3-17 18-7 17 0 8 19-9 16-2-1 20 9 17 6 0 5-4 0-3 3 1 12-6 12-2 27 2 15 7 0 4-10 5-8 11-2 20 9 21 15 18 3-2 0 8 5 8 4 18-3 22-6 8-4-1-4-7-2 1-2 20-6 16-10 15-9 9-5 0 4-17 0-18-5-18-11-19-23-22-47-28-18-17-10-18-4-18-4 1-11 11-5-3-1-17 6-29 10-21 16-20-1-3-6-3 0-7 50-43 0-3-20-19-14-22-27 10-14 11 0 2 23 4 2 6-14 7-24 18-22 24-15 25-2 10 22-8 7 0 3 5-20 28-10 23-6 28 2 34 11 26 3-1 3-11 6-10 3-2 4 1 2 12 8 20 21 24 33 19 32 12 23 12 22 18 10 15 15-4 23-11 17-12 12-12 9-13 6-15 3-33 7 1 9 10 3-1-1-17-3-9-14-24-1-20-17 5-18 17 5-14 8-9 21-9 28 0 19 5 19 10 13 4 17-2 8-7-2-3-15-2-14-8-23-7-12-2-52 2-4-6 0-8 7-15 10-10 10-3 18 3 15 9 12 13 5 2 4 6 10 7 16 8 20 3 17-6 10-10-13-14-4-14 11-7 22-2-71-49 0-4 7-7 1-10-9-24-24-29-24-18-35-17-21-6-22-3-8 0-1 2 15 15 1 4-3 1-17-14-28-14-54-22-35-8ZM151 68l13 3 25 14 20 17 14 16 17 12-1 2-12-1-4 2-7 10-5 0-13-6-15-16-2-11 12 15 15 10 5-1 4-10-29-29-26-18-6 0-6-6 1-2ZM306 163l21 9 40 29 7 1 4-5 0-7-4-11 7 4 4 8-1 13-3 4-7 3 1 12-11-9-7 2-19-2-13-11-5-11-1-13-14-12 1-3ZM330 185l-2 1 1 8 9 12 6 3 10-1-1-6-3-3-20-13ZM254 201l19 0-19 1ZM146 215l-15 15-13 23-6 20-1 18 3 0 13-10 6 2 1 19 8 19 15 16 46 28 26 23 14 22 8 32 4-4 6-21-2-27 2-2 5 1 9 10 4-1 1-5-3-22-7-13-17-20-9-21 1-22 4-9 6-6 0-4-10-2-21 1-13 5-11 9-6 1-13-12-5-11-1-14-8 1-18 11-7-1 0-23 5-13 8-11-1-2-7 0ZM220 217l0 6-2-1 2-4ZM328 264l-2 1 0 8 3 11 3 0 8-12-1-5-10-3ZM318 266l-11 12-2 5 1 7 18-3-3-20-2-1ZM346 273l-6 6-3 7 25 4 4 0 0-2-19-15Z\"/><path data-layer=\"0\" data-line=\"\" fill=\"#0a0a09\" fill-rule=\"evenodd\" d=\"M241 35C241 35 248 35 253 37C258 39 262 41 270 46C278 51 292 61 301 68C310 76 316 85 324 91C332 97 340 97 348 102C356 107 367 115 374 121C381 127 384 129 389 136C394 143 402 154 406 161C410 168 411 174 412 179C413 184 413 189 412 193C412 197 407 198 409 202C412 206 417 209 427 216C437 223 460 237 468 242C476 247 474 246 476 248C478 250 481 253 482 256C483 259 484 261 482 265C481 269 478 274 473 280C468 286 456 298 451 303C446 308 444 308 441 310C438 312 434 311 432 313C430 315 431 318 428 321C425 324 417 331 413 333C409 335 410 335 406 335C402 335 396 336 391 335C386 334 384 334 378 331C372 329 362 323 355 320C348 318 342 317 337 316C332 315 329 315 327 316C325 317 324 320 324 323C324 326 323 327 325 333C328 339 336 351 339 358C342 365 342 368 343 373C344 378 344 385 343 390C342 396 339 403 338 406C337 409 336 408 335 408C334 408 332 409 331 407C330 405 328 399 327 397C326 395 323 393 323 393C323 393 323 403 322 408C321 413 321 417 317 424C314 431 308 440 301 448C294 456 283 464 273 470C263 476 246 482 239 485C232 488 233 487 230 487C228 487 227 489 224 486C222 483 218 475 215 471C212 467 208 463 204 460C200 457 197 455 191 451C185 448 177 443 167 439C157 435 143 431 133 426C123 421 114 416 106 410C98 404 91 396 86 390C81 384 79 379 77 374C75 370 74 363 74 363C74 363 72 366 71 369C70 373 70 381 69 384C68 387 68 386 67 386C66 386 64 387 61 385C59 383 55 379 52 374C49 370 46 364 44 358C42 353 40 348 39 341C38 334 37 324 37 316C37 308 38 300 40 292C42 284 44 277 47 269C50 262 55 253 58 247C61 242 66 236 66 236C66 236 58 238 55 240C52 242 48 246 46 247C44 248 42 247 41 247C40 247 39 247 39 245C39 243 37 241 39 235C41 229 46 215 50 207C54 199 57 195 63 188C69 181 80 170 87 163C95 157 108 149 108 149C108 149 90 149 86 148C82 147 85 144 85 142C85 140 83 142 87 138C91 134 102 124 108 119C114 114 120 112 125 110C130 108 140 106 140 106C140 106 135 95 132 88C130 81 126 72 125 65C124 58 124 48 125 44C126 40 130 40 133 39C136 38 137 38 142 39C147 40 154 41 164 44C174 47 192 54 204 59C216 64 234 73 234 73C234 73 234 50 234 44C234 38 235 40 236 39C237 38 240 37 241 36C242 35 241 35 241 35ZM245 46C245 47 243 46 243 51C243 56 245 78 245 78C245 78 268 77 277 78C286 79 295 82 299 83C303 84 301 83 301 83C301 83 304 84 301 81C298 78 289 71 282 66C275 61 263 53 257 50C251 47 248 47 246 46C244 45 246 45 245 46ZM137 49C136 49 134 47 134 50C134 53 133 58 136 68C139 78 147 100 153 111C159 122 165 130 170 136C175 142 177 144 181 147C185 150 196 156 196 156C196 156 139 204 139 204C139 204 140 207 146 207C152 208 175 207 175 207C175 207 177 208 175 209C174 211 169 212 166 216C163 220 158 226 155 231C152 236 151 240 150 244C149 248 149 254 149 254C149 254 164 246 170 244C176 242 184 241 184 241C184 241 183 258 184 263C185 268 186 270 188 273C190 276 195 281 195 281C195 281 205 274 210 271C215 269 220 267 226 266C232 265 240 265 248 266C256 267 273 274 273 274C273 274 273 277 272 278C271 279 269 278 266 280C264 282 259 286 257 289C255 292 254 294 253 298C252 302 251 306 252 311C253 317 254 323 259 331C264 339 276 351 280 357C284 363 283 361 284 365C285 369 287 374 288 379C289 384 288 393 288 397C288 402 287 403 286 406C285 409 284 412 283 413C282 415 280 417 278 415C276 414 269 404 269 404C269 404 270 416 269 422C268 428 267 433 264 439C261 445 254 455 251 460C248 465 246 466 244 467C242 469 239 469 239 469C239 469 238 467 238 464C239 461 241 457 242 452C243 447 243 439 242 432C241 425 238 417 235 410C232 404 230 399 224 393C219 387 214 381 202 373C191 365 166 352 155 345C145 338 143 335 139 330C135 325 131 320 129 313C127 307 125 291 125 291C125 291 118 296 115 298C113 300 112 304 110 305C108 306 106 309 105 304C104 299 103 285 104 277C105 269 107 261 110 254C113 247 116 241 120 234C125 227 137 213 137 213C137 213 129 210 127 208C126 206 122 208 128 202C134 196 155 178 161 173C167 168 160 175 163 173C166 171 174 161 177 159C180 157 179 159 179 159C179 159 182 160 179 157C176 154 166 146 160 139C154 132 149 119 145 115C141 111 142 115 137 116C133 118 124 120 118 124C112 128 100 138 100 138C100 138 111 138 115 139C119 140 123 141 125 142C127 143 128 143 128 144C129 145 131 146 128 148C125 150 118 152 112 156C106 160 100 164 93 170C86 176 77 186 70 194C63 203 57 214 53 221C50 228 49 234 49 234C49 234 54 231 57 229C60 228 65 226 69 225C73 224 77 224 79 224C81 224 81 224 82 225C83 226 86 223 83 228C80 233 69 245 64 255C59 265 54 278 51 286C48 294 48 296 47 305C47 314 47 330 48 339C49 348 52 353 54 358C56 363 60 368 61 370C63 372 63 370 63 370C63 370 64 363 65 359C66 355 69 351 71 348C73 346 75 345 76 344C77 344 78 343 79 345C80 347 80 353 81 358C82 363 85 370 87 374C89 379 91 381 94 385C97 389 99 392 105 397C111 402 113 405 128 413C143 421 183 437 196 443C210 450 205 448 209 452C214 456 220 462 223 466C226 470 226 476 229 477C232 478 237 476 243 474C249 472 258 468 265 464C272 460 277 457 283 452C289 447 295 442 299 436C303 431 307 424 309 419C311 414 312 414 313 407C314 400 315 377 315 377C315 377 319 377 320 377C322 378 322 378 324 380C326 382 332 391 332 391C332 391 334 393 334 389C334 385 334 375 333 369C332 363 329 358 326 353C324 348 320 345 318 341C316 337 316 334 315 331C315 328 315 324 315 321C315 319 317 316 317 316C317 316 305 317 299 321C293 325 281 338 281 338C281 338 284 328 286 324C288 320 290 319 294 316C298 314 302 311 309 309C316 308 327 306 336 307C345 308 353 310 362 313C371 316 383 324 390 326C397 328 402 327 406 326C410 325 413 324 415 322C418 320 421 315 421 315C421 315 404 312 398 310C392 308 393 306 386 303C379 301 366 297 356 295C346 294 335 294 326 294C317 294 305 297 300 297C295 297 297 296 297 293C297 290 297 284 298 280C299 276 301 272 303 269C305 266 308 262 311 260C314 258 316 257 320 256C324 255 330 256 333 256C336 256 335 256 339 258C343 260 351 265 357 269C363 274 368 280 373 285C378 290 384 294 389 297C394 300 398 303 404 304C410 306 419 307 425 306C431 306 435 304 439 301C444 298 452 289 452 289C452 289 441 280 438 276C435 273 435 271 435 268C435 265 435 262 436 260C437 258 440 257 442 256C444 255 446 254 450 254C454 254 468 254 468 254C468 254 407 213 395 204C383 195 394 202 395 201C396 200 400 198 401 196C402 194 403 193 403 190C403 187 403 181 402 176C401 171 399 168 396 162C393 156 387 148 382 142C377 136 373 132 367 127C361 122 358 119 348 113C338 108 322 99 309 94C296 90 281 87 272 86C263 85 257 87 257 87C257 87 268 96 271 99C274 102 275 104 275 106C276 108 274 109 274 109C274 109 264 100 257 95C250 91 246 88 232 82C218 76 187 63 171 57C155 52 144 50 138 49C132 48 138 49 137 49ZM150 68C150 68 160 69 166 72C172 75 181 80 187 84C193 88 194 88 200 94C207 100 219 115 226 121C233 127 241 131 241 131C241 131 230 130 226 131C223 132 222 134 220 136C219 138 219 142 217 143C215 144 209 142 206 141C203 140 200 139 197 136C194 133 189 129 186 125C183 121 181 116 180 114C179 112 181 112 181 112C181 112 194 126 199 130C204 134 208 135 210 136C212 137 211 138 212 136C213 134 222 132 218 125C214 118 197 103 188 95C180 88 173 84 167 80C161 76 155 75 152 73C149 71 150 70 150 69C150 68 150 68 150 68ZM304 163C304 163 311 164 315 166C319 168 320 167 328 173C337 179 358 196 366 201C374 206 373 203 375 202C377 202 378 200 378 198C379 196 379 192 378 189C377 186 373 178 373 178C373 178 378 180 380 182C382 184 385 188 385 192C386 196 384 202 383 205C382 208 379 209 377 210C375 211 372 210 372 210C372 210 376 223 376 223C376 223 373 223 371 221C369 219 366 214 363 213C360 212 359 216 355 216C351 216 345 216 341 215C337 214 336 213 333 211C331 209 328 207 326 204C324 201 321 196 320 191C319 187 322 181 319 177C317 173 308 169 305 167C303 165 304 165 304 164C304 163 304 163 304 163ZM328 183C328 183 327 186 327 188C327 190 328 192 329 195C331 198 333 203 336 205C339 208 344 209 347 210C350 211 355 209 355 209C355 209 357 204 352 200C348 196 332 187 328 184C324 181 328 183 328 183ZM145 215C143 217 138 221 133 227C129 233 122 246 118 253C115 261 113 265 112 272C111 279 111 293 111 293C111 293 117 287 120 285C123 283 126 282 128 281C130 280 132 281 132 281C132 281 132 293 133 298C134 303 134 307 137 312C140 318 145 326 150 331C155 337 159 339 168 345C178 351 197 361 207 368C217 375 223 382 228 387C233 392 234 395 237 399C240 403 242 408 244 413C246 418 248 426 249 431C250 437 249 446 249 446C249 446 250 448 252 444C254 440 259 431 260 424C262 417 261 406 261 400C261 394 259 390 259 390C259 390 262 387 264 388C266 389 271 393 273 395C275 397 277 402 277 402C277 402 280 398 280 394C280 390 280 382 279 377C278 372 280 373 275 366C271 359 257 344 252 336C247 328 245 323 244 316C243 309 244 300 245 295C246 290 247 289 249 286C251 283 257 277 257 277C257 277 253 274 247 274C242 274 230 274 224 275C218 276 213 279 209 281C205 284 201 289 198 290C196 292 196 291 194 290C192 289 190 288 188 286C186 284 182 279 180 276C178 273 177 270 176 266C175 262 175 252 175 252C175 252 167 254 162 256C158 258 151 264 148 265C145 267 144 266 143 265C142 264 141 266 141 261C141 257 142 244 143 238C145 232 148 227 150 223C152 220 155 218 156 217C157 216 156 215 156 215C156 215 148 215 146 215C144 215 147 213 145 215ZM326 263C326 263 325 266 325 270C326 274 329 287 329 287C329 287 330 288 332 285C334 282 342 268 342 268C342 268 337 265 334 264C332 263 328 263 327 263C326 263 326 263 326 263ZM319 265C318 265 318 264 316 266C314 268 310 272 308 275C306 278 305 282 304 284C303 287 304 290 304 290C304 290 325 288 325 288C325 288 321 269 320 265C319 261 320 265 319 265ZM347 271C347 271 342 275 340 278C338 281 335 288 335 288C335 288 342 287 348 288C354 289 370 292 370 292C370 292 360 281 356 278C352 275 349 273 347 272C346 271 347 271 347 271Z\"/></g></svg>",
       "info": {
         "name": "Lobo",
-        "ability": "Cada noche eliges a 1 jugador y decides Devorarlo o Disfrazarte. Al Devorarlo, queda vivo pero Intoxicado; si ya había alguien Devorado, ese jugador muere. Al Disfrazarte, el jugador Devorado muere y te disfrazas de él; si es Abuela, el Mal gana. Al morir, el jugador Devorado queda libre.",
+        "ability": "Cada noche, excepto la primera, eliges a 1 jugador y decides Devorarlo o Disfrazarte. Al Devorarlo, queda vivo pero Intoxicado; si ya había alguien Devorado, ese jugador muere. Al Disfrazarte, el jugador Devorado muere y te disfrazas de él; si es Abuela, el Mal gana. Al morir, el jugador Devorado queda libre.",
         "lore": "Bestia astuta que saluda con cortesía, pregunta por el destino de Caperucita y calcula que la niña será mejor bocado que la anciana. La aparta con flores, corre derecho a la casa, imita la voz de la nieta, traga a la Abuela y ocupa su cama con cofia y vestidos. Su hambre termina bajo el peso de las piedras, pero el cuento recuerda que otro lobo acecha después."
       },
       "rules": {
         "wake": {
-          "first": true,
+          "first": false,
           "other": true,
-          "firstOrder": 800,
           "otherOrder": 600
         },
         "setup": false,
@@ -2114,17 +2114,6 @@
             "when": {
               "window": "night",
               "occurrence": {
-                "type": "exact",
-                "value": 1
-              }
-            },
-            "audience": "storyteller",
-            "body": "El Lobo elige Devorar o Disfrazarse y señala un jugador. Devorar deja al objetivo Devorado e Intoxicado; Disfrazarse mata al Devorado y registra al Lobo como su personaje. Si era Abuela, el Mal gana."
-          },
-          {
-            "when": {
-              "window": "night",
-              "occurrence": {
                 "type": "range",
                 "from": 2
               }
@@ -2145,7 +2134,7 @@
             "when": {
               "window": "night",
               "cadence": "each",
-              "startsAt": 1
+              "startsAt": 2
             },
             "input": {
               "kind": "players",
@@ -2546,6 +2535,7 @@
               {
                 "type": "setPlayerState",
                 "state": "poisoned",
+                "polarity": "negative",
                 "informationMayBeFalse": true,
                 "active": true,
                 "ownership": "independent",
@@ -3026,6 +3016,7 @@
               {
                 "type": "setPlayerState",
                 "state": "poisoned",
+                "polarity": "negative",
                 "informationMayBeFalse": true,
                 "active": true,
                 "ownership": "independent",
@@ -3561,6 +3552,13 @@
             "value": "Es el Niño",
             "label": "Es el Niño",
             "duration": "game"
+          },
+          {
+            "id": "disfrazado",
+            "kind": "state",
+            "value": "disguised",
+            "label": "Disfrazado",
+            "duration": "game"
           }
         ],
         "cues": [
@@ -3839,6 +3837,7 @@
               {
                 "type": "setPlayerState",
                 "state": "poisoned",
+                "polarity": "positive",
                 "informationMayBeFalse": true,
                 "active": false,
                 "targets": {
@@ -4693,7 +4692,7 @@
       "text": {
         "name": "Caperucita Roja",
         "tagline": "Terciopelo rojo, flores y un vientre lleno de piedras: reconoce al lobo antes de que tome otro rostro.",
-        "description": "El Lobo devora a alguien cada noche: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro."
+        "description": "El Lobo devora a alguien cada noche, excepto la primera: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro."
       },
       "difficulty": {},
       "keyCharacterIds": [
@@ -4730,7 +4729,6 @@
           "character:grimm:florista",
           "character:grimm:cazador-caperucita",
           "character:grimm:perro",
-          "character:grimm:lobo",
           "character:grimm:madre",
           "character:grimm:caperucita-roja"
         ],

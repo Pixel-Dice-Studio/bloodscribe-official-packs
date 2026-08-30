@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.200",
+  "version": "10.215",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "The Oven Witch fattens two players each night, and the third mark kills them. Follow Hansel's clues, decide when to risk Gretel's deadly accusation, and discover who is blocking the village's abilities. If you do not execute the Witch before she completes her marks, you will end up feeding the fire.",
@@ -1263,6 +1263,7 @@
               {
                 "type": "setPlayerState",
                 "state": "plagued",
+                "polarity": "negative",
                 "targets": {
                   "type": "binding",
                   "binding": "actor"
@@ -1502,6 +1503,7 @@
               {
                 "type": "setPlayerState",
                 "state": "plagued",
+                "polarity": "negative",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"
@@ -2049,6 +2051,7 @@
               {
                 "type": "setPlayerState",
                 "state": "plagued",
+                "polarity": "negative",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"

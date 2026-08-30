@@ -1,0 +1,742 @@
+{
+  "schemaVersion": "bloodscribe-3.1",
+  "id": "bloodscribe:setup-rules",
+  "key": "setup-rules",
+  "version": "10.215",
+  "locale": "en",
+  "name": "Setup rules",
+  "description": "Generic optional variants for setting up any tale.",
+  "legal": {
+    "license": "Check the content holders' terms.",
+    "disclaimer": "Declarative content pack. It does not execute remote code."
+  },
+  "links": [],
+  "books": [],
+  "teams": [],
+  "characters": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:table-center",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Setup",
+          "plural": "Setup rules"
+        },
+        "description": "Optional rules that modify any tale's setup."
+      },
+      "info": {
+        "name": "Table center",
+        "ability": "Based on player count, the Storyteller leaves visible tale characters that are not in play.",
+        "howToRun": "After closing the bag, leave 4 characters in the center with 7 players, 3 with 8, 2 with 9 and 1 with 10. Leave none at other player counts."
+      },
+      "rules": {
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:table-center:configure",
+            "tags": [
+              "setup",
+              "table-character-zone"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "configureTableCharacterZone",
+                    "zoneId": "zone:bloodscribe:table-center",
+                    "label": {
+                      "es": "Centro de la mesa",
+                      "en": "Table center"
+                    },
+                    "visibility": "public",
+                    "count": {
+                      "type": "byPlayerCount",
+                      "values": {
+                        "7": 4,
+                        "8": 3,
+                        "9": 2,
+                        "10": 1
+                      },
+                      "default": 0
+                    },
+                    "fill": {
+                      "type": "storytellerChoice",
+                      "candidates": {
+                        "type": "query",
+                        "from": {
+                          "entity": "characters"
+                        },
+                        "where": {
+                          "type": "inPlay",
+                          "value": false
+                        },
+                        "aggregate": {
+                          "type": "collect"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:evil-core-learns-bluffs",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Setup",
+          "plural": "Setup rules"
+        },
+        "description": "Optional rules that modify any tale's setup."
+      },
+      "activationTags": [
+        "startingInformation:mainEvilBluffs"
+      ],
+      "info": {
+        "name": "Bluffs for evil",
+        "ability": "On the first night, each evil-aligned main character learns 3 characters that are not in play.",
+        "howToRun": "During setup, choose 3 good characters that are not in play. On the first night, wake each main evil character separately and show them the three bluffs."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 235
+        },
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:evil-core-learns-bluffs:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "object",
+                  "entries": {
+                    "bluffs": {
+                      "type": "setup",
+                      "property": "mainEvilBluffCharacterIds"
+                    }
+                  }
+                },
+                "presentation": {
+                  "kind": "structured",
+                  "title": "Bluffs prepared during setup",
+                  "fields": [
+                    {
+                      "key": "bluffs",
+                      "label": "Characters not in play",
+                      "kind": "characters",
+                      "required": true,
+                      "min": 3,
+                      "max": 3
+                    }
+                  ]
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Wake each main evil character separately."
+                ],
+                "communicate": [
+                  "Show them the three out-of-play characters prepared as bluffs."
+                ],
+                "checks": [
+                  "Check that you are showing the bluffs chosen during setup."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:evil-supports-learn-main",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Setup",
+          "plural": "Setup rules"
+        },
+        "description": "Optional rules that modify any tale's setup."
+      },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
+      "info": {
+        "name": "Evil supports recognize each other",
+        "ability": "On the first night, evil support characters recognize each other and learn the main evil character or characters.",
+        "howToRun": "Wake all evil support characters together. Show them the main evil character or characters, then put them back to sleep."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 180
+        },
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:evil-supports-learn-main:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "role",
+                        "values": [
+                          "core"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "This is the main evil character",
+                  "emptyLabel": "There is no main evil character to show"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "support"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "shared"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Wake all evil support characters together."
+                ],
+                "communicate": [
+                  "Point to the main evil character or characters."
+                ],
+                "checks": [
+                  "Check that only this rule's recipients have their eyes open."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:evil-core-learns-supports",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Setup",
+          "plural": "Setup rules"
+        },
+        "description": "Optional rules that modify any tale's setup."
+      },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
+      "info": {
+        "name": "Main evil learns its supports",
+        "ability": "On the first night, each main evil character learns their evil support characters.",
+        "howToRun": "Wake each main evil character separately, show them all of their evil supports, then put them back to sleep."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 230
+        },
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:evil-core-learns-supports:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "role",
+                        "values": [
+                          "support"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "These are your evil supports",
+                  "emptyLabel": "There are no evil supports to show"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Wake each main evil character separately."
+                ],
+                "communicate": [
+                  "Point to all of their evil support characters."
+                ],
+                "checks": [
+                  "Check that only the current recipient has their eyes open."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:evil-supports-learn-bluffs",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Setup",
+          "plural": "Setup rules"
+        },
+        "description": "Optional rules that modify any tale's setup."
+      },
+      "activationTags": [
+        "startingInformation:mainEvilBluffs"
+      ],
+      "info": {
+        "name": "Shared bluffs",
+        "ability": "On the first night, each evil support character learns the 3 characters prepared as bluffs.",
+        "howToRun": "Combine it with Bluffs for evil to inform all evil characters. Wake each evil support character separately and show them the three bluffs."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 236
+        },
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:evil-supports-learn-bluffs:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "object",
+                  "entries": {
+                    "bluffs": {
+                      "type": "setup",
+                      "property": "mainEvilBluffCharacterIds"
+                    }
+                  }
+                },
+                "presentation": {
+                  "kind": "structured",
+                  "title": "Bluffs prepared during setup",
+                  "fields": [
+                    {
+                      "key": "bluffs",
+                      "label": "Characters not in play",
+                      "kind": "characters",
+                      "required": true,
+                      "min": 3,
+                      "max": 3
+                    }
+                  ]
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "support"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Wake each evil support character separately."
+                ],
+                "communicate": [
+                  "Show them the three out-of-play characters prepared as bluffs."
+                ],
+                "checks": [
+                  "Check that you are showing the bluffs chosen during setup."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:secret-table-center",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Setup",
+          "plural": "Setup rules"
+        },
+        "description": "Optional rules that modify any tale's setup."
+      },
+      "info": {
+        "name": "Secret center",
+        "ability": "Based on player count, the Storyteller sets aside out-of-play tale characters that only they can see.",
+        "howToRun": "After closing the bag, secretly set aside 4 characters with 7 players, 3 with 8, 2 with 9 and 1 with 10. Set aside none at other player counts."
+      },
+      "rules": {
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:secret-table-center:configure",
+            "tags": [
+              "setup",
+              "table-character-zone"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "configureTableCharacterZone",
+                    "zoneId": "zone:bloodscribe:secret-table-center",
+                    "label": {
+                      "es": "Centro secreto",
+                      "en": "Secret center"
+                    },
+                    "visibility": "storyteller",
+                    "count": {
+                      "type": "byPlayerCount",
+                      "values": {
+                        "7": 4,
+                        "8": 3,
+                        "9": 2,
+                        "10": 1
+                      },
+                      "default": 0
+                    },
+                    "fill": {
+                      "type": "storytellerChoice",
+                      "candidates": {
+                        "type": "query",
+                        "from": {
+                          "entity": "characters"
+                        },
+                        "where": {
+                          "type": "inPlay",
+                          "value": false
+                        },
+                        "aggregate": {
+                          "type": "collect"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    }
+  ],
+  "tales": []
+}

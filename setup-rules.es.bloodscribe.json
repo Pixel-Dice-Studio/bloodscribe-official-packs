@@ -1,0 +1,742 @@
+{
+  "schemaVersion": "bloodscribe-3.1",
+  "id": "bloodscribe:setup-rules",
+  "key": "setup-rules",
+  "version": "10.215",
+  "locale": "es",
+  "name": "Reglas de preparación",
+  "description": "Variantes genéricas y opcionales para preparar cualquier cuento.",
+  "legal": {
+    "license": "Consulta las condiciones de los titulares del contenido.",
+    "disclaimer": "Pack de contenido declarativo. No ejecuta codigo remoto."
+  },
+  "links": [],
+  "books": [],
+  "teams": [],
+  "characters": [],
+  "gameRules": [
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:table-center",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Preparación",
+          "plural": "Preparaciones"
+        },
+        "description": "Reglas opcionales que modifican la preparación de cualquier cuento."
+      },
+      "info": {
+        "name": "Centro de la mesa",
+        "ability": "Según el número de jugadores, el Narrador deja visibles personajes del cuento que no están en juego.",
+        "howToRun": "Después de cerrar la bolsa, deja en el centro 4 personajes con 7 jugadores, 3 con 8, 2 con 9 y 1 con 10. No dejes ninguno con otra cantidad."
+      },
+      "rules": {
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:table-center:configure",
+            "tags": [
+              "setup",
+              "table-character-zone"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "configureTableCharacterZone",
+                    "zoneId": "zone:bloodscribe:table-center",
+                    "label": {
+                      "es": "Centro de la mesa",
+                      "en": "Table center"
+                    },
+                    "visibility": "public",
+                    "count": {
+                      "type": "byPlayerCount",
+                      "values": {
+                        "7": 4,
+                        "8": 3,
+                        "9": 2,
+                        "10": 1
+                      },
+                      "default": 0
+                    },
+                    "fill": {
+                      "type": "storytellerChoice",
+                      "candidates": {
+                        "type": "query",
+                        "from": {
+                          "entity": "characters"
+                        },
+                        "where": {
+                          "type": "inPlay",
+                          "value": false
+                        },
+                        "aggregate": {
+                          "type": "collect"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:evil-core-learns-bluffs",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Preparación",
+          "plural": "Preparaciones"
+        },
+        "description": "Reglas opcionales que modifican la preparación de cualquier cuento."
+      },
+      "activationTags": [
+        "startingInformation:mainEvilBluffs"
+      ],
+      "info": {
+        "name": "Faroles para el Mal",
+        "ability": "En la primera noche, cada personaje principal alineado con el Mal conoce 3 personajes que no están en juego.",
+        "howToRun": "Durante la preparación, elige 3 personajes buenos que no estén en juego. En la primera noche, despierta por separado a cada personaje principal del Mal y muéstrale los tres faroles."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 235
+        },
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:evil-core-learns-bluffs:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "object",
+                  "entries": {
+                    "bluffs": {
+                      "type": "setup",
+                      "property": "mainEvilBluffCharacterIds"
+                    }
+                  }
+                },
+                "presentation": {
+                  "kind": "structured",
+                  "title": "Faroles preparados durante la preparación",
+                  "fields": [
+                    {
+                      "key": "bluffs",
+                      "label": "Personajes que no están en juego",
+                      "kind": "characters",
+                      "required": true,
+                      "min": 3,
+                      "max": 3
+                    }
+                  ]
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Despierta por separado a cada personaje principal del Mal."
+                ],
+                "communicate": [
+                  "Muéstrale los tres personajes que no están en juego preparados como faroles."
+                ],
+                "checks": [
+                  "Comprueba que estás mostrando los faroles elegidos durante la preparación."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:evil-supports-learn-main",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Preparación",
+          "plural": "Preparaciones"
+        },
+        "description": "Reglas opcionales que modifican la preparación de cualquier cuento."
+      },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
+      "info": {
+        "name": "Los apoyos del Mal se reconocen",
+        "ability": "En la primera noche, los personajes de apoyo del Mal se reconocen y conocen al personaje o personajes principales del Mal.",
+        "howToRun": "Despierta juntos a todos los personajes de apoyo del Mal. Muéstrales quién es o quiénes son los personajes principales del Mal y vuelve a dormirlos."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 180
+        },
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:evil-supports-learn-main:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "role",
+                        "values": [
+                          "core"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "Este es el personaje principal del Mal",
+                  "emptyLabel": "No hay ningún personaje principal del Mal que mostrar"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "support"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "shared"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Despierta juntos a todos los personajes de apoyo del Mal."
+                ],
+                "communicate": [
+                  "Señala al personaje o personajes principales del Mal."
+                ],
+                "checks": [
+                  "Comprueba que solo los destinatarios de esta regla tienen los ojos abiertos."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:evil-core-learns-supports",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Preparación",
+          "plural": "Preparaciones"
+        },
+        "description": "Reglas opcionales que modifican la preparación de cualquier cuento."
+      },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
+      "info": {
+        "name": "El Mal principal conoce a sus apoyos",
+        "ability": "En la primera noche, cada personaje principal del Mal conoce a sus personajes de apoyo del Mal.",
+        "howToRun": "Despierta por separado a cada personaje principal del Mal, muéstrale todos sus apoyos del Mal y vuelve a dormirlo."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 230
+        },
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:evil-core-learns-supports:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "role",
+                        "values": [
+                          "support"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "Estos son tus apoyos del Mal",
+                  "emptyLabel": "No hay apoyos del Mal que mostrar"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Despierta por separado a cada personaje principal del Mal."
+                ],
+                "communicate": [
+                  "Señala a todos sus personajes de apoyo del Mal."
+                ],
+                "checks": [
+                  "Comprueba que solo el destinatario actual tiene los ojos abiertos."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:evil-supports-learn-bluffs",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Preparación",
+          "plural": "Preparaciones"
+        },
+        "description": "Reglas opcionales que modifican la preparación de cualquier cuento."
+      },
+      "activationTags": [
+        "startingInformation:mainEvilBluffs"
+      ],
+      "info": {
+        "name": "Faroles compartidos",
+        "ability": "En la primera noche, cada personaje de apoyo del Mal conoce los 3 personajes preparados como faroles.",
+        "howToRun": "Combínala con Faroles para el Mal para informar a todo el Mal. Despierta por separado a cada personaje de apoyo del Mal y muéstrale los tres faroles."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 236
+        },
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:evil-supports-learn-bluffs:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "object",
+                  "entries": {
+                    "bluffs": {
+                      "type": "setup",
+                      "property": "mainEvilBluffCharacterIds"
+                    }
+                  }
+                },
+                "presentation": {
+                  "kind": "structured",
+                  "title": "Faroles preparados durante la preparación",
+                  "fields": [
+                    {
+                      "key": "bluffs",
+                      "label": "Personajes que no están en juego",
+                      "kind": "characters",
+                      "required": true,
+                      "min": 3,
+                      "max": 3
+                    }
+                  ]
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "support"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Despierta por separado a cada personaje de apoyo del Mal."
+                ],
+                "communicate": [
+                  "Muéstrale los tres personajes que no están en juego preparados como faroles."
+                ],
+                "checks": [
+                  "Comprueba que estás mostrando los faroles elegidos durante la preparación."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:bloodscribe:setup:secret-table-center",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "systemType": "setup",
+      "categoryId": "rule-category:common:setup",
+      "category": {
+        "id": "rule-category:common:setup",
+        "terms": {
+          "singular": "Preparación",
+          "plural": "Preparaciones"
+        },
+        "description": "Reglas opcionales que modifican la preparación de cualquier cuento."
+      },
+      "info": {
+        "name": "Centro secreto",
+        "ability": "Según el número de jugadores, el Narrador aparta personajes del cuento fuera de juego que solo él puede ver.",
+        "howToRun": "Después de cerrar la bolsa, aparta en secreto 4 personajes con 7 jugadores, 3 con 8, 2 con 9 y 1 con 10. No apartes ninguno con otra cantidad."
+      },
+      "rules": {
+        "setup": true,
+        "cues": [],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:bloodscribe:setup:secret-table-center:configure",
+            "tags": [
+              "setup",
+              "table-character-zone"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
+            },
+            "input": {
+              "kind": "none"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "modifySetup",
+                "operations": [
+                  {
+                    "type": "configureTableCharacterZone",
+                    "zoneId": "zone:bloodscribe:secret-table-center",
+                    "label": {
+                      "es": "Centro secreto",
+                      "en": "Secret center"
+                    },
+                    "visibility": "storyteller",
+                    "count": {
+                      "type": "byPlayerCount",
+                      "values": {
+                        "7": 4,
+                        "8": 3,
+                        "9": 2,
+                        "10": 1
+                      },
+                      "default": 0
+                    },
+                    "fill": {
+                      "type": "storytellerChoice",
+                      "candidates": {
+                        "type": "query",
+                        "from": {
+                          "entity": "characters"
+                        },
+                        "where": {
+                          "type": "inPlay",
+                          "value": false
+                        },
+                        "aggregate": {
+                          "type": "collect"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": []
+    }
+  ],
+  "tales": []
+}
