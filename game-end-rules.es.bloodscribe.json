@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "bloodscribe:game-end-rules",
   "key": "game-end-rules",
-  "version": "10.218",
+  "version": "10.222",
   "locale": "es",
   "name": "Reglas de final de partida",
   "description": "Condiciones genéricas que determinan cuándo termina una partida y cómo se resuelve su ganador.",
@@ -35,7 +35,7 @@
       },
       "info": {
         "name": "Final rápido",
-        "ability": "El bien gana al eliminar la amenaza principal del mal, o a todo el mal si no existe esa figura. El mal gana cuando quedan como máximo tres jugadores regulares vivos. Si ambas condiciones se cumplen a la vez, gana el bien."
+        "ability": "El Bien gana al eliminar la amenaza principal; el Mal, cuando quedan como máximo tres jugadores regulares vivos."
       },
       "rules": {
         "setup": false,
@@ -599,7 +599,7 @@
       },
       "info": {
         "name": "Final prolongado",
-        "ability": "El bien gana al eliminar la amenaza principal del mal, o a todo el mal si no existe esa figura. El mal solo gana cuando queda como máximo un jugador regular vivo. Si ambas condiciones se cumplen a la vez, gana el bien."
+        "ability": "El Bien gana al eliminar la amenaza principal; el Mal, cuando queda como máximo un jugador regular vivo."
       },
       "rules": {
         "setup": false,
@@ -1163,7 +1163,7 @@
       },
       "info": {
         "name": "Final por paridad",
-        "ability": "El bien gana cuando no queda ningún jugador malvado. El mal gana cuando sus jugadores vivos igualan o superan a los buenos vivos. Los neutrales no cuentan; si no queda nadie de ninguno de los dos bandos, no hay vencedor."
+        "ability": "El Bien gana sin jugadores del Mal; el Mal, al igualar o superar en vivos al Bien. Los neutrales no cuentan."
       },
       "rules": {
         "setup": false,
@@ -1673,7 +1673,7 @@
       },
       "info": {
         "name": "Final por exterminio",
-        "ability": "Vence el único bando, bueno o malvado, que conserve jugadores vivos. Los neutrales no cuentan; si no queda nadie de ninguno de los dos bandos, no hay vencedor."
+        "ability": "Vence el único bando, Bien o Mal, que conserve jugadores vivos; los neutrales no cuentan."
       },
       "rules": {
         "setup": false,
@@ -2152,7 +2152,7 @@
       },
       "info": {
         "name": "Caída de líderes",
-        "ability": "Vence el bando que elimine todas las figuras principales del rival. Si un bando no declara figuras principales, cuentan todos sus jugadores. Si ambos bandos caen a la vez, no hay vencedor."
+        "ability": "Vence el bando que elimine todas las figuras principales del rival; si no las hay, cuenta todo el bando."
       },
       "rules": {
         "setup": false,

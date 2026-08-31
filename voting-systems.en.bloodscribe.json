@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "bloodscribe:voting-systems",
   "key": "voting-systems",
-  "version": "10.218",
+  "version": "10.222",
   "locale": "en",
   "name": "Voting systems",
   "description": "Generic voting rules with different flows, privacy levels, thresholds, and tie resolutions.",
@@ -88,7 +88,7 @@
       },
       "info": {
         "name": "Seat-order voting",
-        "ability": "Nominations are public and may target living or dead players. Living players and dead players with Last Breaths remaining may vote; each player receives 1 Last Breath for the whole game. The Storyteller records visible approvals clockwise, starting after the nominee. The highest total must reach half the living players; a tie or missed threshold spares everyone."
+        "ability": "Visible votes proceed from the seat after the nominee; Last Breaths apply, half the living are required, and ties spare everyone."
       },
       "rules": {
         "setup": false,
@@ -161,7 +161,7 @@
       },
       "info": {
         "name": "Simultaneous public election",
-        "ability": "There are no nominations. Only living players vote on their phones for living candidates, with no null vote and no Last Breaths. At close, the Storyteller reviews ballots and totals privately, then communicates them with a synchronized roulette if somebody dies. The highest total wins with no threshold; a tie triggers a runoff and, if it remains after two rounds, nobody is expelled."
+        "ability": "No nominations or Last Breaths: living players choose another living player by phone; there is no threshold, and a tie triggers a runoff."
       },
       "rules": {
         "setup": false,
@@ -260,7 +260,7 @@
       },
       "info": {
         "name": "Secret jury",
-        "ability": "Nominations are public and only living nominees reach the ballot. A secret jury of 2, 3, 4, or 5 members depending on table size votes simultaneously on their phones during Late Night. At close, the Storyteller reviews the result privately and chooses when to communicate it; identities and votes are never published. Judges must remain alive, do not use Last Breaths, and evil wins if the entire jury dies."
+        "ability": "A secret jury of 2 to 5 living players votes without Last Breaths during Late Night; if the whole jury dies, Evil wins."
       },
       "rules": {
         "setup": false,
@@ -322,7 +322,7 @@
       },
       "info": {
         "name": "No nominations or voting",
-        "ability": "No nominations, electorate, or ballots are opened: neither the Storyteller nor phones record votes, no public or secret voting information exists, and Last Breaths do not apply. There is no threshold, tie, or daytime execution by vote."
+        "ability": "Disables nominations, voting, Last Breaths, and daytime execution by vote."
       },
       "rules": {
         "setup": false,
@@ -399,7 +399,7 @@
       },
       "info": {
         "name": "Secret election among nominees",
-        "ability": "Nominations are public and may target living or dead players. Only living players vote secretly on their phones among the nominees; null votes are allowed and there are no Last Breaths. At close, only the Storyteller sees ballots and totals and chooses when to communicate the outcome. The highest total wins with no threshold; a tie triggers a runoff and, if it remains after two rounds, everyone is spared."
+        "ability": "Living players vote secretly by phone among nominees without Last Breaths; there is no threshold, and a tie triggers a runoff."
       },
       "rules": {
         "setup": false,
@@ -478,7 +478,7 @@
       },
       "info": {
         "name": "Two-thirds majority",
-        "ability": "Nominations are public and may target living or dead players. Living players and dead players with Last Breaths remaining may vote; each player receives 1 Last Breath for the whole game. Everyone shows approval simultaneously and the Storyteller records it publicly. Only the highest total is executed after reaching two thirds of the living players; a tie or missed threshold spares everyone."
+        "ability": "Public simultaneous voting with Last Breaths: only the leader reaching two thirds of the living players is executed."
       },
       "rules": {
         "setup": false,
@@ -557,7 +557,7 @@
       },
       "info": {
         "name": "Execute tied candidates",
-        "ability": "Nominations are public and may target living or dead players. Living players and dead players with Last Breaths remaining may vote; each player receives 1 Last Breath for the whole game. Everyone shows approval simultaneously and the Storyteller records it publicly. At least half the living players are required; every tied leader reaching the threshold is executed, while no majority means no execution."
+        "ability": "Public simultaneous voting with Last Breaths: every tied leader reaching half the living players is executed."
       },
       "rules": {
         "setup": false,
@@ -656,7 +656,7 @@
       },
       "info": {
         "name": "Secret single judge",
-        "ability": "Nominations are public and only living nominees reach the ballot. One secret judge votes on their phone during Late Night. At close, the Storyteller reviews the result privately and chooses when to communicate it; the identity and ballot are never published. The judge must remain alive, does not use Last Breaths, and evil wins if the judge dies."
+        "ability": "One secret living judge decides without Last Breaths during Late Night; if that judge dies, Evil wins."
       },
       "rules": {
         "setup": false,
@@ -735,7 +735,7 @@
       },
       "info": {
         "name": "Living-only simultaneous voting",
-        "ability": "Nominations are public and may target living or dead players, but only living players vote: there are 0 Last Breaths. Everyone shows approval simultaneously and the Storyteller records it publicly. The highest total must reach half the living players; a tie or missed threshold spares everyone."
+        "ability": "Public simultaneous voting for living players only, without Last Breaths; half are required, and ties spare everyone."
       },
       "rules": {
         "setup": false,

@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "bloodscribe:voting-systems",
   "key": "voting-systems",
-  "version": "10.218",
+  "version": "10.222",
   "locale": "es",
   "name": "Sistemas de votación",
   "description": "Reglas de votación genéricas con distintos flujos, niveles de privacidad, umbrales y formas de resolver empates.",
@@ -88,7 +88,7 @@
       },
       "info": {
         "name": "Votación por turnos",
-        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. El Narrador registra los apoyos visibles por turnos, en sentido horario desde el asiento posterior al nominado. Se exige al menos la mitad de los vivos y el mayor total; un empate o no alcanzar el umbral indulta a todos."
+        "ability": "Votos visibles por turnos desde el asiento posterior al nominado; admite Últimos suspiros, exige la mitad de los vivos y el empate indulta."
       },
       "rules": {
         "setup": false,
@@ -161,7 +161,7 @@
       },
       "info": {
         "name": "Elección pública simultánea",
-        "ability": "No hay nominaciones. Solo los jugadores vivos votan desde sus móviles entre jugadores vivos, sin voto nulo ni Últimos suspiros. Al cerrar, el Narrador revisa en privado las papeletas y totales; los comunica después con una ruleta sincronizada si alguien muere. Gana el mayor total sin umbral; un empate abre una segunda vuelta y, si persiste tras dos rondas, nadie es expulsado."
+        "ability": "Sin nominaciones ni Últimos suspiros: los vivos eligen desde el móvil a otro vivo; no hay umbral y un empate abre una segunda vuelta."
       },
       "rules": {
         "setup": false,
@@ -260,7 +260,7 @@
       },
       "info": {
         "name": "Jurado secreto",
-        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un jurado secreto de 2, 3, 4 o 5 miembros según la mesa vota simultáneamente desde sus móviles durante la Noche Tardía. Al cerrar, el Narrador revisa el resultado en privado y decide cuándo comunicarlo; las identidades y votos nunca se publican. Los jueces deben seguir vivos, no usan Últimos suspiros y, si muere todo el jurado, gana el mal."
+        "ability": "Un jurado secreto de 2 a 5 jugadores vivos vota sin Últimos suspiros durante la Noche Tardía; si muere todo, gana el Mal."
       },
       "rules": {
         "setup": false,
@@ -322,7 +322,7 @@
       },
       "info": {
         "name": "Sin nominaciones ni votación",
-        "ability": "No se abren nominaciones, electorado ni papeletas: ni el Narrador ni los móviles registran votos, no existe información pública o secreta de votación y los Últimos suspiros no intervienen. No hay umbral, empate ni ejecución diurna por votación."
+        "ability": "Desactiva las nominaciones, la votación, los Últimos suspiros y la ejecución diurna por votos."
       },
       "rules": {
         "setup": false,
@@ -399,7 +399,7 @@
       },
       "info": {
         "name": "Elección secreta entre nominados",
-        "ability": "Las nominaciones son públicas y pueden señalar a vivos o muertos. Solo los jugadores vivos votan en secreto desde sus móviles entre los nominados; pueden emitir voto nulo y no hay Últimos suspiros. Al cerrar, solo el Narrador ve las papeletas y totales y decide cuándo comunicar el desenlace. Gana el mayor total sin umbral; un empate abre una segunda vuelta y, si persiste tras dos rondas, todos quedan indultados."
+        "ability": "Los vivos votan en secreto y sin Últimos suspiros desde el móvil entre los nominados; no hay umbral y un empate abre una segunda vuelta."
       },
       "rules": {
         "setup": false,
@@ -478,7 +478,7 @@
       },
       "info": {
         "name": "Mayoría de dos tercios",
-        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Solo se ejecuta el mayor total si alcanza dos tercios de los vivos; un empate o no alcanzar el umbral indulta a todos."
+        "ability": "Voto público simultáneo con Últimos suspiros: solo se ejecuta al líder que alcance dos tercios de los vivos."
       },
       "rules": {
         "setup": false,
@@ -557,7 +557,7 @@
       },
       "info": {
         "name": "Ejecución de empatados",
-        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos. Votan los vivos y los muertos con Últimos suspiros disponibles; cada jugador recibe 1 Último suspiro para toda la partida. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Se exige al menos la mitad de los vivos; todos los candidatos empatados en cabeza que alcancen el umbral son ejecutados y, sin mayoría, nadie lo es."
+        "ability": "Voto público simultáneo con Últimos suspiros: se ejecuta a todos los líderes empatados que alcancen la mitad de los vivos."
       },
       "rules": {
         "setup": false,
@@ -656,7 +656,7 @@
       },
       "info": {
         "name": "Juez único secreto",
-        "ability": "Las nominaciones son públicas y solo los nominados vivos llegan a la papeleta. Un único juez secreto vota desde su móvil durante la Noche Tardía. Al cerrar, el Narrador revisa el resultado en privado y decide cuándo comunicarlo; la identidad y el voto nunca se publican. El juez debe seguir vivo, no usa Últimos suspiros y, si muere, gana el mal."
+        "ability": "Un juez secreto vivo decide sin Últimos suspiros durante la Noche Tardía; si muere, gana el Mal."
       },
       "rules": {
         "setup": false,
@@ -735,7 +735,7 @@
       },
       "info": {
         "name": "Votación simultánea solo para vivos",
-        "ability": "Las nominaciones son públicas y admiten jugadores vivos o muertos, pero solo los vivos votan: hay 0 Últimos suspiros. Todos muestran su apoyo a la vez y el Narrador lo registra públicamente. Se exige al menos la mitad de los vivos y el mayor total; un empate o no alcanzar el umbral indulta a todos."
+        "ability": "Voto público simultáneo solo para vivos, sin Últimos suspiros; exige la mitad y el empate indulta."
       },
       "rules": {
         "setup": false,

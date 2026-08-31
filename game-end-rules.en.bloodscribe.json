@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "bloodscribe:game-end-rules",
   "key": "game-end-rules",
-  "version": "10.218",
+  "version": "10.222",
   "locale": "en",
   "name": "Game-end rules",
   "description": "Generic conditions determining when a game ends and how its winner is resolved.",
@@ -35,7 +35,7 @@
       },
       "info": {
         "name": "Fast game end",
-        "ability": "Good wins after eliminating evil's main threat, or all evil when no such figure exists. Evil wins when at most three regular players remain alive. If both conditions happen at once, good wins."
+        "ability": "Good wins after eliminating Evil's main threat; Evil wins when at most three regular players remain alive."
       },
       "rules": {
         "setup": false,
@@ -599,7 +599,7 @@
       },
       "info": {
         "name": "Extended game end",
-        "ability": "Good wins after eliminating evil's main threat, or all evil when no such figure exists. Evil wins only when at most one regular player remains alive. If both conditions happen at once, good wins."
+        "ability": "Good wins after eliminating Evil's main threat; Evil wins when at most one regular player remains alive."
       },
       "rules": {
         "setup": false,
@@ -1163,7 +1163,7 @@
       },
       "info": {
         "name": "Parity game end",
-        "ability": "Good wins when no evil player remains. Evil wins when its living players equal or outnumber living good players. Neutrals do not count; if neither side has survivors, there is no winner."
+        "ability": "Good wins with no Evil players left; Evil wins by matching or outnumbering living Good players. Neutrals do not count."
       },
       "rules": {
         "setup": false,
@@ -1673,7 +1673,7 @@
       },
       "info": {
         "name": "Elimination game end",
-        "ability": "The only side, good or evil, with living players wins. Neutrals do not count; if neither side has survivors, there is no winner."
+        "ability": "The only side, Good or Evil, with living players wins; Neutrals do not count."
       },
       "rules": {
         "setup": false,
@@ -2152,7 +2152,7 @@
       },
       "info": {
         "name": "Fall of the leaders",
-        "ability": "The side that eliminates every opposing main figure wins. If a side declares no main figures, all of its players count. If both sides fall together, there is no winner."
+        "ability": "The side that eliminates every opposing main figure wins; if there are none, the whole side counts."
       },
       "rules": {
         "setup": false,
