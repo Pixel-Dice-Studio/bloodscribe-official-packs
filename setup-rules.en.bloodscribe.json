@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "bloodscribe:setup-rules",
   "key": "setup-rules",
-  "version": "10.241",
+  "version": "10.246",
   "locale": "en",
   "name": "Setup rules",
   "description": "Generic optional variants for setting up any tale.",
