@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.237",
+  "version": "10.241",
   "locale": "en",
   "name": "Cinderella",
   "description": "Cinderella publicly marks the guests but must wait three nights to discover who they truly are. Good must keep them alive and gather evidence before the Stepmother kills the witnesses. Evil tries to murder marked players, hide behind masks, and use the Stepsisters to steal abilities, though every theft may cost them their lives. Each promise of truth begins a race against time.",
@@ -91,7 +91,9 @@
         "rule:grimm:information:stepsisters-recognition",
         "rule:grimm:cenicienta-rama-del-avellano",
         "rule:grimm:cenicienta-baile-de-mascaras",
-        "rule:grimm:game-end:elimination"
+        "rule:grimm:game-end:elimination",
+        "rule:grimm:dark-learns-servants",
+        "rule:grimm:servants-learn-dark"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -3886,6 +3888,7 @@
             "kind": "reminder",
             "value": "Enmascarado",
             "label": "Enmascarado",
+            "polarity": "negative",
             "duration": "firstNight",
             "count": 1
           }
@@ -4283,6 +4286,324 @@
       "bookIds": [
         "book:grimm:cenicienta"
       ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:dark-learns-servants",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "modifier": {
+        "polarity": "positive",
+        "teamId": "team:grimm:oscuro"
+      },
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Curse",
+          "plural": "Curses"
+        },
+        "description": "Optional rules that gently tilt the tale toward Evil."
+      },
+      "info": {
+        "name": "The {{team:grimm:oscuro}} One learns the {{team:grimm:siervo|plural}}",
+        "ability": "On the first night, the {{team:grimm:oscuro}} sees which players are their {{team:grimm:siervo|plural}}.",
+        "howToRun": "Wake the {{team:grimm:oscuro}}, show them every {{team:grimm:siervo}}, then put them back to sleep."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 230
+        },
+        "setup": true,
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Wake the {{team:grimm:oscuro}} and show them their {{team:grimm:siervo|plural}}."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:team-recognition:dark-learns-servants:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "role",
+                        "values": [
+                          "support"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "These are your {{team:grimm:siervo|plural}}",
+                  "emptyLabel": "There are no {{team:grimm:siervo|plural}} to show"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Wake the {{team:grimm:oscuro}}."
+                ],
+                "communicate": [
+                  "Show them who their {{team:grimm:siervo|plural}} are."
+                ],
+                "checks": [
+                  "Check that only the recipient has their eyes open."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:cenicienta"
+      ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:servants-learn-dark",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "modifier": {
+        "polarity": "positive",
+        "teamId": "team:grimm:oscuro"
+      },
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Curse",
+          "plural": "Curses"
+        },
+        "description": "Optional rules that gently tilt the tale toward Evil."
+      },
+      "info": {
+        "name": "The {{team:grimm:siervo|plural}} learn the {{team:grimm:oscuro}} One",
+        "ability": "On the first night, each {{team:grimm:siervo}} sees which player is the {{team:grimm:oscuro}}.",
+        "howToRun": "Wake each {{team:grimm:siervo}} separately, show them the {{team:grimm:oscuro}}, then put them back to sleep."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 180
+        },
+        "setup": true,
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Wake each {{team:grimm:siervo}} and show them the {{team:grimm:oscuro}}."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:team-recognition:servants-learn-dark:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "role",
+                        "values": [
+                          "core"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "This is the {{team:grimm:oscuro}}",
+                  "emptyLabel": "There is no {{team:grimm:oscuro}} to show"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "support"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Wake each {{team:grimm:siervo}} separately."
+                ],
+                "communicate": [
+                  "Show them who the {{team:grimm:oscuro}} is."
+                ],
+                "checks": [
+                  "Check that only the recipient has their eyes open."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:cenicienta"
+      ]
     }
   ],
   "tales": [
@@ -4324,6 +4645,14 @@
         },
         {
           "ruleId": "rule:grimm:cenicienta-baile-de-mascaras",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:dark-learns-servants",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:servants-learn-dark",
           "activation": "setupChoice"
         },
         {
