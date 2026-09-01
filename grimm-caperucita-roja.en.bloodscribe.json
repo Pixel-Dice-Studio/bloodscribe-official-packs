@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.222",
+  "version": "10.237",
   "locale": "en",
   "name": "Little Red-Cap",
-  "description": "The Wolf devours someone each night except the first: the victim remains alive but loses their ability while trapped in his belly. Their allies can still rescue them; if they arrive too late, the Wolf can digest the victim, kill them, and disguise himself as their character. Discover who is on your side and execute the Wolf before no one can recognize his true face.",
+  "description": "The Wolf can devour someone without killing them yet: the victim stays at the table but loses their power until rescued or digested. Good must discover who was devoured, free its allies, and see through disguises before executing the monster. Evil chooses when to keep a hostage and when to sacrifice one to steal their identity. Staying alive does not mean being safe.",
   "legal": {
     "license": "Based on Little Red-Cap (Rothkäppchen, KHM 26) by the Brothers Grimm. Description and lore adapted from the 1812 German edition and Margaret Hunt's 1884 public-domain English translation.",
     "disclaimer": "Declarative BloodScribe content pack. It does not execute remote code."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:caperucita-roja",
       "name": "Little Red-Cap",
-      "description": "The Wolf devours someone each night except the first: the victim remains alive but loses their ability while trapped in his belly. Their allies can still rescue them; if they arrive too late, the Wolf can digest the victim, kill them, and disguise himself as their character. Discover who is on your side and execute the Wolf before no one can recognize his true face.",
+      "description": "The Wolf can devour someone without killing them yet: the victim stays at the table but loses their power until rescued or digested. Good must discover who was devoured, free its allies, and see through disguises before executing the monster. Evil chooses when to keep a hostage and when to sacrifice one to steal their identity. Staying alive does not mean being safe.",
       "collectionOrder": 3,
       "collection": {
         "id": "collection:grimm",
@@ -83,7 +83,7 @@
         "character:grimm:buho-nocturno"
       ],
       "gameRuleIds": [
-        "rule:grimm:composition:short",
+        "rule:grimm:composition:medium",
         "rule:grimm:caperucita-piedras-en-el-vientre",
         "rule:grimm:caperucita-fuera-del-camino",
         "rule:grimm:game-end:elimination"
@@ -1306,9 +1306,8 @@
       },
       "rules": {
         "wake": {
-          "first": true,
+          "first": false,
           "other": true,
-          "firstOrder": 500,
           "otherOrder": 300
         },
         "setup": false,
@@ -1335,17 +1334,6 @@
             "when": {
               "window": "night",
               "occurrence": {
-                "type": "exact",
-                "value": 1
-              }
-            },
-            "audience": "storyteller",
-            "body": "Before the Wolf, ask whether the Flower Seller prepares her lure. If she does, mark the use and redirect any Devoured state caused by the Wolf tonight to her."
-          },
-          {
-            "when": {
-              "window": "night",
-              "occurrence": {
                 "type": "range",
                 "from": 2
               }
@@ -1364,7 +1352,7 @@
             "when": {
               "window": "night",
               "cadence": "each",
-              "startsAt": 1
+              "startsAt": 2
             },
             "input": {
               "kind": "none"
@@ -3702,6 +3690,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 0.6
+      },
       "links": []
     },
     {
@@ -3882,6 +3873,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 0.5
+      },
       "links": []
     },
     {
@@ -4036,7 +4030,7 @@
   "gameRules": [
     {
       "entityKind": "gameRule",
-      "id": "rule:grimm:composition:short",
+      "id": "rule:grimm:composition:medium",
       "visibility": "base",
       "ruleKind": "composition",
       "systemType": "composition",
@@ -4052,10 +4046,10 @@
         "book:grimm:caperucita-roja"
       ],
       "info": {
-        "name": "Short composition",
-        "ability": "Short Grimm distribution for games with 7 to 10 players."
+        "name": "Medium composition",
+        "ability": "Grimm distribution for games with 7 to 12 players."
       },
-      "summaryEs": "Distribución Grimm corta para partidas de 7 a 10 jugadores.",
+      "summaryEs": "Distribución Grimm para partidas de 7 a 12 jugadores.",
       "composition": {
         "enforcement": "exact",
         "playerCounts": {
@@ -4086,12 +4080,26 @@
             "neutral": 0,
             "evilSupport": 2,
             "evil": 1
+          },
+          "11": {
+            "good": 4,
+            "goodSupport": 4,
+            "neutral": 0,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "12": {
+            "good": 4,
+            "goodSupport": 5,
+            "neutral": 0,
+            "evilSupport": 2,
+            "evil": 1
           }
         },
         "maxExtraPlayers": 5,
         "rosterMinimums": {
-          "good": 3,
-          "goodSupport": 4,
+          "good": 4,
+          "goodSupport": 5,
           "neutral": 0,
           "evilSupport": 2,
           "evil": 1
@@ -4261,8 +4269,37 @@
                   "entity": "players"
                 },
                 "where": {
-                  "type": "alive",
-                  "value": true
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "real",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "real",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 },
                 "aggregate": {
                   "type": "collect"
@@ -4674,7 +4711,7 @@
       "text": {
         "name": "Little Red-Cap",
         "tagline": "Red velvet, woodland flowers, and a belly full of stones: recognize the Wolf before he wears another face.",
-        "description": "The Wolf devours someone each night except the first: the victim remains alive but loses their ability while trapped in his belly. Their allies can still rescue them; if they arrive too late, the Wolf can digest the victim, kill them, and disguise himself as their character. Discover who is on your side and execute the Wolf before no one can recognize his true face."
+        "description": "The Wolf can devour someone without killing them yet: the victim stays at the table but loses their power until rescued or digested. Good must discover who was devoured, free its allies, and see through disguises before executing the monster. Evil chooses when to keep a hostage and when to sacrifice one to steal their identity. Staying alive does not mean being safe."
       },
       "difficulty": {},
       "keyCharacterIds": [
@@ -4685,7 +4722,7 @@
       ],
       "gameRuleBindings": [
         {
-          "ruleId": "rule:grimm:composition:short",
+          "ruleId": "rule:grimm:composition:medium",
           "activation": "automatic"
         },
         {
@@ -4708,7 +4745,6 @@
           "character:grimm:bordadora",
           "character:grimm:abuela",
           "character:grimm:buho-nocturno",
-          "character:grimm:florista",
           "character:grimm:cazador-caperucita",
           "character:grimm:perro",
           "character:grimm:madre",

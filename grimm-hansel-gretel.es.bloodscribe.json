@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.222",
+  "version": "10.237",
   "locale": "es",
   "name": "Hansel y Gretel",
-  "description": "La Bruja del Horno ceba a dos jugadores cada noche y la tercera marca los mata. Sigue las pistas de Hansel, decide cuándo arriesgar la acusación mortal de Gretel y descubre quién bloquea las habilidades del pueblo. Si no ejecutáis a la Bruja antes de que complete sus marcas, acabaréis alimentando el fuego.",
+  "description": "La Bruja y el fuego van dejando marcas que acercan a sus víctimas a la muerte. El Bien debe seguir las pistas de Hansel, conservar la información y decidir cuándo arriesgar la acusación definitiva de Gretel para acabar con la Bruja. El Mal reparte el peligro, bloquea a quienes podrían descubrirlo y completa sus marcas antes de ser señalado. Es una persecución en la que cada noche acerca un poco más el horno.",
   "legal": {
     "license": "Basado en Hänsel und Gretel (KHM 15), de los hermanos Grimm. Lore adaptado de traducciones decimonónicas de dominio público.",
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:hansel-y-gretel",
       "name": "Hansel y Gretel",
-      "description": "La Bruja del Horno ceba a dos jugadores cada noche y la tercera marca los mata. Sigue las pistas de Hansel, decide cuándo arriesgar la acusación mortal de Gretel y descubre quién bloquea las habilidades del pueblo. Si no ejecutáis a la Bruja antes de que complete sus marcas, acabaréis alimentando el fuego.",
+      "description": "La Bruja y el fuego van dejando marcas que acercan a sus víctimas a la muerte. El Bien debe seguir las pistas de Hansel, conservar la información y decidir cuándo arriesgar la acusación definitiva de Gretel para acabar con la Bruja. El Mal reparte el peligro, bloquea a quienes podrían descubrirlo y completa sus marcas antes de ser señalado. Es una persecución en la que cada noche acerca un poco más el horno.",
       "collectionOrder": 2,
       "collection": {
         "id": "collection:grimm",
@@ -5066,7 +5066,7 @@
       "text": {
         "name": "Hansel y Gretel",
         "tagline": "Guijarros, hambre y un horno encendido: encuentra el camino antes de que el bosque te devore.",
-        "description": "La Bruja del Horno ceba a dos jugadores cada noche y la tercera marca los mata. Sigue las pistas de Hansel, decide cuándo arriesgar la acusación mortal de Gretel y descubre quién bloquea las habilidades del pueblo. Si no ejecutáis a la Bruja antes de que complete sus marcas, acabaréis alimentando el fuego."
+        "description": "La Bruja y el fuego van dejando marcas que acercan a sus víctimas a la muerte. El Bien debe seguir las pistas de Hansel, conservar la información y decidir cuándo arriesgar la acusación definitiva de Gretel para acabar con la Bruja. El Mal reparte el peligro, bloquea a quienes podrían descubrirlo y completa sus marcas antes de ser señalado. Es una persecución en la que cada noche acerca un poco más el horno."
       },
       "difficulty": {},
       "keyCharacterIds": [

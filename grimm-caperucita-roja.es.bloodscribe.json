@@ -2,10 +2,10 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.222",
+  "version": "10.237",
   "locale": "es",
   "name": "Caperucita Roja",
-  "description": "El Lobo devora a alguien cada noche, excepto la primera: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro.",
+  "description": "El Lobo puede devorar a alguien sin matarlo todavía: la víctima sigue en la mesa, pero pierde su poder hasta que sea rescatada o digerida. El Bien debe descubrir quién ha sido devorado, liberar a sus aliados y reconocer los disfraces antes de ejecutar al monstruo. El Mal decide cuándo mantener un rehén y cuándo sacrificarlo para adoptar su identidad. Seguir vivo no significa estar a salvo.",
   "legal": {
     "license": "Basado en Rothkäppchen (KHM 26), de los hermanos Grimm. Descripción y lore adaptados de la edición alemana de 1812 y de la traducción española de José Sánchez Biedma (1879), ambas de dominio público.",
     "disclaimer": "Pack de contenido declarativo para BloodScribe. No ejecuta código remoto."
@@ -20,7 +20,7 @@
     {
       "id": "book:grimm:caperucita-roja",
       "name": "Caperucita Roja",
-      "description": "El Lobo devora a alguien cada noche, excepto la primera: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro.",
+      "description": "El Lobo puede devorar a alguien sin matarlo todavía: la víctima sigue en la mesa, pero pierde su poder hasta que sea rescatada o digerida. El Bien debe descubrir quién ha sido devorado, liberar a sus aliados y reconocer los disfraces antes de ejecutar al monstruo. El Mal decide cuándo mantener un rehén y cuándo sacrificarlo para adoptar su identidad. Seguir vivo no significa estar a salvo.",
       "collectionOrder": 3,
       "collection": {
         "id": "collection:grimm",
@@ -83,7 +83,7 @@
         "character:grimm:buho-nocturno"
       ],
       "gameRuleIds": [
-        "rule:grimm:composition:short",
+        "rule:grimm:composition:medium",
         "rule:grimm:caperucita-piedras-en-el-vientre",
         "rule:grimm:caperucita-fuera-del-camino",
         "rule:grimm:game-end:elimination"
@@ -1309,9 +1309,8 @@
       },
       "rules": {
         "wake": {
-          "first": true,
+          "first": false,
           "other": true,
-          "firstOrder": 500,
           "otherOrder": 300
         },
         "setup": false,
@@ -1338,17 +1337,6 @@
             "when": {
               "window": "night",
               "occurrence": {
-                "type": "exact",
-                "value": 1
-              }
-            },
-            "audience": "storyteller",
-            "body": "Antes del Lobo, pregunta si la Florista prepara su señuelo. Si lo hace, marca el uso; redirige hacia ella cualquier estado Devorado que cause el Lobo esta noche."
-          },
-          {
-            "when": {
-              "window": "night",
-              "occurrence": {
                 "type": "range",
                 "from": 2
               }
@@ -1367,7 +1355,7 @@
             "when": {
               "window": "night",
               "cadence": "each",
-              "startsAt": 1
+              "startsAt": 2
             },
             "input": {
               "kind": "none"
@@ -3719,6 +3707,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 0.6
+      },
       "links": []
     },
     {
@@ -3900,6 +3891,9 @@
           }
         ]
       },
+      "axes": {
+        "power_balance": 0.5
+      },
       "links": []
     },
     {
@@ -4054,7 +4048,7 @@
   "gameRules": [
     {
       "entityKind": "gameRule",
-      "id": "rule:grimm:composition:short",
+      "id": "rule:grimm:composition:medium",
       "visibility": "base",
       "ruleKind": "composition",
       "systemType": "composition",
@@ -4070,10 +4064,10 @@
         "book:grimm:caperucita-roja"
       ],
       "info": {
-        "name": "Composición corta",
-        "ability": "Distribución Grimm corta para partidas de 7 a 10 jugadores."
+        "name": "Composición media",
+        "ability": "Distribución Grimm para partidas de 7 a 12 jugadores."
       },
-      "summaryEs": "Distribución Grimm corta para partidas de 7 a 10 jugadores.",
+      "summaryEs": "Distribución Grimm para partidas de 7 a 12 jugadores.",
       "composition": {
         "enforcement": "exact",
         "playerCounts": {
@@ -4104,12 +4098,26 @@
             "neutral": 0,
             "evilSupport": 2,
             "evil": 1
+          },
+          "11": {
+            "good": 4,
+            "goodSupport": 4,
+            "neutral": 0,
+            "evilSupport": 2,
+            "evil": 1
+          },
+          "12": {
+            "good": 4,
+            "goodSupport": 5,
+            "neutral": 0,
+            "evilSupport": 2,
+            "evil": 1
           }
         },
         "maxExtraPlayers": 5,
         "rosterMinimums": {
-          "good": 3,
-          "goodSupport": 4,
+          "good": 4,
+          "goodSupport": 5,
           "neutral": 0,
           "evilSupport": 2,
           "evil": 1
@@ -4279,8 +4287,37 @@
                   "entity": "players"
                 },
                 "where": {
-                  "type": "alive",
-                  "value": true
+                  "type": "all",
+                  "conditions": [
+                    {
+                      "type": "alive",
+                      "value": true
+                    },
+                    {
+                      "type": "not",
+                      "condition": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "real",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "real",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 },
                 "aggregate": {
                   "type": "collect"
@@ -4691,8 +4728,8 @@
       },
       "text": {
         "name": "Caperucita Roja",
-        "tagline": "Terciopelo rojo, flores y un vientre lleno de piedras: reconoce al lobo antes de que tome otro rostro.",
-        "description": "El Lobo devora a alguien cada noche, excepto la primera: la víctima sigue viva, pero pierde su habilidad mientras permanezca en su estómago. Sus aliados aún pueden rescatarla; si no llegan a tiempo, el Lobo puede digerirla, matarla y disfrazarse con su personaje para hacerse pasar por otro. Averigua quién está de tu lado y ejecuta al Lobo antes de que nadie reconozca su verdadero rostro."
+        "tagline": "Terciopelo rojo, flores y un vientre lleno de piedras: reconoce al Lobo antes de que tome otro rostro.",
+        "description": "El Lobo puede devorar a alguien sin matarlo todavía: la víctima sigue en la mesa, pero pierde su poder hasta que sea rescatada o digerida. El Bien debe descubrir quién ha sido devorado, liberar a sus aliados y reconocer los disfraces antes de ejecutar al monstruo. El Mal decide cuándo mantener un rehén y cuándo sacrificarlo para adoptar su identidad. Seguir vivo no significa estar a salvo."
       },
       "difficulty": {},
       "keyCharacterIds": [
@@ -4703,7 +4740,7 @@
       ],
       "gameRuleBindings": [
         {
-          "ruleId": "rule:grimm:composition:short",
+          "ruleId": "rule:grimm:composition:medium",
           "activation": "automatic"
         },
         {
@@ -4726,7 +4763,6 @@
           "character:grimm:bordadora",
           "character:grimm:abuela",
           "character:grimm:buho-nocturno",
-          "character:grimm:florista",
           "character:grimm:cazador-caperucita",
           "character:grimm:perro",
           "character:grimm:madre",
