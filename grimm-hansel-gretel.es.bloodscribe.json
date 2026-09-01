@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.237",
+  "version": "10.241",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "La Bruja y el fuego van dejando marcas que acercan a sus víctimas a la muerte. El Bien debe seguir las pistas de Hansel, conservar la información y decidir cuándo arriesgar la acusación definitiva de Gretel para acabar con la Bruja. El Mal reparte el peligro, bloquea a quienes podrían descubrirlo y completa sus marcas antes de ser señalado. Es una persecución en la que cada noche acerca un poco más el horno.",
@@ -88,7 +88,9 @@
         "rule:grimm:composition:double-threat",
         "rule:grimm:hansel-gretel-rastro-de-guijarros",
         "rule:grimm:hansel-gretel-casa-de-azucar",
-        "rule:grimm:game-end:elimination"
+        "rule:grimm:game-end:elimination",
+        "rule:grimm:dark-learns-servants",
+        "rule:grimm:servants-learn-dark"
       ],
       "teamIds": [
         "team:grimm:pueblo",
@@ -5045,6 +5047,324 @@
       "bookIds": [
         "book:grimm:hansel-y-gretel"
       ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:dark-learns-servants",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "modifier": {
+        "polarity": "positive",
+        "teamId": "team:grimm:oscuro"
+      },
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Maldición",
+          "plural": "Maldiciones"
+        },
+        "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Mal."
+      },
+      "info": {
+        "name": "El {{team:grimm:oscuro}} conoce a sus {{team:grimm:siervo|plural}}",
+        "ability": "En la primera noche, el {{team:grimm:oscuro}} ve qué jugadores son sus {{team:grimm:siervo|plural}}.",
+        "howToRun": "Despierta al {{team:grimm:oscuro}}, muéstrale a todos sus {{team:grimm:siervo|plural}} y vuelve a dormirlo."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 230
+        },
+        "setup": true,
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Despierta al {{team:grimm:oscuro}} y muéstrale sus {{team:grimm:siervo|plural}}."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:team-recognition:dark-learns-servants:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "role",
+                        "values": [
+                          "support"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "Estos son tus {{team:grimm:siervo|plural}}",
+                  "emptyLabel": "No hay {{team:grimm:siervo|plural}} que mostrar"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "core"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Despierta al {{team:grimm:oscuro}}."
+                ],
+                "communicate": [
+                  "Muéstrale quiénes son sus {{team:grimm:siervo|plural}}."
+                ],
+                "checks": [
+                  "Comprueba que solo el destinatario tiene los ojos abiertos."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:hansel-y-gretel"
+      ]
+    },
+    {
+      "entityKind": "gameRule",
+      "id": "rule:grimm:servants-learn-dark",
+      "visibility": "public",
+      "ruleKind": "setup",
+      "modifier": {
+        "polarity": "positive",
+        "teamId": "team:grimm:oscuro"
+      },
+      "categoryId": "rule-category:grimm:curses",
+      "category": {
+        "id": "rule-category:grimm:curses",
+        "terms": {
+          "singular": "Maldición",
+          "plural": "Maldiciones"
+        },
+        "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Mal."
+      },
+      "info": {
+        "name": "Los {{team:grimm:siervo|plural}} conocen al {{team:grimm:oscuro}}",
+        "ability": "En la primera noche, cada {{team:grimm:siervo}} ve qué jugador es el {{team:grimm:oscuro}}.",
+        "howToRun": "Despierta por separado a cada {{team:grimm:siervo}}, muéstrale al {{team:grimm:oscuro}} y vuelve a dormirlo."
+      },
+      "rules": {
+        "wake": {
+          "first": true,
+          "other": false,
+          "firstOrder": 180
+        },
+        "setup": true,
+        "cues": [
+          {
+            "when": {
+              "window": "night",
+              "occurrence": {
+                "type": "exact",
+                "value": 1
+              }
+            },
+            "audience": "storyteller",
+            "body": "Despierta a cada {{team:grimm:siervo}} y muéstrale al {{team:grimm:oscuro}}."
+          }
+        ],
+        "mechanics": [
+          {
+            "mechanicId": "mechanic:grimm:team-recognition:servants-learn-dark:information",
+            "tags": [
+              "information",
+              "starting-information"
+            ],
+            "when": {
+              "window": "firstNight",
+              "cadence": "once",
+              "startsAt": 1
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "allegiance",
+                        "values": [
+                          "evil"
+                        ]
+                      },
+                      {
+                        "type": "identity",
+                        "identityMode": "registered",
+                        "facet": "role",
+                        "values": [
+                          "core"
+                        ]
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "collect"
+                  },
+                  "project": {
+                    "type": "entityId"
+                  }
+                },
+                "presentation": {
+                  "kind": "players",
+                  "title": "Este es el {{team:grimm:oscuro}}",
+                  "emptyLabel": "No hay {{team:grimm:oscuro}} que mostrar"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "players",
+                    "value": {
+                      "type": "query",
+                      "from": {
+                        "entity": "players"
+                      },
+                      "where": {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "allegiance",
+                            "values": [
+                              "evil"
+                            ]
+                          },
+                          {
+                            "type": "identity",
+                            "identityMode": "registered",
+                            "facet": "role",
+                            "values": [
+                              "support"
+                            ]
+                          }
+                        ]
+                      },
+                      "aggregate": {
+                        "type": "collect"
+                      },
+                      "project": {
+                        "type": "entityId"
+                      }
+                    }
+                  },
+                  "mode": "perRecipient"
+                }
+              }
+            ],
+            "presentation": {
+              "nightGuide": {
+                "action": [
+                  "Despierta por separado a cada {{team:grimm:siervo}}."
+                ],
+                "communicate": [
+                  "Muéstrale quién es el {{team:grimm:oscuro}}."
+                ],
+                "checks": [
+                  "Comprueba que solo el destinatario tiene los ojos abiertos."
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "links": [],
+      "bookIds": [
+        "book:grimm:hansel-y-gretel"
+      ]
     }
   ],
   "tales": [
@@ -5086,6 +5406,14 @@
         },
         {
           "ruleId": "rule:grimm:hansel-gretel-casa-de-azucar",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:dark-learns-servants",
+          "activation": "setupChoice"
+        },
+        {
+          "ruleId": "rule:grimm:servants-learn-dark",
           "activation": "setupChoice"
         },
         {
@@ -5134,6 +5462,7 @@
           "id": "state:grimm:plagued",
           "kind": "state",
           "label": "Apestado",
+          "polarity": "negative",
           "description": "No despierta por su habilidad y no puede hablar, votar ni nominar mientras el estado esté activo."
         }
       ],
