@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.246",
+  "version": "10.250",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "La Bruja y el fuego van dejando marcas que acercan a sus víctimas a la muerte. El Bien debe seguir las pistas de Hansel, conservar la información y decidir cuándo arriesgar la acusación definitiva de Gretel para acabar con la Bruja. El Mal reparte el peligro, bloquea a quienes podrían descubrirlo y completa sus marcas antes de ser señalado. Es una persecución en la que cada noche acerca un poco más el horno.",
