@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.1",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.246",
+  "version": "10.250",
   "locale": "es",
   "name": "Caperucita Roja",
   "description": "El Lobo puede devorar a alguien sin matarlo todavía: la víctima sigue en la mesa, pero pierde su poder hasta que sea rescatada o digerida. El Bien debe descubrir quién ha sido devorado, liberar a sus aliados y reconocer los disfraces antes de ejecutar al monstruo. El Mal decide cuándo mantener un rehén y cuándo sacrificarlo para adoptar su identidad. Seguir vivo no significa estar a salvo.",
