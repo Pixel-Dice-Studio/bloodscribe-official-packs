@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-3.1",
+  "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.259",
+  "version": "10.261",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "The Witch and the fire leave marks that draw their victims closer to death. Good must follow Hansel's clues, preserve its information, and decide when to risk Gretel's final accusation to destroy the Witch. Evil spreads the danger, blocks those who might expose it, and completes its marks before being identified. It is a pursuit in which every night brings the oven a little closer.",
@@ -301,10 +301,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 168,
-          "otherOrder": 158,
-          "firstBlock": "control",
-          "otherBlock": "control"
+          "firstTiming": {
+            "section": "information-selection",
+            "position": 0
+          },
+          "otherTiming": {
+            "section": "information-selection",
+            "position": 0
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -854,8 +858,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 215,
-          "otherBlock": "protection"
+          "otherTiming": {
+            "section": "protection",
+            "position": 3
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -974,8 +980,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 604,
-          "firstBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 0
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1154,10 +1162,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 215,
-          "otherOrder": 210,
-          "firstBlock": "protection",
-          "otherBlock": "protection"
+          "firstTiming": {
+            "section": "protection",
+            "position": 10
+          },
+          "otherTiming": {
+            "section": "protection",
+            "position": 2
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1374,10 +1386,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 304,
-          "otherOrder": 304,
-          "firstBlock": "actions",
-          "otherBlock": "actions"
+          "firstTiming": {
+            "section": "actions",
+            "position": 0
+          },
+          "otherTiming": {
+            "section": "actions",
+            "position": 0
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1597,10 +1613,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 415,
-          "otherOrder": 407,
-          "firstBlock": "deaths",
-          "otherBlock": "deaths"
+          "firstTiming": {
+            "section": "deaths",
+            "position": 0
+          },
+          "otherTiming": {
+            "section": "deaths",
+            "position": 0
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1821,8 +1841,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 604,
-          "otherBlock": "information"
+          "otherTiming": {
+            "section": "information",
+            "position": 0
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2290,10 +2312,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 108,
-          "otherOrder": 106,
-          "firstBlock": "control",
-          "otherBlock": "control"
+          "firstTiming": {
+            "section": "control",
+            "position": 0
+          },
+          "otherTiming": {
+            "section": "control",
+            "position": 0
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2510,10 +2536,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 308,
-          "otherOrder": 308,
-          "firstBlock": "actions",
-          "otherBlock": "actions"
+          "firstTiming": {
+            "section": "actions",
+            "position": 1
+          },
+          "otherTiming": {
+            "section": "actions",
+            "position": 1
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2746,10 +2776,22 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 4,
-          "otherOrder": 4,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 0,
+            "before": [
+              "character:grimm:huesecillo",
+              "character:grimm:sirvienta-caldero"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 0,
+            "before": [
+              "character:grimm:huesecillo",
+              "character:grimm:sirvienta-caldero"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2976,10 +3018,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 429,
-          "otherOrder": 414,
-          "firstBlock": "deaths",
-          "otherBlock": "deaths"
+          "firstTiming": {
+            "section": "deaths",
+            "position": 6
+          },
+          "otherTiming": {
+            "section": "deaths",
+            "position": 2
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -3268,10 +3314,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 607,
-          "otherOrder": 607,
-          "firstBlock": "information",
-          "otherBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 1
+          },
+          "otherTiming": {
+            "section": "information",
+            "position": 1
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -3873,10 +3923,22 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 22,
-          "otherOrder": 23,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 6,
+            "before": [
+              "character:grimm:capitan-ladrones",
+              "character:grimm:gato-tejado"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 6,
+            "before": [
+              "character:grimm:capitan-ladrones",
+              "character:grimm:gato-tejado"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -4316,10 +4378,25 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 8,
-          "otherOrder": 7,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 1,
+            "before": [
+              "character:grimm:apotecario",
+              "character:grimm:gato-tejado",
+              "character:grimm:confesor"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 1,
+            "before": [
+              "character:grimm:cerbatanero-sueno",
+              "character:grimm:apotecario",
+              "character:grimm:gato-tejado",
+              "character:grimm:confesor"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -5095,7 +5172,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 230
+          "firstTiming": {
+            "section": "protection-information",
+            "position": 15
+          }
         },
         "setup": true,
         "cues": [
@@ -5254,7 +5334,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 180
+          "firstTiming": {
+            "section": "information-selection",
+            "position": 15
+          }
         },
         "setup": true,
         "cues": [

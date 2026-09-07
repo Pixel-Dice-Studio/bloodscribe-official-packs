@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-3.1",
+  "schemaVersion": "bloodscribe-3.2",
   "id": "bloodscribe:setup-rules",
   "key": "setup-rules",
-  "version": "10.259",
+  "version": "10.261",
   "locale": "es",
   "name": "Reglas de preparación",
   "description": "Variantes genéricas y opcionales para preparar cualquier cuento.",
@@ -128,7 +128,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 235
+          "firstTiming": {
+            "section": "starting-information",
+            "position": 23
+          }
         },
         "setup": true,
         "cues": [],
@@ -258,7 +261,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 180
+          "firstTiming": {
+            "section": "starting-information",
+            "position": 3
+          }
         },
         "setup": true,
         "cues": [],
@@ -403,7 +409,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 230
+          "firstTiming": {
+            "section": "starting-information",
+            "position": 20
+          }
         },
         "setup": true,
         "cues": [],
@@ -548,7 +557,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 236
+          "firstTiming": {
+            "section": "starting-information",
+            "position": 26
+          }
         },
         "setup": true,
         "cues": [],

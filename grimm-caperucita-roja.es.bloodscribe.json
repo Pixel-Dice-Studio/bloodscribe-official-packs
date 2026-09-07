@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-3.1",
+  "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.259",
+  "version": "10.261",
   "locale": "es",
   "name": "Caperucita Roja",
   "description": "El Lobo puede devorar a alguien sin matarlo todavía: la víctima sigue en la mesa, pero pierde su poder hasta que sea rescatada o digerida. El Bien debe descubrir quién ha sido devorado, liberar a sus aliados y reconocer los disfraces antes de ejecutar al monstruo. El Mal decide cuándo mantener un rehén y cuándo sacrificarlo para adoptar su identidad. Seguir vivo no significa estar a salvo.",
@@ -257,10 +257,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 628,
-          "otherOrder": 638,
-          "firstBlock": "information",
-          "otherBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 8
+          },
+          "otherTiming": {
+            "section": "information",
+            "position": 11
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -440,8 +444,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 629,
-          "otherBlock": "information"
+          "otherTiming": {
+            "section": "information",
+            "position": 8
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -648,8 +654,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 624,
-          "firstBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 7
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -881,8 +889,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 250,
-          "otherBlock": "protection"
+          "otherTiming": {
+            "section": "protection",
+            "position": 15
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1299,8 +1309,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 245,
-          "otherBlock": "protection"
+          "otherTiming": {
+            "section": "protection",
+            "position": 13
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1720,8 +1732,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 762,
-          "otherBlock": "late"
+          "otherTiming": {
+            "section": "late-information",
+            "position": 30
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2046,8 +2060,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 427,
-          "otherBlock": "deaths"
+          "otherTiming": {
+            "section": "deaths",
+            "position": 7
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2883,10 +2899,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 50,
-          "otherOrder": 50,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 15
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 15
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -3065,10 +3085,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 57,
-          "otherOrder": 56,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 17
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 17
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -3230,8 +3254,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 632,
-          "otherBlock": "information"
+          "otherTiming": {
+            "section": "information",
+            "position": 9
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -3345,8 +3371,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 635,
-          "otherBlock": "information"
+          "otherTiming": {
+            "section": "information",
+            "position": 10
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -3692,10 +3720,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 53,
-          "otherOrder": 53,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 16
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 16
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -3879,8 +3911,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 671,
-          "firstBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 22
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -4220,7 +4254,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 2
+          "firstTiming": {
+            "section": "setup-actions",
+            "position": 10
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -4708,7 +4745,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 230
+          "firstTiming": {
+            "section": "protection-information",
+            "position": 15
+          }
         },
         "setup": true,
         "cues": [
@@ -4867,7 +4907,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 180
+          "firstTiming": {
+            "section": "information-selection",
+            "position": 15
+          }
         },
         "setup": true,
         "cues": [

@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-3.1",
+  "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.259",
+  "version": "10.261",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -323,10 +323,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 788,
-          "otherOrder": 792,
-          "firstBlock": "late",
-          "otherBlock": "late"
+          "firstTiming": {
+            "section": "late",
+            "position": 30
+          },
+          "otherTiming": {
+            "section": "late",
+            "position": 30
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -490,10 +494,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 78,
-          "otherOrder": 79,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 24
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 25
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -631,8 +639,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 187,
-          "otherBlock": "control"
+          "otherTiming": {
+            "section": "information-selection",
+            "position": 30
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -964,10 +974,22 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 11,
-          "otherOrder": 14,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 2,
+            "before": [
+              "character:grimm:cuervo-mayor",
+              "character:grimm:confesor"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 3,
+            "before": [
+              "character:grimm:cuervo-mayor",
+              "character:grimm:confesor"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1107,8 +1129,14 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 10,
-          "otherBlock": "opening"
+          "otherTiming": {
+            "section": "opening",
+            "position": 2,
+            "before": [
+              "character:grimm:apotecario",
+              "character:grimm:confesor"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1401,10 +1429,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 443,
-          "otherOrder": 433,
-          "firstBlock": "deaths",
-          "otherBlock": "deaths"
+          "firstTiming": {
+            "section": "deaths",
+            "position": 12
+          },
+          "otherTiming": {
+            "section": "deaths",
+            "position": 9
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1679,10 +1711,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 367,
-          "otherOrder": 367,
-          "firstBlock": "actions",
-          "otherBlock": "actions"
+          "firstTiming": {
+            "section": "actions",
+            "position": 21
+          },
+          "otherTiming": {
+            "section": "actions",
+            "position": 21
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2163,10 +2199,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 348,
-          "otherOrder": 348,
-          "firstBlock": "actions",
-          "otherBlock": "actions"
+          "firstTiming": {
+            "section": "actions",
+            "position": 14
+          },
+          "otherTiming": {
+            "section": "actions",
+            "position": 14
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2569,10 +2609,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 688,
-          "otherOrder": 689,
-          "firstBlock": "information",
-          "otherBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 28
+          },
+          "otherTiming": {
+            "section": "information",
+            "position": 28
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2845,10 +2889,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 208,
-          "otherOrder": 205,
-          "firstBlock": "protection",
-          "otherBlock": "protection"
+          "firstTiming": {
+            "section": "protection",
+            "position": 0
+          },
+          "otherTiming": {
+            "section": "protection",
+            "position": 0
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -3060,10 +3108,20 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 36,
-          "otherOrder": 36,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 10,
+            "before": [
+              "character:grimm:racionero-bosque"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 11,
+            "before": [
+              "character:grimm:racionero-bosque"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -3345,8 +3403,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 152,
-          "otherBlock": "control"
+          "otherTiming": {
+            "section": "ability-preparation",
+            "position": 30
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -3600,8 +3660,13 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 786,
-          "otherBlock": "late"
+          "otherTiming": {
+            "section": "late",
+            "position": 20,
+            "before": [
+              "character:grimm:posadera-camino"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -3723,10 +3788,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 285,
-          "otherOrder": 289,
-          "firstBlock": "protection",
-          "otherBlock": "protection"
+          "firstTiming": {
+            "section": "following-protection",
+            "position": 26
+          },
+          "otherTiming": {
+            "section": "protection",
+            "position": 28
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -3964,8 +4033,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 479,
-          "otherBlock": "deaths"
+          "otherTiming": {
+            "section": "deaths",
+            "position": 25
+          }
         },
         "setup": false,
         "requiredGameRuleIds": [
@@ -4278,8 +4349,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 485,
-          "otherBlock": "deaths"
+          "otherTiming": {
+            "section": "deaths",
+            "position": 28
+          }
         },
         "setup": false,
         "requiredGameRuleIds": [
@@ -4581,10 +4654,20 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 39,
-          "otherOrder": 40,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 12,
+            "before": [
+              "character:grimm:huesecillo-perdido"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 12,
+            "before": [
+              "character:grimm:huesecillo-perdido"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -4779,10 +4862,20 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 43,
-          "otherOrder": 43,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 13,
+            "before": [
+              "character:grimm:huesecillo-perdido"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 13,
+            "before": [
+              "character:grimm:huesecillo-perdido"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -4974,8 +5067,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 492,
-          "otherBlock": "deaths"
+          "otherTiming": {
+            "section": "deaths",
+            "position": 30
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -5290,10 +5385,22 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 15,
-          "otherOrder": 17,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 3,
+            "before": [
+              "character:grimm:enano-timido",
+              "character:grimm:gato-tejado"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 4,
+            "before": [
+              "character:grimm:enano-timido",
+              "character:grimm:gato-tejado"
+            ]
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -5547,10 +5654,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 692,
-          "otherOrder": 692,
-          "firstBlock": "information",
-          "otherBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 29
+          },
+          "otherTiming": {
+            "section": "information",
+            "position": 29
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -5789,10 +5900,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 92,
-          "otherOrder": 92,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 29
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 29
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -6115,8 +6230,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 675,
-          "firstBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 23
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -6392,7 +6509,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 6
+          "firstTiming": {
+            "section": "setup-actions",
+            "position": 30
+          }
         },
         "setup": false,
         "cues": [

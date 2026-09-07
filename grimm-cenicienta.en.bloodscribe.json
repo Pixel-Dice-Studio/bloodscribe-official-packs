@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-3.1",
+  "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.259",
+  "version": "10.261",
   "locale": "en",
   "name": "Cinderella",
   "description": "Cinderella publicly marks the guests but must wait three nights to discover who they truly are. Good must keep them alive and gather evidence before the Stepmother kills the witnesses. Evil tries to murder marked players, hide behind masks, and use the Stepsisters to steal abilities, though every theft may cost them their lives. Each promise of truth begins a race against time.",
@@ -299,10 +299,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 324,
-          "otherOrder": 324,
-          "firstBlock": "actions",
-          "otherBlock": "actions"
+          "firstTiming": {
+            "section": "actions",
+            "position": 7
+          },
+          "otherTiming": {
+            "section": "actions",
+            "position": 7
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -515,10 +519,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 537,
-          "otherOrder": 537,
-          "firstBlock": "aftermath",
-          "otherBlock": "aftermath"
+          "firstTiming": {
+            "section": "aftermath",
+            "position": 10
+          },
+          "otherTiming": {
+            "section": "aftermath",
+            "position": 10
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -727,8 +735,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 619,
-          "otherBlock": "information"
+          "otherTiming": {
+            "section": "information",
+            "position": 5
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -792,8 +802,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 623,
-          "otherBlock": "information"
+          "otherTiming": {
+            "section": "information",
+            "position": 6
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -893,10 +905,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 621,
-          "otherOrder": 626,
-          "firstBlock": "information",
-          "otherBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 6
+          },
+          "otherTiming": {
+            "section": "information",
+            "position": 7
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -1010,8 +1026,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 181,
-          "otherBlock": "control"
+          "otherTiming": {
+            "section": "information-selection",
+            "position": 24
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -1246,10 +1264,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 722,
-          "otherOrder": 731,
-          "firstBlock": "late",
-          "otherBlock": "late"
+          "firstTiming": {
+            "section": "late-protection",
+            "position": 15
+          },
+          "otherTiming": {
+            "section": "late-protection",
+            "position": 15
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1473,10 +1495,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 328,
-          "otherOrder": 328,
-          "firstBlock": "actions",
-          "otherBlock": "actions"
+          "firstTiming": {
+            "section": "actions",
+            "position": 8
+          },
+          "otherTiming": {
+            "section": "actions",
+            "position": 8
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1658,10 +1684,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 678,
-          "otherOrder": 680,
-          "firstBlock": "information",
-          "otherBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 24
+          },
+          "otherTiming": {
+            "section": "information",
+            "position": 25
+          }
         },
         "setup": false,
         "reminderTokens": [],
@@ -1785,10 +1815,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 525,
-          "otherOrder": 525,
-          "firstBlock": "aftermath",
-          "otherBlock": "aftermath"
+          "firstTiming": {
+            "section": "aftermath",
+            "position": 5
+          },
+          "otherTiming": {
+            "section": "aftermath",
+            "position": 5
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -1898,8 +1932,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 240,
-          "otherBlock": "protection"
+          "otherTiming": {
+            "section": "protection",
+            "position": 12
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2048,10 +2084,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 153,
-          "otherOrder": 141,
-          "firstBlock": "control",
-          "otherBlock": "control"
+          "firstTiming": {
+            "section": "ability-preparation",
+            "position": 15
+          },
+          "otherTiming": {
+            "section": "ability-preparation",
+            "position": 10
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2199,10 +2239,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 46,
-          "otherOrder": 46,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 14
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 14
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2315,8 +2359,10 @@
         "wake": {
           "first": false,
           "other": true,
-          "otherOrder": 420,
-          "otherBlock": "deaths"
+          "otherTiming": {
+            "section": "deaths",
+            "position": 5
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -2396,10 +2442,22 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 29,
-          "otherOrder": 30,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 8,
+            "before": [
+              "character:grimm:hermanastra-talon",
+              "character:grimm:racionero-bosque"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 9,
+            "before": [
+              "character:grimm:hermanastra-talon",
+              "character:grimm:racionero-bosque"
+            ]
+          }
         },
         "setup": false,
         "requiredGameRuleIds": [
@@ -2834,10 +2892,22 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 32,
-          "otherOrder": 33,
-          "firstBlock": "opening",
-          "otherBlock": "opening"
+          "firstTiming": {
+            "section": "opening",
+            "position": 9,
+            "before": [
+              "character:grimm:arribista",
+              "character:grimm:racionero-bosque"
+            ]
+          },
+          "otherTiming": {
+            "section": "opening",
+            "position": 10,
+            "before": [
+              "character:grimm:arribista",
+              "character:grimm:racionero-bosque"
+            ]
+          }
         },
         "setup": false,
         "requiredGameRuleIds": [
@@ -3400,10 +3470,14 @@
         "wake": {
           "first": true,
           "other": true,
-          "firstOrder": 682,
-          "otherOrder": 683,
-          "firstBlock": "information",
-          "otherBlock": "information"
+          "firstTiming": {
+            "section": "information",
+            "position": 26
+          },
+          "otherTiming": {
+            "section": "information",
+            "position": 26
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -3708,7 +3782,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 4
+          "firstTiming": {
+            "section": "setup-actions",
+            "position": 20
+          }
         },
         "setup": false,
         "cues": [
@@ -3952,7 +4029,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 3
+          "firstTiming": {
+            "section": "setup-actions",
+            "position": 15
+          }
         },
         "setup": false,
         "reminderTokens": [
@@ -4387,7 +4467,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 230
+          "firstTiming": {
+            "section": "protection-information",
+            "position": 15
+          }
         },
         "setup": true,
         "cues": [
@@ -4546,7 +4629,10 @@
         "wake": {
           "first": true,
           "other": false,
-          "firstOrder": 180
+          "firstTiming": {
+            "section": "information-selection",
+            "position": 15
+          }
         },
         "setup": true,
         "cues": [
