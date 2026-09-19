@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.262",
+  "version": "10.263",
   "locale": "en",
   "name": "Cinderella",
   "description": "Cinderella publicly marks the guests but must wait three nights to discover who they truly are. Good must keep them alive and gather evidence before the Stepmother kills the witnesses. Evil tries to murder marked players, hide behind masks, and use the Stepsisters to steal abilities, though every theft may cost them their lives. Each promise of truth begins a race against time.",
@@ -521,11 +521,11 @@
           "other": true,
           "firstTiming": {
             "section": "aftermath",
-            "position": 10
+            "position": 12
           },
           "otherTiming": {
             "section": "aftermath",
-            "position": 10
+            "position": 12
           }
         },
         "setup": false,
@@ -1028,7 +1028,7 @@
           "other": true,
           "otherTiming": {
             "section": "information-selection",
-            "position": 24
+            "position": 23
           }
         },
         "setup": false,
@@ -1497,11 +1497,11 @@
           "other": true,
           "firstTiming": {
             "section": "actions",
-            "position": 8
+            "position": 9
           },
           "otherTiming": {
             "section": "actions",
-            "position": 8
+            "position": 9
           }
         },
         "setup": false,
@@ -1817,11 +1817,11 @@
           "other": true,
           "firstTiming": {
             "section": "aftermath",
-            "position": 5
+            "position": 6
           },
           "otherTiming": {
             "section": "aftermath",
-            "position": 5
+            "position": 6
           }
         },
         "setup": false,
@@ -3472,7 +3472,7 @@
           "other": true,
           "firstTiming": {
             "section": "information",
-            "position": 26
+            "position": 25
           },
           "otherTiming": {
             "section": "information",
