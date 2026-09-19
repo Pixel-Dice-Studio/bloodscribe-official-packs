@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.262",
+  "version": "10.263",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "The Witch and the fire leave marks that draw their victims closer to death. Good must follow Hansel's clues, preserve its information, and decide when to risk Gretel's final accusation to destroy the Witch. Evil spreads the danger, blocks those who might expose it, and completes its marks before being identified. It is a pursuit in which every night brings the oven a little closer.",
@@ -860,7 +860,7 @@
           "other": true,
           "otherTiming": {
             "section": "protection",
-            "position": 3
+            "position": 4
           }
         },
         "setup": false,
@@ -2318,7 +2318,7 @@
           },
           "otherTiming": {
             "section": "control",
-            "position": 0
+            "position": 10
           }
         },
         "setup": false,
@@ -3927,7 +3927,7 @@
             "section": "opening",
             "position": 6,
             "before": [
-              "character:grimm:capitan-ladrones",
+              "capitan-ladrones",
               "character:grimm:gato-tejado"
             ]
           },
@@ -3935,7 +3935,7 @@
             "section": "opening",
             "position": 6,
             "before": [
-              "character:grimm:capitan-ladrones",
+              "capitan-ladrones",
               "character:grimm:gato-tejado"
             ]
           }
