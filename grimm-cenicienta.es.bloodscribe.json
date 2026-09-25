@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.264",
+  "version": "10.266",
   "locale": "es",
   "name": "Cenicienta",
   "description": "Cenicienta marca públicamente a los invitados, pero tarda tres noches en descubrir quiénes son de verdad. El Bien debe mantenerlos vivos y reunir pruebas antes de que la Madrastra acabe con los testigos. El Mal intenta matar a las personas marcadas, ocultarse tras las máscaras y usar las Hermanastras para robar habilidades, aunque cada robo pueda costarles la vida. Cada promesa de verdad abre una carrera contra el reloj.",
@@ -693,7 +693,8 @@
             ],
             "when": {
               "window": "dusk",
-              "cadence": "each"
+              "cadence": "each",
+              "stage": "boundary"
             },
             "input": {
               "kind": "none"
@@ -1351,6 +1352,10 @@
                   "type": "untilWindow",
                   "window": "night",
                   "count": 3
+                },
+                "match": {
+                  "type": "eventPeriod",
+                  "value": "currentNight"
                 }
               }
             ],
@@ -2217,6 +2222,19 @@
                 "duration": {
                   "type": "untilWindow",
                   "window": "dawn"
+                }
+              },
+              {
+                "type": "disableAbility",
+                "informationMayBeFalse": false,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
                 }
               }
             ],
@@ -3984,9 +4002,13 @@
                 "type": "interceptEvent",
                 "event": "death",
                 "match": {
-                  "type": "eventField",
-                  "field": "resolution",
-                  "value": "mainEvilAttack"
+                  "type": "not",
+                  "condition": {
+                    "type": "eventCategory",
+                    "values": [
+                      "execution"
+                    ]
+                  }
                 },
                 "targets": {
                   "type": "binding",

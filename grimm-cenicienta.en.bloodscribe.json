@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.264",
+  "version": "10.266",
   "locale": "en",
   "name": "Cinderella",
   "description": "Cinderella publicly marks the guests but must wait three nights to discover who they truly are. Good must keep them alive and gather evidence before the Stepmother kills the witnesses. Evil tries to murder marked players, hide behind masks, and use the Stepsisters to steal abilities, though every theft may cost them their lives. Each promise of truth begins a race against time.",
@@ -691,7 +691,8 @@
             ],
             "when": {
               "window": "dusk",
-              "cadence": "each"
+              "cadence": "each",
+              "stage": "boundary"
             },
             "input": {
               "kind": "none"
@@ -1348,6 +1349,10 @@
                   "type": "untilWindow",
                   "window": "night",
                   "count": 3
+                },
+                "match": {
+                  "type": "eventPeriod",
+                  "value": "currentNight"
                 }
               }
             ],
@@ -2201,6 +2206,19 @@
                 "duration": {
                   "type": "untilWindow",
                   "window": "dawn"
+                }
+              },
+              {
+                "type": "disableAbility",
+                "informationMayBeFalse": false,
+                "targets": {
+                  "type": "binding",
+                  "binding": "selected"
+                },
+                "duration": {
+                  "type": "untilWindow",
+                  "window": "dawn",
+                  "count": 1
                 }
               }
             ],
@@ -3951,9 +3969,13 @@
                 "type": "interceptEvent",
                 "event": "death",
                 "match": {
-                  "type": "eventField",
-                  "field": "resolution",
-                  "value": "mainEvilAttack"
+                  "type": "not",
+                  "condition": {
+                    "type": "eventCategory",
+                    "values": [
+                      "execution"
+                    ]
+                  }
                 },
                 "targets": {
                   "type": "binding",
