@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.264",
+  "version": "10.268",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "The Witch and the fire leave marks that draw their victims closer to death. Good must follow Hansel's clues, preserve its information, and decide when to risk Gretel's final accusation to destroy the Witch. Evil spreads the danger, blocks those who might expose it, and completes its marks before being identified. It is a pursuit in which every night brings the oven a little closer.",
@@ -2722,18 +2722,8 @@
                 "optional": true,
                 "type": "death",
                 "targets": {
-                  "type": "query",
-                  "from": {
-                    "entity": "players"
-                  },
-                  "where": {
-                    "type": "marker",
-                    "markerId": "Cazado",
-                    "active": true
-                  },
-                  "aggregate": {
-                    "type": "collect"
-                  }
+                  "type": "binding",
+                  "binding": "nominator"
                 }
               }
             ],
@@ -2746,7 +2736,7 @@
               "consumeOn": "resolution"
             },
             "presentation": {
-              "description": "Another player nominated {playerName}. Ask the Hunter whether they want that player to die.",
+              "description": "Another player nominated {playerName}. Ask the Hunter whether they want the nominator to die.",
               "deathLabel": "Yes, they die",
               "survivalLabel": "No, they survive"
             }
@@ -3384,8 +3374,7 @@
                         "type": "state",
                         "values": [
                           "poisoned",
-                          "drunk",
-                          "registration"
+                          "drunk"
                         ],
                         "active": true
                       }
@@ -3444,9 +3433,6 @@
                 },
                 "transform": {
                   "type": "whenSourceAffected",
-                  "affectedBy": [
-                    "registration"
-                  ],
                   "reaction": {
                     "type": "allowArbitraryValue"
                   }
@@ -3601,8 +3587,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
-                              "registration"
+                              "drunk"
                             ],
                             "active": true
                           }
@@ -3667,8 +3652,7 @@
                             "type": "state",
                             "values": [
                               "poisoned",
-                              "drunk",
-                              "registration"
+                              "drunk"
                             ],
                             "active": true
                           }
