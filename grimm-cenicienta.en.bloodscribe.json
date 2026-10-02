@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.2",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.266",
+  "version": "10.267",
   "locale": "en",
   "name": "Cinderella",
   "description": "Cinderella publicly marks the guests but must wait three nights to discover who they truly are. Good must keep them alive and gather evidence before the Stepmother kills the witnesses. Evil tries to murder marked players, hide behind masks, and use the Stepsisters to steal abilities, though every theft may cost them their lives. Each promise of truth begins a race against time.",
@@ -309,6 +309,11 @@
           }
         },
         "setup": false,
+        "taleCoherence": {
+          "provides": [
+            "grimm:ball-mark"
+          ]
+        },
         "reminderTokens": [
           {
             "id": "marca_baile",
@@ -1943,6 +1948,19 @@
           }
         },
         "setup": false,
+        "taleCoherence": {
+          "requires": [
+            {
+              "reason": "Needs a Ball Mark source to protect",
+              "scope": "inPlay",
+              "anyOf": [
+                {
+                  "capability": "grimm:ball-mark"
+                }
+              ]
+            }
+          ]
+        },
         "reminderTokens": [
           {
             "id": "protegido_zapatero",
@@ -2481,6 +2499,19 @@
         "requiredGameRuleIds": [
           "rule:grimm:information:stepsisters-recognition"
         ],
+        "taleCoherence": {
+          "requires": [
+            {
+              "reason": "The pair must be in the cast with its recognition rule",
+              "scope": "inPlay",
+              "anyOf": [
+                {
+                  "characterId": "character:grimm:hermanastra-talon"
+                }
+              ]
+            }
+          ]
+        },
         "reminderTokens": [
           {
             "id": "copia",
@@ -2931,6 +2962,19 @@
         "requiredGameRuleIds": [
           "rule:grimm:information:stepsisters-recognition"
         ],
+        "taleCoherence": {
+          "requires": [
+            {
+              "reason": "The pair must be in the cast with its recognition rule",
+              "scope": "inPlay",
+              "anyOf": [
+                {
+                  "characterId": "character:grimm:hermanastra-dedo"
+                }
+              ]
+            }
+          ]
+        },
         "reminderTokens": [
           {
             "id": "copia",
