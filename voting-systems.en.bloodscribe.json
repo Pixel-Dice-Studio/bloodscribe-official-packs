@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.2",
   "id": "bloodscribe:voting-systems",
   "key": "voting-systems",
-  "version": "10.262",
+  "version": "10.263",
   "locale": "en",
   "name": "Voting systems",
   "description": "Generic voting rules with different flows, privacy levels, thresholds, and tie resolutions.",
@@ -26,7 +26,7 @@
         "nomination": {
           "mode": "public",
           "nomineeLifeState": "any",
-          "allowSelfNomination": false,
+          "allowSelfNomination": true,
           "maxPerNominatorPerDay": 1,
           "maxPerNomineePerDay": 1
         },
