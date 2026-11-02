@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.270",
+  "version": "10.271",
   "locale": "en",
   "name": "Cinderella",
   "description": "Cinderella publicly marks the guests but must wait three nights to discover who they truly are. Good must keep them alive and gather evidence before the Stepmother kills the witnesses. Evil tries to murder marked players, hide behind masks, and use the Stepsisters to steal abilities, though every theft may cost them their lives. Each promise of truth begins a race against time.",
@@ -2136,7 +2136,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "At the start of the night, if the ability is unused, the Hazel Godmother may choose 1 living player (not herself): she uses that player’s real character ability in their name that night."
+            "body": "At the start of the night, if the ability is unused, the Hazel Godmother may choose 1 living player (not herself): she uses that player’s real character ability in their name that night. The chosen player keeps their ability."
           },
           {
             "when": {
@@ -2147,7 +2147,7 @@
               }
             },
             "audience": "storyteller",
-            "body": "At the start of the night, if the ability is unused, the Hazel Godmother may choose 1 living player (not herself): she uses that player’s real character ability in their name that night."
+            "body": "At the start of the night, if the ability is unused, the Hazel Godmother may choose 1 living player (not herself): she uses that player’s real character ability in their name that night. The chosen player keeps their ability."
           }
         ],
         "mechanics": [
@@ -2224,19 +2224,6 @@
                 "duration": {
                   "type": "untilWindow",
                   "window": "dawn"
-                }
-              },
-              {
-                "type": "disableAbility",
-                "informationMayBeFalse": false,
-                "targets": {
-                  "type": "binding",
-                  "binding": "selected"
-                },
-                "duration": {
-                  "type": "untilWindow",
-                  "window": "dawn",
-                  "count": 1
                 }
               }
             ],
