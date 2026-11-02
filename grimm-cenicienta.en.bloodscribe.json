@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-3.2",
+  "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-cenicienta",
   "key": "grimm-cenicienta",
-  "version": "10.267",
+  "version": "10.270",
   "locale": "en",
   "name": "Cinderella",
   "description": "Cinderella publicly marks the guests but must wait three nights to discover who they truly are. Good must keep them alive and gather evidence before the Stepmother kills the witnesses. Evil tries to murder marked players, hide behind masks, and use the Stepsisters to steal abilities, though every theft may cost them their lives. Each promise of truth begins a race against time.",
@@ -863,7 +863,7 @@
                       },
                       {
                         "type": "eventPeriod",
-                        "value": "previousDay"
+                        "value": "currentDay"
                       },
                       {
                         "type": "eventParticipantIdentity",
@@ -1170,7 +1170,7 @@
                       },
                       {
                         "type": "eventPeriod",
-                        "value": "previousDay"
+                        "value": "currentDay"
                       },
                       {
                         "type": "eventField",
@@ -1213,7 +1213,7 @@
                       },
                       {
                         "type": "eventPeriod",
-                        "value": "previousDay"
+                        "value": "currentDay"
                       },
                       {
                         "type": "eventField",
@@ -4289,7 +4289,7 @@
                               },
                               {
                                 "type": "identity",
-                                "identityMode": "base",
+                                "identityMode": "real",
                                 "facet": "allegiance",
                                 "values": [
                                   "evil"
@@ -4359,7 +4359,7 @@
                               },
                               {
                                 "type": "identity",
-                                "identityMode": "base",
+                                "identityMode": "real",
                                 "facet": "allegiance",
                                 "values": [
                                   "good"
@@ -4440,7 +4440,7 @@
                                   },
                                   {
                                     "type": "identity",
-                                    "identityMode": "base",
+                                    "identityMode": "real",
                                     "facet": "allegiance",
                                     "values": [
                                       "evil"
