@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-3.2",
+  "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.265",
+  "version": "10.266",
   "locale": "es",
   "name": "Habitantes de Grimm",
   "description": "Personajes extra que pueden incorporarse a cualquier cuento de Grimm.",

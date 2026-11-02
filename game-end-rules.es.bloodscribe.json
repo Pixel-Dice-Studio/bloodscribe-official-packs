@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "bloodscribe-3.2",
+  "schemaVersion": "bloodscribe-3.3",
   "id": "bloodscribe:game-end-rules",
   "key": "game-end-rules",
-  "version": "10.262",
+  "version": "10.264",
   "locale": "es",
   "name": "Reglas de final de partida",
   "description": "Condiciones genéricas que determinan cuándo termina una partida y cómo se resuelve su ganador.",
@@ -238,7 +238,7 @@
                                   },
                                   {
                                     "type": "identity",
-                                    "identityMode": "base",
+                                    "identityMode": "real",
                                     "facet": "allegiance",
                                     "values": [
                                       "evil"
@@ -513,7 +513,7 @@
                                       },
                                       {
                                         "type": "identity",
-                                        "identityMode": "base",
+                                        "identityMode": "real",
                                         "facet": "allegiance",
                                         "values": [
                                           "evil"
@@ -802,7 +802,7 @@
                                   },
                                   {
                                     "type": "identity",
-                                    "identityMode": "base",
+                                    "identityMode": "real",
                                     "facet": "allegiance",
                                     "values": [
                                       "evil"
@@ -1077,7 +1077,7 @@
                                       },
                                       {
                                         "type": "identity",
-                                        "identityMode": "base",
+                                        "identityMode": "real",
                                         "facet": "allegiance",
                                         "values": [
                                           "evil"
@@ -1261,7 +1261,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "good"
@@ -1298,7 +1298,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -1392,7 +1392,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "good"
@@ -1429,7 +1429,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -1523,7 +1523,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -1560,7 +1560,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -1593,7 +1593,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "good"
@@ -1771,7 +1771,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "good"
@@ -1808,7 +1808,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -1902,7 +1902,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "good"
@@ -1939,7 +1939,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -2033,7 +2033,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -2070,7 +2070,7 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "base",
+                            "identityMode": "real",
                             "facet": "allegiance",
                             "values": [
                               "good"
@@ -2355,7 +2355,7 @@
                                   },
                                   {
                                     "type": "identity",
-                                    "identityMode": "base",
+                                    "identityMode": "real",
                                     "facet": "allegiance",
                                     "values": [
                                       "good"
@@ -2557,7 +2557,7 @@
                                   },
                                   {
                                     "type": "identity",
-                                    "identityMode": "base",
+                                    "identityMode": "real",
                                     "facet": "allegiance",
                                     "values": [
                                       "evil"
@@ -2788,7 +2788,7 @@
                                   },
                                   {
                                     "type": "identity",
-                                    "identityMode": "base",
+                                    "identityMode": "real",
                                     "facet": "allegiance",
                                     "values": [
                                       "evil"
@@ -2990,7 +2990,7 @@
                                   },
                                   {
                                     "type": "identity",
-                                    "identityMode": "base",
+                                    "identityMode": "real",
                                     "facet": "allegiance",
                                     "values": [
                                       "good"
@@ -3221,7 +3221,7 @@
                                   },
                                   {
                                     "type": "identity",
-                                    "identityMode": "base",
+                                    "identityMode": "real",
                                     "facet": "allegiance",
                                     "values": [
                                       "good"
@@ -3423,7 +3423,7 @@
                                   },
                                   {
                                     "type": "identity",
-                                    "identityMode": "base",
+                                    "identityMode": "real",
                                     "facet": "allegiance",
                                     "values": [
                                       "evil"
