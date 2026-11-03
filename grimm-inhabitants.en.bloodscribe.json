@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.266",
+  "version": "10.267",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -3716,6 +3716,11 @@
                         "value": "malfunction"
                       },
                       {
+                        "type": "eventField",
+                        "field": "actorAbilityMarkerCause",
+                        "value": true
+                      },
+                      {
                         "type": "any",
                         "conditions": [
                           {
@@ -4814,36 +4819,13 @@
               {
                 "type": "modifyTargets",
                 "delta": -1,
-                "targetMechanicTags": [
-                  "marker-choice"
-                ]
-              },
-              {
-                "type": "modifyTargets",
-                "delta": -1,
-                "targetMechanicTags": [
-                  "reminder-choice"
-                ]
-              },
-              {
-                "type": "modifyTargets",
-                "delta": -1,
-                "targetMechanicTags": [
-                  "carried-reminder-choice"
-                ]
-              },
-              {
-                "type": "modifyTargets",
-                "delta": -1,
-                "targetMechanicTags": [
-                  "marker-removal"
-                ]
-              },
-              {
-                "type": "modifyTargets",
-                "delta": -1,
-                "targetMechanicTags": [
-                  "marker-transfer"
+                "targetMechanicTagsAny": [
+                  "marker-choice",
+                  "reminder-choice",
+                  "carried-reminder-choice",
+                  "marker-removal",
+                  "marker-transfer",
+                  "cumulative-marker"
                 ]
               }
             ]
@@ -5019,36 +5001,13 @@
               {
                 "type": "modifyTargets",
                 "delta": 1,
-                "targetMechanicTags": [
-                  "marker-choice"
-                ]
-              },
-              {
-                "type": "modifyTargets",
-                "delta": 1,
-                "targetMechanicTags": [
-                  "reminder-choice"
-                ]
-              },
-              {
-                "type": "modifyTargets",
-                "delta": 1,
-                "targetMechanicTags": [
-                  "carried-reminder-choice"
-                ]
-              },
-              {
-                "type": "modifyTargets",
-                "delta": 1,
-                "targetMechanicTags": [
-                  "marker-removal"
-                ]
-              },
-              {
-                "type": "modifyTargets",
-                "delta": 1,
-                "targetMechanicTags": [
-                  "marker-transfer"
+                "targetMechanicTagsAny": [
+                  "marker-choice",
+                  "reminder-choice",
+                  "carried-reminder-choice",
+                  "marker-removal",
+                  "marker-transfer",
+                  "cumulative-marker"
                 ]
               }
             ]
