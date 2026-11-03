@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.271",
+  "version": "10.272",
   "locale": "es",
   "name": "Caperucita Roja",
   "description": "El Lobo puede devorar a alguien sin matarlo todavía: la víctima sigue en la mesa, pero pierde su poder hasta que sea rescatada o digerida. El Bien debe descubrir quién ha sido devorado, liberar a sus aliados y reconocer los disfraces antes de ejecutar al monstruo. El Mal decide cuándo mantener un rehén y cuándo sacrificarlo para adoptar su identidad. Seguir vivo no significa estar a salvo.",
@@ -582,21 +582,35 @@
                     {
                       "type": "query",
                       "from": {
-                        "entity": "players"
+                        "entity": "events"
                       },
                       "where": {
                         "type": "all",
                         "conditions": [
                           {
-                            "type": "isBinding",
-                            "binding": "selected"
+                            "type": "eventCategory",
+                            "values": [
+                              "stateChange"
+                            ]
                           },
                           {
-                            "type": "state",
-                            "values": [
-                              "devoured"
-                            ],
-                            "active": true
+                            "type": "eventPeriod",
+                            "value": "currentNight"
+                          },
+                          {
+                            "type": "eventField",
+                            "field": "state",
+                            "value": "devoured"
+                          },
+                          {
+                            "type": "eventField",
+                            "field": "active",
+                            "value": true
+                          },
+                          {
+                            "type": "eventParticipant",
+                            "binding": "selected",
+                            "participant": "eventSubject"
                           }
                         ]
                       },
@@ -607,21 +621,35 @@
                     {
                       "type": "query",
                       "from": {
-                        "entity": "players"
+                        "entity": "events"
                       },
                       "where": {
                         "type": "all",
                         "conditions": [
                           {
-                            "type": "isBinding",
-                            "binding": "selected"
+                            "type": "eventCategory",
+                            "values": [
+                              "stateChange"
+                            ]
                           },
                           {
-                            "type": "state",
-                            "values": [
-                              "digested"
-                            ],
-                            "active": true
+                            "type": "eventPeriod",
+                            "value": "currentNight"
+                          },
+                          {
+                            "type": "eventField",
+                            "field": "state",
+                            "value": "digested"
+                          },
+                          {
+                            "type": "eventField",
+                            "field": "active",
+                            "value": true
+                          },
+                          {
+                            "type": "eventParticipant",
+                            "binding": "selected",
+                            "participant": "eventSubject"
                           }
                         ]
                       },

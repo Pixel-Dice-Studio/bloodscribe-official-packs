@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.271",
+  "version": "10.272",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "The Witch and the fire leave marks that draw their victims closer to death. Good must follow Hansel's clues, preserve its information, and decide when to risk Gretel's final accusation to destroy the Witch. Evil spreads the danger, blocks those who might expose it, and completes its marks before being identified. It is a pursuit in which every night brings the oven a little closer.",
@@ -1808,17 +1808,13 @@
                   "type": "all",
                   "conditions": [
                     {
-                      "type": "marker",
-                      "markerId": "Guiado",
-                      "active": true
+                      "type": "isBinding",
+                      "binding": "actor"
                     },
                     {
-                      "type": "identity",
-                      "identityMode": "real",
-                      "facet": "teamId",
-                      "values": [
-                        "team:grimm:ayudante"
-                      ]
+                      "type": "marker",
+                      "markerId": "Guió a un Ayudante",
+                      "active": true
                     }
                   ]
                 },
@@ -1835,17 +1831,13 @@
                   "type": "all",
                   "conditions": [
                     {
-                      "type": "marker",
-                      "markerId": "Guiado",
-                      "active": true
+                      "type": "isBinding",
+                      "binding": "actor"
                     },
                     {
-                      "type": "identity",
-                      "identityMode": "real",
-                      "facet": "teamId",
-                      "values": [
-                        "team:grimm:pueblo"
-                      ]
+                      "type": "marker",
+                      "markerId": "Guió a un Pueblerino",
+                      "active": true
                     }
                   ]
                 },
@@ -1879,6 +1871,20 @@
             "kind": "reminder",
             "value": "Guiado",
             "label": "Guided",
+            "duration": "game"
+          },
+          {
+            "id": "guio_ayudante",
+            "kind": "reminder",
+            "value": "Guió a un Ayudante",
+            "label": "Guió a un Ayudante",
+            "duration": "game"
+          },
+          {
+            "id": "guio_pueblerino",
+            "kind": "reminder",
+            "value": "Guió a un Pueblerino",
+            "label": "Guió a un Pueblerino",
             "duration": "game"
           }
         ],
@@ -1986,6 +1992,106 @@
                     },
                     "operator": "eq",
                     "right": false
+                  }
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Guió a un Ayudante",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "fact",
+                      "fact": "informationMayBeFalse"
+                    },
+                    "operator": "eq",
+                    "right": false
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "real",
+                          "facet": "teamId",
+                          "values": [
+                            "team:grimm:ayudante"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Guió a un Pueblerino",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "duration": {
+                  "type": "permanent"
+                },
+                "when": [
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "fact",
+                      "fact": "informationMayBeFalse"
+                    },
+                    "operator": "eq",
+                    "right": false
+                  },
+                  {
+                    "type": "query",
+                    "from": {
+                      "entity": "players"
+                    },
+                    "where": {
+                      "type": "all",
+                      "conditions": [
+                        {
+                          "type": "isBinding",
+                          "binding": "selected"
+                        },
+                        {
+                          "type": "identity",
+                          "identityMode": "real",
+                          "facet": "teamId",
+                          "values": [
+                            "team:grimm:pueblo"
+                          ]
+                        }
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "exists"
+                    }
                   }
                 ]
               }
