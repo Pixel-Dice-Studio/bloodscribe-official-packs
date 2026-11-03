@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.267",
+  "version": "10.268",
   "locale": "es",
   "name": "Habitantes de Grimm",
   "description": "Personajes extra que pueden incorporarse a cualquier cuento de Grimm.",
@@ -5954,10 +5954,22 @@
                         "participant": "eventSubject"
                       },
                       {
-                        "type": "eventParticipant",
-                        "binding": "actor",
-                        "participant": "actor",
-                        "value": false
+                        "type": "not",
+                        "condition": {
+                          "type": "all",
+                          "conditions": [
+                            {
+                              "type": "eventParticipant",
+                              "binding": "actor",
+                              "participant": "actor"
+                            },
+                            {
+                              "type": "eventField",
+                              "field": "markerId",
+                              "value": "Observado"
+                            }
+                          ]
+                        }
                       }
                     ]
                   },
