@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.271",
+  "version": "10.272",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -829,44 +829,45 @@
             "when": {
               "window": "night",
               "cadence": "each",
-              "startsAt": 2
-            },
-            "conditions": [
-              {
-                "type": "query",
-                "from": {
-                  "entity": "events"
-                },
-                "where": {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "eventCategory",
-                      "values": [
-                        "action"
-                      ]
-                    },
-                    {
-                      "type": "eventField",
-                      "field": "actionId",
-                      "value": "hilandera-rumores-alignment-claim"
-                    },
-                    {
-                      "type": "eventParticipant",
-                      "binding": "actor",
-                      "participant": "actor"
-                    },
-                    {
-                      "type": "eventPeriod",
-                      "value": "currentDay"
-                    }
-                  ]
-                },
-                "aggregate": {
-                  "type": "exists"
+              "startsAt": 2,
+              "activeWhen": [
+                {
+                  "type": "query",
+                  "from": {
+                    "entity": "events"
+                  },
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "eventCategory",
+                        "values": [
+                          "action"
+                        ]
+                      },
+                      {
+                        "type": "eventField",
+                        "field": "actionId",
+                        "value": "hilandera-rumores-alignment-claim"
+                      },
+                      {
+                        "type": "eventParticipant",
+                        "binding": "actor",
+                        "participant": "actor"
+                      },
+                      {
+                        "type": "eventPeriod",
+                        "value": "currentDay"
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
+                  }
                 }
-              }
-            ],
+              ]
+            },
+            "conditions": [],
             "effects": [
               {
                 "type": "emitInformation",
