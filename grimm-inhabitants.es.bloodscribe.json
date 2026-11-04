@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.270",
+  "version": "10.271",
   "locale": "es",
   "name": "Habitantes de Grimm",
   "description": "Personajes extra que pueden incorporarse a cualquier cuento de Grimm.",
@@ -1686,6 +1686,15 @@
                       "type": "binding",
                       "binding": "actor"
                     }
+                  },
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "reliquaryFate"
+                    },
+                    "operator": "eq",
+                    "right": "live"
                   }
                 ]
               },
@@ -6011,6 +6020,7 @@
               "death-trigger"
             ],
             "when": {
+              "window": "anyTime",
               "trigger": {
                 "type": "event",
                 "event": "death",

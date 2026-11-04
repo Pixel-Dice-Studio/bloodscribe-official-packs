@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.270",
+  "version": "10.271",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -1629,6 +1629,15 @@
                       "type": "binding",
                       "binding": "actor"
                     }
+                  },
+                  {
+                    "type": "compare",
+                    "left": {
+                      "type": "decisionValue",
+                      "decision": "reliquaryFate"
+                    },
+                    "operator": "eq",
+                    "right": "live"
                   }
                 ]
               },
@@ -5775,6 +5784,7 @@
               "death-trigger"
             ],
             "when": {
+              "window": "anyTime",
               "trigger": {
                 "type": "event",
                 "event": "death",
