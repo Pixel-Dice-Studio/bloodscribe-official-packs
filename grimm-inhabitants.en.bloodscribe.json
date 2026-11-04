@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.268",
+  "version": "10.270",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -2287,6 +2287,7 @@
                 "kind": "reminder",
                 "id": "Vínculo de espinas",
                 "active": true,
+                "ownership": "independent",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"
@@ -5435,15 +5436,14 @@
             "conditions": [],
             "effects": [
               {
-                "type": "setPlayerRelation",
-                "kind": "cuervo-mayor-elegido",
-                "markerId": "Elegido",
-                "active": true,
-                "ownership": "source",
+                "type": "applyMarker",
+                "kind": "reminder",
+                "id": "Elegido",
                 "targets": {
                   "type": "binding",
                   "binding": "selected"
                 },
+                "active": true,
                 "duration": {
                   "type": "whileCondition",
                   "condition": {
@@ -5562,10 +5562,8 @@
                         "value": false
                       },
                       {
-                        "type": "membership",
-                        "kinds": [
-                          "cuervo-mayor-elegido"
-                        ],
+                        "type": "marker",
+                        "markerId": "Elegido",
                         "active": false
                       }
                     ]
