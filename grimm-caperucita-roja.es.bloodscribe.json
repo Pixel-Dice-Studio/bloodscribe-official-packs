@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.272",
+  "version": "10.273",
   "locale": "es",
   "name": "Caperucita Roja",
   "description": "El Lobo puede devorar a alguien sin matarlo todavía: la víctima sigue en la mesa, pero pierde su poder hasta que sea rescatada o digerida. El Bien debe descubrir quién ha sido devorado, liberar a sus aliados y reconocer los disfraces antes de ejecutar al monstruo. El Mal decide cuándo mantener un rehén y cuándo sacrificarlo para adoptar su identidad. Seguir vivo no significa estar a salvo.",
@@ -369,43 +369,28 @@
               {
                 "type": "emitInformation",
                 "value": {
-                  "type": "compare",
-                  "left": {
-                    "type": "query",
-                    "from": {
-                      "entity": "players"
-                    },
-                    "where": {
-                      "type": "isBinding",
-                      "binding": "selected"
-                    },
-                    "project": {
-                      "type": "identity",
-                      "identityMode": "real",
-                      "property": "characterId"
-                    },
-                    "aggregate": {
-                      "type": "first"
-                    }
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
                   },
-                  "operator": "neq",
-                  "right": {
-                    "type": "query",
-                    "from": {
-                      "entity": "players"
-                    },
-                    "where": {
-                      "type": "isBinding",
-                      "binding": "selected"
-                    },
-                    "project": {
-                      "type": "identity",
-                      "identityMode": "registered",
-                      "property": "characterId"
-                    },
-                    "aggregate": {
-                      "type": "first"
-                    }
+                  "where": {
+                    "type": "all",
+                    "conditions": [
+                      {
+                        "type": "isBinding",
+                        "binding": "selected"
+                      },
+                      {
+                        "type": "state",
+                        "values": [
+                          "disguised"
+                        ],
+                        "active": true
+                      }
+                    ]
+                  },
+                  "aggregate": {
+                    "type": "exists"
                   }
                 },
                 "presentation": {
