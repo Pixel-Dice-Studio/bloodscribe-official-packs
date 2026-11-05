@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.273",
+  "version": "10.275",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -6406,7 +6406,7 @@
                   }
                 },
                 "operator": "eq",
-                "right": 0
+                "right": 1
               }
             ],
             "effects": [
@@ -6416,7 +6416,7 @@
                   "type": "binding",
                   "binding": "actor"
                 },
-                "result": "mainEvilTransfer"
+                "minimumAlive": 0
               }
             ],
             "usage": {
