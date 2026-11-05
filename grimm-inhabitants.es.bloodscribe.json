@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.275",
+  "version": "10.276",
   "locale": "es",
   "name": "Habitantes de Grimm",
   "description": "Personajes extra que pueden incorporarse a cualquier cuento de Grimm.",
@@ -1813,7 +1813,7 @@
             "id": "muneco_transmitido",
             "kind": "reminder",
             "value": "Muñeco transmitido",
-            "label": "Muñeco transmitido",
+            "label": "Muñeco entregado",
             "duration": "game"
           }
         ],
@@ -2081,11 +2081,11 @@
             "presentation": {
               "nightControl": {
                 "type": "onePlayer",
-                "label": "Conserva o transmite el Muñeco"
+                "label": "Conserva o entrega el Muñeco"
               },
               "decisionPrompts": {
                 "dollAction": {
-                  "question": "¿Conserva o transmite el Muñeco?",
+                  "question": "¿Conserva o entrega el Muñeco?",
                   "options": [
                     {
                       "value": "keep",
@@ -2093,14 +2093,14 @@
                     },
                     {
                       "value": "pass",
-                      "label": "Transmite"
+                      "label": "Entrega"
                     }
                   ]
                 }
               },
               "nightGuide": {
                 "action": [
-                  "Despierta solo a la Muñequera. Puede conservar el Muñeco o, si aún no lo transmitió, entregarlo a 1 jugador vivo (no a ella)."
+                  "Despierta solo a la Muñequera. Puede conservar el Muñeco o, si aún no lo ha entregado, entregarlo a 1 jugador vivo (no a ella)."
                 ],
                 "communicate": [
                   "No despiertes ni informes al receptor; solo el Narrador ve quién porta el Muñeco."
