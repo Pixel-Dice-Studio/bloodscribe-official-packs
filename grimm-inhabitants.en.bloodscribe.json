@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.275",
+  "version": "10.276",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -1743,7 +1743,7 @@
             "id": "muneco_transmitido",
             "kind": "reminder",
             "value": "Muñeco transmitido",
-            "label": "Muñeco transmitido",
+            "label": "Muñeco entregado",
             "duration": "game"
           }
         ],
@@ -2011,7 +2011,7 @@
             "presentation": {
               "decisionPrompts": {
                 "dollAction": {
-                  "question": "Do they keep or pass the Doll?",
+                  "question": "Do they keep or give away the Doll?",
                   "options": [
                     {
                       "value": "keep",
@@ -2019,7 +2019,7 @@
                     },
                     {
                       "value": "pass",
-                      "label": "Pass"
+                      "label": "Give away"
                     }
                   ]
                 }
