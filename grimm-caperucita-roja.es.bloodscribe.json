@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.273",
+  "version": "10.274",
   "locale": "es",
   "name": "Caperucita Roja",
   "description": "El Lobo puede devorar a alguien sin matarlo todavía: la víctima sigue en la mesa, pero pierde su poder hasta que sea rescatada o digerida. El Bien debe descubrir quién ha sido devorado, liberar a sus aliados y reconocer los disfraces antes de ejecutar al monstruo. El Mal decide cuándo mantener un rehén y cuándo sacrificarlo para adoptar su identidad. Seguir vivo no significa estar a salvo.",
@@ -3718,83 +3718,62 @@
               "window": "setup",
               "cadence": "once"
             },
-            "input": {
-              "kind": "character",
-              "candidates": {
-                "type": "query",
-                "from": {
-                  "entity": "characters"
-                },
-                "where": {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "inPlay",
-                      "value": true
-                    },
-                    {
-                      "type": "identity",
-                      "facet": "allegiance",
-                      "values": [
-                        "good"
-                      ]
-                    },
-                    {
-                      "type": "identity",
-                      "facet": "role",
-                      "values": [
-                        "core"
-                      ]
-                    },
-                    {
-                      "type": "not",
-                      "condition": {
-                        "type": "identity",
-                        "facet": "character",
-                        "values": [
-                          "character:grimm:nino-sonador"
-                        ]
-                      }
-                    }
+            "conditions": [],
+            "effects": [
+              {
+                "type": "changeCharacter",
+                "shownAs": "townsfolkToken",
+                "realProfile": {
+                  "allegiances": [
+                    "good"
+                  ],
+                  "roles": [
+                    "support"
                   ]
                 },
-                "aggregate": {
-                  "type": "collect"
+                "characterProfile": {
+                  "allegiances": [
+                    "good"
+                  ],
+                  "roles": [
+                    "core"
+                  ]
                 },
-                "project": {
-                  "type": "entityId"
-                }
+                "requireShownCharacterInPlay": true,
+                "createsReminder": "Es el Niño"
               }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:nino-sonador:disguised-registration:1",
+            "tags": [
+              "disguise"
+            ],
+            "when": {
+              "window": "setup",
+              "cadence": "once"
             },
             "conditions": [],
             "effects": [
               {
-                "type": "applyMarker",
-                "kind": "reminder",
-                "id": "Es el Niño",
-                "active": true,
-                "targets": {
-                  "type": "binding",
-                  "binding": "actor"
-                }
-              },
-              {
-                "type": "setPlayerState",
-                "state": "disguised",
-                "active": true,
-                "targets": {
-                  "type": "binding",
-                  "binding": "actor"
-                },
-                "duration": {
-                  "type": "permanent"
-                }
-              },
-              {
                 "type": "registerAs",
                 "characterId": {
-                  "type": "inputValue",
-                  "valueType": "characterId"
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "actor"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "shown",
+                    "property": "characterId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
                 },
                 "targets": {
                   "type": "binding",
@@ -3802,22 +3781,6 @@
                 },
                 "duration": {
                   "type": "permanent"
-                }
-              },
-              {
-                "type": "emitInformation",
-                "value": {
-                  "type": "inputValue",
-                  "valueType": "characterId"
-                },
-                "presentation": {
-                  "kind": "character",
-                  "title": "Tu personaje aparente"
-                },
-                "delivery": {
-                  "audience": {
-                    "type": "actor"
-                  }
                 }
               }
             ]
@@ -3836,6 +3799,34 @@
               {
                 "type": "disableAbility",
                 "informationMayBeFalse": true
+              }
+            ]
+          },
+          {
+            "mechanicId": "mechanic:grimm:nino-sonador:disguise:1",
+            "tags": [
+              "disguise"
+            ],
+            "when": {
+              "window": "anyTime",
+              "cadence": "each"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "type": "setPlayerState",
+                "state": "disguised",
+                "active": true,
+                "targets": {
+                  "type": "binding",
+                  "binding": "actor"
+                },
+                "ownership": "independent"
+              }
+            ],
+            "policies": [
+              {
+                "type": "ignoreActorAbilityRestriction"
               }
             ]
           }
