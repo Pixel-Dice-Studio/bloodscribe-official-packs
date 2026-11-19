@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.273",
+  "version": "10.274",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "The Witch and the fire leave marks that draw their victims closer to death. Good must follow Hansel's clues, preserve its information, and decide when to risk Gretel's final accusation to destroy the Witch. Evil spreads the danger, blocks those who might expose it, and completes its marks before being identified. It is a pursuit in which every night brings the oven a little closer.",
@@ -5338,6 +5338,9 @@
         },
         "description": "Optional rules that gently tilt the tale toward Evil."
       },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
       "info": {
         "name": "The {{team:grimm:oscuro}} One learns the {{team:grimm:siervo|plural}}",
         "ability": "On the first night, the {{team:grimm:oscuro}} sees which players are their {{team:grimm:siervo|plural}}.",
@@ -5500,6 +5503,9 @@
         },
         "description": "Optional rules that gently tilt the tale toward Evil."
       },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
       "info": {
         "name": "The {{team:grimm:siervo|plural}} learn the {{team:grimm:oscuro}} One",
         "ability": "On the first night, each {{team:grimm:siervo}} sees which player is the {{team:grimm:oscuro}}.",

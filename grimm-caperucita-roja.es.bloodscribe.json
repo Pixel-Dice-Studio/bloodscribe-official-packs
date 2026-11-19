@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.276",
+  "version": "10.277",
   "locale": "es",
   "name": "Caperucita Roja",
   "description": "El Lobo puede devorar a alguien sin matarlo todavía: la víctima sigue en la mesa, pero pierde su poder hasta que sea rescatada o digerida. El Bien debe descubrir quién ha sido devorado, liberar a sus aliados y reconocer los disfraces antes de ejecutar al monstruo. El Mal decide cuándo mantener un rehén y cuándo sacrificarlo para adoptar su identidad. Seguir vivo no significa estar a salvo.",
@@ -4939,6 +4939,9 @@
         },
         "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Mal."
       },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
       "info": {
         "name": "El {{team:grimm:oscuro}} conoce a sus {{team:grimm:siervo|plural}}",
         "ability": "En la primera noche, el {{team:grimm:oscuro}} ve qué jugadores son sus {{team:grimm:siervo|plural}}.",
@@ -5101,6 +5104,9 @@
         },
         "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Mal."
       },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
       "info": {
         "name": "Los {{team:grimm:siervo|plural}} conocen al {{team:grimm:oscuro}}",
         "ability": "En la primera noche, cada {{team:grimm:siervo}} ve qué jugador es el {{team:grimm:oscuro}}.",

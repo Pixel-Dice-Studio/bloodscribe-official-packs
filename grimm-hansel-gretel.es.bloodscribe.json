@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.273",
+  "version": "10.274",
   "locale": "es",
   "name": "Hansel y Gretel",
   "description": "La Bruja y el fuego van dejando marcas que acercan a sus víctimas a la muerte. El Bien debe seguir las pistas de Hansel, conservar la información y decidir cuándo arriesgar la acusación definitiva de Gretel para acabar con la Bruja. El Mal reparte el peligro, bloquea a quienes podrían descubrirlo y completa sus marcas antes de ser señalado. Es una persecución en la que cada noche acerca un poco más el horno.",
@@ -5351,6 +5351,9 @@
         },
         "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Mal."
       },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
       "info": {
         "name": "El {{team:grimm:oscuro}} conoce a sus {{team:grimm:siervo|plural}}",
         "ability": "En la primera noche, el {{team:grimm:oscuro}} ve qué jugadores son sus {{team:grimm:siervo|plural}}.",
@@ -5513,6 +5516,9 @@
         },
         "description": "Reglas opcionales que inclinan suavemente el cuento a favor del Mal."
       },
+      "activationTags": [
+        "startingInformation:evilTeamRecognition"
+      ],
       "info": {
         "name": "Los {{team:grimm:siervo|plural}} conocen al {{team:grimm:oscuro}}",
         "ability": "En la primera noche, cada {{team:grimm:siervo}} ve qué jugador es el {{team:grimm:oscuro}}.",
