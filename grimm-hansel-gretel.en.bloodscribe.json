@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-hansel-gretel",
   "key": "grimm-hansel-gretel",
-  "version": "10.274",
+  "version": "10.275",
   "locale": "en",
   "name": "Hansel and Gretel",
   "description": "The Witch and the fire leave marks that draw their victims closer to death. Good must follow Hansel's clues, preserve its information, and decide when to risk Gretel's final accusation to destroy the Witch. Evil spreads the danger, blocks those who might expose it, and completes its marks before being identified. It is a pursuit in which every night brings the oven a little closer.",
@@ -5341,6 +5341,12 @@
       "activationTags": [
         "startingInformation:evilTeamRecognition"
       ],
+      "parameters": {
+        "identityMode": {
+          "type": "identityMode",
+          "default": "real"
+        }
+      },
       "info": {
         "name": "The {{team:grimm:oscuro}} One learns the {{team:grimm:siervo|plural}}",
         "ability": "On the first night, the {{team:grimm:oscuro}} sees which players are their {{team:grimm:siervo|plural}}.",
@@ -5395,7 +5401,10 @@
                     "conditions": [
                       {
                         "type": "identity",
-                        "identityMode": "registered",
+                        "identityMode": {
+                          "type": "parameter",
+                          "parameter": "identityMode"
+                        },
                         "facet": "allegiance",
                         "values": [
                           "evil"
@@ -5403,7 +5412,10 @@
                       },
                       {
                         "type": "identity",
-                        "identityMode": "registered",
+                        "identityMode": {
+                          "type": "parameter",
+                          "parameter": "identityMode"
+                        },
                         "facet": "role",
                         "values": [
                           "support"
@@ -5436,7 +5448,10 @@
                         "conditions": [
                           {
                             "type": "identity",
-                            "identityMode": "registered",
+                            "identityMode": {
+                              "type": "parameter",
+                              "parameter": "identityMode"
+                            },
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -5444,7 +5459,10 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "registered",
+                            "identityMode": {
+                              "type": "parameter",
+                              "parameter": "identityMode"
+                            },
                             "facet": "role",
                             "values": [
                               "core"
@@ -5506,6 +5524,12 @@
       "activationTags": [
         "startingInformation:evilTeamRecognition"
       ],
+      "parameters": {
+        "identityMode": {
+          "type": "identityMode",
+          "default": "real"
+        }
+      },
       "info": {
         "name": "The {{team:grimm:siervo|plural}} learn the {{team:grimm:oscuro}} One",
         "ability": "On the first night, each {{team:grimm:siervo}} sees which player is the {{team:grimm:oscuro}}.",
@@ -5560,7 +5584,10 @@
                     "conditions": [
                       {
                         "type": "identity",
-                        "identityMode": "registered",
+                        "identityMode": {
+                          "type": "parameter",
+                          "parameter": "identityMode"
+                        },
                         "facet": "allegiance",
                         "values": [
                           "evil"
@@ -5568,7 +5595,10 @@
                       },
                       {
                         "type": "identity",
-                        "identityMode": "registered",
+                        "identityMode": {
+                          "type": "parameter",
+                          "parameter": "identityMode"
+                        },
                         "facet": "role",
                         "values": [
                           "core"
@@ -5601,7 +5631,10 @@
                         "conditions": [
                           {
                             "type": "identity",
-                            "identityMode": "registered",
+                            "identityMode": {
+                              "type": "parameter",
+                              "parameter": "identityMode"
+                            },
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -5609,7 +5642,10 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "registered",
+                            "identityMode": {
+                              "type": "parameter",
+                              "parameter": "identityMode"
+                            },
                             "facet": "role",
                             "values": [
                               "support"
@@ -5694,11 +5730,17 @@
         },
         {
           "ruleId": "rule:grimm:dark-learns-servants",
-          "activation": "setupChoice"
+          "activation": "setupChoice",
+          "parameters": {
+            "identityMode": "real"
+          }
         },
         {
           "ruleId": "rule:grimm:servants-learn-dark",
-          "activation": "setupChoice"
+          "activation": "setupChoice",
+          "parameters": {
+            "identityMode": "real"
+          }
         },
         {
           "ruleId": "rule:grimm:game-end:elimination",

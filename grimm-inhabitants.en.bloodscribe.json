@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.276",
+  "version": "10.277",
   "locale": "en",
   "name": "Inhabitants of Grimm",
   "description": "Extra characters that can join any Grimm tale.",
@@ -372,8 +372,7 @@
             "mechanicId": "mechanic:grimm:posadera-camino:track-pair:1",
             "tags": [
               "night-information",
-              "reminder-choice",
-              "storyteller-decision"
+              "reminder-choice"
             ],
             "when": {
               "window": "night",
@@ -407,23 +406,14 @@
                 "actionId": "posadera-camino-pair"
               },
               {
-                "type": "storytellerDecision",
-                "decision": "crossedChoice",
-                "options": [
-                  "yes",
-                  "no"
-                ]
-              },
-              {
                 "type": "emitInformation",
                 "value": {
-                  "type": "compare",
-                  "left": {
-                    "type": "decisionValue",
-                    "decision": "crossedChoice"
-                  },
-                  "operator": "eq",
-                  "right": "yes"
+                  "type": "nightHistory",
+                  "property": "choseEachOther",
+                  "players": {
+                    "type": "binding",
+                    "binding": "selected"
+                  }
                 },
                 "presentation": {
                   "kind": "boolean",
@@ -439,21 +429,6 @@
               }
             ],
             "presentation": {
-              "decisionPrompts": {
-                "crossedChoice": {
-                  "question": "Did either chosen player choose the other with an ability tonight?",
-                  "options": [
-                    {
-                      "value": "yes",
-                      "label": "Yes"
-                    },
-                    {
-                      "value": "no",
-                      "label": "No"
-                    }
-                  ]
-                }
-              },
               "nightControl": {
                 "type": "twoPlayers"
               }
@@ -1484,22 +1459,15 @@
               "cadence": "once"
             },
             "input": {
-              "kind": "players",
-              "min": 1,
-              "max": 1,
-              "candidates": {
-                "type": "query",
-                "from": {
-                  "entity": "players"
-                },
-                "where": {
-                  "type": "isBinding",
-                  "binding": "actor"
-                },
-                "aggregate": {
-                  "type": "collect"
-                }
-              }
+              "kind": "none"
+            },
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
             },
             "conditions": [],
             "effects": [
@@ -1515,7 +1483,7 @@
                 "ownership": "independent",
                 "targets": {
                   "type": "binding",
-                  "binding": "selected"
+                  "binding": "actor"
                 },
                 "duration": {
                   "type": "whileTargetAlive"
