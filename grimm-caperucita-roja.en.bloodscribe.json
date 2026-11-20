@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-caperucita-roja",
   "key": "grimm-caperucita-roja",
-  "version": "10.277",
+  "version": "10.278",
   "locale": "en",
   "name": "Little Red-Cap",
   "description": "The Wolf can devour someone without killing them yet: the victim stays at the table but loses their power until rescued or digested. Good must discover who was devoured, free its allies, and see through disguises before executing the monster. Evil chooses when to keep a hostage and when to sacrifice one to steal their identity. Staying alive does not mean being safe.",
@@ -2372,72 +2372,6 @@
                 ]
               },
               {
-                "type": "emitInformation",
-                "value": {
-                  "type": "query",
-                  "from": {
-                    "entity": "players"
-                  },
-                  "where": {
-                    "type": "isBinding",
-                    "binding": "selected"
-                  },
-                  "project": {
-                    "type": "identity",
-                    "identityMode": "real",
-                    "property": "characterId"
-                  },
-                  "aggregate": {
-                    "type": "first"
-                  }
-                },
-                "presentation": {
-                  "kind": "character",
-                  "title": "Victim's character"
-                },
-                "delivery": {
-                  "audience": {
-                    "type": "actor"
-                  }
-                },
-                "when": [
-                  {
-                    "type": "compare",
-                    "left": {
-                      "type": "decisionValue",
-                      "decision": "wolfNightChoice"
-                    },
-                    "operator": "eq",
-                    "right": "disguise"
-                  },
-                  {
-                    "type": "query",
-                    "from": {
-                      "entity": "players"
-                    },
-                    "where": {
-                      "type": "all",
-                      "conditions": [
-                        {
-                          "type": "isBinding",
-                          "binding": "selected"
-                        },
-                        {
-                          "type": "state",
-                          "values": [
-                            "devoured"
-                          ],
-                          "active": true
-                        }
-                      ]
-                    },
-                    "aggregate": {
-                      "type": "exists"
-                    }
-                  }
-                ]
-              },
-              {
                 "type": "death",
                 "bypassesProtection": true,
                 "targets": {
@@ -2884,6 +2818,36 @@
             },
             "conditions": [],
             "effects": [
+              {
+                "type": "emitInformation",
+                "value": {
+                  "type": "query",
+                  "from": {
+                    "entity": "players"
+                  },
+                  "where": {
+                    "type": "isBinding",
+                    "binding": "selected"
+                  },
+                  "project": {
+                    "type": "identity",
+                    "identityMode": "real",
+                    "property": "characterId"
+                  },
+                  "aggregate": {
+                    "type": "first"
+                  }
+                },
+                "presentation": {
+                  "kind": "character",
+                  "title": "Victim's character"
+                },
+                "delivery": {
+                  "audience": {
+                    "type": "actor"
+                  }
+                }
+              },
               {
                 "type": "setPlayerState",
                 "state": "disguised",
@@ -4937,6 +4901,12 @@
       "activationTags": [
         "startingInformation:evilTeamRecognition"
       ],
+      "parameters": {
+        "identityMode": {
+          "type": "identityMode",
+          "default": "real"
+        }
+      },
       "info": {
         "name": "The {{team:grimm:oscuro}} One learns the {{team:grimm:siervo|plural}}",
         "ability": "On the first night, the {{team:grimm:oscuro}} sees which players are their {{team:grimm:siervo|plural}}.",
@@ -4991,7 +4961,10 @@
                     "conditions": [
                       {
                         "type": "identity",
-                        "identityMode": "registered",
+                        "identityMode": {
+                          "type": "parameter",
+                          "parameter": "identityMode"
+                        },
                         "facet": "allegiance",
                         "values": [
                           "evil"
@@ -4999,7 +4972,10 @@
                       },
                       {
                         "type": "identity",
-                        "identityMode": "registered",
+                        "identityMode": {
+                          "type": "parameter",
+                          "parameter": "identityMode"
+                        },
                         "facet": "role",
                         "values": [
                           "support"
@@ -5032,7 +5008,10 @@
                         "conditions": [
                           {
                             "type": "identity",
-                            "identityMode": "registered",
+                            "identityMode": {
+                              "type": "parameter",
+                              "parameter": "identityMode"
+                            },
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -5040,7 +5019,10 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "registered",
+                            "identityMode": {
+                              "type": "parameter",
+                              "parameter": "identityMode"
+                            },
                             "facet": "role",
                             "values": [
                               "core"
@@ -5102,6 +5084,12 @@
       "activationTags": [
         "startingInformation:evilTeamRecognition"
       ],
+      "parameters": {
+        "identityMode": {
+          "type": "identityMode",
+          "default": "real"
+        }
+      },
       "info": {
         "name": "The {{team:grimm:siervo|plural}} learn the {{team:grimm:oscuro}} One",
         "ability": "On the first night, each {{team:grimm:siervo}} sees which player is the {{team:grimm:oscuro}}.",
@@ -5156,7 +5144,10 @@
                     "conditions": [
                       {
                         "type": "identity",
-                        "identityMode": "registered",
+                        "identityMode": {
+                          "type": "parameter",
+                          "parameter": "identityMode"
+                        },
                         "facet": "allegiance",
                         "values": [
                           "evil"
@@ -5164,7 +5155,10 @@
                       },
                       {
                         "type": "identity",
-                        "identityMode": "registered",
+                        "identityMode": {
+                          "type": "parameter",
+                          "parameter": "identityMode"
+                        },
                         "facet": "role",
                         "values": [
                           "core"
@@ -5197,7 +5191,10 @@
                         "conditions": [
                           {
                             "type": "identity",
-                            "identityMode": "registered",
+                            "identityMode": {
+                              "type": "parameter",
+                              "parameter": "identityMode"
+                            },
                             "facet": "allegiance",
                             "values": [
                               "evil"
@@ -5205,7 +5202,10 @@
                           },
                           {
                             "type": "identity",
-                            "identityMode": "registered",
+                            "identityMode": {
+                              "type": "parameter",
+                              "parameter": "identityMode"
+                            },
                             "facet": "role",
                             "values": [
                               "support"
@@ -5290,11 +5290,17 @@
         },
         {
           "ruleId": "rule:grimm:dark-learns-servants",
-          "activation": "setupChoice"
+          "activation": "setupChoice",
+          "parameters": {
+            "identityMode": "real"
+          }
         },
         {
           "ruleId": "rule:grimm:servants-learn-dark",
-          "activation": "setupChoice"
+          "activation": "setupChoice",
+          "parameters": {
+            "identityMode": "real"
+          }
         },
         {
           "ruleId": "rule:grimm:game-end:elimination",

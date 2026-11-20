@@ -2,7 +2,7 @@
   "schemaVersion": "bloodscribe-3.3",
   "id": "grimm:grimm-inhabitants",
   "key": "grimm-inhabitants",
-  "version": "10.276",
+  "version": "10.277",
   "locale": "es",
   "name": "Habitantes de Grimm",
   "description": "Personajes extra que pueden incorporarse a cualquier cuento de Grimm.",
@@ -372,8 +372,7 @@
             "mechanicId": "mechanic:grimm:posadera-camino:track-pair:1",
             "tags": [
               "night-information",
-              "reminder-choice",
-              "storyteller-decision"
+              "reminder-choice"
             ],
             "when": {
               "window": "night",
@@ -407,23 +406,14 @@
                 "actionId": "posadera-camino-pair"
               },
               {
-                "type": "storytellerDecision",
-                "decision": "crossedChoice",
-                "options": [
-                  "yes",
-                  "no"
-                ]
-              },
-              {
                 "type": "emitInformation",
                 "value": {
-                  "type": "compare",
-                  "left": {
-                    "type": "decisionValue",
-                    "decision": "crossedChoice"
-                  },
-                  "operator": "eq",
-                  "right": "yes"
+                  "type": "nightHistory",
+                  "property": "choseEachOther",
+                  "players": {
+                    "type": "binding",
+                    "binding": "selected"
+                  }
                 },
                 "presentation": {
                   "kind": "boolean",
@@ -451,26 +441,11 @@
                   "Marca Rumor cruzado en ambos hasta el amanecer."
                 ],
                 "checks": [
-                  "Comprueba si alguno eligió al otro con una habilidad esa noche; elegirse a uno mismo no cuenta."
+                  "La app comprueba si alguno eligió al otro con una habilidad esta noche; elegirse a uno mismo no cuenta."
                 ],
                 "communicate": [
                   "Responde solo Sí o No, en privado."
                 ]
-              },
-              "decisionPrompts": {
-                "crossedChoice": {
-                  "question": "¿Alguno de los dos jugadores eligió al otro con una habilidad esta noche?",
-                  "options": [
-                    {
-                      "value": "yes",
-                      "label": "Sí"
-                    },
-                    {
-                      "value": "no",
-                      "label": "No"
-                    }
-                  ]
-                }
               }
             }
           }
@@ -1541,22 +1516,15 @@
               "cadence": "once"
             },
             "input": {
-              "kind": "players",
-              "min": 1,
-              "max": 1,
-              "candidates": {
-                "type": "query",
-                "from": {
-                  "entity": "players"
-                },
-                "where": {
-                  "type": "isBinding",
-                  "binding": "actor"
-                },
-                "aggregate": {
-                  "type": "collect"
-                }
-              }
+              "kind": "none"
+            },
+            "usage": {
+              "scope": "game",
+              "limit": {
+                "type": "literal",
+                "value": 1
+              },
+              "consumeOn": "resolution"
             },
             "conditions": [],
             "effects": [
@@ -1572,7 +1540,7 @@
                 "ownership": "independent",
                 "targets": {
                   "type": "binding",
-                  "binding": "selected"
+                  "binding": "actor"
                 },
                 "duration": {
                   "type": "whileTargetAlive"
